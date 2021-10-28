@@ -25,21 +25,54 @@
 			
 			  <!-- Check Login-->
 			  <?php 
-			  		if(isset($_SESSION['username']) && isset($_SESSION['password']))
+			  		if(isset($_SESSION['username']))
 					  {
-						?>
-						<li class="nav-item dropdown">
-							  <a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown"
-								  aria-haspopup="true" aria-expanded="false">
-								  Xin chao <?php echo $_SESSION['username']; ?><i class="icofont-thin-down"></i></a>
-							  <ul class="dropdown-menu" aria-labelledby="dropdown02">
-								  <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
-								  <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
-								  <li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
-							  </ul>
-						  </li>
-						<?php 
+						if($_SESSION['phanquyen']=="Benhnhan")
+						{
+							?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									Xin chao <?php echo $_SESSION['username']; ?><i class="icofont-thin-down"></i></a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown02">
+									<li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+									<li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+									<li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
+								</ul>
+							</li>
+							<?php
+						}
+						else if($_SESSION['phanquyen']=="Doctor")
+						{
+							?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									Xin chao <?php echo $_SESSION['username']; ?><i class="icofont-thin-down"></i></a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown02">
+									<li><a class="dropdown-item" href="#">Thông tin bác sĩ</a></li>
+									<li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+									<li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
+								</ul>
+							</li>
+							<?php
+						}
 					  }
+					elseif(isset($_GET['code']))
+						{
+							?>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown"
+									aria-haspopup="true" aria-expanded="false">
+									Xin chao <?php echo $name ?><i class="icofont-thin-down"></i></a>
+								<ul class="dropdown-menu" aria-labelledby="dropdown02">
+									<li><a class="dropdown-item" href="#">Thông tin bác sĩ</a></li>
+									<li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+									<li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
+								</ul>
+							</li>
+							<?php
+						}
 					else
 					{
 						?>

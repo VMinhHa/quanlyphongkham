@@ -1,5 +1,106 @@
 <?php
   include('db/constrants.php');
+  include('db/validation.php');
+  $err = [];
+  if(isset($_POST['username']))
+  {
+      $username = $_POST['username'];
+      $password =$_POST['password'];
+      $repass = $_POST['repass'];
+      $email = $_POST['email'];
+      $phanquyen = 'Benhnhan';
+
+      //
+        if(empty($username))
+        {
+          $err['username'] = '*Bạn chưa nhập tên đăng nhập';
+        }else{
+            // Kiểm tra định dạng username
+            if (!is_username($username)) {
+                $err['username'] = "*Tên đăng nhập phải từ 6 chữ số";
+            } else {
+                $username = $_POST['username'];
+            }
+        }
+
+        //Kiểm tra lỗi password
+        if(empty($password))
+        {
+           $err['password'] = '*Bạn chưa nhập mật khẩu';
+         } else {
+            // Kiểm tra định dạng password
+            if (!is_password($_POST['password'])) {
+                $err['password'] = "*Mật khẩu bắt đầu bằng chữ in hoa từ 5 chữ số";
+            } else {
+                $password = $_POST['password'];
+            }
+        }
+
+        if($password != $repass)
+        {
+          $err['repass'] = '*Mật khẩu nhập lại không đúng';
+        }
+
+        if(empty($email))
+        {
+          $err['email'] = '*Bạn chưa nhập email';
+        }else {
+          // Kiểm tra định dạng password
+          if (!is_email($_POST['email'])) {
+              $err['email'] = "Email không đúng định dạng";
+          } else {
+              $email = $_POST['email'];
+          }
+      }
+      
+      
+      // if(empty($username))
+      // {
+      //   $err['username'] = '*Bạn chưa nhập tên đăng nhập';
+      // }
+      // if(empty($password))
+      // {
+      //   $err['password'] = '*Bạn chưa nhập mật khẩu';
+      // }
+      // if($password != $repass)
+      // {
+      //   $err['repass'] = '*Mật khẩu nhập lại không đúng';
+      // }
+      // if(empty($email))
+      // {
+      //   $err['email'] = '*Bạn chưa nhập email';
+      // }
+      
+      if(empty($err))
+      {        
+        $pass = md5($password);
+        $sql = "INSERT INTO taikhoan(Tendangnhap,Password,Email,Phanquyen) 
+        values ('$username','$pass','$email','$phanquyen')";
+        $query = mysqli_query($conn,$sql);
+        if($query)
+        {          
+          $res = mysqli_query($conn, "SELECT * FROM taikhoan WHERE Tendangnhap='$username' and Password='$pass'");
+          $count = mysqli_num_rows($res);
+          if ($count > 0) {              
+                $row = mysqli_fetch_array($res);                
+                if($row['Phanquyen']=='Benhnhan')
+                {
+                  echo '<script>
+                    alert("Đăng Ký Thành Công");
+                    window.location.href="index.php";
+                  </script>';
+                  $_SESSION['username'] = $row['Tendangnhap'];
+                  $_SESSION['phanquyen'] = $row['Phanquyen'];                 
+                }                
+            }
+        }
+        else{
+          echo'<script>alert("Đăng Ký Thất Bại");</script>';
+        }
+      }
+      
+  }
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +111,11 @@
     <title>Register</title>
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/form.css">
+    <style>
+      .has-error{
+        color:red;
+      }
+    </style>
 </head>
 <body>
   <div class="container">
@@ -18,6 +124,7 @@
         <img src="./images/logo.png" alt="">
       </a>
     </div>
+
     <div class="row justify-content-md-center">
       <div class="col-8">
         <div class="main-form">
@@ -25,36 +132,34 @@
             <h2>ĐĂNG KÝ</h2>
             <div class="form-group">
               <label for="uname">Tên Đăng Nhập:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" required>
-              <!-- <div class="valid-feedback">Valid.</div> -->
-              <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
+              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
+              <div class="has-error">
+                <span> <?php echo (isset($err['username'])) ? $err['username']:'' ?> </span>
+              </div>
             </div>
+
             <div class="form-group">
               <label for="pwd">Mật Khẩu:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" required>
-              <!-- <div class="valid-feedback">Valid.</div> -->
-              <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
+              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" >
+              <div class="has-error">
+                <span> <?php echo (isset($err['password'])) ? $err['password']:'' ?> </span>
+              </div>
             </div>
 
             <div class="form-group">
-              <label for="txtname">Họ Tên:</label>
-              <input type="text" class="form-control" id="txtname" placeholder="Nhập họ tên" name="full_name" required>
-              <!-- <div class="valid-feedback">Valid.</div> -->
-              <!-- <div class="invalid-feedback">Please fill out this field.</div> -->
-            </div>
-
-            <div class="form-group">
-              <label for="txtsdt">Số điện thoại:</label>
-              <input type="text" class="form-control" id="txtsdt" placeholder="Nhập số điện thoại" name="sdt" required>
-              <!-- <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div> -->
+              <label for="rpwd">Xác nhận mật khẩu:</label>
+              <input type="password" class="form-control" id="rpwd" placeholder="Nhập lại mật khẩu" name="repass" >
+              <div class="has-error">
+                <span> <?php echo (isset($err['repass'])) ? $err['repass']:'' ?> </span>
+              </div>
             </div>
 
             <div class="form-group">
               <label for="txtemail">Email:</label>
-              <input type="email" class="form-control" id="txtemail" placeholder="Nhập email" name="email" required>
-              <!-- <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div> -->
+              <input type="email" class="form-control" id="txtemail" placeholder="Nhập email của bạn" name="email">
+              <div class="has-error">
+                <span> <?php echo (isset($err['email'])) ? $err['email']:'' ?> </span>
+              </div>
             </div>
 
             <div class="btn-form">
@@ -68,61 +173,6 @@
     </div>
     </div>
   </div>
-  <?php
-  if(isset($_POST['submit']))
-  {
-      //Button Clicked
-      
-      //1. Get the data from form
-      $username = $_POST['username'];
-      $password =md5($_POST['password']);    //Password Encryption with MD5
-      $full_name= $_POST['full_name'];
-      $sdt = $_POST['sdt'];
-      $email = $_POST['email'];
-      $phanquyen = 'benhnhan';    
-
-      // echo $full_name.'</br>'; 
-      // echo $username .'</br>';
-      // echo $password .'</br>';
-      // echo $email .'</br>';
-      // echo $sdt .'</br>';
-      // echo $phanquyen;
-
-      // //2. SQL Query to save the data
-      $sql = "INSERT INTO taikhoan 
-      SET Hoten='$full_name',
-      Tendangnhap='$username',
-      Password='$password',
-      Email='$email',
-      Sodienthoai='$sdt',
-      phanquyen='$phanquyen'
-      "; 
-
-      // //Connecting SQL
-      // //3. Execute Query and Save data
-      $res = mysqli_query($conn,$sql);
-
-      // //4. Check whether the (Query is Executed) data is inserted or not and display.
-      if($res == TRUE)
-      {
-      //       //Data inserted
-              // echo "Data inserted";
-      //     // Create a Session Variable to Display Mess
-      //     // $_SESSION['add'] = "<div class='success'>Admin Added Successfully </div>";
-      //     //Redirect Page tp Manage Admin
-            header("location:index.php");          
-      }
-      else
-      {
-        // echo "Failed to inserted";
-      //     // Create a Session Variable to Display Mess
-      //     // $_SESSION['add'] = "<div class='success'>Failed to Add Admin </div>";
-            // Redirect Page tp Add Admin
-            header("location:register.php");
-      }
-      
-  }
-?>
 
 </body>
 </html>

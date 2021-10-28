@@ -25,8 +25,8 @@
 				<a href="index.php?page=appointments" class="nav-item nav-appointments"><span class='icon-field'><i class="fa fa-calendar"></i></span> Lịch</a>
 				<a href="index.php?page=doctors" class="nav-item nav-doctors"><span class='icon-field'><i class="fa fa-user-md"></i></span> Bác sĩ</a>
 				<a href="index.php?page=categories" class="nav-item nav-categories"><span class='icon-field'><i class="fa fa-book-medical"></i></span> Chuyên khoa</a>			
-				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Bệnh nhân</a>
-				<a href="index.php?page=site_settings" class="nav-item nav-site_settings"><span class='icon-field'><i class="fa fa-cog"></i></span> Nội dung</a>
+				<a href="index.php?page=users" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-users"></i></span> Người dùng</a>
+				<a href="index.php?page=thuoc" class="nav-item nav-users"><span class='icon-field'><i class="fa fa-cog"></i></span> Thuốc</a>
 		</div>
 		<div class="s">
 			<img src="../images/unnamed.png" alt="">

@@ -24,5 +24,20 @@ session_start();
         if($save)
             echo $save;
     }
-    
+    if($action == "set_appointment"){
+        $save = $crud->set_appointment();
+        if($save)
+            echo $save;
+    }
+    if($action == "Khoiphuc"){
+        $save = $crud->Khoiphuc();
+        if($save)
+            echo $save;
+    }
+    if($action == "delete_thuocc"){
+        $save = $crud-> delete_thuoc();
+        if($save)
+            echo $save;
+    }
+
 ?>

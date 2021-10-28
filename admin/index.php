@@ -62,38 +62,71 @@
           include './home.php';
           break;
         case 'doctors':
-          if(isset($_GET['idsua'])||isset($_GET['idthem']))
-          {
-            $s = new data();
-            if(isset($_POST['Cancel'])){
-              include './doctor/index.php';
-              }else{
-                if(isset($_GET['idsua'])){
-                  include './doctor/sua.php';
-                if(isset($_GET['idthem'])){
-                  include './doctor/them.php';
+      
+              if(isset($_GET['idsua'])){
+                if(isset($_POST['Cancel2'])){
+                  include './bacsi.php';
+                }
+                else{
+                  include './suabacsi.php';
                 }
               }
+              else {
+                include './bacsi.php';
+              }
+            break;
+        case 'appointments':
+          if(isset($_GET['idsua'])){
+            if(isset($_POST['thoat'])){
+              include './lich.php';
             }
-            if(isset($_POST['Cancel1'])){
-              include './doctor/index.php';
-            }else{
-              if(isset($_GET['idthem'])){
-                include './doctor/them.php';
+            else{
+              include './sualich.php';
+            }
+          }
+          else {
+            include './lich.php';
+          }
+          break;
+        case 'categories':
+          if(isset($_GET['idsua'])){
+            if(isset($_POST['Cancel3'])){
+              include './khoa.php';
+            }
+            else{
+              include './suakhoa.php';
+            }
+          }
+          else {
+            include './khoa.php';
+          }
+          break;
+          case 'users':
+            if(isset($_GET['idsua'])){
+              if(isset($_POST['Cancel4'])){
+                include './nguoidung.php';
+              }
+              else{
+                include './suataikhoan.php';
               }
             }
-            if(isset($_GET['idxoa'])){
-              include './doctor/index.php';
-              include './doctor/xoa.php';
+            else {
+              include './nguoidung.php';
             }
-          }
-          else{
-            include './doctor/index.php';
-          }
-          break;
-        case 'appointments':
-          include './lich.php';
-          break;
+            break;
+            case 'thuoc':
+              if(isset($_GET['idsua'])){
+                if(isset($_POST['Cancel5'])){
+                  include './thuoc.php';
+                }
+                else{
+                  include './suathuoc.php';
+                }
+              }
+              else {
+                include './thuoc.php';
+              }
+              break;
       }
     } else {
       echo 'lỗi';

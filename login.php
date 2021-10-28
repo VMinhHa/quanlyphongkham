@@ -1,4 +1,18 @@
 <?php include('db/constrants.php'); 
+      require('vendor/autoload.php');
+
+      $clientID='565136117957-2eli3vrv3q691kcglvgp34i734srupo1.apps.googleusercontent.com';
+      $ClientSecret='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';
+      $redirectUrl= 'http://localhost:8080/quanlyphongkham/login.php';
+
+      //Create client request to google
+      $client = new Google_Client();
+      $client->setClientID($clientID);
+      $client->setClientSecret($ClientSecret);
+      $client->setRedirectUri($redirectUrl);
+      $client->addScope('profile');
+      $client->addScope('email');
+      
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +25,15 @@
     <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./font/fontawesome-free-5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/form.css">
+    <style>
+      .btn-google{
+        color:white;
+      }
+      .btn-google:hover {
+        color:white;
+        text-decoration:none;
+      }
+    </style>
 </head>
 <body>
   <div class="container">
@@ -24,29 +47,39 @@
         <div class="main-form">
           <form action=""  method="POST" enctype="multipart/form-data" >
             <h2>ĐĂNG NHẬP</h2>
-            <?php
-                
-            ?>
+
             <div class="form-group ">
               <label for="uname">Tên Đăng Nhập:</label>
               <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" required>
-              <!-- <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div> -->
             </div>
             
             <div class="form-group">
               <label for="pwd">Mật Khẩu:</label>
               <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" required>
-              <!-- <div class="valid-feedback">Valid.</div>
-              <div class="invalid-feedback">Please fill out this field.</div> -->
             </div>
-            <div class="form-group">
-
-            </div>
+            
             <div class="btn-form btn-login">
               <input type="submit" class="btn btn-primary btn-sign" name="submit" value="Đăng Nhập" />
               <span>Hoặc</span>
-              <button type="submit" class="btn btn-danger btn-sign btn-regis"><i class="icon-gg fab fa-google-plus-g"></i>Đăng Nhập bằng Google</button>
+              <button type="submit" class="btn btn-danger btn-sign btn-regis"><i class="icon-gg fab fa-google-plus-g"></i>
+                <?php if(isset($_GET['code']))
+                {
+                  $token=$client->fetchAccessTokenwithAuthCode($_GET['code']);
+                  $client->setAccessToken($token);
+
+                  //Getting User Profile
+                  $gauth = new Google_Service_Oauth2($client);
+                  $google_info = $gauth->userinfo->get();
+                  $email = $google_info->email;
+                  $name = $google_info->name;
+                  
+                  echo '<script>window.location.href="index.php"</script>';
+                }
+                else{
+                  echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";
+                }
+                ?>
+              </button>
             </div>
 
             
@@ -71,49 +104,49 @@
         // Process for Login
         //1 . Get the Data from Login form
         $username= $_POST['username'];
-        $password = md5($_POST['password']);
-
-        // $username = strip_tags($username);
-        // $username = addslashes($username);
-        // $password = strip_tags($password);
-        // $password = addslashes($password);
-        // echo $username. '<br/>';
-        // echo $password;
-
-        // if ($username == "" || $password =="") {
-        //   echo "username hoặc password bạn không được để trống!";
-        // }else{
-          $sql = "SELECT * FROM taikhoan WHERE Tendangnhap='$username' and password='$password'";
+        $password = $_POST['password'];
+        $password = md5($password);           
+        //$password = $_POST['password'];        
           
-          $res = mysqli_query($conn, $sql) ;
+            $sql = "SELECT * FROM taikhoan WHERE Tendangnhap='$username' and Password='$password'";
 
-          $count = mysqli_num_rows($res);
+            $res = mysqli_query($conn, $sql) ;
 
-          if ($count == 1) {
-              $_SESSION['username'] = $username;
-              $_SESSION['password'] = $password;
-              header('Location: index.php');
-          }else{
-              // echo 'Failed';
-              header('location:login.php');
-            
-          }
-        // }
+            $count = mysqli_num_rows($res);            
+            if ($count > 0) {              
+                $row = mysqli_fetch_array($res);                
+                if($row['Phanquyen']=='Benhnhan')
+                {
+                  echo '<script>
+                    alert("Đăng Nhập Thành Công");
+                    window.location.href="index.php";
+                  </script>';
+                  $_SESSION['username'] = $row['Tendangnhap'];
+                  $_SESSION['phanquyen'] = $row['Phanquyen'];                 
+                }
+                else if($row['Phanquyen']=='Doctor')
+                {
+                  echo '<script>
+                    alert("Đăng Nhập Thành Công với tài khoản Bác Sĩ");
+                    window.location.href="index.php";
+                  </script>';
+                  $_SESSION['username'] = $row['Tendangnhap'];
+                  $_SESSION['phanquyen'] = $row['Phanquyen'];
+                }
+                else if($row['Phanquyen']=='Admin')
+                {
+                  echo '<script>
+                    alert("Đăng nhập trang Admin");
+                    window.location.href="admin/index.php";
+                  </script>';
+                }               
+            }else{
+                echo '<script>alert("failed");</script>';
+                // echo 'Failed';
+                header('location:login.php');
+              
+            }
 
-      //   $row= mysql_fetch_array ($res);
-			//   if($row['username'] == $username && $row['password'] == $password)
-			// {
-			// 	session_start();
-			// 	$_SESSION['username']=$username;
-			// 	$_SESSION['password']=$password;
-			// 	echo'<script language="javascript">alert("Đăng nhập thành công. Xin chào '.$row['username'].'");</script>';
-			// 	echo'<script language="javascript"> window.location.href="insert.php";</script>';
-			// }
-			// else
-			// {
-			// 	echo'<script language="javascript">alert("Đăng nhập không thành công!Vui lòng đăng nhập lại");</script>';
-			// 	echo'<script language="javascript"> window.location.href="login.php";</script>';	
-			// }
     }
 ?>
 
