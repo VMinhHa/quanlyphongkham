@@ -10,10 +10,10 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title>Phòng Khám</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v2" />
 
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
 					
 					<p class="mb-4 pr-5">Tận tâm, tận tụy hết lòng vì sức khỏe người bệnh.</p>
 					<div class="btn-container ">
-						<a href="appoinment.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>
+						<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 						<span>Dịch vụ 24/24</span>
 						<h4 class="mb-3">Đặt lịch</h4>
 						<p class="mb-4">Vì sức khỏe bệnh nhân, chúng tôi luôn sẵn sàng.</p>
-						<a href="appoinment.php" class="btn btn-main btn-round-full">Đặt Lịch</a>
+						<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
@@ -84,7 +84,7 @@
 							<i class="icofont-support"></i>
 						</div>
 						<span>Trường hợp cấp cứu</span>
-						<h4 class="mb-3">1800-700-6200</h4>
+						<h4 class="mb-3">1900886684</h4>
 						<p>Nhận hỗ trợ các trường hợp khẩn cấp. Cấp cứu thật nhanh để giành sự sống</p>
 					</div>
 				</div>
@@ -113,7 +113,7 @@
 					<h2 class="title-color">Chăm sóc sức khỏe <br>& Lối sống lành mạnh</h2>
 					<p class="mt-4 mb-5">Chúng tôi cung cấp dịch vụ bác sĩ hàng đầu, tạo sự hài lòng tốt nhất đến bệnh nhân. Ngoài ra còn các loại thuốc chất lượng.</p>
 
-					<a href="service.php" class="btn btn-main-2 btn-round-full btn-icon">Dịch vụ<i class="icofont-simple-right ml-3"></i></a>
+					<!-- <a href="service.php" class="btn btn-main-2 btn-round-full btn-icon">Dịch vụ<i class="icofont-simple-right ml-3"></i></a> -->
 				</div>
 			</div>
 		</div>

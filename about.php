@@ -9,11 +9,18 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
-
+  <title>Phòng Khám</title>
+	<style>
+		.non-li{
+			list-style:none;
+		}
+		.mright-10 {
+			margin-right:10px;
+		}
+		</style>
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-
+  <!-- <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" /> -->
+   
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <!-- Icon Font Css -->
@@ -37,8 +44,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <span class="text-white">About Us</span>
-          <h1 class="text-capitalize mb-5 text-lg">About Us</h1>
+          <!-- <span class="text-white">Liên Hệ</span> -->
+          <h1 class="text-capitalize mb-5 text-lg">Liên Hệ</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.php" class="text-white">Home</a></li>
@@ -51,229 +58,46 @@
   </div>
 </section>
 
-<section class="section about-page">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4">
-				<h2 class="title-color">Personal care for your healthy living</h2>
-			</div>
-			<div class="col-lg-8">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quod laborum alias. Vitae dolorum, officia sit! Saepe ullam facere at, consequatur incidunt, quae esse, quis ut reprehenderit dignissimos, libero delectus.</p>
-				<img src="images/about/sign.png" alt="" class="img-fluid">
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="fetaure-page ">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-3 col-md-6">
-				<div class="about-block-item mb-5 mb-lg-0">
-					<img src="images/about/about-1.jpg" alt="" class="img-fluid w-100">
-					<h4 class="mt-3">Healthcare for Kids</h4>
-					<p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="about-block-item mb-5 mb-lg-0">
-					<img src="images/about/about-2.jpg" alt="" class="img-fluid w-100">
-					<h4 class="mt-3">Medical Counseling</h4>
-					<p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="about-block-item mb-5 mb-lg-0">
-					<img src="images/about/about-3.jpg" alt="" class="img-fluid w-100">
-					<h4 class="mt-3">Modern Equipments</h4>
-					<p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6">
-				<div class="about-block-item">
-					<img src="images/about/about-4.jpg" alt="" class="img-fluid w-100">
-					<h4 class="mt-3">Qualified Doctors</h4>
-					<p>Voluptate aperiam esse possimus maxime repellendus, nihil quod accusantium .</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="section awards">
-	<div class="container">
-		<div class="row align-items-center">
-			<div class="col-lg-4">
-				<h2 class="title-color">Our Doctors achievements </h2>
-				<div class="divider mt-4 mb-5 mb-lg-0"></div>
-			</div>
-			<div class="col-lg-8">
-				<div class="row">
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/3.png" alt="" class="img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/4.png" alt="" class="img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/1.png" alt="" class="img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/2.png" alt="" class="img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/5.png" alt="" class="img-fluid">
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 col-sm-6">
-						<div class="award-img">
-							<img src="images/about/6.png" alt="" class="img-fluid">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
 <section class="section team">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-lg-6">
 				<div class="section-title text-center">
-					<h2 class="mb-4">Meet Our Specialist</h2>
-					<div class="divider mx-auto my-4"></div>
-					<p>Today’s users expect effortless experiences. Don’t let essential people and processes stay stuck in the past. Speed it up, skip the hassles</p>
+					<h2 class="mb-4">GIỚI THIỆU PHÒNG KHÁM</h2>
 				</div>
 			</div>
 		</div>
-
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block mb-5 mb-lg-0">
-					<img src="images/team/1.jpg" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="doctor-single.php">John Marshal</a></h4>
-						<p>Internist, Emergency Physician</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block mb-5 mb-lg-0">
-					<img src="images/team/2.jpg" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="doctor-single.php">Marshal Root</a></h4>
-						<p>Surgeon, Сardiologist</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block mb-5 mb-lg-0">
-					<img src="images/team/3.jpg" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="doctor-single.php">Siamon john</a></h4>
-						<p>Internist, General Practitioner</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="team-block">
-					<img src="images/team/4.jpg" alt="" class="img-fluid w-100">
-
-					<div class="content">
-						<h4 class="mt-4 mb-0"><a href="doctor-single.php">Rishat Ahmed</a></h4>
-						<p>Orthopedic Surgeon</p>
-					</div>
-				</div>
-			</div>
+	<p>
+	Sứ mệnh của Bệnh viện K
+	Sứ mệnh: Khám và điều trị cho tất cả người bệnh ung bướu trong và ngoài nước; lấy người bệnh làm trung tâm, mang đến giải pháp chăm sóc sức khỏe tối ưu từ sự tích hợp giữa KHÁM CHỮA BỆNH - NGHIÊN CỨU KHOA HỌC, ĐÀO TẠO – HỢP TÁC QUỐC TẾ
+	Tầm nhìn của Bệnh viện K Bằng khát vọng tiên phong, với chiến lược phát triển bền vững và hội nhập mạnh mẽ, Bệnh viện K phấn đấu trở thành bệnh viện kiểu mẫu, chuyên nghiệp, dẫn đầu Việt Nam và đạt chuẩn quốc tế, có nhiều cơ sở (chuỗi bệnh viện) có cơ sở vật chất khang trang, sạch đẹp, có trang thiết bị y tế hiện đại ngang tầm với các nước tiên tiến trong khu vực và thế giới, có nguồn nhân lực chất lượng cao, đầu ngành ung bướu, với tác phong phục vụ chuyên nghiệp, đạt chuẩn quốc tế trong công tác khám, điều trị và phòng chống ung thư, là người bạn đồng hành, thân thiết của người bệnh và thầy thuốc, góp phần tích cực vào công tác phòng chống ung thư cũng như nâng tầm vị thế của Việt Nam trong cuộc chiến phòng chống bệnh ung thư trên thế giới.
+	</p>
+	<div class="row">
+		<div class="col-4">
+			<h5>Cơ Sở 1:</h5>
+			<li class="non-li"><i class="icofont-google-map mright-10"></i>12 Nguyễn Văn Bảo Phường 4 Gò Vấp HCM</li>
+			<li class="non-li"><i class="icofont-phone mright-10"></i>0962705920</li>
+			<li class="non-li"><i class="icofont-envelope mright-10"></i>min.ha512qt@gmail.com</li>
 		</div>
+		<div class="col-4">
+			<h5>Cơ Sở 2:</h5>
+			<li class="non-li"><i class="icofont-google-map mright-10"></i>Tựu Liệt, Tam Hiệp, Thanh Trì, Hà Nội</li>
+			<li class="non-li"><i class="icofont-phone mright-10"></i>0962705920</li>
+			<li class="non-li"><i class="icofont-envelope mright-10"></i>min.ha512qt@gmail.com</li>
+		</div>
+		<div class="col-4">
+		<h5>Cơ Sở 3:</h5>
+			<li class="non-li"><i class="icofont-google-map mright-10"></i>Số 30 đường Tân Triều, Cầu Bươu, Thanh Trì</li>
+			<li class="non-li"><i class="icofont-phone mright-10"></i>0962705920</li>
+			<li class="non-li"><i class="icofont-envelope mright-10"></i>min.ha512qt@gmail.com</li>
+		</div>
+
 	</div>
+		
+	
 </section>
 
-<section class="section testimonial">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 offset-lg-6">
-				<div class="section-title">
-					<h2 class="mb-4">What they say about us</h2>
-					<div class="divider  my-4"></div>
-				</div>
-			</div>
-		</div>
-		<div class="row align-items-center">
-			<div class="col-lg-6 testimonial-wrap offset-lg-6">
-				<div class="testimonial-block">
-					<div class="client-info ">
-						<h4>Amazing service!</h4>
-						<span>John Partho</span>
-					</div>
-					<p>
-						They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-					</p>
-					<i class="icofont-quote-right"></i>
-					
-				</div>
 
-				<div class="testimonial-block">
-					<div class="client-info">
-						<h4>Expert doctors!</h4>
-						<span>Mullar Sarth</span>
-					</div>
-					<p>
-						They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-					</p>
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block">
-					<div class="client-info">
-						<h4>Good Support!</h4>
-						<span>Kolis Mullar</span>
-					</div>
-					<p>
-						They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-					</p>
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block">
-					<div class="client-info">
-						<h4>Nice Environment!</h4>
-						<span>Partho Sarothi</span>
-					</div>
-					<p>
-						They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-					</p>
-					<i class="icofont-quote-right"></i>
-				</div>
-
-				<div class="testimonial-block">
-					<div class="client-info">
-						<h4>Modern Service!</h4>
-						<span>Kolis Mullar</span>
-					</div>
-					<p>
-						They provide great service facilty consectetur adipisicing elit. Itaque rem, praesentium, iure, ipsum magnam deleniti a vel eos adipisci suscipit fugit placeat. Quibusdam laboriosam eveniet nostrum nemo commodi numquam quod.
-					</p>
-					<i class="icofont-quote-right"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
 <!-- footer Start -->
 <?php include ('pages/footer.php'); ?>

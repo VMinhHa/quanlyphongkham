@@ -73,7 +73,11 @@
                   $email = $google_info->email;
                   $name = $google_info->name;
                   
-                  echo '<script>window.location.href="index.php"</script>';
+                  // echo '<script>
+                  // alert("Đăng Nhập Thành Công");
+                  // window.location.href="index.php"
+                  // </script>';
+                  echo "Welcome ".$name." You mail use:".$email;
                 }
                 else{
                   echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";

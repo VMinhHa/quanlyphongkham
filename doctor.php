@@ -8,7 +8,8 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title>Phòng Khám</title>
+
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -60,7 +61,7 @@
 	          <label class="btn active ">
 	            <input type="radio" name="shuffle-filter" value="all" checked="checked" />Tất cả
 	          </label>
-	          <label class="btn ">
+	          <!-- <label class="btn ">
 	            <input type="radio" name="shuffle-filter" value="cat1" />Tim mạch
 	          </label>
 	          <label class="btn">
@@ -77,11 +78,10 @@
 	          </label>
 	          <label class="btn">
 	            <input type="radio" name="shuffle-filter" value="cat6" />chỉnh hình
-	          </label>
+	          </label> -->
 	        </div>
       </div>
-
-    <div class="row shuffle-wrapper portfolio-gallery">
+	  <div class="row shuffle-wrapper portfolio-gallery">
       	<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;,&quot;cat2&quot;]">
 	      	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
@@ -90,12 +90,12 @@
 	               </div>
 	            </div>
                 <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.php">Thomas Henry</a></h4>
-                	<p>Cardiology</p>
+                	<h4 class="mb-0"><a href="#">Tên Bác Sĩ</a></h4>
+                	<p>Thông tin bác sĩ</p>
                 </div> 
 	      	</div>
       	</div>
-
+<!-- 
       <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
         	<div class="position-relative doctor-inner-box">
 		        <div class="doctor-profile">
@@ -235,7 +235,8 @@
                 </div> 
 	      	</div>
         </div>
-    </div>
+    </div> -->
+    
   </div>
 </section>
 <!-- /portfolio -->
@@ -246,7 +247,7 @@
 				<div class="cta-content">
 					<div class="divider mb-4"></div>
 					<h2 class="mb-5 text-lg">Chúng tôi hân hạnh phục vụ, mang đến dịch vụ và trải nghiệm tốt nhất đến bạn</span></h2>
-					<a href="appoinment.php" class="btn btn-main-2 btn-round-full">Đặt lịch<i class="icofont-simple-right  ml-2"></i></a>
+					<!-- <a href="appoinment.php" class="btn btn-main-2 btn-round-full">Đặt lịch<i class="icofont-simple-right  ml-2"></i></a> -->
 				</div>
 			</div>
 		</div>

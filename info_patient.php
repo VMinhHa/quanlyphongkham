@@ -1,5 +1,7 @@
+
 <?php
 	include 'pages/header.php';
+	
 ?>
 
 <!DOCTYPE html>
@@ -9,10 +11,10 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title>Phòng Khám</title>
 
   <!-- Favicon -->
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v2" />
 
   <!-- bootstrap.min css -->
   <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
@@ -28,25 +30,13 @@
 </head>
 
 <body id="top">
+<div class="container">
+        <div class="row">
+            <div class="col-4"><li>1</li>
+            <li>2</li>
+            <li>3</li></div>
+            <div class="col-8">ABC</div>
+        </div>
+</div>
 
-<section class="section confirmation">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-          <div class="confirmation-content text-center">
-            <i class="icofont-check-circled text-lg text-color-2"></i>
-              <h2 class="mt-3 mb-4">Thank you for your appoinment</h2>
-              <p>We will contact with you soon.</p>
-          </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- footer Start -->
-<?php
-	include 'pages/footer.php';
-?>
-
-  </body>
-  </html>
+<?php include 'pages/footer.php'; ?> 

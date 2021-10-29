@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Doctor's Appointment System</title>
+  <title>Quản Lý Admin</title>
 
 
   <?php
