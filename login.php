@@ -141,9 +141,9 @@
                   </script>';
                 }               
             }else{
-                echo '<script>alert("failed");</script>';
+                echo '<script>alert("Tài Khoản hoặc Mật Khẩu không chính xác");</script>';
                 // echo 'Failed';
-                header('location:login.php');
+                // header('location:login.php');
               
             }
 

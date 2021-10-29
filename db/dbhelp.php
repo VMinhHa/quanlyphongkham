@@ -15,7 +15,7 @@ class Action{
     function login(){
         extract($_POST);
         $qry=$this->db->query("SElect * from taikhoan where 
-        Tendangnhap='".$username."' and Password='".$password."' and Phanquyen='Admin'");
+        Tendangnhap='".$username."' and Password='".md5($password)."' and Phanquyen='Admin'");
         if($qry->num_rows>0){
             foreach($qry->fetch_array() as $key=>$value){
 
@@ -38,8 +38,9 @@ class Action{
 		}
 		header("location:login.php");
 	}
-    function delete_doctor(){
+	function delete_doctor(){
 		extract($_POST);
+		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Bacsi = ".$id);
 		$delete = $this->db->query("DELETE FROM bacsi where ID_Bacsi = ".$id);
 		if($delete)
 			return 1;
@@ -47,6 +48,18 @@ class Action{
     function delete_appointment(){
 		extract($_POST);
 		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Lich = ".$id);
+		if($delete)
+			return 1;
+	}
+    function Khoiphuc(){
+		extract($_POST);
+		$delete = $this->db->query("UPDATE taikhoan SET Password='827ccb0eea8a706c4c34a16891f84e7b' WHERE id =".$id);
+		if($delete)
+			return 1;
+	}
+    function delete_thuoc(){
+		extract($_POST);
+		$delete = $this->db->query("DELETE FROM thuoc where ID_Thuoc = ".$id);
 		if($delete)
 			return 1;
 	}
