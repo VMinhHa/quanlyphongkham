@@ -96,46 +96,60 @@
 					<div class="position-relative doctor-inner-box">
 						<div class="content mt-3" >
 							<h4 class="mb-0">Đặt lịch Bác sĩ: <?php echo $listbacsi['Hoten'] ?></h4><br>
-							<form action="#" method="POST">
-								<div class="form-group">
-									<?php
-										$sql1='
-										select * from phongkham p join lichlamviec l on l.ID_Phongkham=p.ID_Phongkham where 
-										l.ID_Bacsi="'.$id.'"';
-										$phongkham=$s->executeSingLesult($sql1);
+							
+							<table class="table table-bordered">
+							<form action="datlichkham.php" method="POST">
+									<thead>
+										<tr>
+										<th style="width:20%">Ngày Bác sĩ hoạt động</th>
+										<th style="width:15%">Giờ bắt đầu</th>
+										<th style="width:15%">Giờ kết thúc</th>
+										<th style="width:30%">Chuyên khoa</th>
+										<th style="width:15%">Phòng khám</th>
+										<th style="width:5%">Chọn lịch</th>
+									</tr>
+									</thead>
+									<?php 
+									$s = new data();
+									$sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi WHERE b.ID_Bacsi="'.$id.'"';
+									$Lich = $s->executeLesult($sql);
+									foreach ($Lich as $item) {
 									?>
-									<label class="font-weight-bolder">Phòng khám: <?php echo $phongkham['Tenphongkham'] ?></label>
-									</div>
-								<div class="form-group">
-									<?php
-										$sql2='
-										select * from khoa k join bacsi b on k.ID_Khoa=b.ID_Khoa where 
-										b.ID_Bacsi="'.$id.'"';
-										$Chuyenkhoa=$s->executeSingLesult($sql2);
-									?>
-									<label class="font-weight-bolder">Chuyên khoa: <?php echo $Chuyenkhoa['Tenkhoa'] ?></label>
-								</div>
-								<div class="form-group">
-									<label class="font-weight-bolder">Chọn Ngày</label>
-									<select class="form-control" name="ngay">
-										<option value="">....</option>
+									<tr>
+										<td><input type="text" name="ngay" value="<?php echo date("l M d Y",strtotime($item['Ngay'])) ?>" disabled="true"></td>
+										<td>
+											<input type="text" name="giobatdau" value="<?php echo date("h:i A",strtotime($item['Giobatdau'])) ?>" disabled="true">
+										</td>
+										<td>
+											<input type="text" name="gioketthuc" value="<?php echo date("h:i A",strtotime($item['Gioketthuc'])) ?>" disabled="true">
+										</td>
+										<td>
 										<?php
-											$sql3=
-												'
-												select * from bacsi b join lichlamviec l on l.ID_Bacsi=b.ID_Bacsi where 
-												l.ID_Bacsi="'.$id.'"';
-											$Lichbacsi=$s->executeLesult($sql3);
-											foreach ($Lichbacsi as $value) {
-											?>
-										<<option value="<?php echo $value['Ngay']?>">
-										<?php echo date("l d-m-Y",strtotime($value['Ngay']))  ?></option>
-										<?php	
-											}
+											$sql2='
+											select * from khoa k join bacsi b on k.ID_Khoa=b.ID_Khoa where 
+											b.ID_Bacsi="'.$id.'"';
+											$Chuyenkhoa=$s->executeSingLesult($sql2);
 										?>
-									</select>
-								</div>
-							</form>	
-							<?php echo $_POST['ngay'] ?>
+										<?php echo $Chuyenkhoa['Tenkhoa'] ?>
+										</td>
+										<td>
+											<?php
+												$sql1='
+												select * from phongkham p join lichlamviec l on l.ID_Phongkham=p.ID_Phongkham where 
+												l.ID_Bacsi="'.$id.'"';
+												$phongkham=$s->executeSingLesult($sql1);
+											?>
+											<?php echo $phongkham['Tenphongkham'] ?>
+										</td>
+										<td class="text-center">
+											<button class="btn btn-danger btn-sm" type="button" name="datlich">Chọn</button>
+										</td>
+									</tr>
+								<?php } ?>
+								</form>	
+								</table>
+							
+							<a href="./doctor.php" class="text-center btn btn-warning">Thoát</a>
 						</div> 
 					</div>
 				</div>
@@ -178,6 +192,7 @@
 						<p><a href="./doctor.php?id=<?php echo $item1['ID_Bacsi'] ?>" class="btn btn-danger" >Đặt lịch</a></p>
 						</div>
 					</div>
+					
 				</div>
 			<?php
 				}

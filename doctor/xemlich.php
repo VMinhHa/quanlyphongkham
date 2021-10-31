@@ -32,7 +32,7 @@
 							<?php echo $item['Hoten'] ?>
 						</td>
 						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
-                        <td><?php echo date("h:i A",strtotime($item['Giohen'])) ?></td>
+                        <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <td><?php echo $item['Trangthai'] ?></td>
                         <td >
                             <form action="./xulylich.php"  method="POST"> 

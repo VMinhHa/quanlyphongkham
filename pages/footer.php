@@ -84,13 +84,13 @@
 </footer>
 
 	<!-- Messenger Plugin chat Code -->
-    <!-- <div id="fb-root"></div> -->
+    <div id="fb-root"></div>
 
     <!-- Your Plugin chat code -->
-    <!-- <div id="fb-customer-chat" class="fb-customerchat">
-    </div> -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
 
-    <!--<script>
+    <script>
       var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "107431265072805");
       chatbox.setAttribute("attribution", "biz_inbox");
@@ -109,7 +109,7 @@
         js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
-    </script>-->
+    </script>
 	
 <!-- 
     Essential Scripts

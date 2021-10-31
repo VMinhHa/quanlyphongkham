@@ -65,7 +65,7 @@
                 <?php if(isset($_GET['code']))
                 {
                   $token=$client->fetchAccessTokenwithAuthCode($_GET['code']);
-                  $client->setAccessToken($token['access_token']);
+                  $client->setAccessToken($token);
 
                   //Getting User Profile
                   $gauth = new Google_Service_Oauth2($client);

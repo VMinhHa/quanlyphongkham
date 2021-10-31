@@ -1,4 +1,5 @@
 <?php
+    //Include constants.php for SITEURL
     include('db/constrants.php');
     //1. Destroy the Session
     session_destroy();  //Unset $_Session['user']

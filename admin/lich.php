@@ -1,7 +1,7 @@
 
 <div class="container-fluid">
 	<div class="panel-heading mt-3 ml-3 mr-3">
-        <h1 class="text-center">Xem danh sách bác sĩ</h1>
+        <h1 class="text-center">Xem danh sách Lịch làm việc Bác sĩ</h1>
     </div>
 	<div class="col-md-12">
 		<div class="card">
