@@ -6,10 +6,6 @@ $s=new data();
                 $hoten = $_POST['hoten'];
                 $hoten = str_replace('"', '\\"', $hoten);
         }
-        if (isset($_POST['file1'])) {
-            $file1 = $_POST['file1'];
-            $file1 = str_replace('"', '\\"', $file1);
-        }
         if (isset($_POST['tendangnhap'])) {
             $tendangnhap = $_POST['tendangnhap'];
             $tendangnhap = str_replace('"', '\\"', $tendangnhap);
@@ -25,9 +21,13 @@ $s=new data();
         if (isset($_POST['gioitinh'])) {
             $gioitinh = $_POST['gioitinh'];
         }
+        if(!empty($_FILES['img']['tmp_name'])){
+			$fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['img']['name'];
+			$move = move_uploaded_file($_FILES['img']['tmp_name'], './../images/bacsi/'.$fname);
+		}
         //Luu vao database
         $sql = "INSERT INTO bacsi (id,ID_Khoa,Hoten,Ngaysinh,Gioitinh,image)
-                 values('$tendangnhap','$tenkhoa','$hoten','$ngaysinh','$gioitinh','$file1')";
+                 values('$tendangnhap','$tenkhoa','$hoten','$ngaysinh','$gioitinh','$fname')";
         $s->execute($sql);
         header('location:./index.php?page=doctors');
     }

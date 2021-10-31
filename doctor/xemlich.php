@@ -43,7 +43,7 @@
                                         <option value="Đang chờ">Đang chờ</option>
                                     </select>
                                 </div>
-                                <button  class="btn-primary btn text-center" style="width:140px;height:40px;font-size:12px;margin-left:40px" name="xacnhan">Xác nhận</button>
+                                <button  class="btn-primary btn text-center" style="width:130px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
                             </form>
 						</td>		
 					</tr>

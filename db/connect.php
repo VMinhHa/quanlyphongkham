@@ -46,7 +46,6 @@ class data
         if ($result != null) {
             $row = mysqli_fetch_array($result, 1);
         }
-
         return $row;
     }
 }

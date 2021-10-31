@@ -32,7 +32,6 @@
             </thead>
             <tbody>
                 <?php
-                
                 //timkiem
                 $s='';
                     if(isset($_POST['s'])){
@@ -51,7 +50,10 @@
                 foreach ($caterogyList as $item) {
                     echo '<tr>
                                 <td>' . ($dem) . '</td>
-                                <td><img src="'.$item['image'].'" alt=""></td>
+                                <td class="text-center">
+									<img  src="./../images/bacsi/'.$item['image'].'" width="150px"
+                                    height="150px" alt="">
+								</td>
                                 <td>' . $item['Hoten'] . '</td>
                                 <td>' . $item['Tenkhoa'] . '</td>
                                 <td>' . $item['Tendangnhap'] . '</td>
@@ -67,7 +69,7 @@
                               >Edit</button></a>
                                 </td>
                                 ';
-                             $dem++;
+                    $dem++;
                 }
             ?>
             </tbody>
@@ -113,7 +115,7 @@ $('.delete_doctor').click(function(){
 	
         <!-- Modal body -->
         <div class="modal-body">
-        <form action="./thembacsi.php" id="manage-appointment" method="POST">
+        <form action="./thembacsi.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Họ tên:</label>
                         <input type="text" class="form-control" name="hoten" value="<?php $hoten?>" placeholder="Enter Họ tên" required>
@@ -144,20 +146,19 @@ $('.delete_doctor').click(function(){
                     </div>
                     <div class="form-group">
                         <label>Ngày sinh:</label>
-                        <input type="date" class="form-control" name="ngaysinh" required><br>
+                        <input type="date" class="form-control" name="ngaysinh" required>
                         
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label">Image</label>
-                        <input type="text" class="form-control" name="file1" value=""><br>
-                    </div>
-                    <div class="form-group">
                         <label>Giới tính:</label>
-                        <input type="radio" value="nam" name="gioitinh"><label for="">Nam</label>
-                        <input type="radio" value="nu" name="gioitinh"><label for="">Nữ</label> <br>
+                        <input type="radio" value="Nam" name="gioitinh"><label for="">Nam</label>
+                        <input type="radio" value="Nữ" name="gioitinh"><label for="">Nữ</label> <br>
                         <span style="color:red"><?php echo isset($messs3)?$messs3:''; ?></span>
                     </div>
-                    
+                    <div class="form-group">
+						<label for="" class="control-label">Image</label>
+						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
+					</div>
 			<hr>
 			<div class="col-md-12 text-center">
 				<button class="btn-primary btn btn-sm col-md-4" name="submit">Thêm</button>

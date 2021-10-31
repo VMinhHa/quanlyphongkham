@@ -46,7 +46,6 @@ $s=new data();
                 where ID_Bacsi=" . $id;
                 $s->execute($sql);
                 $mess= 'Cập nhật thành công';
-                
             }
         
     }

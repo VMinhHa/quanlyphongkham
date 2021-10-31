@@ -70,27 +70,14 @@
                   //Getting User Profile
                   $gauth = new Google_Service_Oauth2($client);
                   $google_info = $gauth->userinfo->get();
-                  // $email = $google_info->email;
-                  // $name = $google_info->name;
+                  $email = $google_info->email;
+                  $name = $google_info->name;
                   
-                  // $sql2 = "SELECT * FROM taikhoan WHERE 'email'='".$email."' and 'name'='".$name."'";
-                  // $result = mysqli_query($conn,$sql2);
-                  // $rowcount=mysqli_num_rows($result);
-                  // if($rowcount>0){
-                  //   // $row = mysqli_fetch_array($result);
-                  //   echo '<script>window.location.href="index.php"
-                  //         </script>';
-                  //   }
-                  //   else{
-                        
-            
-                  //   }       
                   // echo '<script>
                   // alert("Đăng Nhập Thành Công");
                   // window.location.href="index.php"
                   // </script>';
-                  echo "<pre>";
-                  var_dump($google_info);
+                  echo "Welcome ".$name." You mail use:".$email;
                 }
                 else{
                   echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";
@@ -145,7 +132,7 @@
                 {
                   echo '<script>
                     alert("Đăng Nhập Thành Công với tài khoản Bác Sĩ");
-                    window.location.href="doctor/index.php";
+                    window.location.href="index.php";
                   </script>';
                   $_SESSION['username'] = $row['Tendangnhap'];
                   $_SESSION['phanquyen'] = $row['Phanquyen'];

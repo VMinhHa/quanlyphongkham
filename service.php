@@ -52,66 +52,26 @@
 <section class="section service-2">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5">
-					<img src="images/service/service-1.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
+			<?php 
+				include './db/connect.php';
+				$s=new data();
+				$sql='select * from thuoc';
+				$dsthuoc=$s->executeLesult($sql);
+				foreach($dsthuoc as $value){
+			?>
+				<div class="col-lg-4 col-md-6 col-sm-6">
+					<div class="service-block mb-5">
+						
+						<div class="content">
+							<h4 class="mt-4 mb-2 title-color"><?php echo $value['Tenthuoc'] ?></h4>
+							<p><b>Loại thuốc: <?php echo $value['Loaithuoc'] ?></b></p>
+							<p class="mb-4"><?php echo $value['Thongtinthuoc'] ?></p>
+						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5">
-					<img src="images/service/service-2.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5">
-					<img src="images/service/service-3.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
-					</div>
-				</div>
-			</div>
-
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5 mb-lg-0">
-					<img src="images/service/service-4.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5 mb-lg-0">
-					<img src="images/service/service-6.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<div class="service-block mb-5 mb-lg-0">
-					<img src="images/service/service-8.jpg" alt="" class="img-fluid">
-					<div class="content">
-						<h4 class="mt-4 mb-2 title-color">Tên thuốc</h4>
-						<p class="mb-4">Thông tin thuốc.</p>
-					</div>
-				</div>
-			</div>
+			<?php
+				}
+			?>
 		</div>
 	</div>
 

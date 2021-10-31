@@ -12,7 +12,7 @@ session_start();
                     Trangthai="'.$trangthai.'" WHERE Tendangnhap="'.$_SESSION['username'].'"';
                     $s->execute($sql);
                     header('location:thongtinbacsi.php?pagetrang=xemlich');
-                }
+            }
                 
       
 ?>

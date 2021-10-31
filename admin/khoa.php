@@ -13,7 +13,7 @@
 					<thead>
 						<tr>
                         <th>STT</th>
-						<th style="width:40%">Image</th>
+						<th style="width:30%;height:40%">Image</th>
 						<th style="width:30%">Tên khoa</th>
 						<th style="width:20%">Ngày thành lập
                         </th>
@@ -29,7 +29,10 @@
 					?>
 					<tr>
                         <td class="text-center"><?php echo $dem++ ?></td>
-						<td><img src="<?php echo $item['Hinhanh']?>" style="width:150px; height:150px;" alt=""></td>
+						<td class="text-center">
+									<img  src="./../images/khoa/<?php echo $item['Hinhanh'] ?>" width="100px"
+                                    height="100px" alt="">
+								</td>
 						<td><?php echo $item['Tenkhoa'] ?></td>
                         <td><?php echo date("l M d, Y",strtotime($item['Ngaythanhlap'])) ?></td>
 						<td class="text-center">
@@ -68,9 +71,9 @@
 				<input type="date"  name="Ngay" class="form-control" required>
 			</div>
             <div class="form-group">
-				<label for="" class="control-label">Image</label><br>
-				<input type="text" class="form-control" name="file" value="" required><br>
-			</div>
+						<label for="" class="control-label">Image</label>
+						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
+				</div>
 			<hr>
 			<div class="col-md-12 text-center">
 				<button class="btn-primary btn btn-sm col-md-4" name="load">Thêm</button>

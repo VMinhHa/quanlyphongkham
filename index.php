@@ -1,5 +1,6 @@
 <?php
 	include 'pages/header.php';
+	
 ?>
 
 <!DOCTYPE html>

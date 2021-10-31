@@ -7,11 +7,12 @@ $s=new data();
           }
           if(isset($_POST['Ngay'])){
             $Ngay=$_POST['Ngay'];
-          }if(isset($_POST['file'])){
-            $file=$_POST['file'];
+          }if(!empty($_FILES['img']['tmp_name'])){
+            $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['img']['name'];
+            $move = move_uploaded_file($_FILES['img']['tmp_name'], './../images/khoa/'.$fname);
           }
         $sql="INSERT INTO khoa (Tenkhoa,Hinhanh,Ngaythanhlap) 
-        VALUES ('$tenkhoa','$file', '$Ngay')";
+        VALUES ('$tenkhoa','$fname', '$Ngay')";
         $s->execute($sql);
         header('location:./index.php?page=categories');
       }

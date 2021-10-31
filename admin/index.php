@@ -62,9 +62,8 @@
           include './home.php';
           break;
         case 'doctors':
-      
               if(isset($_GET['idsua'])){
-                if(isset($_POST['Cancel2'])){
+                if(isset($_POST['Cancel'])){
                   include './bacsi.php';
                 }
                 else{
