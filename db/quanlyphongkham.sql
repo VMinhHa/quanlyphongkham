@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 28, 2021 lúc 03:56 PM
--- Phiên bản máy phục vụ: 10.4.20-MariaDB
--- Phiên bản PHP: 8.0.8
+-- Host: 127.0.0.1
+-- Generation Time: Oct 31, 2021 at 03:53 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.4.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,36 +18,38 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanlyphongkham`
+-- Database: `quanlyphongkham`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bacsi`
+-- Table structure for table `bacsi`
 --
 
 CREATE TABLE `bacsi` (
   `ID_Bacsi` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `ID_Khoa` int(11) NOT NULL,
-  `Hoten` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL,
+  `Hoten` varchar(30) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL,
   `Ngaysinh` date NOT NULL,
-  `Gioitinh` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL CHECK (`Gioitinh` = 'Nam' or `Gioitinh` = 'Nu'),
-  `image` varchar(200) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'https://png.pngtree.com/png_detail/18/09/10/pngtree-cartoon-doctor-image-png-clipart_3154826.jpg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+  `Gioitinh` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(200) CHARACTER SET utf8 COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'anh1.jpg'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Đang đổ dữ liệu cho bảng `bacsi`
+-- Dumping data for table `bacsi`
 --
 
 INSERT INTO `bacsi` (`ID_Bacsi`, `id`, `ID_Khoa`, `Hoten`, `Ngaysinh`, `Gioitinh`, `image`) VALUES
-(44, 2, 4, 'MaiAnhDuong', '2021-10-07', 'Nam', 'https://png.pngtree.com/png_detail/18/09/10/pngtree-cartoon-doctor-image-png-clipart_3154826.jpg');
+(44, 2, 4, 'MaiAnhDuong', '2021-10-07', 'Nam', 'anh1.jpg'),
+(49, 4, 4, 'huynhminhthu', '2021-10-23', 'Nam', '1635595320_anh1.jpg'),
+(51, 7, 8, 'ha', '1999-06-08', 'Nam', '1635690720_1635686820_bacsi1.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `benhan`
+-- Table structure for table `benhan`
 --
 
 CREATE TABLE `benhan` (
@@ -58,7 +60,7 @@ CREATE TABLE `benhan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `benhan`
+-- Dumping data for table `benhan`
 --
 
 INSERT INTO `benhan` (`ID_Benhan`, `ID_Phongkham`, `Chuandoan`, `Ngaytao`) VALUES
@@ -67,7 +69,7 @@ INSERT INTO `benhan` (`ID_Benhan`, `ID_Phongkham`, `Chuandoan`, `Ngaytao`) VALUE
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `benhnhan`
+-- Table structure for table `benhnhan`
 --
 
 CREATE TABLE `benhnhan` (
@@ -79,7 +81,7 @@ CREATE TABLE `benhnhan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `benhnhan`
+-- Dumping data for table `benhnhan`
 --
 
 INSERT INTO `benhnhan` (`ID_Benhnhan`, `id`, `Hoten`, `Ngaysinh`, `Gioitinh`) VALUES
@@ -88,7 +90,7 @@ INSERT INTO `benhnhan` (`ID_Benhnhan`, `id`, `Hoten`, `Ngaysinh`, `Gioitinh`) VA
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `khoa`
+-- Table structure for table `khoa`
 --
 
 CREATE TABLE `khoa` (
@@ -99,31 +101,42 @@ CREATE TABLE `khoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `khoa`
+-- Dumping data for table `khoa`
 --
 
 INSERT INTO `khoa` (`ID_Khoa`, `Tenkhoa`, `Hinhanh`, `Ngaythanhlap`) VALUES
-(4, 'Khoa răng2', 'https://th.bing.com/th/id/OIP.8IbxN61x1uhAtz7YFK6lpAHaLE?pid=ImgDet&w=684&h=1022&rs=1', '2021-10-28'),
-(6, 'Khoa tim 3', 'https://i.pinimg.com/originals/c6/bc/fa/c6bcfa37337ceec47c39eda1be637e40.jpg', '2021-10-28');
+(4, 'Khoa răng2', 'anh2.jpg', '2021-10-28'),
+(6, 'Khoa tim 3', 'anh2.jpg', '2021-10-28'),
+(8, 'Khoa Mắt', '1635690660_1635686520_22.jpg', '1998-02-10');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `lichhen`
+-- Table structure for table `lichhen`
 --
 
 CREATE TABLE `lichhen` (
   `id_Lichhen` int(11) NOT NULL,
   `ID_Benhnhan` int(11) NOT NULL,
-  `Lichhen` datetime NOT NULL,
-  `Trangthai` varchar(40) COLLATE utf8_vietnamese_ci NOT NULL,
+  `ID_Bacsi` int(11) NOT NULL,
+  `Ngayhen` date NOT NULL,
+  `Giohen` time NOT NULL,
+  `Trangthai` varchar(40) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'đang chờ',
   `NgayTao` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
+
+--
+-- Dumping data for table `lichhen`
+--
+
+INSERT INTO `lichhen` (`id_Lichhen`, `ID_Benhnhan`, `ID_Bacsi`, `Ngayhen`, `Giohen`, `Trangthai`, `NgayTao`) VALUES
+(2, 2, 44, '2021-10-20', '19:21:22', 'đang chờ', '2021-10-30 15:21:22'),
+(3, 2, 49, '2021-10-20', '19:21:22', 'Xác nhận', '2021-10-30 15:30:27');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `lichlamviec`
+-- Table structure for table `lichlamviec`
 --
 
 CREATE TABLE `lichlamviec` (
@@ -137,16 +150,17 @@ CREATE TABLE `lichlamviec` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `lichlamviec`
+-- Dumping data for table `lichlamviec`
 --
 
 INSERT INTO `lichlamviec` (`ID_Lich`, `ID_Phongkham`, `ID_Bacsi`, `Ngay`, `Giobatdau`, `Gioketthuc`, `Tinhtrang`) VALUES
-(16, 2, 44, '2021-10-20', '14:55:00', '14:55:00', 'Bận');
+(16, 2, 44, '2021-10-20', '14:55:00', '14:55:00', 'Bận'),
+(17, 2, 44, '2021-10-13', '22:00:00', '23:00:00', 'Xác nhận');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phieukham`
+-- Table structure for table `phieukham`
 --
 
 CREATE TABLE `phieukham` (
@@ -157,7 +171,7 @@ CREATE TABLE `phieukham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phieukham`
+-- Dumping data for table `phieukham`
 --
 
 INSERT INTO `phieukham` (`ID_Phieukham`, `ID_Benhnhan`, `Ngaydangky`, `Ngayhenkham`) VALUES
@@ -166,7 +180,7 @@ INSERT INTO `phieukham` (`ID_Phieukham`, `ID_Benhnhan`, `Ngaydangky`, `Ngayhenkh
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `phongkham`
+-- Table structure for table `phongkham`
 --
 
 CREATE TABLE `phongkham` (
@@ -180,7 +194,7 @@ CREATE TABLE `phongkham` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `phongkham`
+-- Dumping data for table `phongkham`
 --
 
 INSERT INTO `phongkham` (`ID_Phongkham`, `ID_Phieukham`, `Tenphongkham`, `Chiphi`, `Trangthai`, `Ngaykham`, `Diachi`) VALUES
@@ -189,32 +203,34 @@ INSERT INTO `phongkham` (`ID_Phongkham`, `ID_Phieukham`, `Tenphongkham`, `Chiphi
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `taikhoan`
+-- Table structure for table `taikhoan`
 --
 
 CREATE TABLE `taikhoan` (
   `id` int(11) NOT NULL,
   `Tendangnhap` varchar(30) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `Password` varchar(70) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT '827ccb0eea8a706c4c34a16891f84e7b',
-  `Email` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL,
+  `Email` varchar(70) COLLATE utf8_vietnamese_ci NOT NULL,
   `Phanquyen` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL CHECK (`Phanquyen` = 'Admin' or `Phanquyen` = 'Doctor' or `Phanquyen` = 'Benhnhan')
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `taikhoan`
+-- Dumping data for table `taikhoan`
 --
 
 INSERT INTO `taikhoan` (`id`, `Tendangnhap`, `Password`, `Email`, `Phanquyen`) VALUES
 (1, 'duong1234', '827ccb0eea8a706c4c34a16891f84e7b', 'duonguong@123', 'Admin'),
-(2, 'duong123', '827ccb0eea8a706c4c34a16891f84e7b', 'đuonguong', 'Doctor'),
+(2, 'duong12', '827ccb0eea8a706c4c34a16891f84e7b', '124@gmail.om', 'Doctor'),
 (3, 'duong123', '827ccb0eea8a706c4c34a16891f84e7b', 'đuonguong', 'Benhnhan'),
-(4, 'duong123', '827ccb0eea8a706c4c34a16891f84e7b', 'uonguong@123', 'Doctor'),
-(5, 'huynhminhthu', '827ccb0eea8a706c4c34a16891f84e7b', '2133@gmail.com', 'Benhnhan ');
+(4, 'duong', '827ccb0eea8a706c4c34a16891f84e7b', 'uonguong@123', 'Doctor'),
+(5, 'huynhminhthu', '827ccb0eea8a706c4c34a16891f84e7b', '2133@gmail.com', 'Benhnhan '),
+(6, 'duongduong', '827ccb0eea8a706c4c34a16891f84e7b', 'maianhduong9a6@gmail.com', 'Benhnhan'),
+(7, 'minhha', '827ccb0eea8a706c4c34a16891f84e7b', 'minhha123@gmail.com', 'Doctor ');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `thuoc`
+-- Table structure for table `thuoc`
 --
 
 CREATE TABLE `thuoc` (
@@ -226,17 +242,18 @@ CREATE TABLE `thuoc` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `thuoc`
+-- Dumping data for table `thuoc`
 --
 
 INSERT INTO `thuoc` (`ID_Thuoc`, `Tenthuoc`, `Loaithuoc`, `Thongtinthuoc`, `Ngaynhap`) VALUES
 (1, 'Daurang', 'F1', 'dsadsa                        ', '2021-09-09'),
-(5, 'Panadol Extra', 'Cún', '                        Panadol là thuốc giảm đau, hạ sốt và chuyên điều trị các triệu chứng cảm cúm, cảm lạnh. 1                        ', '2021-10-29');
+(5, 'Panadol Extra', 'Cún', '                        Panadol là thuốc giảm đau, hạ sốt và chuyên điều trị các triệu chứng cảm cúm, cảm lạnh. 1                        ', '2021-10-29'),
+(6, 'Thuốc Canxi', 'Calci-Extra', 'Điều trị và ngăn ngừa lượng calci trong máu thấp, loãng xương và còi xương.', '2021-10-31');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `tin`
+-- Table structure for table `tin`
 --
 
 CREATE TABLE `tin` (
@@ -248,18 +265,18 @@ CREATE TABLE `tin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `tin`
+-- Dumping data for table `tin`
 --
 
 INSERT INTO `tin` (`ID_Bantin`, `Noidung`, `Ngaydang`, `Hinhanh`, `Tieude`) VALUES
 (1, 'meo meos meo', '2021-09-28 12:14:00', '123214', 'meo');
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `bacsi`
+-- Indexes for table `bacsi`
 --
 ALTER TABLE `bacsi`
   ADD PRIMARY KEY (`ID_Bacsi`),
@@ -267,34 +284,35 @@ ALTER TABLE `bacsi`
   ADD KEY `id` (`id`);
 
 --
--- Chỉ mục cho bảng `benhan`
+-- Indexes for table `benhan`
 --
 ALTER TABLE `benhan`
   ADD PRIMARY KEY (`ID_Benhan`),
   ADD KEY `ID_Phongkham` (`ID_Phongkham`);
 
 --
--- Chỉ mục cho bảng `benhnhan`
+-- Indexes for table `benhnhan`
 --
 ALTER TABLE `benhnhan`
   ADD PRIMARY KEY (`ID_Benhnhan`),
   ADD KEY `id` (`id`);
 
 --
--- Chỉ mục cho bảng `khoa`
+-- Indexes for table `khoa`
 --
 ALTER TABLE `khoa`
   ADD PRIMARY KEY (`ID_Khoa`);
 
 --
--- Chỉ mục cho bảng `lichhen`
+-- Indexes for table `lichhen`
 --
 ALTER TABLE `lichhen`
   ADD PRIMARY KEY (`id_Lichhen`),
-  ADD KEY `ID_Benhnhan` (`ID_Benhnhan`);
+  ADD KEY `ID_Benhnhan` (`ID_Benhnhan`),
+  ADD KEY `ID_Bacsi` (`ID_Bacsi`);
 
 --
--- Chỉ mục cho bảng `lichlamviec`
+-- Indexes for table `lichlamviec`
 --
 ALTER TABLE `lichlamviec`
   ADD PRIMARY KEY (`ID_Lich`),
@@ -302,151 +320,152 @@ ALTER TABLE `lichlamviec`
   ADD KEY `ID_Bacsi` (`ID_Bacsi`);
 
 --
--- Chỉ mục cho bảng `phieukham`
+-- Indexes for table `phieukham`
 --
 ALTER TABLE `phieukham`
   ADD PRIMARY KEY (`ID_Phieukham`),
   ADD KEY `ID_Benhnhan` (`ID_Benhnhan`);
 
 --
--- Chỉ mục cho bảng `phongkham`
+-- Indexes for table `phongkham`
 --
 ALTER TABLE `phongkham`
   ADD PRIMARY KEY (`ID_Phongkham`),
   ADD KEY `ID_Phieukham` (`ID_Phieukham`);
 
 --
--- Chỉ mục cho bảng `taikhoan`
+-- Indexes for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `thuoc`
+-- Indexes for table `thuoc`
 --
 ALTER TABLE `thuoc`
   ADD PRIMARY KEY (`ID_Thuoc`);
 
 --
--- Chỉ mục cho bảng `tin`
+-- Indexes for table `tin`
 --
 ALTER TABLE `tin`
   ADD PRIMARY KEY (`ID_Bantin`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `bacsi`
+-- AUTO_INCREMENT for table `bacsi`
 --
 ALTER TABLE `bacsi`
-  MODIFY `ID_Bacsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `ID_Bacsi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
--- AUTO_INCREMENT cho bảng `benhan`
+-- AUTO_INCREMENT for table `benhan`
 --
 ALTER TABLE `benhan`
   MODIFY `ID_Benhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT cho bảng `benhnhan`
+-- AUTO_INCREMENT for table `benhnhan`
 --
 ALTER TABLE `benhnhan`
   MODIFY `ID_Benhnhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `khoa`
+-- AUTO_INCREMENT for table `khoa`
 --
 ALTER TABLE `khoa`
-  MODIFY `ID_Khoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID_Khoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT cho bảng `lichhen`
+-- AUTO_INCREMENT for table `lichhen`
 --
 ALTER TABLE `lichhen`
-  MODIFY `id_Lichhen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_Lichhen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `lichlamviec`
+-- AUTO_INCREMENT for table `lichlamviec`
 --
 ALTER TABLE `lichlamviec`
-  MODIFY `ID_Lich` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID_Lich` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT cho bảng `phieukham`
+-- AUTO_INCREMENT for table `phieukham`
 --
 ALTER TABLE `phieukham`
   MODIFY `ID_Phieukham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `phongkham`
+-- AUTO_INCREMENT for table `phongkham`
 --
 ALTER TABLE `phongkham`
   MODIFY `ID_Phongkham` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT cho bảng `taikhoan`
+-- AUTO_INCREMENT for table `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `thuoc`
+-- AUTO_INCREMENT for table `thuoc`
 --
 ALTER TABLE `thuoc`
-  MODIFY `ID_Thuoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID_Thuoc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT cho bảng `tin`
+-- AUTO_INCREMENT for table `tin`
 --
 ALTER TABLE `tin`
   MODIFY `ID_Bantin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `bacsi`
+-- Constraints for table `bacsi`
 --
 ALTER TABLE `bacsi`
   ADD CONSTRAINT `bacsi_ibfk_2` FOREIGN KEY (`ID_Khoa`) REFERENCES `khoa` (`ID_Khoa`),
   ADD CONSTRAINT `bacsi_ibfk_3` FOREIGN KEY (`id`) REFERENCES `taikhoan` (`id`);
 
 --
--- Các ràng buộc cho bảng `benhan`
+-- Constraints for table `benhan`
 --
 ALTER TABLE `benhan`
   ADD CONSTRAINT `benhan_ibfk_1` FOREIGN KEY (`ID_Phongkham`) REFERENCES `phongkham` (`ID_Phongkham`);
 
 --
--- Các ràng buộc cho bảng `benhnhan`
+-- Constraints for table `benhnhan`
 --
 ALTER TABLE `benhnhan`
   ADD CONSTRAINT `benhnhan_ibfk_1` FOREIGN KEY (`id`) REFERENCES `taikhoan` (`id`);
 
 --
--- Các ràng buộc cho bảng `lichhen`
+-- Constraints for table `lichhen`
 --
 ALTER TABLE `lichhen`
-  ADD CONSTRAINT `lichhen_ibfk_2` FOREIGN KEY (`ID_Benhnhan`) REFERENCES `benhnhan` (`ID_Benhnhan`);
+  ADD CONSTRAINT `lichhen_ibfk_2` FOREIGN KEY (`ID_Benhnhan`) REFERENCES `benhnhan` (`ID_Benhnhan`),
+  ADD CONSTRAINT `lichhen_ibfk_3` FOREIGN KEY (`ID_Bacsi`) REFERENCES `bacsi` (`ID_Bacsi`);
 
 --
--- Các ràng buộc cho bảng `lichlamviec`
+-- Constraints for table `lichlamviec`
 --
 ALTER TABLE `lichlamviec`
   ADD CONSTRAINT `lichlamviec_ibfk_1` FOREIGN KEY (`ID_Phongkham`) REFERENCES `phongkham` (`ID_Phongkham`),
   ADD CONSTRAINT `lichlamviec_ibfk_2` FOREIGN KEY (`ID_Bacsi`) REFERENCES `bacsi` (`ID_Bacsi`);
 
 --
--- Các ràng buộc cho bảng `phieukham`
+-- Constraints for table `phieukham`
 --
 ALTER TABLE `phieukham`
   ADD CONSTRAINT `phieukham_ibfk_1` FOREIGN KEY (`ID_Benhnhan`) REFERENCES `benhnhan` (`ID_Benhnhan`);
 
 --
--- Các ràng buộc cho bảng `phongkham`
+-- Constraints for table `phongkham`
 --
 ALTER TABLE `phongkham`
   ADD CONSTRAINT `phongkham_ibfk_1` FOREIGN KEY (`ID_Phieukham`) REFERENCES `phieukham` (`ID_Phieukham`);
