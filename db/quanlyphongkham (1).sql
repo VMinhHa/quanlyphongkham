@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 31, 2021 lúc 04:46 PM
+-- Thời gian đã tạo: Th10 01, 2021 lúc 12:36 PM
 -- Phiên bản máy phục vụ: 10.4.20-MariaDB
 -- Phiên bản PHP: 8.0.8
 
@@ -74,17 +74,18 @@ INSERT INTO `benhan` (`ID_Benhan`, `ID_Phongkham`, `Chuandoan`, `Ngaytao`) VALUE
 CREATE TABLE `benhnhan` (
   `ID_Benhnhan` int(11) NOT NULL,
   `id` int(11) NOT NULL,
-  `Hoten` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL,
+  `Hotenbn` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL,
   `Ngaysinh` date NOT NULL,
-  `Gioitinh` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL CHECK (`Gioitinh` = 'Nam' or `Gioitinh` = 'Nữ')
+  `Gioitinh` varchar(30) COLLATE utf8_vietnamese_ci NOT NULL CHECK (`Gioitinh` = 'Nam' or `Gioitinh` = 'Nữ'),
+  `image` varchar(300) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'anh1.jpg'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `benhnhan`
 --
 
-INSERT INTO `benhnhan` (`ID_Benhnhan`, `id`, `Hoten`, `Ngaysinh`, `Gioitinh`) VALUES
-(2, 3, 'MaiAnhDuong', '2021-10-13', 'Nữ');
+INSERT INTO `benhnhan` (`ID_Benhnhan`, `id`, `Hotenbn`, `Ngaysinh`, `Gioitinh`, `image`) VALUES
+(2, 3, 'MaiAnhDuong', '2021-10-13', 'Nam', '1635748140_anh5.jpg');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,7 @@ CREATE TABLE `khoa` (
 --
 
 INSERT INTO `khoa` (`ID_Khoa`, `Tenkhoa`, `Hinhanh`, `Ngaythanhlap`) VALUES
-(4, 'Khoa răng2', 'anh2.jpg', '2021-10-28'),
+(4, 'Khoa răng23', '1635763320_anh2.jpg', '2021-10-28'),
 (6, 'Khoa tim 3', 'anh2.jpg', '2021-10-28');
 
 -- --------------------------------------------------------
@@ -121,16 +122,16 @@ CREATE TABLE `lichhen` (
   `Giobatdau` time NOT NULL,
   `Gioketthuc` time NOT NULL,
   `Trangthai` varchar(40) COLLATE utf8_vietnamese_ci NOT NULL DEFAULT 'đang chờ',
-  `NgayTao` datetime NOT NULL
+  `NgayTao` datetime NOT NULL,
+  `so` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `lichhen`
 --
 
-INSERT INTO `lichhen` (`id_Lichhen`, `ID_Benhnhan`, `ID_Bacsi`, `Ngayhen`, `Giobatdau`, `Gioketthuc`, `Trangthai`, `NgayTao`) VALUES
-(2, 2, 44, '2021-10-20', '19:21:22', '00:00:00', 'đang chờ', '2021-10-30 15:21:22'),
-(4, 2, 49, '2021-12-06', '08:00:00', '11:00:00', 'Xác nhận', '2021-10-31 15:54:19');
+INSERT INTO `lichhen` (`id_Lichhen`, `ID_Benhnhan`, `ID_Bacsi`, `Ngayhen`, `Giobatdau`, `Gioketthuc`, `Trangthai`, `NgayTao`, `so`) VALUES
+(19, 2, 49, '2021-12-06', '08:00:00', '11:00:00', 'đang chờ', '0000-00-00 00:00:00', 18);
 
 -- --------------------------------------------------------
 
@@ -222,10 +223,9 @@ CREATE TABLE `taikhoan` (
 INSERT INTO `taikhoan` (`id`, `Tendangnhap`, `Password`, `Email`, `Phanquyen`) VALUES
 (1, 'duong1234', '827ccb0eea8a706c4c34a16891f84e7b', 'duonguong@123', 'Admin'),
 (2, 'duong12', '827ccb0eea8a706c4c34a16891f84e7b', '124@gmail.om', 'Doctor'),
-(3, 'duong123', '827ccb0eea8a706c4c34a16891f84e7b', 'đuonguong', 'Benhnhan'),
+(3, 'duong123', '827ccb0eea8a706c4c34a16891f84e7b', 'duonguong@12345', 'Benhnhan'),
 (4, 'duong', '827ccb0eea8a706c4c34a16891f84e7b', 'uonguong@123', 'Doctor'),
-(5, 'huynhminhthu', '827ccb0eea8a706c4c34a16891f84e7b', '2133@gmail.com', 'Benhnhan '),
-(6, 'duongduong', '827ccb0eea8a706c4c34a16891f84e7b', 'maianhduong9a6@gmail.com', 'Benhnhan');
+(7, 'bacsi', '827ccb0eea8a706c4c34a16891f84e7b', 'duonguong@123412', 'Doctor ');
 
 -- --------------------------------------------------------
 
@@ -370,7 +370,7 @@ ALTER TABLE `benhan`
 -- AUTO_INCREMENT cho bảng `benhnhan`
 --
 ALTER TABLE `benhnhan`
-  MODIFY `ID_Benhnhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_Benhnhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `khoa`
@@ -382,7 +382,7 @@ ALTER TABLE `khoa`
 -- AUTO_INCREMENT cho bảng `lichhen`
 --
 ALTER TABLE `lichhen`
-  MODIFY `id_Lichhen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_Lichhen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT cho bảng `lichlamviec`
@@ -406,7 +406,7 @@ ALTER TABLE `phongkham`
 -- AUTO_INCREMENT cho bảng `taikhoan`
 --
 ALTER TABLE `taikhoan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT cho bảng `thuoc`
