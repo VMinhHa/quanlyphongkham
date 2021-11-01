@@ -124,7 +124,8 @@ $('.delete_doctor').click(function(){
                         <label>Tên đăng nhập:</label>
                         <select class="form-control" name="tendangnhap">
                             <?php
-                            $sql1 = 'SELECT id,Tendangnhap FROM taikhoan where Phanquyen="Doctor"';
+                            $sql1 = 'select * from taikhoan where Phanquyen="Doctor" AND id not in (
+                                SELECT t.id from taikhoan t JOIN bacsi b on t.id=b.id)';
                             $caterogyList1 = $s->executeLesult($sql1);
                             foreach ($caterogyList1 as $item1) {
                                 echo '<option value="' . $item1['id'] . '" >' . $item1['Tendangnhap'] . '</option>';

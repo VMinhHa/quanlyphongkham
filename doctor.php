@@ -96,9 +96,8 @@
 					<div class="position-relative doctor-inner-box">
 						<div class="content mt-3" >
 							<h4 class="mb-0">Đặt lịch Bác sĩ: <?php echo $listbacsi['Hoten'] ?></h4><br>
-							
 							<table class="table table-bordered">
-							<form action="datlichkham.php" method="POST">
+							<form action="xulydatlich.php" method="POST">
 									<thead>
 										<tr>
 										<th style="width:20%">Ngày Bác sĩ hoạt động</th>
@@ -111,26 +110,41 @@
 									</thead>
 									<?php 
 									$s = new data();
-									$sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi WHERE b.ID_Bacsi="'.$id.'"';
+							
+												//  $sql3='
+												//  SELECT * FROM lichhen';
+												//  $lich3=$s->executeSingLesult($sql3);
+												//  if(isset($lich3['so'])){
+												// 	$so=$lich3['so'];
+												//  }
+												//  else {
+												// 	$so=0;
+												//  }
+												 
+										
+
+									$sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi 
+									WHERE  b.ID_Bacsi="'.$id.'"';
 									$Lich = $s->executeLesult($sql);
 									foreach ($Lich as $item) {
 									?>
 									<tr>
 										<td><input type="text" name="ngay" value="<?php echo date("l M d Y",strtotime($item['Ngay'])) ?>" disabled="true"></td>
-										<td>
+										<td>									
 											<input type="text" name="giobatdau" value="<?php echo date("h:i A",strtotime($item['Giobatdau'])) ?>" disabled="true">
 										</td>
 										<td>
 											<input type="text" name="gioketthuc" value="<?php echo date("h:i A",strtotime($item['Gioketthuc'])) ?>" disabled="true">
 										</td>
-										<td>
-										<?php
-											$sql2='
-											select * from khoa k join bacsi b on k.ID_Khoa=b.ID_Khoa where 
-											b.ID_Bacsi="'.$id.'"';
-											$Chuyenkhoa=$s->executeSingLesult($sql2);
-										?>
-										<?php echo $Chuyenkhoa['Tenkhoa'] ?>
+										<td>		
+											<?php
+												$sql2='
+												select * from khoa k join bacsi b on k.ID_Khoa=b.ID_Khoa where 
+												b.ID_Bacsi="'.$id.'"';
+												$Chuyenkhoa=$s->executeSingLesult($sql2);
+											?>
+											<input type="text" name="chuyenkhoa" value="<?php echo $Chuyenkhoa['Tenkhoa'] ?>" disabled="true">
+											
 										</td>
 										<td>
 											<?php
@@ -139,21 +153,25 @@
 												l.ID_Bacsi="'.$id.'"';
 												$phongkham=$s->executeSingLesult($sql1);
 											?>
-											<?php echo $phongkham['Tenphongkham'] ?>
+											<input type="text" name="phongkham" value="<?php echo $phongkham['Tenphongkham'] ?>" disabled="true">
+										
 										</td>
 										<td class="text-center">
-											<button class="btn btn-danger btn-sm" type="button" name="datlich">Chọn</button>
+											
+											<button type="submit" class="btn btn-warning" value="<?php echo $item['ID_Lich'] ?>"  name="datlich" >Chọn</button>
 										</td>
 									</tr>
 								<?php } ?>
 								</form>	
 								</table>
-							
+							<!-- XỬ lý thêm lịch -->
+
+							<!--Xử lỹ thêm lich -->
 							<a href="./doctor.php" class="text-center btn btn-warning">Thoát</a>
 						</div> 
 					</div>
 				</div>
-				
+
 		<?php
 	//danh sach bac si ////////////////////////////// 
 		}

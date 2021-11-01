@@ -30,7 +30,7 @@
 					<tr>
                         <td class="text-center"><?php echo $dem++ ?></td>
 						<td class="text-center">
-									<img  src="./../images/khoa/<?php echo $item['Hinhanh'] ?>" width="100px"
+									<img  src="./../images/khoa/<?php echo $item['Hinhanh'] ?>" width="10px"
                                     height="100px" alt="">
 								</td>
 						<td><?php echo $item['Tenkhoa'] ?></td>

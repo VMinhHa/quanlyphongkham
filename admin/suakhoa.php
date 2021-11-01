@@ -1,4 +1,3 @@
-<!-- The Modal -->
 
 <?php
 $s=new data();
@@ -14,24 +13,26 @@ $s=new data();
                     $tenkhoa = $_POST['tenkhoa'];
                     $tenkhoa = str_replace('"', '\\"', $tenkhoa);
                 }
-                if (isset($_POST['anh'])) {
-                        $anh = $_POST['anh'];
-                        $anh = str_replace('"', '\\"', $anh);
-                }
+                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
+                    $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
+                
                 if (isset($_POST['ngaythanhlap'])) {
                         $ngaythanhlap = $_POST['ngaythanhlap'];
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-                $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$anh',Ngaythanhlap='$ngaythanhlap'
+                $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
                 where ID_Khoa=" . $id;
                 $s->execute($sql);
-                $mess= 'Cập nhật thành công';
+                 $mess= 'Cập nhật thành công';
                 
+                
+     
+                //header('location:index.php?page=categories');
             }
+        
         
     }
 ?>
-
 <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header">
@@ -43,7 +44,7 @@ $s=new data();
 
         <!-- Modal body -->
         <div class="modal-body">
-            <form action="#" method="post">
+            <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Tên khoa:</label>
                     <input type="text" class="form-control" name="tenkhoa" value="<?php echo $Tenkhoa?>">
@@ -53,9 +54,10 @@ $s=new data();
                     <input type="date" class="form-control" name="ngaythanhlap" value="<?php echo $Ngaythanhlap ?>">
                 </div>
                 <div class="form-group">
-                    <label>Ảnh khoa: </label>
-                    <input type="text" class="form-control" name="anh">
-                </div>
+                        <label>Ảnh khoa: </label>
+                        <input type="file" class="form-control-file" name="image">
+                    </div>
+
                 <button type="submit" class="btn btn-primary" name="submit2">Sửa</button>
                 <button class="btn btn-warning float-right" name="Cancel3">Thoát</button>
             </form>

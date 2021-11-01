@@ -29,21 +29,23 @@
 					<tr>
                         <td ><?php echo $dem++ ?></td>
 						<td>
-							<?php echo $item['Hoten'] ?>
+							<?php echo $item['Hotenbn'] ?>
 						</td>
 						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <td><?php echo $item['Trangthai'] ?></td>
                         <td >
                             <form action="./xulylich.php"  method="POST"> 
-                                <div class="form-group ">
+                                <div class="form-group">
                                     <select name="trangthai" class="form-control">
+                                        
                                         <option value="Xác nhận">Xác nhận</option>
                                         <option value="hủy">hủy</option>
                                         <option value="Đang chờ">Đang chờ</option>
+                                        <option value="Đã khám">Đã khám</option>
                                     </select>
                                 </div>
-                                <button  class="btn-primary btn text-center" style="width:130px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
+                                <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:130px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
                             </form>
 						</td>		
 					</tr>
