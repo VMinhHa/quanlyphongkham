@@ -124,7 +124,7 @@
 										
 
 									$sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi 
-									WHERE  b.ID_Bacsi="'.$id.'"';
+									WHERE  b.ID_Bacsi="'.$id.'" and l.ID_Lich not in (SELECT so from lichhen)';
 									$Lich = $s->executeLesult($sql);
 									foreach ($Lich as $item) {
 									?>
