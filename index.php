@@ -44,7 +44,25 @@
 					
 					<p class="mb-4 pr-5">Tận tâm, tận tụy hết lòng vì sức khỏe người bệnh.</p>
 					<div class="btn-container ">
-						<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>
+						<?php 
+							
+								include './db/connect.php';
+								$s=new data();
+								// $hiendl['Phanquyen']='Benhnhan';
+								// $sql='Select * from benhnhan b join taikhoan t on
+								// b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Benhnhan"';
+								
+								$sql='Select * from bacsi b join taikhoan t on
+								b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Doctor"';
+								$hiendl=$s->executeSingLesult($sql);
+								if($hiendl==null){
+									echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
+								}
+								// if($hiendl['Phanquyen']!='Doctor'){
+								// echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
+								// }
+						
+						?>
 					</div>
 				</div>
 			</div>
@@ -63,7 +81,18 @@
 						<span>Dịch vụ 24/24</span>
 						<h4 class="mb-3">Đặt lịch</h4>
 						<p class="mb-4">Vì sức khỏe bệnh nhân, chúng tôi luôn sẵn sàng.</p>
-						<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>
+						<?php 
+						
+						if($hiendl==null){
+							echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>';
+						}
+								// if($hiendl['Phanquyen']!='Doctor'){
+								// 	echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>';
+								// }
+
+						
+						?>
+						
 					</div>
 				
 					<div class="feature-item mb-5 mb-lg-0">
@@ -112,7 +141,7 @@
 				<div class="about-content pl-4 mt-4 mt-lg-0">
 					<h2 class="title-color">Chăm sóc sức khỏe <br>& Lối sống lành mạnh</h2>
 					<p class="mt-4 mb-5">Chúng tôi cung cấp dịch vụ bác sĩ hàng đầu, tạo sự hài lòng tốt nhất đến bệnh nhân. Ngoài ra còn các loại thuốc chất lượng.</p>
-
+									
 					<!-- <a href="service.php" class="btn btn-main-2 btn-round-full btn-icon">Dịch vụ<i class="icofont-simple-right ml-3"></i></a> -->
 				</div>
 			</div>
