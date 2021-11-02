@@ -1,5 +1,12 @@
 <?php
 	include 'pages/header.php';
+	if(!isset($_SESSION['username']))
+	{
+		echo '<script>
+            alert("Bạn phải đăng nhập");
+            window.location.href="login.php";
+            </script>';
+	}
 	
 ?>
 <!DOCTYPE html>

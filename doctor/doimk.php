@@ -1,3 +1,12 @@
+<?php
+  if(!isset($_SESSION['username']))
+	{
+		echo '<script>
+            alert("Bạn phải đăng nhập");
+            window.location.href="../login.php";
+            </script>';
+	}
+?>
 <div class = "container">
 <center><h2>Thông tin tài khoản.</h2></center>
 <center><hr width="200"></center>

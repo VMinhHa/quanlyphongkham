@@ -77,6 +77,7 @@
                   // alert("Đăng Nhập Thành Công");
                   // window.location.href="index.php"
                   // </script>';
+                  
                   echo "Welcome ".$name." You mail use:".$email;
                 }
                 else{

@@ -1,3 +1,12 @@
+<?php
+	if(!isset($_SESSION['username']))
+	{
+		echo '<script>
+            alert("Bạn phải đăng nhập");
+            window.location.href="../login.php";
+            </script>';
+	}
+?>
 <div class="container-fluid">
 	<div class="panel-heading mt-3 ml-3 mr-3">
         <h1 class="text-center">Xem Lịch Khám</h1>
