@@ -34,10 +34,6 @@
                     where Tendangnhap="'.$_SESSION['username'].'"';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
-					// $last_id = mysqli_insert_id($conn);
-					// $patch = './images/qrcode/';
-					// $file="./images/qrcode/".uniqid().".png";
-					// $url ='http://localhost:8080/quanlyphongkham/thongtinbenhnhan.php?pagetrang=xemlich';
                     foreach ($Lich as $item) {
 					?>
 						<tr>
@@ -48,11 +44,17 @@
 							<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
-							<!-- <td><?php ///QRcode::png($item['Hoten'], $file, QR_ECLEVEL_L, 4);
+							<?php 
+								$last_id = $item['id_Lichhen'];
+								$file="./images/qrcode/".$last_id.".png";
+								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
+							?>
+							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 
-								//echo "<img src='".$file."'>"; ?> -->
-							<td>
-								<a href="./qrcode.php?idlich=<?php echo $item['id_Lichhen']?>">Xem QRCode</a></td>
+								echo "<img src='".$file."'>"; ?>
+							<!-- <td>
+								<a href="./qrcode.php?idlich=<?//php echo $item['id_Lichhen']?>">Xem QRCode</a>
+							</td> -->
 						</tr>
                 		<?php 
 					} 
