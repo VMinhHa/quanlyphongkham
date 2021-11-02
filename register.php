@@ -73,10 +73,17 @@
       
       if(empty($err))
       {        
+        include './db/connect.php';
+        $s=new data();
         $pass = md5($password);
         $sql = "INSERT INTO taikhoan(Tendangnhap,Password,Email,Phanquyen) 
         values ('$username','$pass','$email','$phanquyen')";
         $query = mysqli_query($conn,$sql);
+
+         
+
+
+
         if($query)
         {          
           $res = mysqli_query($conn, "SELECT * FROM taikhoan WHERE Tendangnhap='$username' and Password='$pass'");
@@ -90,7 +97,20 @@
                     window.location.href="index.php";
                   </script>';
                   $_SESSION['username'] = $row['Tendangnhap'];
-                  $_SESSION['phanquyen'] = $row['Phanquyen'];                 
+                  $_SESSION['phanquyen'] = $row['Phanquyen'];
+                    // Them vào benh nhan
+                  $sql1='Select id from taikhoan Where 
+                  Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Benhnhan"';
+                  $id_taikhoan=$s->executeSingLesult($sql1);
+                  
+                  // //rồi a insert vào bảng bệnh nhân
+                  $sql2='INSERT INTO benhnhan (ID_Benhnhan, id, Hotenbn,Ngaysinh,Gioitinh,image)
+                  VALUES (NULL, "'. $id_taikhoan['id'].'", "Nguyễn Văn A", "2021-10-13", "Nam", "anh1.jpg")';
+                  $s->execute($sql2);
+
+                  //insert benhnhan(id,Hoten,Ngaysinh,Gioitinh)
+                  //values ('$id_taikhoan','Nguyen van A','0000-00-00','Nam')
+                  //$query = mysqli_query($conn,$sql);               
                 }                
             }
         }

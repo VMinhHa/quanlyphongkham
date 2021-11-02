@@ -51,13 +51,18 @@
 								// $hiendl['Phanquyen']='Benhnhan';
 								// $sql='Select * from benhnhan b join taikhoan t on
 								// b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Benhnhan"';
-								
-								$sql='Select * from bacsi b join taikhoan t on
-								b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Doctor"';
-								$hiendl=$s->executeSingLesult($sql);
-								if($hiendl==null){
+								if(isset($_SESSION['username'])){
+									$sql='Select * from bacsi b join taikhoan t on
+									b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Doctor"';
+									$hiendl=$s->executeSingLesult($sql);
+									if($hiendl==null){
+										echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
+									}
+								}
+								else{
 									echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
 								}
+								
 								// if($hiendl['Phanquyen']!='Doctor'){
 								// echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
 								// }
@@ -82,13 +87,13 @@
 						<h4 class="mb-3">Đặt lịch</h4>
 						<p class="mb-4">Vì sức khỏe bệnh nhân, chúng tôi luôn sẵn sàng.</p>
 						<?php 
-						
-						if($hiendl==null){
+						if(isset($_SESSION['username'])){
+							if($hiendl==null){
+								echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>';
+							}
+						}else{
 							echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>';
 						}
-								// if($hiendl['Phanquyen']!='Doctor'){
-								// 	echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch</a>';
-								// }
 
 						
 						?>
