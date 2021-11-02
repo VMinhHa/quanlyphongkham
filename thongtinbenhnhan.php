@@ -113,7 +113,7 @@
                       include ('./benhnhan/doimk.php');
                       break;
                   }
-                } 
+                }
                 else{
                   include './benhnhan/info_patient.php';  
                 }

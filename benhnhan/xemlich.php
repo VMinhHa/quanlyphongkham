@@ -48,16 +48,20 @@
 							<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
-							<!-- <td><?php QRcode::png($item['Hoten'], $file, QR_ECLEVEL_L, 4);
+							<!-- <td><?php ///QRcode::png($item['Hoten'], $file, QR_ECLEVEL_L, 4);
 
-								echo "<img src='".$file."'>"; ?> -->
-							<td><a href="qrcode.php?id=<?php echo $id?>">Xem QRCode</a></td>
+								//echo "<img src='".$file."'>"; ?> -->
+							<td>
+								<a href="./qrcode.php?idlich=<?php echo $item['id_Lichhen']?>">Xem QRCode</a></td>
 						</tr>
                 		<?php 
 					} 
 					?>
+					<?php
+?>
 				</table>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- QR coe -->
