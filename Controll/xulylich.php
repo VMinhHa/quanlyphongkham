@@ -1,6 +1,6 @@
 <?php 
     session_start();
-        include './db/connect.php';
+        include '../db/connect.php';
         $s=new data();
                 if(isset($_POST['xacnhan'])){
                     if(isset($_POST['trangthai'])){
@@ -14,7 +14,7 @@
                     Trangthai="'.$trangthai.'" WHERE Tendangnhap="'.$_SESSION['username'].'" and id_Lichhen=
                     "'.$xacnhan.'"';
                     $s->execute($sql);
-                    header('location:thongtinbacsi.php?pagetrang=xemlich');
+                    header('location:../thongtinbacsi.php?pagetrang=xemlich');
             }
                 
       

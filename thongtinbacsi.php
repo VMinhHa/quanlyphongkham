@@ -104,14 +104,14 @@
                 if (isset($_GET['pagetrang'])) {
                   switch ($_GET['pagetrang']) {
                     case 'thongtin':
-                        include './doctor/info_Patientbacsi.php';
+                        include 'View/doctor/info_Patientbacsi.php';
                       break;
                     case 'xemlich':
-                      include ('./doctor/xemlich.php');
+                      include ('View/doctor/xemlich.php');
                       break;
 
                     case 'capnhattk':
-                      include ('./doctor/doimk.php');
+                      include ('View/doctor/doimk.php');
                       break;
                   }
                 } 

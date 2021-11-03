@@ -2,9 +2,9 @@
   if(!isset($_SESSION['username']))
 	{
 		echo '<script>
-            alert("Bạn phải đăng nhập");
-            window.location.href="../login.php";
-            </script>';
+    alert("Bạn phải đăng nhập");
+    window.location.href="../../login.php";
+    </script>';
 	}
 ?>
 <div class = "container">

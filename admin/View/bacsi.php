@@ -115,7 +115,7 @@ $('.delete_doctor').click(function(){
 	
         <!-- Modal body -->
         <div class="modal-body">
-        <form action="./thembacsi.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
+        <form action="././Controller/thembacsi.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>Họ tên:</label>
                         <input type="text" class="form-control" name="hoten" value="<?php $hoten?>" placeholder="Enter Họ tên" required>

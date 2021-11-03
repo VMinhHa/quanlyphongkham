@@ -28,8 +28,8 @@ if (isset($_GET['idsua'])) {
         if (isset($_POST['Ngay1'])) {
             $Ngay = $_POST['Ngay1'];
         }
-        if (isset($_POST['time1'])) {
-            $time = $_POST['time1'];
+        if (isset($_POST['time2'])) {
+            $time = $_POST['time2'];
         }
         if (isset($_POST['status1'])) {
             $status = $_POST['status1'];
@@ -102,7 +102,7 @@ if (isset($_GET['idsua'])) {
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Giờ kết thúc</label>
-				<input type="time"  name="time1" class="form-control" value="<?php echo $Time ?>" required>
+				<input type="time"  name="time2" class="form-control" value="<?php echo $Time ?>" required>
 				<span style="color:red">Vui lòng nhập giờ lớn hơn giờ bắt đầu</span>
 			</div> 
 			<div class="form-group">

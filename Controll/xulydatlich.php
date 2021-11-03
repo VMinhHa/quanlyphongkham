@@ -3,7 +3,7 @@ session_start();
     if(isset($_POST['datlich'])){
         //$_SESSION['datlich']=$_POST['datlich'];
         $id=$_POST['datlich'];
-        include './db/connect.php';
+        include '../db/connect.php';
         $s=new data();
         $sql1='
         SELECT * from lichlamviec l join bacsi b on l.ID_Bacsi=b.ID_Bacsi
@@ -22,7 +22,7 @@ session_start();
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Trangthai,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','đang chờ','$id')";
         $s->execute($sql);
-        header('location:./doctor.php');
+        header('location:../doctor.php');
     }
 
 ?>

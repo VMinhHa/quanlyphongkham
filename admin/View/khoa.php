@@ -61,7 +61,7 @@
         </div>
         <!-- Modal body -->
         <div class="modal-body">
-		<form action="./themkhoa.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
+		<form action="././Controller/themkhoa.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
 			<div class="form-group">
 				<label for="" class="control-label">Tên khoa</label><br>
 				<input type="" class="form-control"  name="tenkhoa" value="" required>

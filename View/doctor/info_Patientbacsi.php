@@ -19,7 +19,7 @@
                   <div class="modal-body">
 
                   <!-- -------------------------------------------------------- -->
-                    <form action="thaydoianhbacsi.php" method="POST" enctype="multipart/form-data">
+                    <form action="././Controll/thaydoianhbacsi.php" method="POST" enctype="multipart/form-data">
                       <div class="form-group">
                         <input type="file" class="form-control-file" name="image">
                       </div>

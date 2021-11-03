@@ -104,7 +104,7 @@ $('.Khoiphuc').click(function(){
 	
         <!-- Modal body -->
         <div class="modal-body">
-        <form action="./themtaikhoan.php" id="manage-appointment" method="POST">
+        <form action="././Controller/themtaikhoan.php" id="manage-appointment" method="POST">
                     <div class="form-group">
                         <label>Tên đăng nhập:</label>
                         <input type="text" class="form-control" name="tendangnhap" placeholder="Nhập tên tài khoản" required>
