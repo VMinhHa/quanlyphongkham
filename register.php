@@ -79,11 +79,7 @@
         $sql = "INSERT INTO taikhoan(Tendangnhap,Password,Email,Phanquyen) 
         values ('$username','$pass','$email','$phanquyen')";
         $query = mysqli_query($conn,$sql);
-
-         
-
-
-
+        
         if($query)
         {          
           $res = mysqli_query($conn, "SELECT * FROM taikhoan WHERE Tendangnhap='$username' and Password='$pass'");

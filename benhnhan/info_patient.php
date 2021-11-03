@@ -8,7 +8,15 @@
         <div class="row" style="padding-top: 80px;">
           <div class="col-2"></div>
           <div class="col-3 text-center">
-            <img src="./images/benhnhan/<?php echo $dsbenhnhan['image']?>" style="border:1px solid black;radius:5px;" width="150px" height="150px">
+            <?php 
+                if(substr($dsbenhnhan['image'],0,5)=="https"){
+                  echo '<img src="'.$dsbenhnhan['image'].'" style="border:1px solid black;radius:5px;" width="150px" height="150px">';
+                }else{
+                  echo '<img src="./images/benhnhan/'.$dsbenhnhan['image'].'" style="border:1px solid black;radius:5px;" width="150px" height="150px">';
+                }
+            ?>
+            
+            
             <p><a href ="#" data-toggle="modal" data-target="#change_image">Thay đổi ảnh</a></p>
             <div class="modal fade" id="change_image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">

@@ -54,7 +54,7 @@
                                         <option value="Đã khám">Đã khám</option>
                                     </select>
                                 </div>
-                                <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:130px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
+                                <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;margin-left:35px;" name="xacnhan">Xác nhận</button>
                             </form>
 						</td>		
 					</tr>

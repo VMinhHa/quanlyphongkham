@@ -1,17 +1,26 @@
 <?php include('db/constrants.php'); 
-      require('vendor/autoload.php');
+      include('./google-source.php');
+      // require('vendor/autoload.php');
+      
+      // if(isset($_SESSION['userData'])){
+      //   header('location: view.php');
+      // }
+      // $loginURL="";
+      // $authUrl = $googleClient->createAuthUrl();
+      // $loginURL = filter_var($authUrl, FILTER_SANITIZE_URL);
+      
 
-      $clientID='565136117957-2eli3vrv3q691kcglvgp34i734srupo1.apps.googleusercontent.com';
-      $ClientSecret='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';
-      $redirectUrl= 'http://localhost:8080/quanlyphongkham/login.php';
+      // $clientID='565136117957-2eli3vrv3q691kcglvgp34i734srupo1.apps.googleusercontent.com';
+      // $ClientSecret='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';
+      // $redirectUrl= 'http://localhost:8080/quanlyphongkham/login.php';
 
       //Create client request to google
-      $client = new Google_Client();
-      $client->setClientID($clientID);
-      $client->setClientSecret($ClientSecret);
-      $client->setRedirectUri($redirectUrl);
-      $client->addScope('profile');
-      $client->addScope('email');
+      // $client = new Google_Client();
+      // $client->setClientID($clientID);
+      // $client->setClientSecret($ClientSecret);
+      // $client->setRedirectUri($redirectUrl);
+      // $client->addScope('profile');
+      // $client->addScope('email');
       
 ?>
 
@@ -62,28 +71,32 @@
               <input type="submit" class="btn btn-primary btn-sign" name="submit" value="Đăng Nhập" />
               <span>Hoặc</span>
               <button type="submit" class="btn btn-danger btn-sign btn-regis"><i class="icon-gg fab fa-google-plus-g"></i>
-                <?php if(isset($_GET['code']))
-                {
-                  $token=$client->fetchAccessTokenwithAuthCode($_GET['code']);
-                  $client->setAccessToken($token);
+                <?php if(isset($authUrl)){ ?>
+                    <a href="<?= $authUrl ?>" class='btn-google'>Đăng Nhập bằng Google</a>
+                <?php } ?>
+
+                 <!-- //if(isset($_GET['code'])) -->
+                <!-- //{ -->
+                  <!-- // $token=$client->fetchAccessTokenwithAuthCode($_GET['code']);
+                  // $client->setAccessToken($token);
 
                   //Getting User Profile
-                  $gauth = new Google_Service_Oauth2($client);
-                  $google_info = $gauth->userinfo->get();
-                  $email = $google_info->email;
-                  $name = $google_info->name;
+                  // $gauth = new Google_Service_Oauth2($client);
+                  // $google_info = $gauth->userinfo->get();
+                  // $email = $google_info->email;
+                  // $name = $google_info->name;
                   
                   // echo '<script>
                   // alert("Đăng Nhập Thành Công");
                   // window.location.href="index.php"
-                  // </script>';
+                  // </script>'; -->
                   
-                  echo "Welcome ".$name." You mail use:".$email;
-                }
-                else{
-                  echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";
-                }
-                ?>
+                  <!-- //echo "Welcome ".$name." You mail use:".$email;
+                //}
+                //else{
+                  //echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";
+                //} -->
+                
               </button>
             </div>
 
