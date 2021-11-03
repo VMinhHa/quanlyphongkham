@@ -85,10 +85,10 @@
 	
         <!-- Modal body -->
         <div class="modal-body">
-		<form action="./themsualich.php" id="manage-appointment" method="POST">
+		<form action="././Controller/themlich.php" id="manage-appointment" method="POST">
 			<div class="form-group">
 				<label for="" class="control-label">Bác sĩ</label>
-				<select class="browser-default custom-select select2" name="tenbacsi">
+				<select class="browser-default custom-select select2" name="tenbacsi" >
 					<option value=""></option>
 					<?php 
 					$s = new data();

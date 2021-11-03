@@ -1,5 +1,5 @@
 <?php
-include './../db/connect.php';
+include '../../db/connect.php';
 $s=new data();
     if (isset($_POST['submit3'])) {
         if (isset($_POST['tendangnhap'])) {
@@ -18,6 +18,6 @@ $s=new data();
         $sql = "INSERT INTO taikhoan (Tendangnhap,Email,Phanquyen)
                  values('$tendangnhap','$email','$phanquyen ')";
         $s->execute($sql);
-        header('location:./index.php?page=users');
+        header('location:../index.php?page=users');
     }
 ?>

@@ -29,7 +29,7 @@ $s=new data();
      
                 //header('location:index.php?page=categories');
             }
-        
+            
         
     }
 ?>

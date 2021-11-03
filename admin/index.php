@@ -48,8 +48,8 @@
 </style>
 
 <body>
-  <?php include './topbar.php' ?>
-  <?php include './navbar.php'?>
+  <?php include 'topbar.php' ?>
+  <?php include 'navbar.php'?>
   <div class="toast" id="alert_toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-body text-white">
     </div>
@@ -59,71 +59,71 @@
     if (isset($_GET['page'])) {
       switch ($_GET['page']) {
         case 'home':
-          include './home.php';
+          include 'home.php';
           break;
         case 'doctors':
               if(isset($_GET['idsua'])){
                 if(isset($_POST['Cancel'])){
-                  include './bacsi.php';
+                  include 'View/bacsi.php';
                 }
                 else{
-                  include './suabacsi.php';
+                  include 'Controller/suabacsi.php';
                 }
               }
               else {
-                include './bacsi.php';
+                include 'View/bacsi.php';
               }
             break;
         case 'appointments':
           if(isset($_GET['idsua'])){
             if(isset($_POST['thoat'])){
-              include './lich.php';
+              include 'View/lich.php';
             }
             else{
-              include './sualich.php';
+              include 'Controller/sualich.php';
             }
           }
           else {
-            include './lich.php';
+            include 'View/lich.php';
           }
           break;
         case 'categories':
           if(isset($_GET['idsua'])){
             if(isset($_POST['Cancel3'])){
-              include './khoa.php';
+              include 'View/khoa.php';
             }
             else{
-              include './suakhoa.php';
+              include 'Controller/suakhoa.php';
             }
           }
           else {
-            include './khoa.php';
+            include 'View/khoa.php';
           }
           break;
           case 'users':
             if(isset($_GET['idsua'])){
               if(isset($_POST['Cancel4'])){
-                include './nguoidung.php';
+                include 'View/nguoidung.php';
               }
               else{
-                include './suataikhoan.php';
+                include 'Controller/suataikhoan.php';
               }
             }
             else {
-              include './nguoidung.php';
+              include 'View/nguoidung.php';
             }
             break;
             case 'thuoc':
               if(isset($_GET['idsua'])){
                 if(isset($_POST['Cancel5'])){
-                  include './thuoc.php';
+                  include 'View/thuoc.php';
                 }
                 else{
-                  include './suathuoc.php';
+                  include 'Controller/suathuoc.php';
                 }
               }
               else {
-                include './thuoc.php';
+                include 'View/thuoc.php';
               }
               break;
       }

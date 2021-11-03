@@ -104,7 +104,7 @@
 						<div class="content mt-3" >
 							<h4 class="mb-0">Đặt lịch Bác sĩ: <?php echo $listbacsi['Hoten'] ?></h4><br>
 							<table class="table table-bordered">
-							<form action="xulydatlich.php" method="POST">
+							<form action="Controll/xulydatlich.php" method="POST">
 									<thead>
 										<tr>
 										<th style="width:20%">Ngày Bác sĩ hoạt động</th>

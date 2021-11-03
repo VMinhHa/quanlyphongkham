@@ -44,7 +44,7 @@
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <td><?php echo $item['Trangthai'] ?></td>
                         <td >
-                            <form action="./xulylich.php"  method="POST"> 
+                            <form action="Controll/xulylich.php"  method="POST"> 
                                 <div class="form-group">
                                     <select name="trangthai" class="form-control">
                                         

@@ -107,7 +107,7 @@ $('.delete_thuoc').click(function(){
 	
         <!-- Modal body -->
         <div class="modal-body">
-        <form action="./themthuoc.php" id="manage-appointment" method="POST">
+        <form action="././Controller/themthuoc.php" id="manage-appointment" method="POST">
                     <div class="form-group">
                         <label>Tên Thuốc:</label>
                         <input type="text" class="form-control" name="tenthuoc" placeholder="Nhập tên thuốc" required>

@@ -1,5 +1,5 @@
 <?php
-include './../db/connect.php';
+include '../../db/connect.php';
 $s=new data();
 if(isset($_POST['load'])){
 	if (isset($_POST['tenbacsi'])) {
@@ -25,12 +25,12 @@ if(isset($_POST['load'])){
 		ID_Bacsi, Ngay, Giobatdau, Gioketthuc, Tinhtrang)
 		VALUES ('$tenphong','$tenbacsi', '$Ngay', '$time1', '$time', '$status')";
 		$s->execute($sql);
-		header('location:./index.php?page=appointments');
+		header('location:../index.php?page=appointments');
 	}
 	else{
-		header('location:./index.php?page=appointments');
+		header('location:../index.php?page=appointments');
 	}
 }
-
+?>
 
 

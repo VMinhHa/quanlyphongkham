@@ -1,5 +1,5 @@
 <?php
-include './../db/connect.php';
+include '../../db/connect.php';
 $s=new data();
 if(isset($_POST['submit4'])){
 	if (isset($_POST['tenthuoc'])) {
@@ -18,7 +18,7 @@ if(isset($_POST['submit4'])){
 		Loaithuoc,Thongtinthuoc,Ngaynhap)
 		VALUES ('$tenthuoc','$loaithuoc', '$thongtinthuoc', '$ngaynhap')";
 		$s->execute($sql);
-		header('location:./index.php?page=thuoc');
+		header('location:../index.php?page=thuoc');
 }
 
 
