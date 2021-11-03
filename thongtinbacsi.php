@@ -116,7 +116,7 @@
                   }
                 } 
                 else{
-                  include './doctor/info_Patientbacsi.php';  
+                  include 'View/doctor/info_Patientbacsi.php';  
                 }
               ?>
       </div>
