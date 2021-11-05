@@ -39,7 +39,9 @@
                     }
                     $additional='';
                     if(!empty($s)){
-                        $additional=' and b.Hoten like"%'.$s.'%"';
+                        $additional=' and b.Hoten like"%'.$s.'%" or k.Tenkhoa like"%'.$s.'%"
+                        or t.Tendangnhap like"%'.$s.'%" or b.Ngaysinh like"%'.$s.'%"
+                        or b.Gioitinh like"%'.$s.'%"';
                     }
                 ////lay danh sach
                 $s = new data();
@@ -60,13 +62,13 @@
                                 <td>' . $item['Ngaysinh'] . '</td>
                                 <td>' . $item['Gioitinh'] . '</td>
                                 <td>
-                                <button class="btn btn-sm btn-danger delete_doctor" type="button" data-id="'.$item['ID_Bacsi'].'">Delete</button>
-                                </a>
+                                <a href="index.php?page=doctors&idsua='.$item['ID_Bacsi'].'" >
+                                <button class="btn btn-primary btn btn-sm" type="submit" name="Sửa" 
+                              >Edit</button></a>
                                 </td>
                                 <td>
-                                <a href="index.php?page=doctors&idsua='.$item['ID_Bacsi'].'" >
-                                <button class="btn btn-primary btn btn-sm" type="submit" name="Edit" 
-                              >Edit</button></a>
+                                <button class="btn btn-sm btn-danger delete_doctor" type="button" data-id="'.$item['ID_Bacsi'].'">Xóa
+                                </button>
                                 </td>
                                 ';
                     $dem++;

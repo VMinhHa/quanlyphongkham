@@ -39,5 +39,10 @@ session_start();
         if($save)
             echo $save;
     }
+    if($action == "delete_lichhen"){
+        $save = $crud->delete_lichhen();
+        if($save)
+            echo $save;
+    }
 
 ?>

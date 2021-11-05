@@ -1,5 +1,5 @@
 <?php 
-	include './plugins/phpqrcode/qrlib.php';
+	include 'plugins/phpqrcode/qrlib.php';
 	if(!isset($_SESSION['username']))
 	{
 		echo '<script>
@@ -23,7 +23,9 @@
 						<th style="width:20%">Ngày hẹn</th>
 						<th style="width:20%">Giờ hẹn</th>
 						<th style="width:10%">Trạng thái</th>
-						<th style="width:20%">Mã QR</th>
+						<th style="width:15%">Mã QR</th>
+						<th style="width:5%">Xóa</th>
+
 					</tr>
 					</thead>
 					<?php 
@@ -31,7 +33,7 @@
                     $s = new data();
                     $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi  join benhnhan n 
                     on n.ID_Benhnhan=l.ID_Benhnhan JOIN taikhoan t on t.id=n.id
-                    where Tendangnhap="'.$_SESSION['username'].'"';
+                    where Tendangnhap="'.$_SESSION['username'].'" and l.Trangthai!="Đã khám"';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
@@ -45,16 +47,32 @@
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
 							<?php 
-								$last_id = $item['id_Lichhen'];
-								$file="./images/qrcode/".$last_id.".png";
-								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
+								// $last_id = $item['id_Lichhen'];
+								// $file="./images/qrcode/".$last_id.".png";
+								// $url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
 							?>
-							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
+							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 
-								echo "<img src='".$file."'>"; ?>
+								//echo "<img src='".$file."'>"; 
+								?>
+							</td>
+
+							<!-- bỏ -->
 							<!-- <td>
 								<a href="./qrcode.php?idlich=<?//php echo $item['id_Lichhen']?>">Xem QRCode</a>
 							</td> -->
+						
+							<td>
+								<?php 
+									if($item['Trangthai']=='Đang chờ'){
+								?>
+									<button class="btn btn-sm btn-danger delete_lichhen" type="button" data-id="<?php $item['id_Lichhen']?>">
+									Hủy</button>
+								<?php
+									}
+								?>
+							</td>
+							
 						</tr>
                 		<?php 
 					} 
@@ -66,4 +84,27 @@
 		</div>
 	</div>
 </div>
-<!-- QR coe -->
+<!-- XÓa ko hiện được nút-->
+
+<!-- <script>
+$('.delete_lichhen').click(function(){
+		_conf("Bạn có chắc là muốn xóa lịch này ko?","delete_lichhen",[$(this).attr('data-id')])
+	})
+	function delete_lichhen($id){
+		start_load()
+		$.ajax({
+			url:'admin/ajax.php?action=delete_lichhen',
+			method:'POST',
+			data:{id:$id},
+			success:function(resp){
+				if(resp==1){
+					alert_toast("Xóa thành công",'success')
+					setTimeout(function(){
+						location.reload()
+					},1500)
+
+				}
+			}
+		})
+	}
+</script> -->

@@ -28,7 +28,10 @@ if (isset($_GET['idsua'])) {
         Thongtinthuoc='$thongtinthuoc',Ngaynhap='$ngaynhap'
         WHERE ID_Thuoc =".$id1;
         $s->execute($sql);
-        $mess= 'Cập nhật thành công';
+        echo '<script>
+            alert("Sửa thành công");
+            window.location.href="index.php?page=thuoc";
+        </script>'; 
     }
 }
 ?>

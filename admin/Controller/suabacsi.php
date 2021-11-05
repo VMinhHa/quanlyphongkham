@@ -45,7 +45,11 @@ $s=new data();
                 $sql = "UPDATE bacsi set id='$tendangnhap',ID_Khoa='$tenkhoa',Hoten='$hoten',Ngaysinh='$ngaysinh',Gioitinh='$gioitinh'
                 where ID_Bacsi=" . $id;
                 $s->execute($sql);
-                $mess= 'Cập nhật thành công';
+                //$mess= 'Cập nhật thành công';
+                echo '<script>
+                alert("Sửa thành công");
+                window.location.href="index.php?page=doctors";
+                </script>';
             }
         
     }

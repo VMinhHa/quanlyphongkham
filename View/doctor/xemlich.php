@@ -49,7 +49,7 @@
                                     <select name="trangthai" class="form-control">
                                         
                                         <option value="Xác nhận">Xác nhận</option>
-                                        <option value="hủy">hủy</option>
+                                        <option value="Hủy">Hủy</option>
                                         <option value="Đang chờ">Đang chờ</option>
                                         <option value="Đã khám">Đã khám</option>
                                     </select>

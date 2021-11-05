@@ -78,6 +78,7 @@
           if(isset($_GET['idsua'])){
             if(isset($_POST['thoat'])){
               include 'View/lich.php';
+            
             }
             else{
               include 'Controller/sualich.php';

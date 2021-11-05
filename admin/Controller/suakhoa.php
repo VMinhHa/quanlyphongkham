@@ -8,6 +8,7 @@ $s=new data();
         $khoa = $s->executeSingLesult($sql);
             $Tenkhoa = $khoa['Tenkhoa'];
             $Ngaythanhlap=$khoa['Ngaythanhlap'];
+            $mess='';
             if(isset($_POST['submit2'])){
                 if (isset($_POST['tenkhoa'])) {
                     $tenkhoa = $_POST['tenkhoa'];
@@ -20,14 +21,18 @@ $s=new data();
                         $ngaythanhlap = $_POST['ngaythanhlap'];
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-                $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
-                where ID_Khoa=" . $id;
-                $s->execute($sql);
-                 $mess= 'Cập nhật thành công';
-                
-                
-     
-                //header('location:index.php?page=categories');
+                if($fname==''){
+                    $mess='vui lòng thêm ảnh';
+                }else {
+                    $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
+                    where ID_Khoa=" . $id;
+                    $s->execute($sql);
+                    echo '<script>
+                    alert("Sửa thành công");
+                    window.location.href="index.php?page=categories";
+                    </script>';
+                }
+
             }
             
         
@@ -55,7 +60,8 @@ $s=new data();
                 </div>
                 <div class="form-group">
                         <label>Ảnh khoa: </label>
-                        <input type="file" class="form-control-file" name="image">
+                        <input type="file" class="form-control-file" name="image"  required>
+                        <span style="color:red"><?php echo $mess ?></span>
                     </div>
 
                 <button type="submit" class="btn btn-primary" name="submit2">Sửa</button>

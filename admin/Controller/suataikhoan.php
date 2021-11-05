@@ -23,8 +23,10 @@ $s=new data();
                 $sql = "UPDATE taikhoan set Tendangnhap='$tendangnhap',Email='$email'
                 where id=" . $id;
                 $s->execute($sql);
-                $mess= 'Cập nhật thành công';
-                
+                echo '<script>
+                    alert("Sửa thành công");
+                    window.location.href="index.php?page=users";
+                    </script>';  
             }
         
     }

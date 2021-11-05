@@ -1,9 +1,27 @@
-<!--  ---------------Modal Sửa-->
+<!-- if( date("Y m d",strtotime($Ngay))<date('Y m d')){
+			$messxuly1='Ngày nhập phải lớn hơn ngày hiện tại';
+		}else{
+			if($time1>=$time){
+				$messxuly="Số giờ kết thúc phải lớn hơn giờ bắt đầu";
+			}else{
+				$sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
+				Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
+				WHERE lichlamviec.ID_Lich =".$id1;
+				$s->execute($sql);
+				$mess= 'Cập nhật thành công';
+				header('location:index.php?page=appointments');
+			
+				
+			}
+		} -->
+		<!--  ---------------Modal Sá»­a-->
 <?php 
 
 $s=new data();
 if (isset($_GET['idsua'])) {
     $mess='';
+	$messxuly='';
+	$messxuly1='';
 	$id1 = $_GET['idsua'];
 	$sql = 'SELECT l.ID_Lich,l.Giobatdau, p.ID_Phongkham,b.ID_Bacsi,p.Tenphongkham,b.Hoten,l.Ngay,l.Gioketthuc,l.tinhtrang
 	 from bacsi b join lichlamviec 
@@ -37,11 +55,22 @@ if (isset($_GET['idsua'])) {
 		if (isset($_POST['time1'])) {
 			$time1 = $_POST['time1'];
 		}
-        $sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
-        Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
-        WHERE lichlamviec.ID_Lich =".$id1;
-        $s->execute($sql);
-        $mess= 'Cập nhật thành công';
+		if( date("Y m d",strtotime($Ngay))<date('Y m d')){
+			$messxuly1='Ngày nhập phải lớn hơn ngày hiện tại';
+		}else{
+			if($time1>=$time){
+				$messxuly="Số giờ kết thúc phải lớn hơn giờ bắt đầu";
+			}else{
+				$sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
+				Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
+				WHERE lichlamviec.ID_Lich =".$id1;
+				$s->execute($sql);
+				echo '<script>
+                alert("Sửa thành công");
+                window.location.href="index.php?page=appointments";
+                </script>';
+			}
+		} 
     }
 
 
@@ -78,7 +107,7 @@ if (isset($_GET['idsua'])) {
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="" class="control-label">Phòng khám</label>
+				<label for="" class="control-label">phòng khám</label>
 				<select class="browser-default custom-select select2" name="tenphong1">
 				<option value="<?php echo $idPhong ?>"><?php echo $TenPhong ?></option>
                 <?php 
@@ -95,6 +124,7 @@ if (isset($_GET['idsua'])) {
 			<div class="form-group">
 				<label for="" class="control-label">Ngay</label>
 				<input type="date"  name="Ngay1" class="form-control" value="<?php echo $Ngay ?>" required>
+				<span style="color:red"><?php echo $messxuly1 ?></span>
 			</div>
 			<div class="form-group">
 				<label for="" class="control-label">Giờ bắt đầu</label>
@@ -103,7 +133,7 @@ if (isset($_GET['idsua'])) {
 			<div class="form-group">
 				<label for="" class="control-label">Giờ kết thúc</label>
 				<input type="time"  name="time2" class="form-control" value="<?php echo $Time ?>" required>
-				<span style="color:red">Vui lòng nhập giờ lớn hơn giờ bắt đầu</span>
+				<span style="color:red"><?php echo $messxuly ?></span>
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Status</label>

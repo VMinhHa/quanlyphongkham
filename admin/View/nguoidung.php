@@ -36,7 +36,8 @@
                     }
                     $additional='';
                     if(!empty($s)){
-                        $additional=' and Tendangnhap like"%'.$s.'%"';
+                        $additional=' and Tendangnhap like"%'.$s.'%"
+                        or Email like"%'.$s.'%" or Phanquyen like"%'.$s.'%"';
                     }
                 ////lay danh sach
                 $s = new data();
