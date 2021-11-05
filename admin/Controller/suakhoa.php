@@ -4,26 +4,26 @@ $s=new data();
     if (isset($_GET['idsua'])) {
         $mess='';
         $id = $_GET['idsua'];
-        $sql = "select Tenkhoa,Ngaythanhlap from khoa where ID_Khoa=".$id;
+        $sql = "select Tenkhoa,Ngaythanhlap,Hinhanh from khoa where ID_Khoa=".$id;
         $khoa = $s->executeSingLesult($sql);
             $Tenkhoa = $khoa['Tenkhoa'];
             $Ngaythanhlap=$khoa['Ngaythanhlap'];
+            $Hinhanh=$khoa['Hinhanh'];
             $mess='';
             if(isset($_POST['submit2'])){
                 if (isset($_POST['tenkhoa'])) {
                     $tenkhoa = $_POST['tenkhoa'];
                     $tenkhoa = str_replace('"', '\\"', $tenkhoa);
                 }
-                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
-                    $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
-                
                 if (isset($_POST['ngaythanhlap'])) {
                         $ngaythanhlap = $_POST['ngaythanhlap'];
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-                if($fname==''){
+                if($_FILES['image']['name']==''){
                     $mess='vui lòng thêm ảnh';
                 }else {
+                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
+                    $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
                     $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
                     where ID_Khoa=" . $id;
                     $s->execute($sql);
@@ -60,7 +60,7 @@ $s=new data();
                 </div>
                 <div class="form-group">
                         <label>Ảnh khoa: </label>
-                        <input type="file" class="form-control-file" name="image"  required>
+                        <input type="file" class="form-control-file" name="image">
                         <span style="color:red"><?php echo $mess ?></span>
                     </div>
 
