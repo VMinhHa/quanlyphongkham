@@ -17,10 +17,12 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-                        <th>STT</th>
-						<th style="width:30%">họ và tên Bác sĩ</th>
-						<th style="width:20%">Ngày khám</th>
-						<th style="width:20%">Giờ khám</th>
+                        <th style="width:5%">STT</th>
+						<th style="width:10%">họ và tên Bác sĩ</th>
+						<th style="width:15%">Ngày khám</th>
+						<th style="width:15%">Giờ khám</th>
+						<th style="width:30%">Chuẩn đoán</th>
+						<th style="width:15%">Loại thuốc</th>
 						<th style="width:10%">Trạng thái</th>
 					</tr>
 					</thead>
@@ -41,6 +43,15 @@
 						</td>
 						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+						<!-- Chuẩn đoán -->
+						<td>
+						
+						</td>
+						<!-- THuoc -->
+						<td>
+	
+						</td>
+						<!-- 0----- -->
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
                 <?php } ?>

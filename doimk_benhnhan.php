@@ -130,10 +130,12 @@
 			$sql = 'update taikhoan
 					set Password = "'.$final_password.'"
 					where Tendangnhap="'.$_SESSION['username'].'"';
-			if($s->execute($sql)){
-				$success = 'Đổi password thành công.';
-
-            }	
+			$s->execute($sql);
+			echo '<script>
+            alert("Sửa mật khẩu thành công");
+            window.location.href="thongtinbacsi.php?pagetrang=capnhattk";
+            </script>';
+            }
         }
     }	
     

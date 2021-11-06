@@ -17,12 +17,14 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-                        <th>STT</th>
-						<th style="width:30%">họ và tên bệnh nhân</th>
-						<th style="width:20%">Ngày hẹn</th>
-						<th style="width:20%">Giờ hẹn</th>
+                        <th style="width:5%">STT</th>
+						<th style="width:15%">họ và tên bệnh nhân</th>
+						<th style="width:12.5%">Ngày hẹn</th>
+						<th style="width:12.5%">Giờ hẹn</th>
+                        <th style="width:25%">Chuẩn đoán</th>
+                        <th style="width:10%">Kê thuốc</th>
 						<th style="width:10%">Trạng thái</th>
-                        <th style="width:20%">Xử lý</th>
+                        <th style="width:10%">Xử lý</th>
 					</tr>
 					</thead>
 					<?php 
@@ -42,6 +44,27 @@
 						</td>
 						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+                        <!-- Chuẩn đoán -->
+                        <td>   
+                            <?php if($item['Trangthai']=='Đã khám') {?>
+                            <textarea rows="5" cols="58" name="chuandoan">
+
+                            </textarea>
+                            <?php 
+                                }
+                            ?>
+                        </td>
+                        <!-- THuoc -->
+                        <td>
+                            <?php if($item['Trangthai']=='Đã khám') {?>
+                                <button  class="btn btn-dark text-center" value="<?php echo $item['id_Lichhen']?>"
+                                style="width:135px;height:40px;font-size:12px;"  name="kethuoc">Kê thuốc</button>
+                            <?php 
+                                }
+                            ?>
+                        </td>
+                                        
+                            <!-- 0----- -->
                         <td><?php echo $item['Trangthai'] ?></td>
                         <td >
                             <form action="Controll/xulylich.php"  method="POST"> 
@@ -54,7 +77,7 @@
                                         <option value="Đã khám">Đã khám</option>
                                     </select>
                                 </div>
-                                <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;margin-left:35px;" name="xacnhan">Xác nhận</button>
+                                <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
                             </form>
 						</td>		
 					</tr>

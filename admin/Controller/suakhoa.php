@@ -20,7 +20,10 @@ $s=new data();
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
                 if($_FILES['image']['name']==''){
-                    $mess='vui lòng thêm ảnh';
+                    echo '<script>
+                    alert("Sửa thành công");
+                    window.location.href="index.php?page=categories";
+                    </script>';
                 }else {
                     $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
                     $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
