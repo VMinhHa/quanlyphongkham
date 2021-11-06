@@ -23,8 +23,8 @@
 						<th style="width:12.5%">Giờ hẹn</th>
                         <th style="width:25%">Chuẩn đoán</th>
                         <th style="width:10%">Kê thuốc</th>
-						<th style="width:10%">Trạng thái</th>
                         <th style="width:10%">Xử lý</th>
+                        <th style="width:10%">Trạng thái</th>
 					</tr>
 					</thead>
 					<?php 
@@ -47,9 +47,15 @@
                         <!-- Chuẩn đoán -->
                         <td>   
                             <?php if($item['Trangthai']=='Đã khám') {?>
-                            <textarea rows="5" cols="58" name="chuandoan">
-
-                            </textarea>
+                            <form action="Controll/xulybenhan.php"  method="POST"> 
+                                <div class="form-group">
+                                    <textarea rows="5" cols="58" name="chuandoan" class="form-control">
+                                    </textarea> 
+                                </div>
+                                <button  class="btn-primary btn text-center" 
+                                value="<?php echo $item['id_Lichhen']?>" 
+                                style="width:135px;height:40px;" name="chuandoan">Thêm</button>
+                            </form>
                             <?php 
                                 }
                             ?>
@@ -65,21 +71,26 @@
                         </td>
                                         
                             <!-- 0----- -->
-                        <td><?php echo $item['Trangthai'] ?></td>
                         <td >
                             <form action="Controll/xulylich.php"  method="POST"> 
                                 <div class="form-group">
                                     <select name="trangthai" class="form-control">
-                                        
+                                    <?php 
+                                            if($item['Trangthai']!='Đã khám'){
+                                    ?>
                                         <option value="Xác nhận">Xác nhận</option>
                                         <option value="Hủy">Hủy</option>
                                         <option value="Đang chờ">Đang chờ</option>
+                                        <?php 
+                                            }
+                                        ?>
                                         <option value="Đã khám">Đã khám</option>
                                     </select>
                                 </div>
                                 <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
                             </form>
 						</td>		
+                        <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
                 <?php } ?>
 				</table>

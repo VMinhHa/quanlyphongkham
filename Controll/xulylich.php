@@ -15,7 +15,7 @@
                     "'.$xacnhan.'"';
                     $s->execute($sql);
                     header('location:../thongtinbacsi.php?pagetrang=xemlich');
-            }
+                    }
                 
       
 ?>
