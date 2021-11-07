@@ -66,8 +66,10 @@
 								<?php 
 									if($item['Trangthai']=='Đang chờ'){
 								?>
-									<button class="btn btn-sm btn-danger delete_lichhen" type="button" data-id="<?php $item['id_Lichhen']?>">
-									Hủy</button>
+								<form action="Controll/xulydatlich.php" method="POST">
+									<button  class="btn btn-danger btn-sm delete_lichhen" 
+									type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
+								</form>
 								<?php
 									}
 								?>
@@ -88,12 +90,12 @@
 
 <!-- <script>
 $('.delete_lichhen').click(function(){
-		_conf("Bạn có chắc là muốn xóa lịch này ko?","delete_lichhen",[$(this).attr('data-id')])
+		_conf("Bạn có chắc là muốn xóa lịch hẹn này ko này ko?","delete_lichhen",[$(this).attr('data-id')])
 	})
 	function delete_lichhen($id){
 		start_load()
 		$.ajax({
-			url:'admin/ajax.php?action=delete_lichhen',
+			url:'../admin/ajax.php?action=delete_lichhen',
 			method:'POST',
 			data:{id:$id},
 			success:function(resp){

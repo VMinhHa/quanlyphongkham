@@ -18,11 +18,24 @@ session_start();
          Where Tendangnhap="'.$_SESSION['username'].'"';
          $lich1=$s->executeSingLesult($sql2);
          $bn=$lich1['ID_Benhnhan'];
-
-        $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Trangthai,so) 
-        VALUES ('$bn','$bs','$ngay','$bd','$kt','đang chờ','$id')";
+        $date=date("Y-m-d");
+        $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
+        VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
         header('location:../doctor.php');
+    }
+    if(isset($_POST['Xoa_lich'])){
+        include '../db/connect.php';
+        $s=new data();
+        $idlichhen=$_POST['Xoa_lich'];
+        $sql="DELETE FROM lichhen WHERE
+        id_Lichhen = ".$idlichhen;
+        $s->execute($sql);
+            echo '<script>
+            alert("Xóa thành công");
+            window.location.href="../thongtinbenhnhan.php?pagetrang=xemlich";
+            </script>';
+        
     }
 
 ?>

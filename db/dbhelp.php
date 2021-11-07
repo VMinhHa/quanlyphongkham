@@ -65,8 +65,8 @@ class Action{
 	}
     function delete_lichhen(){
 		extract($_POST);
-		 $delete = $this->db->query("DELETE FROM lichhen where Trangthai='Đang chờ' and
-          lichhen.id_Lichhen = ".$id);
+		 $delete = $this->db->query("DELETE FROM lichhen WHERE
+          id_Lichhen = ".$id);
 		if($delete)
 			return 1;
 	}
