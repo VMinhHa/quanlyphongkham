@@ -35,6 +35,9 @@
                     where Tendangnhap="'.$_SESSION['username'].'"';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
+                    $sq1='Select * from benhan b join lichhen l
+                    on b.id_Lichhen=l.id_Lichhen';
+                    
                     foreach ($Lich as $item) {
 					?>
 					<tr>
@@ -46,11 +49,19 @@
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <!-- Chuẩn đoán -->
                         <td>   
-                            <?php if($item['Trangthai']=='Đã khám') {?>
+                            <?php if($item['Trangthai']=='Đã khám') {
+                                $sql2='Select * from benhan where id_Lichhen=
+                                '.$item['id_Lichhen'];
+                                $chuandoan=$s->executeSingLesult($sql2);?>
                             <form action="Controll/xulybenhan.php"  method="POST"> 
                                 <div class="form-group">
-                                    <textarea rows="5" cols="58" name="chuandoan" class="form-control">
-                                    </textarea> 
+                                    <!-- ko di hchuyen -->
+<textarea rows="5" cols="58" name="noidung" class="form-control">
+<?php 
+    echo trim($chuandoan['Chuandoan']);
+?>
+</textarea> 
+<!-- 2222222222222 -->
                                 </div>
                                 <button  class="btn-primary btn text-center" 
                                 value="<?php echo $item['id_Lichhen']?>" 

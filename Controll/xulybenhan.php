@@ -3,17 +3,33 @@
         include '../db/connect.php';
         $s=new data();
                 if(isset($_POST['chuandoan'])){
-                //     if(isset($_POST['trangthai'])){
-                //         $trangthai=$_POST['trangthai'];
-                //     }
-                //     if(isset($_POST['xacnhan'])){
-                //         $xacnhan=$_POST['xacnhan'];
-                //     }
-                //     $sql = 'update taikhoan t join bacsi b on t.id=b.id join lichhen l on
-                //     b.ID_Bacsi=l.ID_Bacsi SET 
-                //     Trangthai="'.$trangthai.'" WHERE Tendangnhap="'.$_SESSION['username'].'" and id_Lichhen=
-                //     "'.$xacnhan.'"';
-                //     $s->execute($sql);
-                     header('location:../thongtinbacsi.php?pagetrang=xemlich');
+                     if(isset($_POST['noidung'])){
+                         $noidung=$_POST['noidung'];
+                         $noidung = str_replace('"', '\\"', $noidung);
+                         $noidung=trim($noidung);
+                     }
+                     if(isset($_POST['chuandoan'])){
+                        $id=$_POST['chuandoan'];
+                     }
+                    $sql1='Select * from benhan where id_Lichhen='.$id;
+                    if($s->executeSingLesult($sql1)==null){
+                            $sql='Insert into benhan (id_Lichhen,Chuandoan,Ngaytao)
+                            values ("'.$id.'","'.$noidung.'","'.date("Y-m-d").'")';
+                            $s->execute($sql);
+                            echo '<script>
+                            alert("Thêm thành công");
+                            window.location.href="../thongtinbacsi.php?pagetrang=xemlich";
+                            </script>';  
+                    }
+                    else{ 
+                        $sql='Update benhan
+                            set Chuandoan="'.$noidung.'" where id_Lichhen='.$id;
+                            $s->execute($sql);
+                            echo '<script>
+                            alert("Cập nhật thành công");
+                            window.location.href="../thongtinbacsi.php?pagetrang=xemlich";
+                            </script>';
+                    }
+                    
                 }
 ?>

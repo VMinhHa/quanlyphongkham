@@ -5,6 +5,7 @@
                 if(isset($_POST['xacnhan'])){
                     if(isset($_POST['trangthai'])){
                         $trangthai=$_POST['trangthai'];
+                        
                     }
                     if(isset($_POST['xacnhan'])){
                         $xacnhan=$_POST['xacnhan'];

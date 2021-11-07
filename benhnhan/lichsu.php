@@ -45,7 +45,14 @@
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 						<!-- Chuẩn đoán -->
 						<td>
-						
+							<?php 
+								$sql1='Select * from benhan b join lichhen l
+								on b.id_Lichhen=l.id_Lichhen where b.ID_Lichhen=
+								'.$item['id_Lichhen'];
+								$chuandoan=$s->executeSingLesult($sql1);
+								echo '<p>'.$chuandoan['Chuandoan'].'</p>'
+							?>
+							
 						</td>
 						<!-- THuoc -->
 						<td>
