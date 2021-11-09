@@ -22,7 +22,11 @@ session_start();
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
-        header('location:../doctor.php');
+        echo '<script>
+            alert("Đăng ký lịch thành công");
+            window.location.href="../doctor.php";
+            </script>';
+
     }
     if(isset($_POST['Xoa_lich'])){
         include '../db/connect.php';

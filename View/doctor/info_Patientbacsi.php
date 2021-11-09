@@ -8,11 +8,12 @@
             $dsbacsi=$p->executeSingLesult($sql);
         ?>
         <div class="row" style="padding-top: 80px;">
-          <div class="col-2"></div>
+          <div class="col-2">  </div>
           <div class="col-3 text-center">
             <img src="./images/bacsi/<?php echo $dsbacsi['image']?>" style="border:1px solid black;radius:5px;" width="150px" height="150px">
 
             <p><a href ="#" data-toggle="modal" data-target="#change_image">Thay đổi ảnh</a></p>
+          
             <div class="modal fade" id="change_image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -34,6 +35,7 @@
             </div>
           </div>
           <div class="col-2">
+
             <p class="font-weight-bolder">Họ và Tên:</p>
             <p class="font-weight-bolder">Giới tính:</p>
             <p class="font-weight-bolder">Ngày sinh:</p>
@@ -50,6 +52,12 @@
           <div class="col-2"></div> 
         </div>
 
+
+
+
+
+
+        
         <div class="row m-4">
           <div class="col text-center">
             <button class="btn btn-primary" data-toggle="modal" data-target="#modalUpdate">Cập nhập</button>
