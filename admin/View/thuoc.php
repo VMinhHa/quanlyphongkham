@@ -1,20 +1,58 @@
+<?php
+    $conn = mysqli_connect('localhost', 'root','') or die(mysqli_error()); //Data connection
+    $db_select = mysqli_select_db($conn,'quanlyphongkham') or die(mysqli_error());   //Selecting Data
+    mysqli_set_charset($conn,'utf8');
+    
+    include ('./../plugins/Classes/PHPExcel.php');
+    require_once ('./../plugins/Classes/PHPExcel/IOFactory.php');
+
+    if(isset($_POST['submit']))
+    {
+        $file = $_FILES['file']['tmp_name'];
+
+        $objExcel = PHPExcel_IOFactory::load($file);
+
+        foreach($objExcel->getWorksheetIterator() as $worksheet)
+        {
+            $highestrow = $worksheet->getHighestRow();
+            // echo '<pre>';
+            // print_r($highestrow);
+
+            for($row=10;$row<=$highestrow;$row++)
+            {
+                $tenthuoc = $worksheet->getCellByColumnAndRow(3,$row)->getValue();
+                $loaithuoc = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
+                $thongtinthuoc = $worksheet->getCellByColumnAndRow(7,$row)->getValue();
+                $handung = $worksheet->getCellByColumnAndRow(9,$row)->getValue();
+                // echo '<br>';
+
+                    $ql = "insert into thuoc(Tenthuoc,Loaithuoc,Thongtinthuoc,Handung) values ('$tenthuoc','$loaithuoc','$thongtinthuoc','$handung')";
+                    mysqli_query($conn,$ql);
+                
+            }
+        }
+    }
+?>
 <div class="container-fluid">
     <div class="panel-heading mt-3 ml-3 mr-3">
-        <h1 class="text-center">Xem danh sách người dùng</h1>
+        <h1 class="text-center">Xem danh sách Thuốc</h1>
     </div>
     <div class="panel-body card">
-        <div>
-            <button class="btn btn-primary btn btn-sm" data-toggle="modal" data-target="#myModal" style="width:150px;margin:5px;float:left;" 
+        <!-- <div> -->
+            <!-- <button class="btn btn-primary btn btn-sm" data-toggle="modal" data-target="#myModal" style="width:150px;margin:5px;float:left;" 
             type="button" id="new_appointment">
             Thêm Thuốc
-            </button>
-            <form method="post" style="width:150px;margin:5px;float:right;">
-                        <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
-                        style="width:200px; float:right;">
-                        </div>
+            </button> -->
+            <!-- <form method="post" enctype="multipart/form-data">
+                
+            </form> -->
+            <form method="post" style="width:100%;margin:5px;float:right;" enctype="multipart/form-data">
+                <input type="file" name="file" style="margin: 7px;">
+                <input type="submit" name="submit" value="Upload">
+                    <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                    style="width:200px; float:right;">
             </form>
-        </div>
+        <!-- </div> -->
     <div>
     <table class="card-body table table-bordered table-hover">
             <thead>
@@ -52,7 +90,7 @@
                                 <td>' . $item['Tenthuoc'] . '</td>
                                 <td>' . $item['Loaithuoc'] . '</td>
                                 <td>' . $item['Thongtinthuoc'] . '</td>
-                                <td>' . $item['Ngaynhap'] . '</td>
+                                <td>' . $item['Handung'] . '</td>
                                 <td>
                                 <button class="btn btn-sm btn-danger delete_thuoc" type="button" data-id="'.$item['ID_Thuoc'].'">Xóa</button>
                                 </a>

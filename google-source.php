@@ -43,7 +43,8 @@
             //var_dump($googleUser);
             $name = $googleUser['name'];
             $email = $googleUser['email'];
-            $gender = $googleUser['gender'];
+            $gender = $googleUser['gender']; //à đúng r cái giới tính trống em đổi
+    
             $picture = $googleUser["picture"];            
             // function loginFromSocialCallBack($googleUser){                 
                 $result1 = mysqli_query($conn, "select * FROM taikhoan WHERE email ='$email'");

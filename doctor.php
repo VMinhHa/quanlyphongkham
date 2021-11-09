@@ -202,9 +202,9 @@
 			</style>
 				<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item " data-groups="[&quot;cat2&quot;]">
 					<div class="position-relative doctor-inner-box">
-						<div class="doctor-profile">
+						<div class="doctor-profile" style="height:200px;">
 							<div class="doctor-img">
-							<img src="images/bacsi/<?php echo $item1['image']  ?>" alt="doctor-image" class="img-fluid w-100">
+							<img src="images/bacsi/<?php echo $item1['image']  ?> " alt="doctor-image" class="img-fluid w-100">
 							</div>
 						</div>
 						<div class="content mt-3" >
