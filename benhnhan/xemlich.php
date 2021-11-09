@@ -68,7 +68,7 @@
 								?>
 								<form action="Controll/xulydatlich.php" method="POST">
 									<button  class="btn btn-danger btn-sm delete_lichhen" 
-									type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
+									type="submit" onclick="return confirm('Bạn có thực sự muốn xóa');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
 								</form>
 								<?php
 									}

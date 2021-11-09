@@ -53,8 +53,8 @@
                      $sql = "insert into Taikhoan(Tendangnhap,Email,Phanquyen) values('$name','$email','Benhnhan')"; 
                      $res = mysqli_query($conn, $sql);
                      $last_id = mysqli_insert_id($conn);
-                     $sq = "insert into benhnhan(ID_Benhnhan,id,
-                     Hotenbn,Ngaysinh,Gioitinh,image) values('NULL','$last_id','$name','2021-11-09','Nam','$picture')";
+                     $sq = "insert into benhnhan(id,
+                     Hotenbn,Ngaysinh,Gioitinh,image) values('$last_id','$name','2021-11-09','Nam','$picture')";
                      mysqli_query($conn,$sq);  
                      //mysqli_query($conn,"INSERT INTO benhnhan(id,Hotenbn,Gioitinh,image) values('$lastid','$name','$gender','$picture')");                       
                      if($res) { 
