@@ -32,10 +32,8 @@ class data
         mysqli_close($conn);
 
     }
-    function phantrang($limit,$count){
+    function phantrang($sql){
         $conn = $this->connect();
-        $sql="select * from thuoc order by ID_Thuoc
-        desc limit $limit,$count";
         $table=mysqli_query($conn,$sql);
         return $table;
         mysqli_close($conn);

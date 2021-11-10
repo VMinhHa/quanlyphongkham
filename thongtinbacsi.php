@@ -114,7 +114,11 @@
                       include ('View/doctor/doimk.php');
                       break;
                   }
-                } 
+                 } elseif(isset($_GET['page'])){
+                   if(isset($_POST['idlich1']))
+                     $_SESSION['idlich']=$_POST['idlich1'];
+                   include ('View/doctor/Kethuoc.php');
+                 }
                 else{
                   include 'View/doctor/info_Patientbacsi.php';  
                 }

@@ -64,7 +64,7 @@ echo trim($chuandoan['Chuandoan']);
 
 ?>
 </textarea> 
-<!-- 2222222222222 -->
+    <!-- 2222222222222 -->
                                 </div>
                                 <button  class="btn-primary btn text-center" 
                                 value="<?php echo $item['id_Lichhen']?>" 
@@ -77,10 +77,18 @@ echo trim($chuandoan['Chuandoan']);
                         <!-- THuoc -->
                         <td>
                             <?php if($item['Trangthai']=='Đã khám') {?>
-                                <button  class="btn btn-dark text-center" value="<?php echo $item['id_Lichhen']?>" data-toggle="modal" data-target="#myModal"
-                                style="width:135px;height:40px;font-size:12px;"  name="kethuoc">Kê thuốc</button>
+                                <form action="thongtinbacsi.php?page=1"  method="POST"> 
+                                <button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlich1" class="btn btn-dark text-center">
+                                    Kê thuốc
+                                </button>
+                                </form>
                             <?php 
-                                }
+                            // Cần sửa
+                            //  if(isset($_POST['idlich1'])){
+                            //     $_SESSION['idlich']=$_POST['idlich1'];
+                            //  }
+                                 }
+                                
                             ?>
                         </td>
                                         
@@ -132,78 +140,3 @@ echo trim($chuandoan['Chuandoan']);
 </div>
 
 
-
-
-
-<!--  ---------------Modal Them-->
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Danh sách thuốc</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-	
-        <!-- Modal body -->
-        <div class="modal-body">
-        <form action="#" id="manage-appointment" method="POST" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label>Họ tên:</label>
-                        <input type="text" class="form-control" name="hoten" value="<?php $hoten?>" placeholder="Enter Họ tên" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Tên đăng nhập:</label>
-                        <select class="form-control" name="tendangnhap">
-                            <?php
-                            $sql1 = 'select * from taikhoan where Phanquyen="Doctor" AND id not in (
-                                SELECT t.id from taikhoan t JOIN bacsi b on t.id=b.id)';
-                            $caterogyList1 = $s->executeLesult($sql1);
-                            foreach ($caterogyList1 as $item1) {
-                                echo '<option value="' . $item1['id'] . '" >' . $item1['Tendangnhap'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Tên Khoa: </label>
-                        <select class="form-control" name="tenkhoa" id="cars" placeholder="chon khoa">
-                            <?php
-                            $sql = 'SELECT ID_Khoa,Tenkhoa FROM khoa';
-                            $caterogyList = $s->executeLesult($sql);
-                            foreach ($caterogyList as $item) {
-                                echo '<option value="' . $item['ID_Khoa'] . '" >' . $item['Tenkhoa'] . '</option>';
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Ngày sinh:</label>
-                        <input type="date" class="form-control" name="ngaysinh" required>
-                        
-                    </div>
-                    <div class="form-group">
-                        <label>Giới tính:</label>
-                        <input type="radio" value="Nam" name="gioitinh"><label for="">Nam</label>
-                        <input type="radio" value="Nữ" name="gioitinh"><label for="">Nữ</label> <br>
-                        <span style="color:red"><?php echo isset($messs3)?$messs3:''; ?></span>
-                    </div>
-                    <div class="form-group">
-						<label for="" class="control-label">Image</label>
-						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
-					</div>
-			<hr>
-			<div class="col-md-12 text-center">
-				<button class="btn-primary btn btn-sm col-md-4" name="submit">Thêm</button>
-				<button class="btn btn-secondary btn-sm col-md-4" data-dismiss="modal" type="button" data-dismiss="modal" id="">Thoát</button>
-			</div>
-		</form>
-        </div>
-        
-        <!-- Modal footer -->
-        
-      </div>
-    </div>
-  </div>

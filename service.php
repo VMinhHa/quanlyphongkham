@@ -82,9 +82,11 @@
 				$prodperpage=9;
 				if(isset($_REQUEST["page"])){
 					$page=$_REQUEST["page"];
-					$dsthuoc=$s-> phantrang(($page-1)*$prodperpage,$prodperpage);
+					$page1=($page-1)*$prodperpage;
+					$sql="select * from thuoc order by ID_Thuoc
+       				desc limit $page1,$prodperpage";
+					$dsthuoc=$s-> phantrang($sql);
 				}
-				
 				$dem=0;
 				foreach($dsthuoc as $value){
 					$dem++;
