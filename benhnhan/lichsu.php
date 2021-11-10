@@ -50,7 +50,10 @@
 								on b.id_Lichhen=l.id_Lichhen where b.ID_Lichhen=
 								'.$item['id_Lichhen'];
 								$chuandoan=$s->executeSingLesult($sql1);
-								echo '<p>'.$chuandoan['Chuandoan'].'</p>'
+								if($chuandoan!=null){
+									echo '<p>'.$chuandoan['Chuandoan'].'</p>';
+								}
+								
 							?>
 							
 						</td>

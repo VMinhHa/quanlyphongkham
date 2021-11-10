@@ -114,19 +114,34 @@
               include 'View/nguoidung.php';
             }
             break;
-            case 'thuoc':
-              if(isset($_GET['idsua'])){
-                if(isset($_POST['Cancel5'])){
+              case 'thuoc':
+                if(isset($_GET['idsua'])){
+                  if(isset($_POST['Cancel5'])){
+                    include 'View/thuoc.php';
+                  }
+                  else{
+                    include 'Controller/suathuoc.php';
+                  }
+                }
+                else {
                   include 'View/thuoc.php';
                 }
-                else{
-                  include 'Controller/suathuoc.php';
+                break;
+
+              case 'phongkham':
+                if(isset($_GET['idsua'])){
+                  if(isset($_POST['Cancel7'])){
+                    include 'View/phongkham.php';
+                  }
+                  else{
+                    include 'Controller/suaphongkham.php';
+                  }
                 }
-              }
-              else {
-                include 'View/thuoc.php';
-              }
-              break;
+                else {
+                  include 'View/phongkham.php';
+                }
+                break;
+              
       }
     } else {
       echo 'lỗi';
