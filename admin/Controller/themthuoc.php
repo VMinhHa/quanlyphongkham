@@ -11,12 +11,12 @@ if(isset($_POST['submit4'])){
 	if (isset($_POST['thongtinthuoc'])) {
 		$thongtinthuoc = $_POST['thongtinthuoc'];
 	}
-	if (isset($_POST['ngaynhap'])) {
-		$ngaynhap = $_POST['ngaynhap'];
+	if (isset($_POST['handung'])) {
+		$handung = $_POST['handung'];
 	}
 		$sql="INSERT INTO thuoc (Tenthuoc, 
-		Loaithuoc,Thongtinthuoc,Ngaynhap)
-		VALUES ('$tenthuoc','$loaithuoc', '$thongtinthuoc', '$ngaynhap')";
+		Loaithuoc,Thongtinthuoc,Handung)
+		VALUES ('$tenthuoc','$loaithuoc', '$thongtinthuoc', '$handung')";
 		$s->execute($sql);
 		header('location:../index.php?page=thuoc');
 }

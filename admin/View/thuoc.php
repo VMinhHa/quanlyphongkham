@@ -63,7 +63,7 @@
                     <th style="width:15%">Tên Thuốc</th>
                     <th style="width:5%">Loại thuốc</th>
                     <th style="width:60%">Thông tin thuốc</th>
-                    <th style="width:10%">Ngày nhập</th>
+                    <th style="width:10%">Hạn dùng</th>
                     <th style="width:5%"></th>
                     <th style="width:5%"></th>
                 </tr>
@@ -79,7 +79,7 @@
                     if(!empty($s)){
                         $additional=' and Tenthuoc like"%'.$s.'%"
                         or Loaithuoc like"%'.$s.'%" or Thongtinthuoc like"%'.$s.'%" 
-                        or Ngaynhap like"%'.$s.'%"';
+                        or Handung like"%'.$s.'%"';
                     }
                 ////lay danh sach
                 $s = new data();
@@ -163,8 +163,8 @@ $('.delete_thuoc').click(function(){
                         <textarea rows="10" name="thongtinthuoc"  cols="48"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="" class="control-label">Ngày nhập</label>
-                        <input type="date" class="form-control" name="ngaynhap" required>
+                        <label for="" class="control-label">Hạn dùng</label>
+                        <input type="date" class="form-control" name="handung" required>
                     </div>
 			<hr>
 			<div class="col-md-12 text-center">
