@@ -37,7 +37,8 @@
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
-					?>
+						if($item['Trangthai']!='Hủy'){
+							?>
 						<tr>
 							<td ><?php echo $dem++ ?></td>
 							<td>
@@ -77,6 +78,49 @@
 							
 						</tr>
                 		<?php 
+						//Hiện đỏ 
+						}else{
+							?>
+						<tr style="background-color:red; color:white">
+							<td ><?php echo $dem++ ?></td>
+							<td>
+								<?php echo $item['Hoten'] ?>
+							</td>
+							<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
+							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+							<td><?php echo $item['Trangthai'] ?></td>
+							<?php 
+								// $last_id = $item['id_Lichhen'];
+								// $file="./images/qrcode/".$last_id.".png";
+								// $url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
+							?>
+							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
+
+								//echo "<img src='".$file."'>"; 
+								?>
+							</td>
+
+							<!-- bỏ -->
+							<!-- <td>
+								<a href="./qrcode.php?idlich=<?//php echo $item['id_Lichhen']?>">Xem QRCode</a>
+							</td> -->
+						
+							<td>
+								<?php 
+									if($item['Trangthai']=='Đang chờ'){
+								?>
+								<form action="Controll/xulydatlich.php" method="POST">
+									<button  class="btn btn-danger btn-sm delete_lichhen" 
+									type="submit" onclick="return confirm('Bạn có thực sự muốn xóa');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
+								</form>
+								<?php
+									}
+								?>
+							</td>
+							
+						</tr>
+                		<?php 
+						}
 					} 
 					?>
 					<?php

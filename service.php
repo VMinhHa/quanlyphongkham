@@ -55,9 +55,17 @@
 			<?php 
 				include './db/connect.php';
 				$s=new data();
-				$sql='select * from thuoc';
-				$dsthuoc=$s->executeLesult($sql);
+				$dem1=$s->dem();
+				$prodperpage=9;
+				if(isset($_REQUEST["page"])){
+					$page=$_REQUEST["page"];
+					$dsthuoc=$s-> phantrang(($page-1)*$prodperpage,$prodperpage);
+				}
+				
+				$dem=0;
 				foreach($dsthuoc as $value){
+					$dem++;
+					
 			?>
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="service-block mb-5">
@@ -72,7 +80,29 @@
 			<?php
 				}
 			?>
+			
 		</div>
+		<div class="giua">
+			 
+			<ul class="pagination pagination-lg">
+				<?php 
+					
+						# code...
+					 for ($i=0 ;$i<$dem1/9.0;$i++) {
+					?>
+						 <li><a href="service.php?page=<?php echo  $i+1 ?>"><?php echo  $i+1 ?></a></li>
+					<?php
+					 }
+				
+				?>
+			</ul>
+		</div>
+		<style>
+			/* Chỉnh cho đẹp */
+			.giua ul li{
+					border:1px solid black;
+				 }
+		</style>
 	</div>
 
 	
