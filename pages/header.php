@@ -49,7 +49,7 @@
 							<li class="nav-item active">
 								<a class="nav-link" href="index.php">TRANG CHỦ</a>
 			  				</li>
-							<li class="nav-item"><a class="nav-link" href="service.php">THUỐC</a></li>
+							<li class="nav-item"><a class="nav-link" href="service.php?page=1">THUỐC</a></li>
 							<li class="nav-item"><a class="nav-link" href="blog-sidebar.php">TIN TỨC</a></li>
 							<li class="nav-item"><a class="nav-link" href="about.php">LIÊN HỆ</a></li>
 							<li class="nav-item dropdown">

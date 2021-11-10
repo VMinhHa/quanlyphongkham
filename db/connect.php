@@ -32,6 +32,23 @@ class data
         mysqli_close($conn);
 
     }
+    function phantrang($limit,$count){
+        $conn = $this->connect();
+        $sql="select * from thuoc order by ID_Thuoc
+        desc limit $limit,$count";
+        $table=mysqli_query($conn,$sql);
+        return $table;
+        mysqli_close($conn);
+
+
+    }
+    Function dem(){
+        $conn = $this->connect();
+        $sql="Select * from thuoc";
+        $result=mysqli_query($conn, $sql);
+        return mysqli_num_rows($result);
+        mysqli_close($conn);
+    }
     function delete_appointment($id){
 		$delete = $this->db->query("DELETE FROM appointment_list where id = ".$id);
 		if($delete)

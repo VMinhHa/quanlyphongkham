@@ -1,4 +1,5 @@
 <?php
+    
     $conn = mysqli_connect('localhost', 'root','') or die(mysqli_error()); //Data connection
     $db_select = mysqli_select_db($conn,'quanlyphongkham') or die(mysqli_error());   //Selecting Data
     mysqli_set_charset($conn,'utf8');
@@ -32,6 +33,7 @@
             }
         }
     }
+
 ?>
 <div class="container-fluid">
     <div class="panel-heading mt-3 ml-3 mr-3">

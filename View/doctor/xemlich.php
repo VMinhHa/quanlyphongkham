@@ -86,16 +86,34 @@
                             <form action="Controll/xulylich.php"  method="POST"> 
                                 <div class="form-group">
                                     <select name="trangthai" class="form-control">
-                                    <?php 
-                                            if($item['Trangthai']!='Đã khám'){
-                                    ?>
-                                        <option value="Xác nhận">Xác nhận</option>
-                                        <option value="Hủy">Hủy</option>
-                                        <option value="Đang chờ">Đang chờ</option>
                                         <?php 
+                                            if($item['Trangthai']=='Hủy'){
+                                                echo '<option value="Hủy">Hủy</option>';
+                                            }
+                                            else{
+                                                if($item['Trangthai']=='Đã khám'){
+
+                                                 echo '<option value="Đã khám">Đã khám</option>';
+                                                }else{
+                                                    if($item['Trangthai']=='Xác nhận')
+                                                    {
+                                                       echo '<option value="Hủy">Hủy</option>
+                                                        <option value="Đang chờ">Đang chờ</option>
+                                                        <option value="Đã khám">Đã khám</option>';
+                                                    }
+                                                    else{
+                                                        echo '<option value="Xác nhận">Xác nhận</option>
+                                                        <option value="Hủy">Hủy</option>
+                                                        <option value="Đang chờ">Đang chờ</option>
+                                                        <option value="Đã khám">Đã khám</option>';
+                                                    }
+                                                }
+                                 
+                                                
+                                                
                                             }
                                         ?>
-                                        <option value="Đã khám">Đã khám</option>
+                                        
                                     </select>
                                 </div>
                                 <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
