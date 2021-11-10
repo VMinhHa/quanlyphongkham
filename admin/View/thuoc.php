@@ -51,7 +51,7 @@
                 <input type="file" name="file" style="margin: 7px;">
                 <input type="submit" name="submit" value="Upload">
                     <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
-                    style="width:200px; float:right;">
+                    style="width:200px; float:right; margin-right:10px;">
             </form>
         <!-- </div> -->
     <div>

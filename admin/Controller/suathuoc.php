@@ -13,19 +13,19 @@ if (isset($_GET['idsua'])) {
 	$Handung=$category['Handung'];
     if(isset($_POST['submit5'])){
         if (isset($_POST['tenthuoc'])) {
-            $tenthuoc= $_POST['tenthuoc'];	
+            $Tenthuoc= $_POST['tenthuoc'];	
         }
         if (isset($_POST['loaithuoc'])) {
-            $loaithuoc = $_POST['loaithuoc'];
+            $Loaithuoc = $_POST['loaithuoc'];
         }
         if (isset($_POST['thongtinthuoc'])) {
-            $thongtinthuoc = $_POST['thongtinthuoc'];
+            $Thongtinthuoc = $_POST['thongtinthuoc'];
         }
         if (isset($_POST['handung'])) {
-            $handung = $_POST['handung'];
+            $Handung = $_POST['handung'];
         }
-        $sql="UPDATE thuoc SET Tenthuoc='$tenthuoc',Loaithuoc='$loaithuoc',
-        Thongtinthuoc='$thongtinthuoc',Handung='$handung'
+        $sql="UPDATE thuoc SET Tenthuoc='$Tenthuoc',Loaithuoc='$Loaithuoc',
+        Thongtinthuoc='$Thongtinthuoc',Handung='$Handung'
         WHERE ID_Thuoc =".$id1;
         $s->execute($sql);
         echo '<script>
@@ -51,21 +51,21 @@ if (isset($_GET['idsua'])) {
 		<form action="#" id="manage-appointment" method="POST">
             <div class="form-group">
                         <label>Tên Thuốc:</label>
-                        <input type="text" class="form-control" value="<?php echo $Tenthuoc ?>" name="tenthuoc" placeholder="Nhập tên thuốc" required>
+                        <input type="text" class="form-control" value="<?php echo $Tenthuoc ?>" name="tenthuoc" placeholder="Nhập tên thuốc">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Loại thuốc</label><br>
-                        <input type="text" class="form-control" value="<?php echo $Loaithuoc ?>" name="loaithuoc" required>
+                        <input type="text" class="form-control" value="<?php echo $Loaithuoc ?>" name="loaithuoc">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Thông tin thuốc</label>
-                        <textarea rows="10" name="thongtinthuoc"cols="48">
-                        <?php echo trim($Thongtinthuoc) ?>
+<textarea rows="10" name="thongtinthuoc"cols="48">
+<?php echo trim($Thongtinthuoc) ?>
                         </textarea>
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Hạn dùng</label>
-                        <input type="date" class="form-control" value="<?php echo $handung ?>" name="handung" required>
+                        <input type="text" class="form-control" value="<?php echo $Handung ?>" name="handung">
                     </div>
 			<hr>
 			<div class="col-md-12 text-center">
