@@ -14,7 +14,7 @@
     VALUES ("'.$idthuoc.'","'.$idlich.'")';
     $s->execute($sql);
     echo '<script> alert("Thêm thuốc thành công");
-    window.location.href="../thongtinbacsi.php?pagetrang=xemlich";
+    window.location.href="../thongtinbacsi.php?page=1";
     </script>';  
     
 }

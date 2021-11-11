@@ -26,8 +26,8 @@
 					<thead>
 						<tr>
                          <th style="width:10%">STT</th>
-                        <th style="width:30%">Tên Thuốc</th>
-                        <th style="width:30%">Loại thuốc</th>
+                        <th style="width:20%">Tên Thuốc</th>
+                        <th style="width:20%">Loại thuốc</th>
                         <th style="width:20%">Hạn dùng</th>
                         <th style="width:10%"></th>
 					</tr>
@@ -74,6 +74,23 @@
 
                     }
                 ?>
+                <tr class="text-center" >
+                    <th colspan="5" style="width:20%" >Tên thuốc đã kê</th>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                        <?php
+                            $sql1="select * from xemthuoc x join thuoc t on x.ID_Thuoc=t.ID_Thuoc where
+                            x.id_Lichhen=".$_SESSION['idlich'];
+                            $ds=$p->executeLesult($sql1);
+                            foreach ($ds as $value) {
+                                $s=$value['Tenthuoc'].' ,'.$s;
+                            }
+                            echo $result = rtrim($s, ",");
+                        ?>
+                        
+                    </td>
+                </tr>
                 </tbody>
                     <tr>
                     <td colspan="5">    

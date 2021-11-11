@@ -18,11 +18,11 @@
 					<thead>
 						<tr>
                         <th style="width:5%">STT</th>
-						<th style="width:15%">họ và tên bệnh nhân</th>
+						<th style="width:12.5%">họ và tên bệnh nhân</th>
 						<th style="width:12.5%">Ngày hẹn</th>
 						<th style="width:12.5%">Giờ hẹn</th>
                         <th style="width:25%">Chuẩn đoán</th>
-                        <th style="width:10%">Kê thuốc</th>
+                        <th style="width:12.5%">Kê thuốc</th>
                         <th style="width:10%">Xử lý</th>
                         <th style="width:10%">Trạng thái</th>
 					</tr>
@@ -77,8 +77,19 @@ echo trim($chuandoan['Chuandoan']);
                         <!-- THuoc -->
                         <td>
                             <?php if($item['Trangthai']=='Đã khám') {?>
+                                <h4>Tên thuốc: </h4>
+                            <?php
+                                $sql1="select * from xemthuoc x join thuoc t on x.ID_Thuoc=t.ID_Thuoc where
+                                x.id_Lichhen=".$item['id_Lichhen'];
+                                $s1='';
+                                $ds=$s->executeLesult($sql1);
+                                foreach ($ds as $value) {
+                                    $s1=$value['Tenthuoc'].' , '.$s1;
+                                }
+                                echo $result = rtrim($s1, " , ");
+                            ?>
                                 <form action="thongtinbacsi.php?page=1"  method="POST"> 
-                                <button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlich1" class="btn btn-dark text-center">
+                                <br><button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlich1" class="btn btn-dark text-center">
                                     Kê thuốc
                                 </button>
                                 </form>
