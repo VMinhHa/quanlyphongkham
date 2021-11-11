@@ -102,3 +102,27 @@
 		</div>
 	</div>
 </div>
+<style>
+		.pagination {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			list-style: none;
+		}
+		.pagination-item {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+
+		.pagination-item__link{
+			height: 30px;
+			display: block;
+			text-decoration: none;
+			text-align: center;
+			min-width: 40px;
+			line-height: 30px;
+			color: #939393;
+			font-size: 1.2rem;
+			border-radius: 2px;
+		}
+</style>
