@@ -57,10 +57,16 @@
 							?>
 							
 						</td>
+								
 						<!-- THuoc -->
 						<td>
-	
+						<form action="thongtinbenhnhan.php?xemthuoc"  method="POST"> 
+                                <button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlichhen" class="btn btn-dark text-center">
+                                    Xem thuốc
+                                </button>
+                            </form>
 						</td>
+	
 						<!-- 0----- -->
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
@@ -70,3 +76,48 @@
 		</div>
 	</div>
 </div>
+
+
+<!--  ---------------Modal Them-->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Danh sách thuốc</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+	
+        <!-- Modal body -->
+        <div class="modal-body">
+			<table class="table table-bordered">
+			<thead>
+				<tr>
+                	<th style="width:10%">STT</th>
+                    <th style="width:30%">Tên Thuốc</th>
+                    <th style="width:30%">Loại thuốc</th>
+                    <th style="width:20%">Hạn dùng</th>
+				</tr>
+				</thead>
+				<tbody>
+					<?php 
+						echo $_GET['idlichhen'];
+					?>
+					<!--  -->
+
+
+				</tbody>
+			</table>
+			<hr>
+			<div class="col-md-12 text-center">
+				<button class="btn btn-secondary btn-sm col-md-4" data-dismiss="modal" type="button" data-dismiss="modal" id="">Thoát</button>
+			</div>
+        </div>
+        
+        <!-- Modal footer -->
+        
+      </div>
+    </div>
+  </div>

@@ -114,6 +114,9 @@
                       break;
                   }
                 }
+                elseif(isset($_GET['xemthuoc'])){
+                    include ('./benhnhan/xuatthuoc.php');
+                }
                 else{
                   include './benhnhan/info_patient.php';  
                 }
