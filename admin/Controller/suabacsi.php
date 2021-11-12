@@ -10,8 +10,8 @@ $s=new data();
          where ID_Bacsi=' . $id;
         $category = $s->executeSingLesult($sql);
             $hoten = $category['Hoten'];
-            $taikhoan=$category['id'];
             $khoa=$category['ID_Khoa'];
+            $idtk=$category['id'];
             $ngaysinh = $category['Ngaysinh'];
             $gioitinh = $category['Gioitinh'];
             $tendangnhap=$category['Tendangnhap'];
@@ -73,11 +73,31 @@ $s=new data();
                 </div>
                 <div class="form-group">
                     <label>Tên đăng nhập:</label>
-                    <input type="text" class="form-control" name="tendangnhap" value="<?php echo $taikhoan.'-'.$tendangnhap?>">
+                    <select class="form-control" name="tendangnhap">
+                            <option value="<?php echo $idtk ?>"><?php echo $tendangnhap ?></option>
+                            <?php
+                            $sql1 = 'select * from taikhoan where Phanquyen="Doctor" AND id not in (
+                                SELECT t.id from taikhoan t JOIN bacsi b on t.id=b.id)';
+                            $caterogyList1 = $s->executeLesult($sql1);
+                            foreach ($caterogyList1 as $item1) {
+                                echo '<option value="' . $item1['id'] . '" >' . $item1['Tendangnhap'] . '</option>';
+                            }
+                            ?>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label>Tên Khoa: </label>
-                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $tenkhoa?>">
+                    <select class="form-control" name="tenkhoa" id="cars" placeholder="chon khoa">
+                    <option value="<?php echo $khoa ?>"><?php echo $tenkhoa ?></option>
+                            <?php
+                            $sql = 'SELECT ID_Khoa,Tenkhoa FROM khoa where ID_Khoa not in (
+                                SELECT ID_Khoa from bacsi)';
+                            $caterogyList = $s->executeLesult($sql);
+                            foreach ($caterogyList as $item) {
+                                echo '<option value="' . $item['ID_Khoa'] . '" >' . $item['Tenkhoa'] . '</option>';
+                            }
+                            ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Ngày sinh:</label>
