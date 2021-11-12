@@ -14,9 +14,10 @@ $s=new data();
             $phanquyen = $_POST['phanquyen'];
             $phanquyen = str_replace('"', '\\"', $phanquyen);
         }
+        $pass=md5(12345);
         //Luu vao database
-        $sql = "INSERT INTO taikhoan (Tendangnhap,Email,Phanquyen)
-                 values('$tendangnhap','$email','$phanquyen ')";
+        $sql = "INSERT INTO taikhoan (Tendangnhap,Password,Email,Phanquyen)
+                 values('$tendangnhap','$pass','$email','$phanquyen')";
         $s->execute($sql);
         header('location:../index.php?page=users');
     }

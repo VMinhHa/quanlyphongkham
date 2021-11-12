@@ -95,8 +95,8 @@
 				include './db/connect.php';
 				$s=new data();
 				$sql='
-				select * from bacsi b join lichlamviec l on l.ID_Bacsi=b.ID_Bacsi where 
-				l.ID_Bacsi="'.$id.'"';
+				select * from bacsi b where 
+				ID_Bacsi="'.$id.'"';
 				$listbacsi=$s->executeSingLesult($sql);
 		?>
 				<div class=" shuffle-item" data-groups="[&quot;cat2&quot;]">
@@ -129,12 +129,14 @@
 												//  }
 												 
 										
-
 									$sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi 
-									WHERE  b.ID_Bacsi="'.$id.'" and l.ID_Lich not in (SELECT so from 
-									lichhen join benhnhan on lichhen.ID_Benhnhan=benhnhan.ID_Benhnhan join 
-									taikhoan t on t.id=benhnhan.id
-									where t.Tendangnhap="'.$_SESSION['username'].'")';
+										WHERE  b.ID_Bacsi="'.$id.'" and l.ID_Lich not in (SELECT so from 
+									lichhen)';
+									// $sql = 'SELECT * FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi 
+									// WHERE  b.ID_Bacsi="'.$id.'" and l.ID_Lich not in (SELECT so from 
+									// lichhen join benhnhan on lichhen.ID_Benhnhan=benhnhan.ID_Benhnhan join 
+									// taikhoan t on t.id=benhnhan.id
+									// where t.Tendangnhap="'.$_SESSION['username'].'")';
 									$Lich = $s->executeLesult($sql);
 									foreach ($Lich as $item) {
 									?>
@@ -220,7 +222,6 @@
 						<p><a href="./doctor.php?id=<?php echo $item1['ID_Bacsi'] ?>" class="btn btn-danger" >Đặt lịch</a></p>
 						</div>
 					</div>
-					
 				</div>
 			<?php
 				}
