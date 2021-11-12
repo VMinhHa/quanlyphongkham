@@ -56,11 +56,11 @@
 									b.id=t.id Where Tendangnhap="'.$_SESSION['username'].'" and Phanquyen="Doctor"';
 									$hiendl=$s->executeSingLesult($sql);
 									if($hiendl==null){
-										echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
+										echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
 									}
 								}
 								else{
-									echo '<a href="doctor.php" target="_blank" class="btn btn-main-2 btn-icon btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
+									echo '<a href="doctor.php" class="btn btn-main btn-round-full">Đặt Lịch <i class="icofont-simple-right ml-2  "></i></a>';
 								}
 								
 								// if($hiendl['Phanquyen']!='Doctor'){
