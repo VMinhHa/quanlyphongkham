@@ -39,49 +39,63 @@
                 </tbody>
                 <tr class="thoay">
                     <td  colspan="5">
-                        <a href="thongtinbenhnhan.php?pagetrang=lichsu">Thoát</a>
+                        <a href="thongtinbenhnhan.php?pagetrang=lichsu" class="btn btn-danger">Thoát</a>
                     </td>
                 </tr>
 				</table>
                 <style>
                     .thoay{
-                        text-align:center;
-                        
+                        text-align:center;  
                      }
-                     .thoay td a{
-                        border:1px solid orange;
-                        border-radius:5px;
-                        padding:5px;
-                        background-color:orange;
-                        color:red;
+                     .btn {
+                        display: inline-block;
+                        font-weight: 400;
+                        text-align: center;
+                        white-space: nowrap;
+                        vertical-align: middle;
+                        -webkit-user-select: none;
+                        -moz-user-select: none;
+                        -ms-user-select: none;
+                        user-select: none;
+                        border: 1px solid transparent;
+                        padding: 0.375rem 0.75rem;
+                        font-size: 1rem;
+                        line-height: 1.5;
+                        border-radius: 0.25rem;
+                        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
                      }
+                     .btn-danger {
+                        color: #fff;
+                        background-color: #dc3545;
+                        border-color: #dc3545;
+                     }
+                     .pagination {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        list-style: none;
+                    }
+                    .pagination-item {
+                        margin-left: 15px;
+                        margin-right: 15px;
+                    }
 
+                    .pagination-item__link{
+                        height: 30px;
+                        display: block;
+                        text-decoration: none;
+                        text-align: center;
+                        min-width: 40px;
+                        line-height: 30px;
+                        color: #939393;
+                        font-size: 1.2rem;
+                        border-radius: 2px;
+                    }   
                 </style>
 			</div>
 		</div>
 	</div>
 </div>
 <style>
-		.pagination {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			list-style: none;
-		}
-		.pagination-item {
-			margin-left: 15px;
-			margin-right: 15px;
-		}
-
-		.pagination-item__link{
-			height: 30px;
-			display: block;
-			text-decoration: none;
-			text-align: center;
-			min-width: 40px;
-			line-height: 30px;
-			color: #939393;
-			font-size: 1.2rem;
-			border-radius: 2px;
-		}
+		
 </style>
