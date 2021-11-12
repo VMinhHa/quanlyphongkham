@@ -137,7 +137,11 @@ if (isset($_GET['idsua'])) {
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Status</label>
-				<input class="browser-default custom-select" value="<?php echo $status ?>"name="status1">
+				<select class="browser-default custom-select form-control" name="status1">
+					<option value="Xác nhận">Xác nhận</option>
+					<option value="Giời lịch">Giời lịch</option>		
+					<option value="Bận">Bận</option>							
+				</select>
 			</div>
 			<hr>
 			<div class="col-md-12 text-center">

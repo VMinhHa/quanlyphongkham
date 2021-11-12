@@ -77,7 +77,7 @@ $s=new data();
                 </div>
                 <div class="form-group">
                     <label>Tên Khoa: </label>
-                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $khoa.'-'.$tenkhoa?>">
+                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $tenkhoa?>">
                 </div>
                 <div class="form-group">
                     <label>Ngày sinh:</label>
