@@ -48,7 +48,7 @@
                                 <td>' . ($dem) . '</td>
                                 <td>' . $item['Tenphongkham'] . '</td>
                                 <td>' . $item['Diachi'] . '</td>
-                                <td>' . $item['NgayThanhLap'] . '</td>
+                                <td>' . date("d-m-Y",strtotime($item['NgayThanhLap'])) . '</td>
                                 <td>
                                 <a href="index.php?page=phongkham&idsua='.$item['ID_Phongkham'].'" >
                                 <button class="btn btn-primary btn btn-sm" type="submit" name="Sửa" 

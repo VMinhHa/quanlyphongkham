@@ -19,21 +19,43 @@ $s=new data();
                         $ngaythanhlap = $_POST['ngaythanhlap'];
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-                if($_FILES['image']['name']==''){
+                if($ngaythanhlap<date("Y-m-d")){
+                    if($_FILES['image']['name']==''){
+                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap='$ngaythanhlap'
+                        where ID_Khoa=" . $id;
+                        $s->execute($sql);
+                        echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=categories";
+                        </script>';
+                    }else {
+                        $target_dir = "../../images/khoa/";
+                        $target_file = $target_dir . basename($_FILES["imag"]["name"]);
+                        $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
+                        if($type=="jpg"||$type=="png"){
+                            $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
+                            $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
+                            $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
+                            where ID_Khoa=" . $id;
+                            $s->execute($sql);
+                            
+                            echo '<script>
+                            alert("Sửa thành công");
+                            window.location.href="index.php?page=categories";
+                            </script>';
+                        }
+                        else{
+                            echo '<script>
+                            alert("Không đúng định dạng");
+                            window.location.href="index.php?page=categories";
+                            </script>';
+                        }
+                    }
+                }else{
                     echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=categories";
-                    </script>';
-                }else {
-                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
-                    $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
-                    $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
-                    where ID_Khoa=" . $id;
-                    $s->execute($sql);
-                    echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=categories";
-                    </script>';
+                      alert("Phải nhỏ hơn ngày hiện hành");
+                      window.location.href="index.php?page=categories";
+                      </script>';
                 }
 
             }

@@ -34,7 +34,7 @@
                                     height="100px" alt="">
 								</td>
 						<td><?php echo $item['Tenkhoa'] ?></td>
-                        <td><?php echo date("l M d, Y",strtotime($item['Ngaythanhlap'])) ?></td>
+                        <td><?php echo date("d-m-Y",strtotime($item['Ngaythanhlap'])) ?></td>
 						<td class="text-center">
 						<a href="index.php?page=categories&idsua=<?php echo $item['ID_Khoa'] ?>">
 							<button  class="btn btn-primary btn-sm edit_cat" type="button" data-id="<?php echo $item['ID_Khoa'] ?>">Sửa</button>
@@ -72,7 +72,7 @@
 			</div>
             <div class="form-group">
 						<label for="" class="control-label">Image</label>
-						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
+						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))" required>
 				</div>
 			<hr>
 			<div class="col-md-12 text-center">

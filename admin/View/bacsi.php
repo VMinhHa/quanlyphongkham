@@ -59,7 +59,7 @@
                                 <td>' . $item['Hoten'] . '</td>
                                 <td>' . $item['Tenkhoa'] . '</td>
                                 <td>' . $item['Tendangnhap'] . '</td>
-                                <td>' . $item['Ngaysinh'] . '</td>
+                                <td>' . date("d-m-Y",strtotime($item['Ngaysinh'])) . '</td>
                                 <td>' . $item['Gioitinh'] . '</td>
                                 <td>
                                 <a href="index.php?page=doctors&idsua='.$item['ID_Bacsi'].'" >
@@ -160,7 +160,7 @@ $('.delete_doctor').click(function(){
                     </div>
                     <div class="form-group">
 						<label for="" class="control-label">Image</label>
-						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))">
+						<input type="file" class="form-control" name="img" onchange="displayImg(this,$(this))"  required>
 					</div>
 			<hr>
 			<div class="col-md-12 text-center">

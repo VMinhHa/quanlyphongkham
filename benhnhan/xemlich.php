@@ -52,7 +52,7 @@
 								$file="./images/qrcode/".$last_id.".png";
 								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
 							?>
-							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
+							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 
 								echo "<img src='".$file."'>"; 
 								?>

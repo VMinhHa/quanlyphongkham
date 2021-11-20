@@ -14,9 +14,16 @@ $s=new data();
                 $ngaysinh = $_POST['ngaysinh'];
                 $ngaysinh = str_replace('"', '\\"', $ngaysinh);
         }
-        $sql = "INSERT INTO Phongkham (Tenphongkham,Diachi,NgayThanhLap)
-                 values('$hoten','$diachi','$ngaysinh')";
-        $s->execute($sql);
-        header('location:../index.php?page=phongkham');
+        if($ngaysinh<date("Y-m-d")){
+            $sql = "INSERT INTO Phongkham (Tenphongkham,Diachi,NgayThanhLap)
+            values('$hoten','$diachi','$ngaysinh')";
+            $s->execute($sql);
+            header('location:../index.php?page=phongkham');
+        }else{
+            echo '<script>
+            alert("Ngày lập phải nhỏ hơn ngày hiện tại");
+            window.location.href="../index.php?page=phongkham";
+            </script>';
+        }
     }
 ?>

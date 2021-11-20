@@ -88,7 +88,7 @@
 		<form action="././Controller/themlich.php" id="manage-appointment" method="POST">
 			<div class="form-group">
 				<label for="" class="control-label">Bác sĩ</label>
-				<select class="browser-default custom-select select2" name="tenbacsi" >
+				<select class="browser-default custom-select select2" name="tenbacsi" required >
 					<option value=""></option>
 					<?php 
 					$s = new data();
@@ -104,7 +104,7 @@
 			</div>
 			<div class="form-group">
 				<label for="" class="control-label">Phòng khám</label>
-				<select class="browser-default custom-select select2" name="tenphong">
+				<select class="browser-default custom-select select2" name="tenphong" required>
 					<option value=""></option>
 					<?php 
 					$sql = 'SELECT * FROM phongkham ';
@@ -128,14 +128,11 @@
 			<div class="form-group">
 				<label for="" class="control-label">Giờ kết thức</label>
 				<input type="time"  name="time" class="form-control" required>
-				<span style="color:red">Vui lòng nhập giờ lớn hơn giờ bắt đầu</span>
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Tình trạng</label>
 				<select class="browser-default custom-select" name="status">
 					<option value="Xác nhận">Xác nhận</option>
-					<option value="Giời lịch">Giời lịch</option>
-					<option value="Bận">Bận</option>
 				</select>
 			</div>
 			<hr>

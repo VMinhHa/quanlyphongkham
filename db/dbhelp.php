@@ -47,6 +47,7 @@ class Action{
 	}
     function delete_appointment(){
 		extract($_POST);
+        
 		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Lich = ".$id);
 		if($delete)
 			return 1;

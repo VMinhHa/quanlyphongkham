@@ -20,21 +20,27 @@ $s=new data();
                     if(trim($_POST['tendangnhap'])){
                         $diachi = $_POST['tendangnhap'];
                         $diachi = str_replace('"', '\\"', $diachi);
-                        //$diachi=substr( $diachi,  0, 1);
                     }
                 }
                 if (isset($_POST['ngaysinh'])) {
                     $ngaythanhlap = $_POST['ngaysinh'];
                     $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-            $sql = "UPDATE phongkham set Tenphongkham='$hoten',Diachi='$diachi',NgayThanhLap='$ngaythanhlap'
-                 where ID_Phongkham=" . $id;
-                 $s->execute($sql);
-                 //$mess= 'Cập nhật thành công';
-                 echo '<script>
-                 alert("Sửa thành công");
-                 window.location.href="index.php?page=phongkham";
-                 </script>';
+                if($ngaythanhlap<date("Y-m-d")){
+                    $sql = "UPDATE phongkham set Tenphongkham='$hoten',Diachi='$diachi',NgayThanhLap='$ngaythanhlap'
+                    where ID_Phongkham=" . $id;
+                    $s->execute($sql);
+                    //$mess= 'Cập nhật thành công';
+                    echo '<script>
+                    alert("Sửa thành công");
+                    window.location.href="index.php?page=phongkham";
+                    </script>';
+                }else{
+                    echo '<script>
+                    alert("Ngày lập phải nhỏ hơn ngày hiện tại");
+                    window.location.href="index.php?page=phongkham";
+                    </script>';
+                }
              }
         
     }

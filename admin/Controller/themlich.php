@@ -20,21 +20,29 @@ if(isset($_POST['load'])){
 	if (isset($_POST['status'])) {
 		$status = $_POST['status'];
 	}
-	if($time1<$time){
-		$sql="INSERT INTO lichlamviec (ID_Phongkham, 
-		ID_Bacsi, Ngay, Giobatdau, Gioketthuc, Tinhtrang)
-		VALUES ('$tenphong','$tenbacsi', '$Ngay', '$time1', '$time', '$status')";
-		$s->execute($sql);
-        echo '<script>
-                alert("Thêm thành công");
-                window.location.href="../index.php?page=appointments";
-                </script>';
+	if($Ngay>date("Y-m-d")){
+		if($time1<$time){
+			$sql="INSERT INTO lichlamviec (ID_Phongkham, 
+			ID_Bacsi, Ngay, Giobatdau, Gioketthuc, Tinhtrang)
+			VALUES ('$tenphong','$tenbacsi', '$Ngay', '$time1', '$time', '$status')";
+			$s->execute($sql);
+			echo '<script>
+					alert("Thêm thành công");
+					window.location.href="../index.php?page=appointments";
+					</script>';
+		}
+		else{
+			echo '<script>
+					alert("Giờ bắt đầu phải nhỏ hơn giờ kết thúc");
+					window.location.href="../index.php?page=appointments";
+					</script>';
+		}
 	}
 	else{
 		echo '<script>
-                alert("Ngày bắt đầu phải nhỏ hơn giờ kết thúc");
-                window.location.href="../index.php?page=appointments";
-                </script>';
+				alert("Phải lớn hơn ngày hiện hành");
+				window.location.href="../index.php?page=appointments";
+				</script>';
 	}
 }
 ?>
