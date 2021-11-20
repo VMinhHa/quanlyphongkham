@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
 	<div class="panel-heading mt-3 ml-3 mr-3">
         <h1 class="text-center">Danh sách thuốc</h1>
@@ -6,6 +5,7 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
+                <a href="thongtinbacsi.php?pagetrang=xemlich" class="style" style="margin:5px;float:left;">Thoát</a>
                 <form method="post" style="width:150px;margin:5px;float:right;">
                             <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
                             style="width:200px; float:right;">
@@ -142,4 +142,13 @@
 			font-size: 1.2rem;
 			border-radius: 2px;
 		}
+        .style{
+            border: 1px solid #E12454;
+            width:100px;
+            padding: 5px;
+            text-align:center;
+            border-radius: 5px;
+            background-color: #E12454;
+            color:white;
+        }
 </style>

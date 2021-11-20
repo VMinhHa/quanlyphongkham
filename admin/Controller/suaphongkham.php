@@ -20,7 +20,7 @@ $s=new data();
                     if(trim($_POST['tendangnhap'])){
                         $diachi = $_POST['tendangnhap'];
                         $diachi = str_replace('"', '\\"', $diachi);
-                        $diachi=substr( $diachi,  0, 1);
+                        // $diachi=substr( $diachi,  0, 1);
                     }
                 }
                 if (isset($_POST['ngaysinh'])) {
