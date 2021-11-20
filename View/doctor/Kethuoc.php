@@ -1,3 +1,14 @@
+<style>
+.style{
+    border: 1px solid #E12454;
+    width:100px;
+    padding: 5px;
+    text-align:center;
+    border-radius: 5px;
+    background-color: #E12454;
+    color:white;
+}
+</style>
 <div class="container-fluid">
 	<div class="panel-heading mt-3 ml-3 mr-3">
         <h1 class="text-center">Danh sách thuốc</h1>
