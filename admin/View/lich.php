@@ -17,7 +17,7 @@
 						<th style="width:30%">Bác sĩ</th>
 						<th style="width:20%">Tình trạng</th>
 						<th style="width:5%"></th>
-                        <th style="width:5%"></th>
+                        <!-- <th style="width:5%"></th> -->
 					</tr>
 					</thead>
 					<?php 
@@ -36,9 +36,9 @@
 							<button  class="btn btn-primary btn-sm update_app" type="button" data-id="<?php echo $item['ID_Lich'] ?>"data-toggle="modal" data-target="#myModal1">Sửa</button>
 						<a>
 						</td>
-                        <td class="text-center">
+                        <!-- <td class="text-center">
 							<button  class="btn btn-danger btn-sm delete_app" type="button" data-id="<?php echo $item['ID_Lich'] ?>">Xóa</button>
-						</td>
+						</td> -->
 					</tr>
                 <?php } ?>
 				</table>

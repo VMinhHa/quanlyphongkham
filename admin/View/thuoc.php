@@ -47,12 +47,20 @@
             <!-- <form method="post" enctype="multipart/form-data">
                 
             </form> -->
-            <form method="post" style="width:100%;margin:5px;float:right;" enctype="multipart/form-data">
-                <input type="file" name="file" style="margin: 7px;">
-                <input type="submit" name="submit" value="Upload">
+            <style>
+                .s2,.s3{
+                    display:inline-block;
+                }
+            </style>
+                <form class="s2" method="post" style="width:50%;margin:5px;float:left;" enctype="multipart/form-data">
+                    <input type="file" name="file" style="margin: 7px;">
+                    <input type="submit" name="submit" value="Upload">
+                </form>
+                <form class="s3" method="post" style="float:right;margin:5px;text-align:right;" >
                     <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
-                    style="width:200px; float:right; margin-right:10px;">
-            </form>
+                            style="width:200px; float:right; margin-right:10px;">
+                </form>
+
         <!-- </div> -->
     <div>
     <table class="card-body table table-bordered table-hover">

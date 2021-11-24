@@ -40,6 +40,7 @@ class Action{
 	}
 	function delete_doctor(){
 		extract($_POST);
+        $delete = $this->db->query("DELETE FROM lichhen where ID_Bacsi = ".$id);
 		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Bacsi = ".$id);
 		$delete = $this->db->query("DELETE FROM bacsi where ID_Bacsi = ".$id);
 		if($delete)

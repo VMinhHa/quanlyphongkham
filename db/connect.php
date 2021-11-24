@@ -1,5 +1,5 @@
 <?php
-class data
+class data 
 {
     function connect()
     {
