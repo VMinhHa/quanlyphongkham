@@ -17,9 +17,7 @@ if(isset($_POST['load'])){
 	if (isset($_POST['time'])) {
 		$time = $_POST['time'];
 	}
-	if (isset($_POST['status'])) {
-		$status = $_POST['status'];
-	}
+	$status='Xác nhận';
 	if($Ngay>date("Y-m-d")){
 		if($time1<$time){
 			$sql="INSERT INTO lichlamviec (ID_Phongkham, 

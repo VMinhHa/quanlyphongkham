@@ -57,7 +57,7 @@
                     <input type="submit" name="submit" value="Upload">
                 </form>
                 <form class="s3" method="post" style="float:right;margin:5px;text-align:right;" >
-                    <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                    <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
                             style="width:200px; float:right; margin-right:10px;">
                 </form>
 

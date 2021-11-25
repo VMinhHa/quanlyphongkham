@@ -10,7 +10,7 @@
             </button>
             <form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -64,7 +64,7 @@
                                 <td>
                                 <a href="index.php?page=doctors&idsua='.$item['ID_Bacsi'].'" >
                                 <button class="btn btn-primary btn btn-sm" type="submit" name="Sửa" 
-                              >Edit</button></a>
+                              >Sửa</button></a>
                                 </td>
                                 <td>
                                 <button class="btn btn-sm btn-danger delete_doctor" type="button" data-id="'.$item['ID_Bacsi'].'">Xóa

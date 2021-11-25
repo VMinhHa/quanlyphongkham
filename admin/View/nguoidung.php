@@ -10,7 +10,7 @@
             </button>
             <form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -118,8 +118,7 @@ $('.Khoiphuc').click(function(){
                         <label>Phân quyền:</label>
                         <select class="form-control" name="phanquyen">
                            <option value=""></option>
-                           <option value="Doctor">Doctor</option>
-                           <option value="Benhnhan">Benhnhan</option>                  
+                           <option value="Doctor">Doctor</option>                 
                         </select>
             </div>
 			<hr>

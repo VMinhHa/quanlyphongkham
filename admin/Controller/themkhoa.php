@@ -20,7 +20,7 @@ $s=new data();
               $move = move_uploaded_file($_FILES['img']['tmp_name'], '../../images/khoa/'.$fname);
               if($Ngay<date("Y-m-d")){
                   //Luu vao database
-                  $sql="INSERT INTO khoa (Tenkhoa,Hinhanh,Ngaythanhlap) 
+                  $sql="INSERT INTO khoa (Tenkhoa,Hinhanh,Ngaythanhlap_khoa) 
                   VALUES ('$tenkhoa','$fname', '$Ngay')";
                   $s->execute($sql);
                   header('location:../index.php?page=categories');

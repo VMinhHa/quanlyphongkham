@@ -139,6 +139,7 @@
 									// where t.Tendangnhap="'.$_SESSION['username'].'")';
 									$Lich = $s->executeLesult($sql);
 									foreach ($Lich as $item) {
+										if($item['Tinhtrang']=='Xác nhận'){
 									?>
 									<tr>
 										<td><input type="text" name="ngay" value="<?php echo date("l M d Y",strtotime($item['Ngay'])) ?>" disabled="true"></td>
@@ -173,7 +174,8 @@
 											<button type="submit" class="btn btn-warning" value="<?php echo $item['ID_Lich'] ?>"  name="datlich" >Chọn</button>
 										</td>
 									</tr>
-								<?php } ?>
+								<?php } 
+							}?>
 								</form>	
 								</table>
 							<!-- XỬ lý thêm lịch -->

@@ -144,12 +144,24 @@
                 }
                 else if($row['Phanquyen']=='Doctor')
                 {
-                  echo '<script>
-                    alert("Đăng Nhập Thành Công với tài khoản Bác Sĩ");
-                    window.location.href="index.php";
-                  </script>';
-                  $_SESSION['username'] = $row['Tendangnhap'];
-                  $_SESSION['phanquyen'] = $row['Phanquyen'];
+                  $sql1="SELECT * from taikhoan WHERE id not in (SELECT id FROM bacsi) and id=".$row['id'];
+                  $res1 = mysqli_query($conn, $sql1) ;
+                  $count1 = mysqli_num_rows($res1);  
+
+                  if($count1==0){
+                      echo '<script>
+                      alert("Đăng Nhập Thành Công với tài khoản Bác Sĩ");
+                      window.location.href="index.php";
+                    </script>';
+                    $_SESSION['username'] = $row['Tendangnhap'];
+                    $_SESSION['phanquyen'] = $row['Phanquyen'];
+                  }else{
+                      echo '<script>
+                      alert("Tài khoản bác sĩ chưa hoạt động được");
+                      window.location.href="login.php";
+                    </script>';
+                  }
+
                 }
                 else if($row['Phanquyen']=='Admin')
                 {

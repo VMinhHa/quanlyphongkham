@@ -18,7 +18,13 @@ $s=new data();
         //Luu vao database
         $sql = "INSERT INTO taikhoan (Tendangnhap,Password,Email,Phanquyen)
                  values('$tendangnhap','$pass','$email','$phanquyen')";
+        // $sql1="INSERT INTO bacsi (id,ID_Khoa,Hoten,Ngaysinh,Gioitinh)
+        //  values('','','','','')";
+        // $s->execute($sql1);
         $s->execute($sql);
-        header('location:../index.php?page=users');
+        echo '<script>
+        alert("Thêm bác sĩ sử dụng tài khoản");
+        window.location.href="../index.php?page=doctors";
+        </script>';
     }
 ?>

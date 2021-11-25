@@ -34,7 +34,7 @@
                                     height="100px" alt="">
 								</td>
 						<td><?php echo $item['Tenkhoa'] ?></td>
-                        <td><?php echo date("d-m-Y",strtotime($item['Ngaythanhlap'])) ?></td>
+                        <td><?php echo date("d-m-Y",strtotime($item['Ngaythanhlap_khoa'])) ?></td>
 						<td class="text-center">
 						<a href="index.php?page=categories&idsua=<?php echo $item['ID_Khoa'] ?>">
 							<button  class="btn btn-primary btn-sm edit_cat" type="button" data-id="<?php echo $item['ID_Khoa'] ?>">Sửa</button>

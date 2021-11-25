@@ -4,10 +4,10 @@ $s=new data();
     if (isset($_GET['idsua'])) {
         $mess='';
         $id = $_GET['idsua'];
-        $sql = "select Tenkhoa,Ngaythanhlap,Hinhanh from khoa where ID_Khoa=".$id;
+        $sql = "select Tenkhoa,Ngaythanhlap_khoa,Hinhanh from khoa where ID_Khoa=".$id;
         $khoa = $s->executeSingLesult($sql);
             $Tenkhoa = $khoa['Tenkhoa'];
-            $Ngaythanhlap=$khoa['Ngaythanhlap'];
+            $Ngaythanhlap=$khoa['Ngaythanhlap_khoa'];
             $Hinhanh=$khoa['Hinhanh'];
             $mess='';
             if(isset($_POST['submit2'])){
@@ -21,7 +21,7 @@ $s=new data();
                 }
                 if($ngaythanhlap<date("Y-m-d")){
                     if($_FILES['image']['name']==''){
-                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap='$ngaythanhlap'
+                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
                         where ID_Khoa=" . $id;
                         $s->execute($sql);
                         echo '<script>
@@ -29,16 +29,15 @@ $s=new data();
                         window.location.href="index.php?page=categories";
                         </script>';
                     }else {
-                        $target_dir = "../../images/khoa/";
-                        $target_file = $target_dir . basename($_FILES["imag"]["name"]);
+                        $target_dir = "../images/khoa/";
+                        $target_file = $target_dir . basename($_FILES["image"]["name"]);
                         $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
                         if($type=="jpg"||$type=="png"){
                             $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
-                            $move = move_uploaded_file($_FILES['image']['tmp_name'], './../images/khoa/'.$fname);
-                            $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap='$ngaythanhlap'
+                            $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
+                            $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
                             where ID_Khoa=" . $id;
                             $s->execute($sql);
-                            
                             echo '<script>
                             alert("Sửa thành công");
                             window.location.href="index.php?page=categories";

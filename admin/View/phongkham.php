@@ -10,7 +10,7 @@
             </button>
             <form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -21,7 +21,7 @@
                 <tr>
                     <th style="width:5%">STT</th>
                     <th style="width:15%">Tên phòng</th>
-                    <th style="width:15%">Địa chỉ</th>
+                    <th style="width:15%">Chuyên khoa</th>
                     <th style="width:15%">Ngày Thành lập</th>
                     <th style="width:5%"></th>
                 </tr>
@@ -35,19 +35,19 @@
                     }
                     $additional='';
                     if(!empty($s)){
-                        $additional=' and Tenphongkham like"%'.$s.'%" or Diachi like"%'.$s.'%"
+                        $additional=' and Tenphongkham like"%'.$s.'%" or Tenkhoa like"%'.$s.'%"
                         or NgayThanhLap like"%'.$s.'%"';
                     }
                 ////lay danh sach
                 $s = new data();
                 $dem=1;
-                $sql = 'SELECT * from phongkham where 1 '.$additional.'';
+                $sql = 'SELECT * from phongkham p join khoa k on p.ID_Khoa=k.ID_Khoa where 1 '.$additional.'';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
                     echo '<tr>
                                 <td>' . ($dem) . '</td>
                                 <td>' . $item['Tenphongkham'] . '</td>
-                                <td>' . $item['Diachi'] . '</td>
+                                <td>' . $item['Tenkhoa'] . '</td>
                                 <td>' . date("d-m-Y",strtotime($item['NgayThanhLap'])) . '</td>
                                 <td>
                                 <a href="index.php?page=phongkham&idsua='.$item['ID_Phongkham'].'" >
@@ -86,8 +86,16 @@
                         <input type="text" class="form-control" name="hoten" placeholder="Enter tên khoa" required>
                     </div>
                     <div class="form-group">
-                        <label>Địa chỉ:</label>
-                        <input type="text" class="form-control" name="diachi"  placeholder="Enter Địa chỉ" required>
+                        <label>Tên chuyên khoa:</label>
+                        <select class="form-control" name="tenchuyenkhoa">
+                            <?php
+                            $sql1 = 'select * from khoa ';
+                            $caterogyList1 = $s->executeLesult($sql1);
+                            foreach ($caterogyList1 as $item1) {
+                                echo '<option value="' . $item1['ID_Khoa'] . '" >' . $item1['Tenkhoa'] . '</option>';
+                            }
+                            ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Ngày thành lập:</label>

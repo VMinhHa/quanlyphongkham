@@ -129,12 +129,6 @@
 				<label for="" class="control-label">Giờ kết thức</label>
 				<input type="time"  name="time" class="form-control" required>
 			</div> 
-			<div class="form-group">
-				<label for="" class="control-label">Tình trạng</label>
-				<select class="browser-default custom-select" name="status">
-					<option value="Xác nhận">Xác nhận</option>
-				</select>
-			</div>
 			<hr>
 			<div class="col-md-12 text-center">
 				<button class="btn-primary btn btn-sm col-md-4" name="load">Thêm</button>
