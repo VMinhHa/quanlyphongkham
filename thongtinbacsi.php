@@ -84,8 +84,8 @@
           >THÔNG TIN CÁ NHÂN</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbacsi.php?pagetrang=xemlich"
           >LỊCH KHÁM</a></h5>
-          <!-- <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbacsi.php?pagetrang=lichsu"
-          >LỊCH SỬ KHÁM BỆNH</a></h5> -->
+          <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbacsi.php?pagetrang=lichsu"
+          >LỊCH SỬ ĐÃ KHÁM</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbacsi.php?pagetrang=capnhattk"
           >CẬP NHẬT TÀI KHOẢN</a></h5>
           <!-- <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Events</a>
@@ -109,7 +109,9 @@
                     case 'xemlich':
                       include ('View/doctor/xemlich.php');
                       break;
-
+                    case 'lichsu':
+                        include ('View/doctor/lichsu.php');
+                        break;
                     case 'capnhattk':
                       include ('View/doctor/doimk.php');
                       break;
@@ -118,7 +120,8 @@
                    if(isset($_POST['idlich1']))
                      $_SESSION['idlich']=$_POST['idlich1'];
                    include ('View/doctor/Kethuoc.php');
-                 }
+                 }elseif(isset($_GET['page1'])){
+                  include ('View/doctor/lichsu.php');}
                 else{
                   include 'View/doctor/info_Patientbacsi.php';  
                 }

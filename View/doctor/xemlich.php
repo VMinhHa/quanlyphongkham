@@ -39,8 +39,9 @@
                     on b.id_Lichhen=l.id_Lichhen';
                     
                     foreach ($Lich as $item) {
+                        if($item['Trangthai']!='Hoàn thành'){                  
 					?>
-					<tr>
+                        <tr>
                         <td ><?php echo $dem++ ?></td>
 						<td>
 							<?php echo $item['Hotenbn'] ?>
@@ -49,7 +50,7 @@
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <!-- Chuẩn đoán -->
                         <td>   
-                            <?php if($item['Trangthai']=='Đã khám') {
+                            <?php if($item['Trangthai']=='Đang khám') {
                                 $sql2='Select * from benhan where id_Lichhen=
                                 '.$item['id_Lichhen'];
                                 $chuandoan=$s->executeSingLesult($sql2);?>
@@ -76,7 +77,7 @@ echo trim($chuandoan['Chuandoan']);
                         </td>
                         <!-- THuoc -->
                         <td>
-                            <?php if($item['Trangthai']=='Đã khám') {?>
+                            <?php if($item['Trangthai']=='Đang khám') {?>
                                 <h4>Tên thuốc: </h4>
                             <?php
                                 $sql1="select * from xemthuoc x join thuoc t on x.ID_Thuoc=t.ID_Thuoc where
@@ -113,21 +114,20 @@ echo trim($chuandoan['Chuandoan']);
                                                 echo '<option value="Hủy">Hủy</option>';
                                             }
                                             else{
-                                                if($item['Trangthai']=='Đã khám'){
+                                                if($item['Trangthai']=='Đang khám'){
 
-                                                 echo '<option value="Đã khám">Đã khám</option>';
+                                                 echo '<option value="Đang khám">Khám</option>
+                                                 <option value="Hoàn thành">Hoàn thành</option>';
                                                 }else{
                                                     if($item['Trangthai']=='Xác nhận')
                                                     {
-                                                       echo '<option value="Hủy">Hủy</option>
-                                                        <option value="Đang chờ">Đang chờ</option>
-                                                        <option value="Đã khám">Đã khám</option>';
+                                                       echo '
+                                                        <option value="Đang khám">Khám</option>';
                                                     }
                                                     else{
                                                         echo '<option value="Xác nhận">Xác nhận</option>
                                                         <option value="Hủy">Hủy</option>
-                                                        <option value="Đang chờ">Đang chờ</option>
-                                                        <option value="Đã khám">Đã khám</option>';
+                                                        <option value="Đang khám">Khám</option>';
                                                     }
                                                 }
                                  
@@ -143,7 +143,8 @@ echo trim($chuandoan['Chuandoan']);
 						</td>		
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
-                <?php } ?>
+                <?php }}
+                     ?>
 				</table>
 			</div>
 		</div>

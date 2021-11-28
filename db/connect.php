@@ -38,11 +38,17 @@ class data
         return $table;
         mysqli_close($conn);
 
-
     }
     Function dem(){
         $conn = $this->connect();
         $sql="Select * from thuoc";
+        $result=mysqli_query($conn, $sql);
+        return mysqli_num_rows($result);
+        mysqli_close($conn);
+    }
+    Function demlich(){
+        $conn = $this->connect();
+        $sql="Select * from lichhen where Trangthai='Hoàn thành'";
         $result=mysqli_query($conn, $sql);
         return mysqli_num_rows($result);
         mysqli_close($conn);

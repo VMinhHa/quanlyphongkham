@@ -14,7 +14,21 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
+			<form method="post" style="width:150px;margin:5px;float:right;">
+                            <input type="text" class="form-control" placeholder="Tìm kiem..." id="s" name="s"
+                            style="width:200px; float:right;">
+                            </div>
+                </form>
 				<table class="table table-bordered">
+					<!-- Phan trang -->
+					<?php 
+                        include 'db/connect.php';
+                        $p=new data();
+                        $dem1=$p->demlich();
+                        $prodperpage=4;
+                        $dem=0;
+                        ?>
+                    <!-- Phan trang -->
 					<thead>
 						<tr>
                         <th style="width:5%">STT</th>
@@ -27,11 +41,26 @@
 					</tr>
 					</thead>
 					<?php 
-                    include './db/connect.php';
+                    $s='';
+                    if(isset($_POST['s'])){
+                        $s=$_POST['s'];
+                    }
+                    $additional='';
+                    if(!empty($s)){
+                        $additional='and Hoten like"%'.$s.'%" 
+                        or Ngayhen like"%'.$s.'%"';
+                    }
+                    $dem=0; 
+                    $page1=1;
+                    if(isset($_REQUEST["page2"])){
+                        $page1=$_REQUEST["page2"];
+                    }
+                    $page2=($page1-1)*$prodperpage;
                     $s = new data();
                     $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi  join benhnhan n 
                     on n.ID_Benhnhan=l.ID_Benhnhan JOIN taikhoan t on t.id=n.id
-                    where Tendangnhap="'.$_SESSION['username'].'" and Trangthai="Đã khám"';
+                    where 1 '.$additional.' and  Tendangnhap="'.$_SESSION['username'].'" and Trangthai="Hoàn thành" 
+					limit '.$page2.','.$prodperpage.' ';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
@@ -71,6 +100,28 @@
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
                 <?php } ?>
+				<tr>
+                    <td colspan="7" >    
+                            <div class="giua">
+                            <ul class="pagination pagination-lg">
+                                <?php 
+                            if($dem1>0){
+                                # code...
+                                for ($i=0 ;$i<$dem1/4.0;$i++) {
+                                ?>
+                                <li class="pagination-item">
+                                    <a class="pagination-item__link" 
+                                    href="thongtinbenhnhan.php?page2=<?php echo  $i+1 ?>">
+                                    <?php echo  $i+1 ?></a></li>
+                                <?php
+                                 }}
+                        
+                            
+                             ?>
+                         </ul>
+                        </div>
+                    </td>
+                    </tr>
 				</table>
 			</div>
 		</div>

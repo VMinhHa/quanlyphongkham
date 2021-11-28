@@ -5,7 +5,7 @@
 			<div class="col-lg-12">
 			<div class="card">
 				<div class="card-body">
-				<?php echo "Welcome back Admin !"  ?>
+				<?php echo "Xin chào Admin !"  ?>
 					
 				</div>
 			</div>

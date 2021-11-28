@@ -33,7 +33,7 @@
                     $s = new data();
                     $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi  join benhnhan n 
                     on n.ID_Benhnhan=l.ID_Benhnhan JOIN taikhoan t on t.id=n.id
-                    where Tendangnhap="'.$_SESSION['username'].'" and l.Trangthai!="Đã khám"';
+                    where Tendangnhap="'.$_SESSION['username'].'" and l.Trangthai!="Hoàn thành"';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
@@ -90,13 +90,12 @@
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
 							<?php 
-								// $last_id = $item['id_Lichhen'];
-								// $file="./images/qrcode/".$last_id.".png";
-								// $url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
+								$last_id = $item['id_Lichhen'];
+								$file="../images/qrcode/".$last_id.".png";
+								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
 							?>
-							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
-
-								//echo "<img src='".$file."'>"; 
+							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
+								echo "<img src='".$file."'>"; 
 								?>
 							</td>
 
@@ -111,7 +110,7 @@
 								?>
 								<form action="Controll/xulydatlich.php" method="POST">
 									<button  class="btn btn-danger btn-sm delete_lichhen" 
-									type="submit" onclick="return confirm('Bạn có thực sự muốn xóa');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
+									type="submit" onclick="return confirm('Bạn có thực sự muốn hủy');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
 								</form>
 								<?php
 									}

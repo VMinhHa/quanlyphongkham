@@ -40,6 +40,7 @@ class Action{
 	}
 	function delete_doctor(){
 		extract($_POST);
+        //$id=$_POST['id'];
         $delete = $this->db->query("DELETE FROM lichhen where ID_Bacsi = ".$id);
 		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Bacsi = ".$id);
 		$delete = $this->db->query("DELETE FROM bacsi where ID_Bacsi = ".$id);
@@ -48,7 +49,6 @@ class Action{
 	}
     function delete_appointment(){
 		extract($_POST);
-        
 		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Lich = ".$id);
 		if($delete)
 			return 1;
@@ -61,6 +61,8 @@ class Action{
 	}
     function delete_thuoc(){
 		extract($_POST);
+        
+        $delete = $this->db->query("DELETE from xemthuoc where ID_Thuoc=".$id);
 		$delete = $this->db->query("DELETE FROM thuoc where ID_Thuoc = ".$id);
 		if($delete)
 			return 1;

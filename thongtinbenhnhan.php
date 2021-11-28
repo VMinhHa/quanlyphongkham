@@ -113,7 +113,8 @@
                       include ('./benhnhan/doimk.php');
                       break;
                   }
-                }
+                }elseif(isset($_GET['page2'])){
+                  include ('benhnhan/lichsu.php');}
                 elseif(isset($_GET['xemthuoc'])){
                     include ('./benhnhan/xuatthuoc.php');
                 }

@@ -19,12 +19,8 @@ include './db/connect.php';
                         $age = str_replace('"', '\\"', $age);
                 
                 }
-                if (isset($_POST['sdt'])) {
-                    $sdt = $_POST['sdt'];
-                    $sdt = str_replace('"', '\\"', $sdt);
-                }
                 $sql = 'update taikhoan t join bacsi b on t.id=b.id SET 
-                Hoten="'.$fullname.'",Ngaysinh= "'.$age.'",Gioitinh= "'.$gioitinh.'",Email="'.$sdt.'"
+                Hoten="'.$fullname.'",Ngaysinh= "'.$age.'",Gioitinh= "'.$gioitinh.'"
                 WHERE Tendangnhap="'.$_SESSION['username'].'"';
                 $s->execute($sql);
                 header('location:thongtinbacsi.php?pagetrang=thongtin');
@@ -63,12 +59,8 @@ include './db/connect.php';
                         $age = str_replace('"', '\\"', $age);
                 
                 }
-                if (isset($_POST['sdt'])) {
-                    $sdt = $_POST['sdt'];
-                    $sdt = str_replace('"', '\\"', $sdt);
-                }
                 $sql = 'update taikhoan t join benhnhan b on t.id=b.id SET 
-                Hotenbn="'.$fullname.'",Ngaysinh= "'.$age.'",Gioitinh= "'.$gioitinh.'",Email="'.$sdt.'"
+                Hotenbn="'.$fullname.'",Ngaysinh= "'.$age.'",Gioitinh= "'.$gioitinh.'"
                 WHERE Tendangnhap="'.$_SESSION['username'].'"';
                 $s->execute($sql);
                 header('location:thongtinbenhnhan.php?pagetrang=thongtin');

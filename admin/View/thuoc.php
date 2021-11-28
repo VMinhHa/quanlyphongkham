@@ -35,7 +35,7 @@
 
 ?>
 <div class="container-fluid">
-    <div class="panel-heading mt-3 ml-3 mr-3">
+<div class="panel-heading mt-3 ml-3 mr-3">
         <h1 class="text-center">Xem danh sách Thuốc</h1>
     </div>
     <div class="panel-body card">
@@ -56,90 +56,61 @@
                     <input type="file" name="file" style="margin: 7px;">
                     <input type="submit" name="submit" value="Upload">
                 </form>
-                <form class="s3" method="post" style="float:right;margin:5px;text-align:right;" >
-                    <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
-                            style="width:200px; float:right; margin-right:10px;">
+                <form class="s3 " method="post"  style="float:right;margin:5px;text-align:right;" >
+                    <input type="text" class="form-control timkiem" id="timkiem"placeholder="Tìm kiếm..."  id="s" name="s"
+                            style="width:200px;float:right ; margin-right:10px;">
+                            
+                            
                 </form>
 
         <!-- </div> -->
     <div>
-    <table class="card-body table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th style="width:5%">STT</th>
-                    <th style="width:15%">Tên Thuốc</th>
-                    <th style="width:5%">Loại thuốc</th>
-                    <th style="width:60%">Thông tin thuốc</th>
-                    <th style="width:10%">Hạn dùng</th>
-                    <th style="width:5%"></th>
-                    <th style="width:5%"></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                //timkiem
-                $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
-                    }
-                    $additional='';
-                    if(!empty($s)){
-                        $additional=' and Tenthuoc like"%'.$s.'%"
-                        or Loaithuoc like"%'.$s.'%" or Thongtinthuoc like"%'.$s.'%" 
-                        or Handung like"%'.$s.'%"';
-                    }
-                ////lay danh sach
-                $s = new data();
-                $dem=1;
-                $sql = 'SELECT * FROM thuoc where 1 '.$additional.'';
-                $caterogyList = $s->executeLesult($sql);
-                foreach ($caterogyList as $item) {
-                    echo '<tr>
-                                <td>' . ($dem) . '</td>
-                                <td>' . $item['Tenthuoc'] . '</td>
-                                <td>' . $item['Loaithuoc'] . '</td>
-                                <td>' . $item['Thongtinthuoc'] . '</td>
-                                <td>' . $item['Handung'] . '</td>
-                                <td>
-                                <button class="btn btn-sm btn-danger delete_thuoc" type="button" data-id="'.$item['ID_Thuoc'].'">Xóa</button>
-                                </a>
-                                </td>
-                                <td>
-                                <a href="index.php?page=thuoc&idsua='.$item['ID_Thuoc'].'" >
-                                <button class="btn btn-primary btn btn-sm" type="submit" name="Edit" 
-                              >Sửa</button></a>
-                                </td>
-                                ';
-                             $dem++;
-                }
-            ?>
-            </tbody>
+        <table class="card-body table table-bordered table-hover" id="load_data">
+            
         </table>
     </div>
 </div>
 <script>
-$('.delete_thuoc').click(function(){
-		_conf("Bạn có chắc là muốn xóa thuốc này ko?","delete_thuoc",[$(this).attr('data-id')])
-	})
-	function delete_thuoc($id){
-		start_load()
-		$.ajax({
-			url:'ajax.php?action=delete_thuocc',
-			method:'POST',
-			data:{id:$id},
-			success:function(resp){
-				if(resp==1){
-					alert_toast("Xóa thành công",'success')
-					setTimeout(function(){
-						location.reload()
-					},1500)
+    $(document).ready(function() {
+        view_data();
+        function view_data(){
+            $.ajax({
+                url:"ajax/ajax_thuoc.php",
+                method:"POST",
+                success:function(data){
+                    $('#load_data').html(data);
+                    
+                }
+            })
+        }
+        //function goitimkiem(){
+            $(document).on('blur','.timkiem',function(){
+                var s=$(this).val();
+                $.post("ajax/ajax_thuoc.php",{s:s},function(data){
+                     $('#load_data').html(data);
+                 })
+            });
+        
 
-				}
-			}
-		})
-	}
+        
+        //Xóa
+        $(document).on('click','.delete_thuoc',function(){
+            var id=$(this).val();
+            var check=confirm("Bạn có chắc chắn muốn xóa không");
+            if(check==true){
+                $.post("ajax/xoathuoc.php",{id:id},function(data){
+                    alert(data);
+                    view_data();
+
+                })
+            }else{
+                return;
+            }
+            
+        });
+     })
 </script>
-<!-- Them doctor -->
+<!-- Them thuóc -->
 <!-- Table Panel -->
 </div>
 <!--  ---------------Modal Them-->
