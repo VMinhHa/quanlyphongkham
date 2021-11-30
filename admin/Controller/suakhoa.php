@@ -11,6 +11,7 @@ $s=new data();
             $Hinhanh=$khoa['Hinhanh'];
             $mess='';
             if(isset($_POST['submit2'])){
+                $resu=0;
                 if (isset($_POST['tenkhoa'])) {
                     $tenkhoa = $_POST['tenkhoa'];
                     $tenkhoa = str_replace('"', '\\"', $tenkhoa);
@@ -21,27 +22,34 @@ $s=new data();
                 }
                 if($ngaythanhlap<date("Y-m-d")){
                     if($_FILES['image']['name']==''){
-                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
-                        where ID_Khoa=" . $id;
-                        $s->execute($sql);
-                        echo '<script>
-                        alert("Sửa thành công");
-                        window.location.href="index.php?page=categories";
-                        </script>';
+                            $sql3 = 'SELECT * from khoa';
+                            $phongkham1 = $s->executeLesult($sql3);
+                            foreach ($phongkham1 as $item) {
+                                if($tenkhoa==$item['Tenkhoa']){
+                                    $resu=1;
+                                }else{
+                                    $resu=2;
+                                }
+                            }
                     }else {
                         $target_dir = "../images/khoa/";
                         $target_file = $target_dir . basename($_FILES["image"]["name"]);
                         $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
                         if($type=="jpg"||$type=="png"){
-                            $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
-                            $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
-                            $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
-                            where ID_Khoa=" . $id;
-                            $s->execute($sql);
-                            echo '<script>
-                            alert("Sửa thành công");
-                            window.location.href="index.php?page=categories";
-                            </script>';
+                            $sql2 = 'SELECT * from khoa';
+                            $phongkham = $s->executeLesult($sql2);
+                            foreach ($phongkham as $item) {
+                                if($tenkhoa==$item['Tenkhoa']){
+                                    $resu=1;
+                                    echo '<script>
+                                    alert("Khoa đã tồn tại");
+                                    window.location.href="index.php?page=categories";
+                                    </script>';
+                                    exit();
+                                }else{
+                                    $resu=3;
+                                }
+                            }
                         }
                         else{
                             echo '<script>
@@ -56,10 +64,27 @@ $s=new data();
                       window.location.href="index.php?page=categories";
                       </script>';
                 }
-
+                if($resu==2){
+                $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
+                where ID_Khoa=" . $id;
+                $s->execute($sql);
+                echo '<script>
+                alert("Sửa thành công");
+                window.location.href="index.php?page=categories";
+                </script>';
+            }elseif($resu==3){
+                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
+                    $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
+                    $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
+                    where ID_Khoa=" . $id;
+                    $s->execute($sql);
+                    echo '<script>
+                    alert("Sửa thành công");
+                    window.location.href="index.php?page=categories";
+                    </script>';
             }
-            
-        
+
+            } 
     }
 ?>
 <div class="modal-dialog">

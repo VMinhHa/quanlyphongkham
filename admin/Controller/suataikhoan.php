@@ -20,13 +20,30 @@ $s=new data();
                     $tendangnhap = $_POST['tendangnhap'];
                     $tendangnhap= str_replace('"', '\\"', $tendangnhap);
                 }
-                $sql = "UPDATE taikhoan set Tendangnhap='$tendangnhap',Email='$email'
-                where id=" . $id;
-                $s->execute($sql);
-                echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=users";
-                    </script>';  
+                $sql2 = 'SELECT * from taikhoan';
+                $phongkham = $s->executeLesult($sql2);
+                foreach ($phongkham as $item) {
+                    if($tendangnhap==$item['Tendangnhap']){
+                        $resu=1;
+                        echo '<script>
+                        alert("Tên tài khoản đã tồn tại");
+                        window.location.href="index.php?page=users";
+                        </script>';
+                        exit();
+                        
+                    }else{
+                        $resu=2;
+                    }
+                }
+                if($resu==2){
+                    $sql = "UPDATE taikhoan set Tendangnhap='$tendangnhap',Email='$email'
+                    where id=" . $id;
+                    $s->execute($sql);
+                    echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=users";
+                        </script>';
+                } 
             }
         
     }

@@ -15,16 +15,33 @@ $s=new data();
             $phanquyen = str_replace('"', '\\"', $phanquyen);
         }
         $pass=md5(12345);
-        //Luu vao database
-        $sql = "INSERT INTO taikhoan (Tendangnhap,Password,Email,Phanquyen)
-                 values('$tendangnhap','$pass','$email','$phanquyen')";
+        $sql2 = 'SELECT * from taikhoan';
+                $phongkham = $s->executeLesult($sql2);
+                foreach ($phongkham as $item) {
+                    if( $tendangnhap==$item['Tendangnhap']){
+                        $resu=1;
+                        echo '<script>
+                        alert("Tên tài khoản đã tồn tại");
+                        window.location.href="../index.php?page=users";
+                        </script>';
+                        exit();
+                    }else{
+                        $resu=2;
+                    }
+                }
+        if($resu==2){
+            //Luu vao database
+            $sql = "INSERT INTO taikhoan (Tendangnhap,Password,Email,Phanquyen)
+            values('$tendangnhap','$pass','$email','$phanquyen')";
         // $sql1="INSERT INTO bacsi (id,ID_Khoa,Hoten,Ngaysinh,Gioitinh)
         //  values('','','','','')";
         // $s->execute($sql1);
         $s->execute($sql);
         echo '<script>
-        alert("Thêm bác sĩ sử dụng tài khoản");
+        alert("Thêm tài khoản bác sĩ sử dụng thành công");
         window.location.href="../index.php?page=doctors";
         </script>';
+        }
+        
     }
 ?>

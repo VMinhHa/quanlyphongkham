@@ -14,8 +14,9 @@
 						<tr>
 						<th style="width:20%">Lịch</th>
 						<th style="width:20%">Thời gian</th>
-						<th style="width:30%">Bác sĩ</th>
-						<th style="width:20%">Tình trạng</th>
+						<th style="width:25%">Bác sĩ</th>
+						<th style="width:20%">Tên phòng khám</th>
+						<th style="width:10%">Tình trạng</th>
 						<th style="width:5%"></th>
                         <!-- <th style="width:5%"></th> -->
 					</tr>
@@ -30,6 +31,14 @@
 						<td><?php echo date("l M d Y",strtotime($item['Ngay'])) ?></td>
 						<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
 						<td><?php echo $item['Hoten']?></td>
+						<td><?php 
+							$sql1="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
+							where ID_Lich=".$item['ID_Lich'];
+							$phongkham=$s->executeSingLesult($sql1);
+							echo $phongkham['Tenphongkham'];
+						
+						?></td>
+
 						<td><?php echo $item['tinhtrang'] ?></td>
 						<td class="text-center">
 						<a href="index.php?page=appointments&idsua=<?php echo $item['ID_Lich'] ?>">

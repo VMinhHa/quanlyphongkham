@@ -26,20 +26,38 @@ $s=new data();
                     $ngaythanhlap = $_POST['ngaysinh'];
                     $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
+                $resu=0;
                 if($ngaythanhlap<date("Y-m-d")){
-                    $sql = "UPDATE phongkham set ID_Khoa='$diachi',Tenphongkham='$hoten',NgayThanhLap='$ngaythanhlap'
-                    where ID_Phongkham=" . $id;
-                    $s->execute($sql);
-                    //$mess= 'Cập nhật thành công';
-                    echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=phongkham";
-                    </script>';
+
+                    $sql2 = 'SELECT * from phongkham';
+                    $phongkham = $s->executeLesult($sql2);
+                    foreach ($phongkham as $item) {
+                        if($hoten==$item['Tenphongkham']){
+                            $resu=1;
+                            echo '<script>
+                                alert("Phòng đã tồn tại");
+                                window.location.href="index.php?page=phongkham";
+                                </script>';
+                                exit();
+                        }else{
+                            $resu=2;
+                        }
+                    }
                 }else{
                     echo '<script>
                     alert("Ngày lập phải nhỏ hơn ngày hiện tại");
                     window.location.href="index.php?page=phongkham";
                     </script>';
+                }
+                if($resu==2){
+                    $sql = "UPDATE phongkham set ID_Khoa='$diachi',Tenphongkham='$hoten',NgayThanhLap='$ngaythanhlap'
+                        where ID_Phongkham=" . $id;
+                        $s->execute($sql);
+                        //$mess= 'Cập nhật thành công';
+                        echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=phongkham";
+                        </script>';
                 }
              }
         

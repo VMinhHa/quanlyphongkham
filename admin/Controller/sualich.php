@@ -38,22 +38,28 @@ if (isset($_GET['idsua'])) {
 	$status = $category['tinhtrang'];
     if(isset($_POST['sua'])){
         if (isset($_POST['tenbacsi1'])) {
-            $tenbacsi = $_POST['tenbacsi1'];	
+            $tenbacsi = $_POST['tenbacsi1'];
+			$tenbacsi = str_replace('"', '\\"', $tenbacsi);	
         }
         if (isset($_POST['tenphong1'])) {
             $tenphong = $_POST['tenphong1'];
+			$tenphong = str_replace('"', '\\"', $tenphong);
         }
         if (isset($_POST['Ngay1'])) {
             $Ngay = $_POST['Ngay1'];
+			$Ngay  = str_replace('"', '\\"', $Ngay );
         }
         if (isset($_POST['time2'])) {
             $time = $_POST['time2'];
+			$time = str_replace('"', '\\"', $time);
         }
         if (isset($_POST['status1'])) {
             $status = $_POST['status1'];
+			$status = str_replace('"', '\\"', $status);
         }
 		if (isset($_POST['time1'])) {
 			$time1 = $_POST['time1'];
+			$time1 = str_replace('"', '\\"', $time1);
 		}
 		if( date("Y m d",strtotime($Ngay))<date('Y m d')){
 			$messxuly1='Ngày nhập phải lớn hơn ngày hiện tại';
@@ -61,6 +67,27 @@ if (isset($_GET['idsua'])) {
 			if($time1>=$time){
 				$messxuly="Số giờ kết thúc phải lớn hơn giờ bắt đầu";
 			}else{
+				$sql2 = 'SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham';
+				$phongkham = $s->executeLesult($sql2);
+				foreach ($phongkham as $item) {
+					if($Ngay==$item['Ngay']){
+							if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($time1))==date("h:i A",strtotime($item['Giobatdau'])) 
+						&& date("h:i A",strtotime($time))==date("h:i A",strtotime($item['Gioketthuc']))){
+							$resu=0;
+							echo '<script>
+							alert("Hiện tại lịch này đã tồn tại");
+							window.location.href="index.php?page=appointments";
+						</script>';
+						exit();
+						}else{
+							$resu=1;	
+						}
+					}else{
+						$resu=2;
+					}
+				}
+			}
+			if($resu==1 || $resu==2){
 				$sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
 				Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
 				WHERE lichlamviec.ID_Lich =".$id1;
@@ -71,6 +98,8 @@ if (isset($_GET['idsua'])) {
                 </script>';
 			}
 		} 
+
+		
     }
 
 

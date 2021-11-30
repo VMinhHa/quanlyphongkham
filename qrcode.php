@@ -20,7 +20,10 @@ session_start();
                 on n.ID_Benhnhan=l.ID_Benhnhan JOIN taikhoan t on t.id=n.id
                 where t.Tendangnhap="'.$_SESSION['username'].'" and l.id_Lichhen="'.$id.'" ';
             $Lich = $s->executeSingLesult($sql);
- 
+
+            $sql4="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
+					where ID_Lich=".$Lich['so'];
+					$phongkham=$s->executeSingLesult($sql4);
     }else{
         echo 456;
     }
@@ -52,7 +55,10 @@ session_start();
                     <p><b>Giờ khám: </b><label for=""><?php echo date("h:i A",strtotime($Lich['Giobatdau'])) ?></label></p>
                     <p><b>Tên bệnh nhân: </b><label for=""><?php echo $Lich['Hotenbn']?></label></p>
                     <p><b>Bác sĩ khám: </b><label for=""><?php echo $Lich['Hoten']?></label></p>
+                    <p><b>Phòng khám: </b><label for=""><?php echo $phongkham['Tenphongkham'];?></label></p>
                     <p><b>Trạng thái: </b><label for=""><?php echo $Lich['Trangthai']?></label></p>
+                    
+ 
             </div>
         </div>
     </body>

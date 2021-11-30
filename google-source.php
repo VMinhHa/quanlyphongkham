@@ -2,7 +2,7 @@
     require('vendor/autoload.php');
     $clientID='565136117957-2eli3vrv3q691kcglvgp34i734srupo1.apps.googleusercontent.com';
     $ClientSecret='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';
-    $redirectUrl= 'http://localhost/quanlyphongkham/login.php';
+    $redirectUrl= 'http://localhost:8080/quanlyphongkham/login.php';
 
     $client = new Google_Client();
     $client->setClientID($clientID);

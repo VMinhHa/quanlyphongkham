@@ -19,10 +19,11 @@
 					<thead>
 						<tr>
                         <th>STT</th>
-						<th style="width:30%">họ và tên Bác sĩ</th>
+						<th style="width:20%">họ và tên Bác sĩ</th>
 						<th style="width:20%">Ngày hẹn</th>
 						<th style="width:20%">Giờ hẹn</th>
-						<th style="width:10%">Trạng thái</th>
+						<th style="width:15%">Tên phòng khám</th>
+						<th style="width:5%">Trạng thái</th>
 						<th style="width:15%">Mã QR</th>
 						<th style="width:5%">Xóa</th>
 
@@ -46,13 +47,20 @@
 							</td>
 							<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+							<td><?php 
+							$sql3="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
+							where ID_Lich=".$item['so'];
+							$phongkham=$s->executeSingLesult($sql3);
+							echo $phongkham['Tenphongkham'];
+						
+							?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
 							<?php 
 								$last_id = $item['id_Lichhen'];
 								$file="./images/qrcode/".$last_id.".png";
 								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
 							?>
-							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
+							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 
 								echo "<img src='".$file."'>"; 
 								?>
@@ -88,7 +96,15 @@
 							</td>
 							<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
 							<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+							<td><?php 
+								$sql4="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
+								where ID_Lich=".$item['so'];
+								$phongkham=$s->executeSingLesult($sql4);
+								echo $phongkham['Tenphongkham'];
+						
+							?></td>
 							<td><?php echo $item['Trangthai'] ?></td>
+							<!-- Qrcode -->
 							<?php 
 								$last_id = $item['id_Lichhen'];
 								$file="../images/qrcode/".$last_id.".png";

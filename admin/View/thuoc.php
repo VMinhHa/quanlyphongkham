@@ -52,16 +52,18 @@
                     display:inline-block;
                 }
             </style>
-                <form class="s2" method="post" style="width:50%;margin:5px;float:left;" enctype="multipart/form-data">
-                    <input type="file" name="file" style="margin: 7px;">
-                    <input type="submit" name="submit" value="Upload">
-                </form>
-                <form class="s3 " method="post"  style="float:right;margin:5px;text-align:right;" >
-                    <input type="text" class="form-control timkiem" id="timkiem"placeholder="Tìm kiếm..."  id="s" name="s"
-                            style="width:200px;float:right ; margin-right:10px;">
-                            
-                            
-                </form>
+                <div>
+                    <form class="s2" method="post" style="width:50%;margin:5px;float:left;" enctype="multipart/form-data">
+                        <input type="file" name="file" style="margin: 7px;">
+                        <input type="submit" name="submit" value="Upload">
+                    </form>
+                    <form class="s3 " method="post"  style="float:right;margin:5px;text-align:right;" >
+                        <input type="text" class="form-control timkiem" id="timkiem"placeholder="Tìm kiếm..."  id="s" name="s"
+                                style="width:200px;float:right ; margin-right:10px;">
+                                
+                                
+                    </form>
+                </div>
 
         <!-- </div> -->
     <div>
