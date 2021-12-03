@@ -87,7 +87,7 @@
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbenhnhan.php?pagetrang=lichsu"
           >LỊCH SỬ KHÁM BỆNH</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbenhnhan.php?pagetrang=capnhattk"
-          >CẬP NHẬT TÀI KHOẢN</a></h5>
+          >ĐỔI MẬT KHẨU</a></h5>
         </div>
       </div>
       <div id="page-content-wrapper">

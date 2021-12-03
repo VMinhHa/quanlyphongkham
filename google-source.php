@@ -50,6 +50,7 @@
                 $result1 = mysqli_query($conn, "select * FROM taikhoan WHERE email ='$email'");
                 $i = mysqli_num_rows($result1);
                  if ($i == 0) {
+                     //$pa=md5(12345)
                     //echo '<img src="'.$picture.'">';
                      $sql = "insert into Taikhoan(Tendangnhap,Email,Phanquyen) values('$name','$email','Benhnhan')"; 
                      $res = mysqli_query($conn, $sql);
