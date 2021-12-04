@@ -10,17 +10,39 @@
       $email = $_POST['email'];
       $phanquyen = 'Benhnhan';
 
+      // 
+      
+
+      
+
       //
         if(empty($username))
         {
           $err['username'] = '*Bạn chưa nhập tên đăng nhập';
-        }else{
+        }
+        else{
             // Kiểm tra định dạng username
             if (!is_username($username)) {
                 $err['username'] = "*Tên đăng nhập phải từ 6 chữ số";
-            } else {
-                $username = $_POST['username'];
             }
+            else
+            {
+              $username = $_POST['username'];  
+            }
+        }
+
+        if(isset($username))
+        {
+          $sql_check = "SELECT * FROM taikhoan where Tendangnhap = '$username'";
+          $result_check = mysqli_query($conn,$sql_check);
+          if(mysqli_num_rows($result_check) > 0)
+          {
+            $err['err_check'] = "*Tên đăng nhập đã được sử dụng";
+          }
+        }
+        else
+        {
+          $username = $_POST['username']; 
         }
 
         //Kiểm tra lỗi password
@@ -35,7 +57,7 @@
                 $password = $_POST['password'];
             }
         }
-
+        
         if($password != $repass)
         {
           $err['repass'] = '*Mật khẩu nhập lại không đúng';
@@ -51,25 +73,21 @@
           } else {
               $email = $_POST['email'];
           }
+
+        if(isset($email))
+        {
+          $sql_mail = "SELECT * FROM taikhoan where Email = '$email'";
+          $result_mail = mysqli_query($conn,$sql_mail);
+          if(mysqli_num_rows($result_mail) > 0)
+          {
+            $err['err_mail'] = "*Email đã được sử dụng";
+          }
+        }
+        else
+        {
+          $email = $_POST['email']; 
+        }
       }
-      
-      
-      // if(empty($username))
-      // {
-      //   $err['username'] = '*Bạn chưa nhập tên đăng nhập';
-      // }
-      // if(empty($password))
-      // {
-      //   $err['password'] = '*Bạn chưa nhập mật khẩu';
-      // }
-      // if($password != $repass)
-      // {
-      //   $err['repass'] = '*Mật khẩu nhập lại không đúng';
-      // }
-      // if(empty($email))
-      // {
-      //   $err['email'] = '*Bạn chưa nhập email';
-      // }
       
       if(empty($err))
       {        
@@ -151,6 +169,7 @@
               <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
               <div class="has-error">
                 <span> <?php echo (isset($err['username'])) ? $err['username']:'' ?> </span>
+                <span> <?php echo (isset($err['err_check'])) ? $err['err_check']:'' ?> </span>
               </div>
             </div>
 
@@ -175,6 +194,7 @@
               <input type="email" class="form-control" id="txtemail" placeholder="Nhập email của bạn" name="email">
               <div class="has-error">
                 <span> <?php echo (isset($err['email'])) ? $err['email']:'' ?> </span>
+                <span> <?php echo (isset($err['err_mail'])) ? $err['err_mail']:'' ?> </span>
               </div>
             </div>
 
