@@ -89,7 +89,7 @@
                     </div>
                     <!-- <div class="form-group">
                       <label class="font-weight-bolder">Email: </label>
-                      <input type="email" class="form-control" name="sdt" required="required" value="<?php echo $dsbenhnhan['Email']; ?>">
+                      <input type="text" class="form-control" name="sdt" required="required" value="<?php echo $dsbenhnhan['Email']; ?>">
                     </div> -->
                 </div>
                 <div class="modal-footer">

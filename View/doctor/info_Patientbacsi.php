@@ -90,7 +90,10 @@
                       <label class="font-weight-bolder">Ngày sinh: </label>
                       <input type="date" class="form-control" name="age" value="<?php echo $dsbacsi['Ngaysinh']; ?>">
                     </div>
-                   
+                    <div class="form-group">
+                      <label class="font-weight-bolder">Email: </label>
+                      <input type="gmail" class="form-control" name="sdt" required="required" value="<?php echo $dsbacsi['Email']; ?>">
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" name="update">Lưu</button>

@@ -101,6 +101,7 @@
       <div>
       <?php
     include './db/connect.php';
+    include('db/validation.php');
     $s=new data();
     $sql1='Select * from taikhoan where Tendangnhap="'.$_SESSION['username'].'"';
     $xacnhan=$s->executeSingLesult($sql1);
@@ -121,9 +122,9 @@
 		if($old_password != $xacnhan['Password']){
 			$error['old_password'] = 'Sai mật khẩu.';
         }
-		if(strlen($new_password) < 2 && strlen($new_password) >= 30){
-			$error['new_password'] = 'Sai điều kiện';
-        }	
+        if (!is_password($new_password)) {
+          $error['new_password'] = "Mật khẩu bắt đầu bằng chữ in hoa từ 5 chữ số";
+        } 
 		if($new_password != $confirm_new_password){
 			$error['confirm_new_password'] = 'Mật khẩu không trùng nhau.';	
         }
