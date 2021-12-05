@@ -24,20 +24,13 @@ session_start();
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
-        
-        // $sql_mail = 'SELECT * FROM phongkham where ;
-        // echo    $user=$book['Tendangnhap'];
-        // echo    $name=$book['Hoten'];
-        // echo    $appdate = $book['ngay']; 
-        // echo    $starttime=$book['Giobatdau'];
-        // echo    $endtime=$book['Gioketthuc'];
-        
-
+    
         echo '<script>
             alert("Đăng ký lịch thành công");
             window.location.href="../doctor.php";
             </script>';
         
+        // include('sendmail.php');
         
 
     }
