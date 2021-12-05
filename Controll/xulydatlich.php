@@ -1,5 +1,6 @@
 <?php 
 session_start();
+   
     if(isset($_POST['datlich'])){
         //$_SESSION['datlich']=$_POST['datlich'];
         $id=$_POST['datlich'];
@@ -10,22 +11,34 @@ session_start();
         Where ID_Lich="'.$id.'"';
         $lich=$s->executeSingLesult($sql1);
         $bs=$lich['ID_Bacsi'];
-        $ngay=$lich['Ngay'];
-        $bd=$lich['Giobatdau'];
-        $kt=$lich['Gioketthuc'];
+        $ngay=$lich['Ngay'];                     //appointment
+        $bd=$lich['Giobatdau'];                 //StartTime
+        $kt=$lich['Gioketthuc'];                //EndTime
          $sql2='
          SELECT * FROM benhnhan b JOIN taikhoan t on b.id=t.id
          Where Tendangnhap="'.$_SESSION['username'].'"';
          $lich1=$s->executeSingLesult($sql2);
          $bn=$lich1['ID_Benhnhan'];
+         $email = $lich1['Email'];              //Email
         $date=date("Y-m-d");
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
+        
+        // $sql_mail = 'SELECT * FROM phongkham where ;
+        // echo    $user=$book['Tendangnhap'];
+        // echo    $name=$book['Hoten'];
+        // echo    $appdate = $book['ngay']; 
+        // echo    $starttime=$book['Giobatdau'];
+        // echo    $endtime=$book['Gioketthuc'];
+        
+
         echo '<script>
             alert("Đăng ký lịch thành công");
             window.location.href="../doctor.php";
             </script>';
+        
+        
 
     }
     if(isset($_POST['Xoa_lich'])){

@@ -59,11 +59,13 @@
 								$last_id = $item['id_Lichhen'];
 								$file="./images/qrcode/".$last_id.".png";
 								$url = 'http://localhost:8080/quanlyphongkham/qrcode.php?idlich='.$last_id.'';
+								// $img_file = "$last_id.png" ;
 							?>
 							<td><?php QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 
 								echo "<img src='".$file."'>"; 
 								?>
+								<a href="./images/qrcode/<?php echo $last_id?>.png" download class="btn"><i class="fa fa-download"></i>Download</a>
 							</td>
 
 							<!-- bỏ -->
@@ -113,6 +115,7 @@
 							<td><?php //QRcode::png($url, $file, QR_ECLEVEL_L, 4);
 								//echo "<img src='".$file."'>"; 
 								?>
+								<a href="./images/qrcode/<?php echo $last_id?>.png" download class="btn"><i class="fa fa-download"></i>Download</a>
 							</td>
 
 							<!-- bỏ -->
