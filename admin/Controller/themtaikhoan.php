@@ -25,7 +25,15 @@ $s=new data();
                         window.location.href="../index.php?page=users";
                         </script>';
                         exit();
-                    }else{
+                    }elseif($email==$item['Email']){
+                        $resu=1;
+                        echo '<script>
+                        alert("Email đã được sử dụng vui lòng nhập email khác");
+                        window.location.href="../index.php?page=users";
+                        </script>';
+                        exit();
+                    }
+                    else{
                         $resu=2;
                     }
                 }

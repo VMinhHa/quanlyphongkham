@@ -79,7 +79,6 @@
                                 <form action="Controll/xulykethuoc.php"  method="POST"> 
                                     <button class="btn-primary btn btn-sm" value="'.$item['ID_Thuoc'].'" name="submit">Thêm</button>
                                     </form> 
-
                                 </td>
                                 ';
 

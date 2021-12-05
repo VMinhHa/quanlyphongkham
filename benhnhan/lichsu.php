@@ -24,9 +24,12 @@
 					<?php 
                         include 'db/connect.php';
                         $p=new data();
-                        $dem1=$p->demlich();
-                        $prodperpage=4;
-                        $dem=0;
+                        $laylich='Select * from benhnhan b join taikhoan t on b.id=t.id where Tendangnhap="'.$_SESSION['username'].'"';
+                        $layid=$p->executeSingLesult($laylich);
+                        $dem1=$p-> demlich($layid['ID_Benhnhan']);
+                        $prodperpage=3;
+
+                       
                         ?>
                     <!-- Phan trang -->
 					<thead>
@@ -57,10 +60,13 @@
                     }
                     $page2=($page1-1)*$prodperpage;
                     $s = new data();
-                    $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi  join benhnhan n 
-                    on n.ID_Benhnhan=l.ID_Benhnhan JOIN taikhoan t on t.id=n.id
-                    where 1 '.$additional.' and  Tendangnhap="'.$_SESSION['username'].'" and Trangthai="Hoàn thành" 
-					limit '.$page2.','.$prodperpage.' ';
+
+
+                    $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi
+                        where  (1 '.$additional.')  and l.ID_Benhnhan='.$layid['ID_Benhnhan'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
+                        order by Ngayhen
+                        desc limit '.$page2.','.$prodperpage.' ';
+
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
@@ -101,13 +107,24 @@
 					</tr>
                 <?php } ?>
 				<tr>
-                    <td colspan="7" >    
+                <style>
+                        .chinhphantrang {
+                            list-style-type: none;
+                        }
+                        .chinhphantrang li{
+                            display: inline-block;
+                            background-color:gray;
+                            padding:5px;
+                            border-radius:5px;
+                        }
+                    </style>
+                    <td colspan="7" style="text-align:center;">    
                             <div class="giua">
-                            <ul class="pagination pagination-lg">
+                            <ul class=" pagination-lg chinhphantrang">
                                 <?php 
                             if($dem1>0){
                                 # code...
-                                for ($i=0 ;$i<$dem1/4.0;$i++) {
+                                for ($i=0 ;$i<$dem1/3.0;$i++) {
                                 ?>
                                 <li class="pagination-item">
                                     <a class="pagination-item__link" 
