@@ -87,7 +87,7 @@
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbacsi.php?pagetrang=lichsu"
           >LỊCH SỬ ĐÃ KHÁM</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbacsi.php?pagetrang=capnhattk"
-          >Đổi MẬT KHẨU</a></h5>
+          >ĐỐI MẬT KHẨU</a></h5>
           <!-- <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Events</a>
           <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Profile</a>
           <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Status</a> -->

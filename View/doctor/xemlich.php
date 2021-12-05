@@ -21,8 +21,8 @@
 						<th style="width:12.5%">họ và tên bệnh nhân</th>
 						<th style="width:12.5%">Ngày hẹn</th>
 						<th style="width:12.5%">Giờ hẹn</th>
-                        <th style="width:25%">Chuẩn đoán</th>
                         <th style="width:12.5%">Kê thuốc</th>
+                        <th style="width:25%">Chuẩn đoán</th>
                         <th style="width:10%">Xử lý</th>
                         <th style="width:10%">Trạng thái</th>
 					</tr>
@@ -39,7 +39,7 @@
                     on b.id_Lichhen=l.id_Lichhen';
                     
                     foreach ($Lich as $item) {
-                        if($item['Trangthai']!='Hoàn thành'){                  
+                        if($item['Trangthai']!='Hoàn thành'&&$item['Trangthai']!='Hủy'){                  
 					?>
                         <tr>
                         <td ><?php echo $dem++ ?></td>
@@ -48,34 +48,7 @@
 						</td>
 						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
-                        <!-- Chuẩn đoán -->
-                        <td>   
-                            <?php if($item['Trangthai']=='Đang khám') {
-                                $sql2='Select * from benhan where id_Lichhen=
-                                '.$item['id_Lichhen'];
-                                $chuandoan=$s->executeSingLesult($sql2);?>
-                            <form action="Controll/xulybenhan.php"  method="POST"> 
-                                <div class="form-group">
-                                    <!-- ko di hchuyen -->
-<textarea rows="5" cols="58" name="noidung" class="form-control"  required>
-<?php 
-    if($chuandoan!=null){
-echo trim($chuandoan['Chuandoan']);
-    }
-
-?>
-</textarea> 
-    <!-- 2222222222222 -->
-                                </div>
-                                <button  class="btn-primary btn text-center" 
-                                value="<?php echo $item['id_Lichhen']?>" 
-                                style="width:135px;height:40px;" name="chuandoan">Thêm</button>
-                            </form>
-                            <?php 
-                                }
-                            ?>
-                        </td>
-                        <!-- THuoc -->
+                        <!-- THuoc------------------- -->
                         <td>
                             <?php if($item['Trangthai']=='Đang khám') {?>
                                 <h4>Tên thuốc: </h4>
@@ -89,11 +62,18 @@ echo trim($chuandoan['Chuandoan']);
                                 }
                                 echo $result = rtrim($s1, " , ");
                             ?>
-                                <form action="thongtinbacsi.php?page=1"  method="POST"> 
-                                <br><button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlich1" class="btn btn-dark text-center">
-                                    Kê thuốc
-                                </button>
-                                </form>
+                                <div style="width:100%">
+                                    <form action="thongtinbacsi.php?page=1"  method="POST" style="width:50%"> 
+                                        <br><button type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="idlich1" class="btn btn-dark text-center">
+                                            Kê thuốc
+                                        </button>
+                                    </form>
+                                    <form action="thongtinbacsi.php?pagetrang=xemlich" style="width:50%"  method="POST"> 
+                                        <button type="width:50%" type="submit" value="<?php echo $item['id_Lichhen'] ?>" name="xoathuoc" class="btn btn-dark text-center">
+                                            Xóa
+                                        </button>
+                                    </form>
+                                </div>
                             <?php 
                             // Cần sửa
                             //  if(isset($_POST['idlich1'])){
@@ -103,10 +83,33 @@ echo trim($chuandoan['Chuandoan']);
                                 
                             ?>
                         </td>
-                                        
+                        <!-- Chuẩn đoán -->
+                        <form action="Controll/xulylich.php"  method="POST"> 
+                        <td>   
+                            <?php if($item['Trangthai']=='Đang khám') {
+                                $sql2='Select * from benhan where id_Lichhen=
+                                '.$item['id_Lichhen'];
+                                $chuandoan=$s->executeSingLesult($sql2);?>
+                                <div class="form-group">
+                                    <!-- ko di hchuyen -->
+<textarea rows="5" cols="58" name="noidung" class="form-control"  required>
+<?php 
+    if($chuandoan!=null){
+echo trim($chuandoan['Chuandoan']);
+    }
+
+?>
+</textarea> 
+    <!-- 2222222222222 -->
+                                </div>
+                                
+                            <?php 
+                                }
+                            ?>
+                        </td>     
                             <!-- 0----- -->
                         <td >
-                            <form action="Controll/xulylich.php"  method="POST"> 
+                            
                                 <div class="form-group">
                                     <select name="trangthai" class="form-control">
                                         <?php 
@@ -126,8 +129,8 @@ echo trim($chuandoan['Chuandoan']);
                                                     }
                                                     else{
                                                         echo '<option value="Xác nhận">Xác nhận</option>
-                                                        <option value="Hủy">Hủy</option>
-                                                        <option value="Đang khám">Khám</option>';
+                                                        <option value="Hủy">Hủy</option>';
+                                                        
                                                     }
                                                 }
                                  
@@ -139,8 +142,9 @@ echo trim($chuandoan['Chuandoan']);
                                     </select>
                                 </div>
                                 <button  class="btn-primary btn text-center" value="<?php echo $item['id_Lichhen']?>" style="width:135px;height:40px;font-size:12px;" name="xacnhan">Xác nhận</button>
-                            </form>
-						</td>		
+                            
+						</td>
+                        </form>		
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
                 <?php }}

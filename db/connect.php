@@ -46,9 +46,17 @@ class data
         return mysqli_num_rows($result);
         mysqli_close($conn);
     }
-    Function demlich(){
+    Function dem1($id){
         $conn = $this->connect();
-        $sql="Select * from lichhen where Trangthai='Hoàn thành'";
+        $sql='Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Bacsi='.$id;
+        $result=mysqli_query($conn, $sql);
+        return mysqli_num_rows($result);
+        mysqli_close($conn);
+    }
+
+    Function demlich($id1){
+        $conn = $this->connect();
+        $sql='Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Benhnhan='.$id1;
         $result=mysqli_query($conn, $sql);
         return mysqli_num_rows($result);
         mysqli_close($conn);

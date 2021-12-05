@@ -21,12 +21,15 @@
                 </form>
 				<table class="table table-bordered">
                      <!-- Phan trang -->
+                     <!-- Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Bacsi=104 -->
                      <?php 
                         include 'db/connect.php';
                         $p=new data();
-                        $dem1=$p->demlich();
+                        $laylich='Select * from bacsi b join taikhoan t on b.id=t.id where Tendangnhap="'.$_SESSION['username'].'"';
+                        $layid=$p->executeSingLesult($laylich);
+                        $dem1=$p->dem1($layid['ID_Bacsi']);
                         $prodperpage=3;
-                        $dem=0;
+                     
                         ?>
                     <!-- Phan trang -->
 					<thead>
@@ -50,26 +53,29 @@
                         $additional='and Hotenbn like"%'.$s.'%" 
                         or Ngayhen like"%'.$s.'%"';
                     }
-                    $dem=0; 
+                    
                     $page1=1;
                     if(isset($_REQUEST["page1"])){
                         $page1=$_REQUEST["page1"];
                         
                     }
-                    $page2=($page1-1)*$prodperpage;
+                    //Lỗi tìm kiếm mai sửa
+                    
+                    $page2=(($page1-1)*$prodperpage);
+
                     $s = new data();
-                        $sql='select * from taikhoan t JOIN bacsi b on t.id=b.id JOIN lichhen 
-                        l on b.ID_Bacsi=l.ID_Bacsi join benhnhan n on n.ID_Benhnhan=l.ID_Benhnhan
-                        where  1 '.$additional.' and Tendangnhap="'.$_SESSION['username'].'" and Trangthai="Hoàn thành"
+                    $sql='select * from lichhen l join benhnhan b on l.ID_Benhnhan=b.ID_Benhnhan
+                        where  (1 '.$additional.')  and l.ID_Bacsi='.$layid['ID_Bacsi'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
                         order by Ngayhen
                         desc limit '.$page2.','.$prodperpage.' ';
                         $Lich = $s->executeLesult($sql);
-                        $dem=1;
+                        
+    
                         $sq1='Select * from benhan b join lichhen l
                         on b.id_Lichhen=l.id_Lichhen';
                     
                     foreach ($Lich as $item) {
-                        if($item['Trangthai']=='Hoàn thành'){
+                        if($item['Trangthai']=='Hoàn thành'||$item['Trangthai']=='Hủy'){
 					?>
 					<tr>
                         <td ><?php echo $dem++ ?></td>
@@ -104,7 +110,8 @@ echo trim($chuandoan['Chuandoan']);
                         </td>
                         <!-- THuoc -->
                         <td>
-                            <?php if($item['Trangthai']=='Hoàn thành') {?>
+                            <?php if($item['Trangthai']=='Hoàn thành') {
+                                ?>
                                 <h4>Tên thuốc: </h4>
                             <?php
                                 $sql1="select * from xemthuoc x join thuoc t on x.ID_Thuoc=t.ID_Thuoc where
@@ -122,7 +129,6 @@ echo trim($chuandoan['Chuandoan']);
                             //     $_SESSION['idlich']=$_POST['idlich1'];
                             //  }
                                  }
-                                
                             ?>
                         </td>
                                         
@@ -132,9 +138,20 @@ echo trim($chuandoan['Chuandoan']);
 					</tr>
                 <?php }} ?>
                 <tr>
-                    <td colspan="7" >    
+                    <style>
+                        .chinhphantrang {
+                            list-style-type: none;
+                        }
+                        .chinhphantrang li{
+                            display: inline-block;
+                            background-color:gray;
+                            padding:5px;
+                            border-radius:5px;
+                        }
+                    </style>
+                    <td colspan="7" style="text-align:center;">    
                             <div class="giua">
-                            <ul class="pagination pagination-lg">
+                            <ul class="chinhphantrang">
                                 <?php 
                                 if($dem1>0){
                                 # code...
@@ -146,8 +163,6 @@ echo trim($chuandoan['Chuandoan']);
                                     <?php echo  $i+1 ?></a></li>
                                 <?php
                                  }}
-                        
-                            
                              ?>
                          </ul>
                         </div>
