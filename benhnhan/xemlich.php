@@ -25,7 +25,7 @@
 						<th style="width:15%">Tên phòng khám</th>
 						<th style="width:5%">Trạng thái</th>
 						<th style="width:15%">Mã QR</th>
-						<th style="width:5%">Xóa</th>
+						<th style="width:5%">Trạng thái</th>
 
 					</tr>
 					</thead>

@@ -1,12 +1,13 @@
 <?php 
-    // use PHPMailer\PHPMailer\PHPMailer;
-    // use PHPMailer\PHPMailer\SMTP;
-    // use PHPMailer\PHPMailer\Exception;
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
 
-    // require '../plugins/PHPMailer/src/Exception.php';
-    // require '../plugins/PHPMailer/src/PHPMailer.php';
-    // require '../plugins/PHPMailer/src/SMTP.php';
+    require '../plugins/PHPMailer/src/Exception.php';
+    require '../plugins/PHPMailer/src/PHPMailer.php';
+    require '../plugins/PHPMailer/src/SMTP.php';
 
+    
     session_start();
    
     if(isset($_POST['datlich'])){
@@ -21,12 +22,15 @@
         $ngay=$lich['Ngay'];                     //appointment
         $bd=$lich['Giobatdau'];                 //StartTime
         $kt=$lich['Gioketthuc'];                //EndTime
-         $sql2='
-         SELECT * FROM benhnhan b JOIN taikhoan t on b.id=t.id
-         Where Tendangnhap="'.$_SESSION['username'].'"';
-         $lich1=$s->executeSingLesult($sql2);
-         $bn=$lich1['ID_Benhnhan'];
-         $email = $lich1['Email'];              //Email
+        
+        $sql2='
+        SELECT * FROM benhnhan b JOIN taikhoan t on b.id=t.id
+        Where Tendangnhap="'.$_SESSION['username'].'"';
+        $lich1=$s->executeSingLesult($sql2);
+        $bn=$lich1['ID_Benhnhan'];
+        $email = $lich1['Email'];              //Email
+        $name_bn = $lich1['Hotenbn'];
+
         $date=date("Y-m-d");
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
@@ -39,8 +43,52 @@
         where id_Lichhen=".$max_lich['lich'];
         $gmail_bacsi=$s->executeSingLesult($sql2);
 
-        echo $mail_doctor = $gmail_bacsi['Email'];
+         $mail_doctor = $gmail_bacsi['Email'];
+         $name_doctor = $gmail_bacsi['Hoten'];
 
+         
+        $mail = new PHPMailer(true);
+
+        //Server settings
+                        
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = 'cancaiten2017@gmail.com';                     //SMTP username
+        $mail->Password   = '051299Ha';                               //SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+        $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+        //Recipients
+        $mail->setFrom('cancaiten2017@gmail.com', 'Administrator');
+        $mail->addAddress($mail_doctor);     //Add a recipient
+        
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Subject = 'THONG BAO LICH KHAM CHUA BENH';
+        $email_template = "
+            <h4>Xin chào <span style='color:#e74c3c'>$name_doctor</span>
+            <br>
+            Bạn có 1 lịch hẹn khám bệnh mới với <span style='color:#e74c3c'>$name_bn</span>.Vui lòng kiểm tra và xác nhận tại 
+            <a href='http://localhost:8080/quanlyphongkham/thongtinbenhnhan.php?pagetrang=xemlich' 
+            style='font-weight:bold; color:#2980b9'>Tại Đây</a>
+            <br>
+            Xin cảm ơn và chúc bạn có một ngày tốt lành!
+            <br><br>
+            Trân trọng
+            <br>
+            Minh Hà
+            <br>
+            Administrator - Bệnh Viện K </h4>
+        
+        ";
+
+        $mail->Body    = $email_template;
+        
+        $mail->send();
+            
+        
         echo '<script>
         alert("Đăng ký lịch thành công");
         window.location.href="../doctor.php";
