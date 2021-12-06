@@ -23,7 +23,8 @@
 					</thead>
 					<?php 
                     $s = new data();
-                    $sql = 'SELECT l.ID_Lich,b.Hoten,tinhtrang,Ngay,l.Giobatdau,l.Gioketthuc FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi';
+                    $sql = 'SELECT l.ID_Lich,b.Hoten,tinhtrang,Ngay,l.Giobatdau,l.Gioketthuc FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi
+					where Tinhtrangbacsi!="Nghỉ việc"';
                     $Lich = $s->executeLesult($sql);
                     foreach ($Lich as $item) {
 					?>
@@ -101,7 +102,7 @@
 					<option value=""></option>
 					<?php 
 					$s = new data();
-					$sql = 'SELECT * FROM bacsi ';
+					$sql = 'SELECT * FROM bacsi where Tinhtrangbacsi!="Nghỉ việc"';
 					$Hotenbacsi = $s->executeLesult($sql);
 					foreach ($Hotenbacsi as $value1){
 					?>

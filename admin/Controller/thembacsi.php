@@ -31,8 +31,8 @@ $s=new data();
 			    $move = move_uploaded_file($_FILES['img']['tmp_name'], '../../images/bacsi/'.$fname);
                 if($ngaysinh<date("Y-m-d")){
                     //Luu vao database
-                    $sql = "INSERT INTO bacsi (id,ID_Khoa,Hoten,Ngaysinh,Gioitinh,image)
-                    values('$tendangnhap','$tenkhoa','$hoten','$ngaysinh','$gioitinh','$fname')";
+                    $sql = "INSERT INTO bacsi (id,ID_Khoa,Hoten,Ngaysinh,Gioitinh,image,Tinhtrangbacsi)
+                    values('$tendangnhap','$tenkhoa','$hoten','$ngaysinh','$gioitinh','$fname','Đang làm')";
                     $s->execute($sql);
                     echo '<script>
                    alert("Thêm thành công");

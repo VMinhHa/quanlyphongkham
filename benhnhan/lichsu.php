@@ -63,7 +63,7 @@
 
 
                     $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi
-                        where  (1 '.$additional.')  and l.ID_Benhnhan='.$layid['ID_Benhnhan'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
+                        where  (1 '.$additional.') and Tinhtrangbacsi!="Nghỉ việc" and l.ID_Benhnhan='.$layid['ID_Benhnhan'].' and Trangthai="Hoàn thành"
                         order by Ngayhen
                         desc limit '.$page2.','.$prodperpage.' ';
 
