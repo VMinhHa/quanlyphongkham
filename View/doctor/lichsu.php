@@ -59,7 +59,6 @@
                         $page1=$_REQUEST["page1"];
                         
                     }
-                    //Lỗi tìm kiếm mai sửa
                     
                     $page2=(($page1-1)*$prodperpage);
 
@@ -73,7 +72,7 @@
     
                         $sq1='Select * from benhan b join lichhen l
                         on b.id_Lichhen=l.id_Lichhen';
-                    
+                    $dem=1;
                     foreach ($Lich as $item) {
                         if($item['Trangthai']=='Hoàn thành'||$item['Trangthai']=='Hủy'){
 					?>

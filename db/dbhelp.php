@@ -39,17 +39,11 @@ class Action{
 	}
 	function delete_doctor(){
 		 extract($_POST);
-        // include('connect.php');
-        // ini_set('display_errors', 1);
-        // $s=new data();
-        // $sql="select * from lichhen where ID_Bacsi = ".$id;
-        // $id_lich=executeSingLesult($sql);
-        // //$id=$_POST['id'];
-        //  $delete = $this->db->query("DELETE FROM benhan where id_Lichhen = ".$id_lich['id_Lichhen']);
-        $delete = $this->db->query("DELETE FROM lichhen where ID_Bacsi = ".$id);
-		$delete = $this->db->query("DELETE FROM lichlamviec where ID_Bacsi = ".$id);
-		$delete = $this->db->query("DELETE FROM bacsi where ID_Bacsi = ".$id);
-		if($delete)
+         $update=$this->db->query("Update bacsi set Tinhtrangbacsi='Nghỉ việc' where ID_Bacsi = ".$id);
+        // $delete = $this->db->query("DELETE FROM lichhen where ID_Bacsi = ".$id);   
+		// $delete = $this->db->query("DELETE FROM lichlamviec where ID_Bacsi = ".$id);
+		// $delete = $this->db->query("DELETE FROM bacsi where ID_Bacsi = ".$id); 
+		if($update)
 			return 1;
 	}
     function delete_appointment(){

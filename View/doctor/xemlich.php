@@ -75,6 +75,14 @@
                                     </form>
                                 </div>
                             <?php 
+                                if(isset($_POST['xoathuoc'])){
+                                    $sqlxoa="DELETE FROM xemthuoc WHERE id_Lichhen=".$_POST['xoathuoc'];
+                                    $s->execute($sqlxoa);
+                                        echo '<script>
+                                        window.location.href="thongtinbacsi.php?pagetrang=xemlich";
+                                        </script>';
+                                    
+                                }
                             // Cần sửa
                             //  if(isset($_POST['idlich1'])){
                             //     $_SESSION['idlich']=$_POST['idlich1'];

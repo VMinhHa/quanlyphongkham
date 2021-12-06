@@ -10,10 +10,9 @@
     session_start();
    
     if(isset($_POST['datlich'])){
-        //$_SESSION['datlich']=$_POST['datlich'];
         $id=$_POST['datlich'];
         include '../db/connect.php';
-        $s=new data();
+         $s=new data();
         $sql1='
         SELECT * from lichlamviec l join bacsi b on l.ID_Bacsi=b.ID_Bacsi
         Where ID_Lich="'.$id.'"';
@@ -33,6 +32,15 @@
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
         
+        ///code lấy gmail
+        $sql1="Select max(id_Lichhen) as lich from lichhen";
+        $max_lich=$s->executeSingLesult($sql1);
+        $sql2="Select * from taikhoan t join bacsi b on t.id=b.id join lichhen l on b.ID_Bacsi=l.ID_Bacsi
+        where id_Lichhen=".$max_lich['lich'];
+        $gmail_bacsi=$s->executeSingLesult($sql2);
+
+        echo $mail_doctor = $gmail_bacsi['Email'];
+
         echo '<script>
         alert("Đăng ký lịch thành công");
         window.location.href="../doctor.php";

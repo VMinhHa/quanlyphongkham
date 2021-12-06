@@ -195,7 +195,7 @@
 				include './db/connect.php';
 				$s=new data();
 				$sql='
-				select * from taikhoan t JOIN bacsi b on t.id=b.id join khoa k on k.ID_Khoa=b.ID_Khoa';
+				select * from taikhoan t JOIN bacsi b on t.id=b.id join khoa k on k.ID_Khoa=b.ID_Khoa where Tinhtrangbacsi!="Nghỉ việc"';
 				$listbacsi=$s->executeLesult($sql);
 				foreach ($listbacsi as $item1) {
 			?>
