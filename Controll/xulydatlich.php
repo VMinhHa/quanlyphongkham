@@ -1,5 +1,13 @@
 <?php 
-session_start();
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // use PHPMailer\PHPMailer\SMTP;
+    // use PHPMailer\PHPMailer\Exception;
+
+    // require '../plugins/PHPMailer/src/Exception.php';
+    // require '../plugins/PHPMailer/src/PHPMailer.php';
+    // require '../plugins/PHPMailer/src/SMTP.php';
+
+    session_start();
    
     if(isset($_POST['datlich'])){
         //$_SESSION['datlich']=$_POST['datlich'];
@@ -24,14 +32,11 @@ session_start();
         $sql="INSERT INTO lichhen (ID_Benhnhan,ID_Bacsi,Ngayhen,Giobatdau,Gioketthuc,Ngaytao,so) 
         VALUES ('$bn','$bs','$ngay','$bd','$kt','$date','$id')";
         $s->execute($sql);
-    
+        
         echo '<script>
-            alert("Đăng ký lịch thành công");
-            window.location.href="../doctor.php";
-            </script>';
-        
-        // include('sendmail.php');
-        
+        alert("Đăng ký lịch thành công");
+        window.location.href="../doctor.php";
+        </script>';
 
     }
     if(isset($_POST['Xoa_lich'])){
@@ -42,7 +47,7 @@ session_start();
         id_Lichhen = ".$idlichhen;
         $s->execute($sql);
             echo '<script>
-            alert("Xóa thành công");
+            alert("Hủy lịch thành công");
             window.location.href="../thongtinbenhnhan.php?pagetrang=xemlich";
             </script>';
         

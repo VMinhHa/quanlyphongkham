@@ -9,7 +9,7 @@
 ?>
 <div class="container-fluid">
 	<div class="panel-heading mt-3 ml-3 mr-3">
-        <h1 class="text-center">Xem Lịch Khám</h1>
+        <h1 class="text-center">Xem Lịch Sử Khám</h1>
     </div>
 	<div class="col-md-12">
 		<div class="card">
