@@ -17,14 +17,14 @@
             return true;
     }
 
-    function is_chucai($hoten)
+    function is_chucai($hoten)          //Nhập chữ cái và khoảng trắng từ 1-10000 kí tự
     {
         $parttern = "/^[a-zA-Z ]{1,1000}*$/";
         if(preg_match($parttern, $hoten))
             return true;
     }
 
-    function is_chuso($text)
+    function is_chuso($text)               //Nhập chữ cái, số và khoảng trắng từ 1-1000 kí tự
     {
         $parttern = "/^[A-Za-z0-9 .]{1,1000}*$/";
         if(preg_match($parttern, $text))
