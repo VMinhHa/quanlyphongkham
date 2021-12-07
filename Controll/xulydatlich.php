@@ -46,7 +46,6 @@
          $mail_doctor = $gmail_bacsi['Email'];
          $name_doctor = $gmail_bacsi['Hoten'];
 
-         
         $mail = new PHPMailer(true);
 
         //Server settings
@@ -66,7 +65,8 @@
 
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
-        $mail->Subject = 'THONG BAO LICH KHAM CHUA BENH';
+        $mail->CharSet = 'UTF-8';
+        $mail->Subject = 'THÔNG BÁO LỊCH KHÁM CHỮA BỆNH';
         $email_template = "
             <h4>Xin chào <span style='color:#e74c3c'>$name_doctor</span>
             <br>

@@ -16,4 +16,33 @@
         if (preg_match($parttern, $email))
             return true;
     }
+
+    function is_doctor($hoten)
+    {
+        $parttern = "/^[a-zA-Z ]{1,1000}*$/";
+        if(preg_match($parttern, $hoten))
+            return true;
+    }
+
+    function is_clinic($tenphongkham)
+    {
+        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
+        if(preg_match($parttern, $tenphongkham))
+            return true;
+    }
+
+    function is_specialist($tenkhoa)
+    {
+        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
+        if(preg_match($parttern, $tenkhoa))
+            return true;
+    }
+
+    function is_medicine($thuoc)
+    {
+        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
+        if(preg_match($parttern, $thuoc))
+            return true;
+    }
+
 ?>
