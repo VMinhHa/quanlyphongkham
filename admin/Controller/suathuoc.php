@@ -11,27 +11,47 @@ if (isset($_GET['idsua'])) {
 	$Loaithuoc=$category['Loaithuoc'];
 	$Thongtinthuoc = $category['Thongtinthuoc'];
 	$Handung=$category['Handung'];
+    $messxuly1=$messxuly2=$messxuly3=$messxuly4='';
     if(isset($_POST['submit5'])){
         if (isset($_POST['tenthuoc'])) {
-            $Tenthuoc= $_POST['tenthuoc'];	
+            $Tenthuoc= $_POST['tenthuoc'];
+            $Tenthuoc = str_replace('"', '\\"',$Tenthuoc);
+            $Tenthuoc=trim($Tenthuoc);	
         }
         if (isset($_POST['loaithuoc'])) {
             $Loaithuoc = $_POST['loaithuoc'];
+            $Loaithuoc = str_replace('"', '\\"', $Loaithuoc);
+            $Loaithuoc=trim($Loaithuoc);
         }
         if (isset($_POST['thongtinthuoc'])) {
             $Thongtinthuoc = $_POST['thongtinthuoc'];
+            $Thongtinthuoc = str_replace('"', '\\"', $Thongtinthuoc);
+            $Thongtinthuoc=trim($Thongtinthuoc);
         }
         if (isset($_POST['handung'])) {
             $Handung = $_POST['handung'];
+            $Handung = str_replace('"', '\\"', $Handung);
+            $Handung=trim($Handung);
         }
-        $sql="UPDATE thuoc SET Tenthuoc='$Tenthuoc',Loaithuoc='$Loaithuoc',
-        Thongtinthuoc='$Thongtinthuoc',Handung='$Handung'
-        WHERE ID_Thuoc =".$id1;
-        $s->execute($sql);
-        echo '<script>
-            alert("Sửa thành công");
-            window.location.href="index.php?page=thuoc";
-        </script>'; 
+        if($Tenthuoc==''){
+            $messxuly1="Vui lòng không để trống";
+        }elseif($Loaithuoc==''){
+            $messxuly2="Vui lòng không để trống";
+        }elseif($Thongtinthuoc==''){
+            $messxuly3="Vui lòng không để trống";
+        }elseif($Handung==''){
+            $messxuly4="Vui lòng không để trống";
+        }
+        else{
+            $sql="UPDATE thuoc SET Tenthuoc='$Tenthuoc',Loaithuoc='$Loaithuoc',
+            Thongtinthuoc='$Thongtinthuoc',Handung='$Handung'
+            WHERE ID_Thuoc =".$id1;
+            $s->execute($sql);
+            echo '<script>
+                alert("Sửa thành công");
+                window.location.href="index.php?page=thuoc";
+            </script>'; 
+        }
     }
 }
 ?>
@@ -52,20 +72,24 @@ if (isset($_GET['idsua'])) {
             <div class="form-group">
                         <label>Tên Thuốc:</label>
                         <input type="text" class="form-control" value="<?php echo $Tenthuoc ?>" name="tenthuoc" placeholder="Nhập tên thuốc">
+                        <span style="color:red"><?php echo $messxuly1 ?></span>
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Loại thuốc</label><br>
                         <input type="text" class="form-control" value="<?php echo $Loaithuoc ?>" name="loaithuoc">
+                        <span style="color:red"><?php echo $messxuly2 ?></span>
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Thông tin thuốc</label>
 <textarea rows="10" name="thongtinthuoc"cols="48">
 <?php echo trim($Thongtinthuoc) ?>
                         </textarea>
+                        <span style="color:red"><?php echo $messxuly3 ?></span>
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Hạn dùng</label>
                         <input type="text" class="form-control" value="<?php echo $Handung ?>" name="handung">
+                        <span style="color:red"><?php echo $messxuly4 ?></span>
                     </div>
 			<hr>
 			<div class="col-md-12 text-center">

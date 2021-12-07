@@ -6,21 +6,23 @@ $s=new data();
         $id = $_GET['idsua'];
         $sql = "select Tenkhoa,Ngaythanhlap_khoa,Hinhanh from khoa where ID_Khoa=".$id;
         $khoa = $s->executeSingLesult($sql);
-            $Tenkhoa = $khoa['Tenkhoa'];
+            $tenkhoa = $khoa['Tenkhoa'];
             $Ngaythanhlap=$khoa['Ngaythanhlap_khoa'];
             $Hinhanh=$khoa['Hinhanh'];
             $mess='';
+             $messxuly1=$messxuly2='';
             if(isset($_POST['submit2'])){
                 $resu=0;
                 if (isset($_POST['tenkhoa'])) {
                     $tenkhoa = $_POST['tenkhoa'];
                     $tenkhoa = str_replace('"', '\\"', $tenkhoa);
+                    $tenkhoa=trim($tenkhoa);
                 }
                 if (isset($_POST['ngaythanhlap'])) {
                         $ngaythanhlap = $_POST['ngaythanhlap'];
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
-                if($ngaythanhlap<date("Y-m-d")){
+                if($tenkhoa!=''){
                     if($_FILES['image']['name']==''){
                             $sql3 = 'SELECT * from khoa';
                             $phongkham1 = $s->executeLesult($sql3);
@@ -57,13 +59,12 @@ $s=new data();
                             window.location.href="index.php?page=categories";
                             </script>';
                         }
+                    
                     }
-                }else{
-                    echo '<script>
-                      alert("Phải nhỏ hơn ngày hiện hành");
-                      window.location.href="index.php?page=categories";
-                      </script>';
-                }
+                    $messxuly1="Vui lòng điền trường này1".$tenkhoa;
+                    }else{
+                        $messxuly1="Vui lòng không để trống";
+                   }
                 if($resu==2){
                 $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
                 where ID_Khoa=" . $id;
@@ -72,17 +73,17 @@ $s=new data();
                 alert("Sửa thành công");
                 window.location.href="index.php?page=categories";
                 </script>';
-            }elseif($resu==3){
-                    $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
-                    $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
-                    $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
-                    where ID_Khoa=" . $id;
-                    $s->execute($sql);
-                    echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=categories";
-                    </script>';
-            }
+                }elseif($resu==3){
+                        $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
+                        $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
+                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
+                        where ID_Khoa=" . $id;
+                        $s->execute($sql);
+                        echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=categories";
+                        </script>';
+                }
 
             } 
     }
@@ -101,7 +102,8 @@ $s=new data();
             <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Tên khoa:</label>
-                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $Tenkhoa?>">
+                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $tenkhoa?> " >
+                    <span style="color:red"><?php echo $messxuly1 ?></span>
                 </div>
                 <div class="form-group">
                     <label>Ngày thành lập:</label>

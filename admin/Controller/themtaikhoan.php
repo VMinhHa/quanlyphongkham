@@ -5,6 +5,7 @@ $s=new data();
         if (isset($_POST['tendangnhap'])) {
                 $tendangnhap = $_POST['tendangnhap'];
                 $tendangnhap = str_replace('"', '\\"', $tendangnhap);
+                $tendangnhap=trim($tendangnhap);
         }
         if (isset($_POST['email'])) {
             $email = $_POST['email'];
@@ -14,29 +15,37 @@ $s=new data();
             $phanquyen = $_POST['phanquyen'];
             $phanquyen = str_replace('"', '\\"', $phanquyen);
         }
-        $pass=md5(12345);
-        $sql2 = 'SELECT * from taikhoan';
+                $pass=md5(12345);
+                $sql2 = 'SELECT * from taikhoan';
                 $phongkham = $s->executeLesult($sql2);
-                foreach ($phongkham as $item) {
-                    if( $tendangnhap==$item['Tendangnhap']){
-                        $resu=1;
-                        echo '<script>
-                        alert("Tên tài khoản đã tồn tại");
-                        window.location.href="../index.php?page=users";
-                        </script>';
-                        exit();
-                    }elseif($email==$item['Email']){
-                        $resu=1;
-                        echo '<script>
-                        alert("Email đã được sử dụng vui lòng nhập email khác");
-                        window.location.href="../index.php?page=users";
-                        </script>';
-                        exit();
+                if($tendangnhap!=''){
+                    foreach ($phongkham as $item) {
+                        if( $tendangnhap==$item['Tendangnhap']){
+                            $resu=1;
+                            echo '<script>
+                            alert("Tên tài khoản đã tồn tại");
+                            window.location.href="../index.php?page=users";
+                            </script>';
+                            exit();
+                        }elseif($email==$item['Email']){
+                            $resu=1;
+                            echo '<script>
+                            alert("Email đã được sử dụng vui lòng nhập email khác");
+                            window.location.href="../index.php?page=users";
+                            </script>';
+                            exit();
+                        }
+                        else{
+                            $resu=2;
+                        }
                     }
-                    else{
-                        $resu=2;
-                    }
+                }else{
+                    echo '<script>
+                            alert("VUi lòng không để trống");
+                            window.location.href="../index.php?page=users";
+                            </script>';
                 }
+
         if($resu==2){
             //Luu vao database
             $sql = "INSERT INTO taikhoan (Tendangnhap,Password,Email,Phanquyen)

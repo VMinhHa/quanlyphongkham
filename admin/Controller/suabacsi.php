@@ -16,10 +16,12 @@ $s=new data();
             $gioitinh = $category['Gioitinh'];
             $tendangnhap=$category['Tendangnhap'];
             $tenkhoa=$category['Tenkhoa'];
+            $messxuly1='';
             if(isset($_POST['submit1'])){
                 if (isset($_POST['hoten'])) {
                     $hoten = $_POST['hoten'];
                     $hoten = str_replace('"', '\\"', $hoten);
+                    $hoten=trim($hoten);
                 }
                 if (isset($_POST['tendangnhap'])) {
                     if(trim($_POST['tendangnhap'])){
@@ -40,21 +42,26 @@ $s=new data();
                 if (isset($_POST['gioitinh'])) {
                     $gioitinh = $_POST['gioitinh'];
                 }
-                if($ngaysinh<date("Y-m-d")){
-                    //Luu vao database
-                    $sql = "UPDATE bacsi set id='$tendangnhap',ID_Khoa='$tenkhoa',Hoten='$hoten',Ngaysinh='$ngaysinh',Gioitinh='$gioitinh'
-                    where ID_Bacsi=" . $id;
-                    $s->execute($sql);
-                    //$mess= 'Cập nhật thành công';
-                    echo '<script>
-                    alert("Sửa thành công");
-                    window.location.href="index.php?page=doctors";
-                    </script>';
+                if($hoten==''){
+                    $messxuly1='Vui lòng không để trống';
                 }else{
-                    echo '<script>
-                    alert("Ngày sửa phải nhỏ hơn ngày hiện tại");
-                    window.location.href="index.php?page=doctors";
-                    </script>';
+                    if($ngaysinh<date("Y-m-d")){
+                        //Luu vao database
+                        $sql = "UPDATE bacsi set id='$tendangnhap',ID_Khoa='$tenkhoa',Hoten='$hoten',Ngaysinh='$ngaysinh',Gioitinh='$gioitinh'
+                        where ID_Bacsi=" . $id;
+                        $s->execute($sql);
+                        //$mess= 'Cập nhật thành công';
+                        echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=doctors";
+                        </script>';
+                    }else{
+                        echo '<script>
+                        alert("Ngày sửa phải nhỏ hơn ngày hiện tại");
+                        window.location.href="index.php?page=doctors";
+                        </script>';
+                    }
+                    
                 }
             }
         
@@ -76,6 +83,7 @@ $s=new data();
                 <div class="form-group">
                     <label>Họ tên:</label>
                     <input type="text" class="form-control" name="hoten" value="<?php echo $hoten?>" placeholder="Enter Họ tên">
+                    <span style="color:red"><?php echo $messxuly1 ?></span>
                 </div>
                 <div class="form-group">
                     <label>Tên đăng nhập:</label>
@@ -90,6 +98,7 @@ $s=new data();
                             }
                             ?>
                         </select>
+                        
                 </div>
                 <div class="form-group">
                     <label>Tên Khoa: </label>

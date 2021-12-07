@@ -2,7 +2,7 @@
 
 <?php
 $s=new data();
-    if (isset($_GET['idsua'])) {
+    if (isset($_GET['idsua'])){
         $mess='';
         $id = $_GET['idsua'];
         $sql = 'select * from phongkham
@@ -10,27 +10,28 @@ $s=new data();
         $category = $s->executeSingLesult($sql);
             $hoten = $category['Tenphongkham'];
             $diachi=$category['ID_Khoa'];
+            $messxuly1=$messxuly2='';
             $ngaythanhlap = $category['NgayThanhLap'];
              if(isset($_POST['submit1'])){
-                 if (isset($_POST['hoten'])) {
-                     $hoten = $_POST['hoten'];
-                     $hoten = str_replace('"', '\\"', $hoten);
-                 }
-                if (isset($_POST['tenchuyenkhoa'])) {
-                    if(trim($_POST['tenchuyenkhoa'])){
-                        $diachi = $_POST['tenchuyenkhoa'];
-                        $diachi = str_replace('"', '\\"', $diachi);
-                    }
+                if (isset($_POST['hoten'])) {
+                    $hoten = $_POST['hoten'];
+                    $hoten = str_replace('"', '\\"', $hoten);
+                    $hoten=trim($hoten);
                 }
-                if (isset($_POST['ngaysinh'])) {
-                    $ngaythanhlap = $_POST['ngaysinh'];
-                    $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
-                }
-                $resu=0;
-                if($ngaythanhlap<date("Y-m-d")){
-
-                    $sql2 = 'SELECT * from phongkham';
-                    $phongkham = $s->executeLesult($sql2);
+               if (isset($_POST['tenchuyenkhoa'])) {
+                   if(trim($_POST['tenchuyenkhoa'])){
+                       $diachi = $_POST['tenchuyenkhoa'];
+                       $diachi = str_replace('"', '\\"', $diachi);
+                   }
+               }
+               if (isset($_POST['ngaysinh'])) {
+                   $ngaythanhlap = $_POST['ngaysinh'];
+                   $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
+               }
+               $resu=0;
+               if($hoten!=''){
+                $sql2 = 'SELECT * from phongkham';
+                $phongkham = $s->executeLesult($sql2);
                     foreach ($phongkham as $item) {
                         if($hoten==$item['Tenphongkham']){
                             $resu=1;
@@ -44,11 +45,8 @@ $s=new data();
                         }
                     }
                 }else{
-                    echo '<script>
-                    alert("Ngày lập phải nhỏ hơn ngày hiện tại");
-                    window.location.href="index.php?page=phongkham";
-                    </script>';
-                }
+                    $messxuly1="Vui lòng không để trống";
+                 }
                 if($resu==2){
                     $sql = "UPDATE phongkham set ID_Khoa='$diachi',Tenphongkham='$hoten',NgayThanhLap='$ngaythanhlap'
                         where ID_Phongkham=" . $id;
@@ -59,8 +57,7 @@ $s=new data();
                         window.location.href="index.php?page=phongkham";
                         </script>';
                 }
-             }
-        
+            }
     }
 ?>
 
@@ -79,6 +76,7 @@ $s=new data();
                 <div class="form-group">
                     <label>Tên phòng khám:</label>
                     <input type="text" class="form-control" name="hoten" value="<?php echo $hoten?>" placeholder="Enter Họ tên">
+                    <span style="color:red"><?php echo $messxuly1 ?></span>
                 </div>
                 <div class="form-group">
                         <label>Tên chuyên khoa:</label>
@@ -91,10 +89,11 @@ $s=new data();
                             }
                             ?>
                         </select>
-                    </div>
+                </div>
                 <div class="form-group">
                     <label>Ngày Thành lập:</label>
                     <input type="date" class="form-control" name="ngaysinh" value="<?php echo $ngaythanhlap?>">
+                    <span style="color:red"><?php echo $messxuly2 ?></span>
                 </div>
                
                 <button type="submit" class="btn btn-primary" name="submit1">Sửa</button>

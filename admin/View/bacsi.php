@@ -152,10 +152,10 @@ $('.delete_doctor').click(function(){
                         <input type="date" class="form-control" name="ngaysinh" required>
                         
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" >
                         <label>Giới tính:</label>
                         <input type="radio" value="Nam" name="gioitinh"><label for="">Nam</label>
-                        <input type="radio" value="Nữ" name="gioitinh"><label for="">Nữ</label> <br>
+                        <input type="radio" value="Nữ" name="gioitinh" ><label for="">Nữ</label> <br>
                         <span style="color:red"><?php echo isset($messs3)?$messs3:''; ?></span>
                     </div>
                     <div class="form-group">
