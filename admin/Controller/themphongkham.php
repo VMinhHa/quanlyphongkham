@@ -1,5 +1,6 @@
 <?php
 include '../../db/connect.php';
+include('../../db/validation.php');
 $s=new data();
     if (isset($_POST['submit'])) {
         if (isset($_POST['hoten'])) {
@@ -21,6 +22,12 @@ $s=new data();
                         alert("Vui lòng nhập đầy đủ thông tin");
                         window.location.href="../index.php?page=phongkham";
                         </script>';
+        }elseif(!is_doctor($hoten)) {
+            echo '<script>
+            alert("Vui lòng nhập số và chữ cái");
+            window.location.href="../index.php?page=phongkham";
+            </script>';
+          
         }else{
             if($ngaysinh<date("Y-m-d")){
                 $sql2 = 'SELECT * from phongkham';
@@ -37,12 +44,12 @@ $s=new data();
                         $resu=2;
                     }
                 }
-        }else{
-            echo '<script>
-            alert("Ngày lập phải nhỏ hơn ngày hiện tại");
-            window.location.href="../index.php?page=phongkham";
-            </script>';
-        }
+             }else{
+                    echo '<script>
+                    alert("Ngày lập phải nhỏ hơn ngày hiện tại");
+                    window.location.href="../index.php?page=phongkham";
+                    </script>';
+                }
         }
         
         if($resu==2){

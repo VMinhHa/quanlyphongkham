@@ -17,32 +17,24 @@
             return true;
     }
 
-    function is_doctor($hoten)
+    function is_doctor($hoten1)//Địa chỉ
     {
-        $parttern = "/^[a-zA-Z ]{1,1000}*$/";
-        if(preg_match($parttern, $hoten))
+        $parttern = "/^[^$&+,:;=?@#|'<>.^*()%!]{1,1000}$/";
+        if(Preg_match($parttern, $hoten1))
             return true;
-    }
+     }
+     function is_ghichu($hoten1)//Địa chỉ
+    {
+        $parttern = "/^[^$&+:;=?@#|'<>.^*()%!]{1,1000}$/";
+        if(Preg_match($parttern, $hoten1))
+            return true;
+     }
+    // function is_doctor($hoten1)//Họ tên
+    // {
+    //     $parttern = "/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/";
+    //     if(Preg_match($parttern, $hoten1))
+    //         return true;
+    // }
 
-    function is_clinic($tenphongkham)
-    {
-        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
-        if(preg_match($parttern, $tenphongkham))
-            return true;
-    }
-
-    function is_specialist($tenkhoa)
-    {
-        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
-        if(preg_match($parttern, $tenkhoa))
-            return true;
-    }
-
-    function is_medicine($thuoc)
-    {
-        $parttern = "/^[a-zA-Z0-9_.]{1,1000}*$/";
-        if(preg_match($parttern, $thuoc))
-            return true;
-    }
 
 ?>

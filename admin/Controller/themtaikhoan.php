@@ -39,12 +39,18 @@ $s=new data();
                             $resu=2;
                         }
                     }
-                }else{
+                }elseif(!is_doctor($tendangnhap)) {
                     echo '<script>
-                            alert("VUi lòng không để trống");
-                            window.location.href="../index.php?page=users";
-                            </script>';
-                }
+                    alert("Vui lòng nhập số và chữ");
+                    window.location.href="../index.php?page=users";
+                    </script>';
+                  
+                }else{
+                        echo '<script>
+                                alert("VUi lòng không để trống");
+                                window.location.href="../index.php?page=users";
+                                </script>';
+                    }
 
         if($resu==2){
             //Luu vao database

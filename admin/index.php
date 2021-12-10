@@ -14,6 +14,7 @@
   <?php
   include '../db/dbhelp.php';
   include '../db/connect.php';
+  include('../db/validation.php');
   if (!isset($_SESSION['login_id']))
     header('location:login.php');
 

@@ -23,7 +23,10 @@ $s=new data();
                         $ngaythanhlap = str_replace('"', '\\"', $ngaythanhlap);
                 }
                 if($tenkhoa!=''){
-                    if($_FILES['image']['name']==''){
+                    if(!is_doctor($tenkhoa)){
+                        $messxuly1='Vui lòng Nhập chữ cái và số';
+                    }else{
+                        if($_FILES['image']['name']==''){
                             $sql3 = 'SELECT * from khoa';
                             $phongkham1 = $s->executeLesult($sql3);
                             foreach ($phongkham1 as $item) {
@@ -33,38 +36,39 @@ $s=new data();
                                     $resu=2;
                                 }
                             }
-                    }else {
-                        $target_dir = "../images/khoa/";
-                        $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                        $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
-                        if($type=="jpg"||$type=="png"){
-                            $sql2 = 'SELECT * from khoa';
-                            $phongkham = $s->executeLesult($sql2);
-                            foreach ($phongkham as $item) {
-                                if($tenkhoa==$item['Tenkhoa']){
-                                    $resu=1;
-                                    echo '<script>
-                                    alert("Khoa đã tồn tại");
-                                    window.location.href="index.php?page=categories";
-                                    </script>';
-                                    exit();
-                                }else{
-                                    $resu=3;
+                        }else {
+                            $target_dir = "../images/khoa/";
+                            $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                            $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
+                            if($type=="jpg"||$type=="png"){
+                                $sql2 = 'SELECT * from khoa';
+                                $phongkham = $s->executeLesult($sql2);
+                                foreach ($phongkham as $item) {
+                                    if($tenkhoa==$item['Tenkhoa']){
+                                        $resu=1;
+                                        echo '<script>
+                                        alert("Khoa đã tồn tại");
+                                        window.location.href="index.php?page=categories";
+                                        </script>';
+                                        exit();
+                                    }else{
+                                        $resu=3;
+                                    }
                                 }
                             }
+                            else{
+                                echo '<script>
+                                alert("Không đúng định dạng");
+                                window.location.href="index.php?page=categories";
+                                </script>';
+                            }
+                        
                         }
-                        else{
-                            echo '<script>
-                            alert("Không đúng định dạng");
-                            window.location.href="index.php?page=categories";
-                            </script>';
-                        }
-                    
                     }
-                    $messxuly1="Vui lòng điền trường này1".$tenkhoa;
-                    }else{
+
+                }else{
                         $messxuly1="Vui lòng không để trống";
-                   }
+                }
                 if($resu==2){
                 $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
                 where ID_Khoa=" . $id;

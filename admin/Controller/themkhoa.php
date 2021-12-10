@@ -1,5 +1,6 @@
 <?php 
 include '../../db/connect.php';
+include('../../db/validation.php');
 $s=new data();
       if(isset($_POST['load'])){
           if(isset($_POST['tenkhoa'])){
@@ -19,7 +20,13 @@ $s=new data();
             alert("Vui lòng không để trống");
             window.location.href="../index.php?page=categories";
             </script>';
-          }else{
+          }elseif(!is_doctor($tenkhoa)) {
+            echo '<script>
+            alert("Vui lòng nhập số và chữ cái");
+            window.location.href="../index.php?page=categories";
+            </script>';
+          
+        }else{
             if(!empty($_FILES['img']['tmp_name'])){
               $target_dir = "../../images/khoa/";
               $target_file = $target_dir . basename($_FILES["img"]["name"]);

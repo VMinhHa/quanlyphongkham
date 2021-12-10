@@ -41,6 +41,14 @@ if (isset($_GET['idsua'])) {
             $messxuly3="Vui lòng không để trống";
         }elseif($Handung==''){
             $messxuly4="Vui lòng không để trống";
+        }elseif(!is_doctor($Tenthuoc)){
+            $messxuly1='Vui lòng Nhập chữ cái và số';
+        }elseif(!is_doctor($Loaithuoc)){
+            $messxuly2='Vui lòng Nhập chữ cái và số';    
+        }elseif(!is_ghichu($Thongtinthuoc)){
+            $messxuly3='Vui lòng Nhập chữ cái và số';    
+        }elseif(!is_doctor($Handung)){
+            $messxuly4='Vui lòng Nhập chữ cái và số';    
         }
         else{
             $sql="UPDATE thuoc SET Tenthuoc='$Tenthuoc',Loaithuoc='$Loaithuoc',

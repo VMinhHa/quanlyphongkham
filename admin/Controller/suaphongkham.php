@@ -30,8 +30,12 @@ $s=new data();
                }
                $resu=0;
                if($hoten!=''){
-                $sql2 = 'SELECT * from phongkham';
-                $phongkham = $s->executeLesult($sql2);
+                   
+                   if(!is_doctor($hoten)){
+                    $messxuly1='Vui lòng Nhập chữ cái và số';
+                    }else{
+                        $sql2 = 'SELECT * from phongkham';
+                     $phongkham = $s->executeLesult($sql2);
                     foreach ($phongkham as $item) {
                         if($hoten==$item['Tenphongkham']){
                             $resu=1;
@@ -44,9 +48,10 @@ $s=new data();
                             $resu=2;
                         }
                     }
+                    }
                 }else{
                     $messxuly1="Vui lòng không để trống";
-                 }
+                }
                 if($resu==2){
                     $sql = "UPDATE phongkham set ID_Khoa='$diachi',Tenphongkham='$hoten',NgayThanhLap='$ngaythanhlap'
                         where ID_Phongkham=" . $id;

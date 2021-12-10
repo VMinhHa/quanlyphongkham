@@ -52,7 +52,7 @@
                                 <td>
                                 <a href="index.php?page=phongkham&idsua='.$item['ID_Phongkham'].'" >
                                 <button class="btn btn-primary btn btn-sm" type="submit" name="Sửa" 
-                              >Edit</button></a>
+                              >Sửa</button></a>
                                 </td>
                                 ';
                     $dem++;

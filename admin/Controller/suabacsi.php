@@ -44,6 +44,8 @@ $s=new data();
                 }
                 if($hoten==''){
                     $messxuly1='Vui lòng không để trống';
+                }elseif(!is_doctor($hoten)){
+                    $messxuly1='Vui lòng Nhập chữ cái và số';
                 }else{
                     if($ngaysinh<date("Y-m-d")){
                         //Luu vao database
@@ -61,7 +63,6 @@ $s=new data();
                         window.location.href="index.php?page=doctors";
                         </script>';
                     }
-                    
                 }
             }
         
