@@ -29,12 +29,4 @@
         if(Preg_match($parttern, $hoten1))
             return true;
      }
-    // function is_doctor($hoten1)//Họ tên
-    // {
-    //     $parttern = "/^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/";
-    //     if(Preg_match($parttern, $hoten1))
-    //         return true;
-    // }
-
-
 ?>
