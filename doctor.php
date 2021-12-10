@@ -139,7 +139,7 @@
 									// where t.Tendangnhap="'.$_SESSION['username'].'")';
 									$Lich = $s->executeLesult($sql);
 									foreach ($Lich as $item) {
-										if($item['Tinhtrang']=='Xác nhận'){
+										if($item['Tinhtrang']=='Xác nhận'&&date("Y-m-d",strtotime($item['Ngay']))>=date("Y-m-d")){
 									?>
 									<tr>
 										<td><input type="text" name="ngay" value="<?php echo date("l M d Y",strtotime($item['Ngay'])) ?>" disabled="true"></td>
