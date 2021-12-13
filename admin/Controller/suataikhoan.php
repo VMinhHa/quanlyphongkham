@@ -29,26 +29,33 @@ $s=new data();
                     if(!is_doctor($tendangnhap)){
                         $messxuly1='Vui lòng Nhập chữ cái và số';
                     }else{
-                            if($email!=''){
-                                $sql2 = 'SELECT * from taikhoan';
-                                $phongkham = $s->executeLesult($sql2);
-                                    foreach ($phongkham as $item) {
-                                        if($tendangnhap==$item['Tendangnhap']){
-                                            $resu=1;
-                                            echo '<script>
-                                            alert("Tên tài khoản đã tồn tại");
-                                            window.location.href="index.php?page=users";
-                                            </script>';
-                                            exit();
-                                            
-                                        }else{
-                                            $resu=2;
+                        if($Tendangnhap !=$tendangnhap){
+                                if($email!=''){
+                                    $sql2 = 'SELECT * from taikhoan';
+                                    $phongkham = $s->executeLesult($sql2);
+                                        foreach ($phongkham as $item) {
+                                            if($tendangnhap==$item['Tendangnhap']){
+                                                $resu=1;
+                                                echo '<script>
+                                                alert("Tên tài khoản đã tồn tại");
+                                                window.location.href="index.php?page=users";
+                                                </script>';
+                                                exit();
+                                                
+                                            }else{
+                                                $resu=2;
+                                            }
                                         }
-                                    }
-                            }else{
-                                $messxuly2="Vui lòng nhập trường này";
-                            }
+                                }else{
+                                    $messxuly2="Vui lòng nhập trường này";
+                                }
+                        }else{
+                            echo '<script>
+                                                window.location.href="index.php?page=users";
+                                                </script>';
                         }
+                        
+                    }
                     
                 }
                 else{

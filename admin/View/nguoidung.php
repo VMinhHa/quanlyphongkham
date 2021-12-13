@@ -118,7 +118,8 @@ $('.Khoiphuc').click(function(){
                         <label>Phân quyền:</label>
                         <select class="form-control" name="phanquyen">
                            <option value=""></option>
-                           <option value="Doctor">Doctor</option>                 
+                           <option value="Doctor">Doctor</option>        
+                           <option value="Admin">Admin</option>           
                         </select>
             </div>
 			<hr>
