@@ -34,7 +34,7 @@ if (isset($_GET['idsua'])) {
 	$Tenbasi=$category['Hoten'];
 	$Ngay=$category['Ngay'];
 	$Time = $category['Gioketthuc'];
-	$Time1=$category['Giobatdau'];
+	$Time12=$category['Giobatdau'];
 	$status = $category['tinhtrang'];
     if(isset($_POST['sua'])){
         if (isset($_POST['tenbacsi1'])) {
@@ -71,17 +71,21 @@ if (isset($_GET['idsua'])) {
 				$phongkham = $s->executeLesult($sql2);
 				foreach ($phongkham as $item) {
 					if($Ngay==$item['Ngay']){
-							if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($time1))==date("h:i A",strtotime($item['Giobatdau'])) 
-						&& date("h:i A",strtotime($time))==date("h:i A",strtotime($item['Gioketthuc']))){
-							$resu=0;
-							echo '<script>
-							alert("Hiện tại lịch này đã tồn tại");
-							window.location.href="index.php?page=appointments";
-						</script>';
-						exit();
+						if($Time12!=$time1){
+							if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($Time12))<date("h:i A",strtotime($item['Gioketthuc']))){
+								$resu=0;
+								echo '<script>
+								alert("Hiện tại lịch này đã tồn tại");
+								window.location.href="index.php?page=appointments";
+							</script>';
+							exit();
+							}else{
+								$resu=1;	
+							}
 						}else{
 							$resu=1;	
 						}
+							
 					}else{
 						$resu=2;
 					}
@@ -157,7 +161,7 @@ if (isset($_GET['idsua'])) {
 			</div>
 			<div class="form-group">
 				<label for="" class="control-label">Giờ bắt đầu</label>
-				<input type="time"  name="time1" class="form-control" value="<?php echo $Time1 ?>" required>
+				<input type="time"  name="time1" class="form-control" value="<?php echo $Time12 ?>" required>
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Giờ kết thúc</label>

@@ -4,7 +4,7 @@ class data
     function connect()
     {
         //select1
-        $conn = new mysqli('localhost', 'root', '', 'quanlyphongkham1');
+        $conn = new mysqli('localhost', 'root', '', 'quanlyphongkham');
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }

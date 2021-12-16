@@ -27,7 +27,9 @@
 					where Tinhtrangbacsi!="Nghỉ việc"';
                     $Lich = $s->executeLesult($sql);
                     foreach ($Lich as $item) {
+						if(date("Y-m-d",strtotime($item['Ngay']))>=date("Y-m-d")){
 					?>
+					<!-- Phải lớn hơn ngày hiện taik -->
 					<tr>
 						<td><?php echo date("l M d Y",strtotime($item['Ngay'])) ?></td>
 						<td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
@@ -50,7 +52,7 @@
 							<button  class="btn btn-danger btn-sm delete_app" type="button" data-id="<?php echo $item['ID_Lich'] ?>">Xóa</button>
 						</td> -->
 					</tr>
-                <?php } ?>
+                <?php } }?>
 				</table>
 			</div>
 		</div>

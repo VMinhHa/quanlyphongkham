@@ -6,7 +6,7 @@
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME','root');
     define('DB_PASSWORD', '');
-    define('DB_NAME','quanlyphongkham1');
+    define('DB_NAME','quanlyphongkham');
 
     
     $conn = mysqli_connect(LOCALHOST, DB_USERNAME, DB_PASSWORD) or die(mysqli_error()); //Data connection
