@@ -42,7 +42,7 @@
                 ////lay danh sach
                 $s = new data();
                 $dem=1;
-                $sql = 'SELECT * FROM taikhoan where 1 '.$additional.'';
+                $sql = 'SELECT * FROM taikhoan where 1 '.$additional.' Order by id DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
                     echo '<tr>

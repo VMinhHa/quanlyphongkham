@@ -102,6 +102,7 @@
                   switch ($_GET['pagetrang']) {
                     case 'thongtin':
                         include './benhnhan/info_patient.php';
+                        
                       break;
                     case 'xemlich':
                       include ('./benhnhan/xemlich.php');

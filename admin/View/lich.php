@@ -24,7 +24,7 @@
 					<?php 
                     $s = new data();
                     $sql = 'SELECT l.ID_Lich,b.Hoten,tinhtrang,Ngay,l.Giobatdau,l.Gioketthuc FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi
-					where Tinhtrangbacsi!="Nghỉ việc"';
+					where Tinhtrangbacsi!="Nghỉ việc" order by l.ID_Lich DESC';
                     $Lich = $s->executeLesult($sql);
                     foreach ($Lich as $item) {
 						if(date("Y-m-d",strtotime($item['Ngay']))>=date("Y-m-d")){

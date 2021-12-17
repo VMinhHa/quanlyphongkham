@@ -47,7 +47,8 @@
                 $s = new data();
                 $dem=1;
                 $sql = 'SELECT b.Hoten,b.ID_Khoa,ID_Bacsi,b.Gioitinh,t.Tendangnhap,b.image
-                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi!="Nghỉ việc"';
+                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi!="Nghỉ việc"
+                            Order by ID_Bacsi DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
                     echo '<tr>

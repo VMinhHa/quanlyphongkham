@@ -50,8 +50,7 @@
                     $s = new data();
                     $sql='select * from lichhen l join benhnhan b on l.ID_Benhnhan=b.ID_Benhnhan
                         where  l.ID_Bacsi='.$layid['ID_Bacsi'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
-                        order by Ngayhen
-                        desc limit '.$page2.','.$prodperpage.' ';
+                        Order by l.id_Lichhen DESC limit '.$page2.','.$prodperpage.' ';
                         $Lich = $s->executeLesult($sql);
                         
 

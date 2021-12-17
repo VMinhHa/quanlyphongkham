@@ -32,7 +32,7 @@
                     $s = new data();
                     $sql='select * from taikhoan t JOIN bacsi b on t.id=b.id JOIN lichhen 
                     l on b.ID_Bacsi=l.ID_Bacsi join benhnhan n on n.ID_Benhnhan=l.ID_Benhnhan
-                    where Tendangnhap="'.$_SESSION['username'].'"';
+                    where Tendangnhap="'.$_SESSION['username'].'" Order by l.id_Lichhen DESC';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     $sq1='Select * from benhan b join lichhen l
