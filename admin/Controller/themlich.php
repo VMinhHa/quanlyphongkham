@@ -24,20 +24,20 @@ if(isset($_POST['load'])){
 	}
 	$resu='';
 	$status='Xác nhận';
-	if($Ngay>date("Y-m-d")){
+	if($Ngay>=date("Y-m-d")){
 		if($time1<$time){
 			$sql2 = 'SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham';
 			$phongkham = $s->executeLesult($sql2);
 			foreach ($phongkham as $item) {
 				if($Ngay==$item['Ngay']){
-						if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($time1))==date("h:i A",strtotime($item['Giobatdau'])) 
-					&& date("h:i A",strtotime($time))==date("h:i A",strtotime($item['Gioketthuc']))){
+					if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($time1))<date("h:i A",strtotime($item['Gioketthuc'])) 
+					){
 						$resu=0;
 						echo '<script>
 						alert("Hiện tại lịch này đã tồn tại");
 						window.location.href="../index.php?page=appointments";
-					</script>';
-					exit();
+						</script>';
+						exit();
 					}else{
 						$resu=1;
 					}
