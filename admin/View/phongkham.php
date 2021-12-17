@@ -36,12 +36,12 @@
                     $additional='';
                     if(!empty($s)){
                         $additional=' and Tenphongkham like"%'.$s.'%" or Tenkhoa like"%'.$s.'%"
-                        or NgayThanhLap like"%'.$s.'%"';
+                        or NgayThanhLap like"%'.$s.'%" ';
                     }
                 ////lay danh sach
                 $s = new data();
                 $dem=1;
-                $sql = 'SELECT * from phongkham p join khoa k on p.ID_Khoa=k.ID_Khoa where 1 '.$additional.'';
+                $sql = 'SELECT * from phongkham p join khoa k on p.ID_Khoa=k.ID_Khoa where 1 '.$additional.' Order by ID_Phongkham DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
                     echo '<tr>

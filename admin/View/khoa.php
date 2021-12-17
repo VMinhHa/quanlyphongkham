@@ -22,7 +22,7 @@
 					</thead>
 					<?php 
                     $s = new data();
-                    $sql = 'SELECT * FROM khoa';
+                    $sql = 'SELECT * FROM khoa Order by ID_Khoa DESC';
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {

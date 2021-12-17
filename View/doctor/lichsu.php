@@ -14,22 +14,17 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
-                <form method="post" style="width:150px;margin:5px;float:right;">
-                            <input type="text" class="form-control" placeholder="Tìm kiem..." id="s" name="s"
-                            style="width:200px; float:right;">
-                            </div>
-                </form>
 				<table class="table table-bordered">
                      <!-- Phan trang -->
                      <!-- Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Bacsi=104 -->
                      <?php 
                         include 'db/connect.php';
                         $p=new data();
+
                         $laylich='Select * from bacsi b join taikhoan t on b.id=t.id where Tendangnhap="'.$_SESSION['username'].'"';
                         $layid=$p->executeSingLesult($laylich);
                         $dem1=$p->dem1($layid['ID_Bacsi']);
                         $prodperpage=3;
-                     
                         ?>
                     <!-- Phan trang -->
 					<thead>
@@ -44,32 +39,21 @@
 					</tr>
 					</thead>
 					<?php 
-                    $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
-                    }
-                    $additional='';
-                    if(!empty($s)){
-                        $additional='and Hotenbn like"%'.$s.'%" 
-                        or Ngayhen like"%'.$s.'%"';
-                    }
                     
                     $page1=1;
                     if(isset($_REQUEST["page1"])){
                         $page1=$_REQUEST["page1"];
-                        
                     }
-                    
+                   
                     $page2=(($page1-1)*$prodperpage);
 
                     $s = new data();
                     $sql='select * from lichhen l join benhnhan b on l.ID_Benhnhan=b.ID_Benhnhan
-                        where  (1 '.$additional.')  and l.ID_Bacsi='.$layid['ID_Bacsi'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
-                        order by Ngayhen
-                        desc limit '.$page2.','.$prodperpage.' ';
+                        where  l.ID_Bacsi='.$layid['ID_Bacsi'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
+                        Order by l.id_Lichhen DESC limit '.$page2.','.$prodperpage.' ';
                         $Lich = $s->executeLesult($sql);
                         
-    
+
                         $sq1='Select * from benhan b join lichhen l
                         on b.id_Lichhen=l.id_Lichhen';
                     $dem=1;
@@ -81,7 +65,7 @@
 						<td>
 							<?php echo $item['Hotenbn'] ?>
 						</td>
-						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
+						<td><?php echo date("d-m-Y",strtotime($item['Ngayhen']))?></td>
                         <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
                         <!-- Chuẩn đoán -->
                         <td>   
