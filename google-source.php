@@ -43,7 +43,7 @@
             //var_dump($googleUser);
             $name = $googleUser['name'];
             $email = $googleUser['email'];
-            $gender = $googleUser['gender']; //à đúng r cái giới tính trống em đổi
+            $gender = $googleUser['gender']; 
     
             $picture = $googleUser["picture"];            
             // function loginFromSocialCallBack($googleUser){                 
@@ -70,8 +70,11 @@
                         session_start();
                         $_SESSION['username'] = $row['Tendangnhap'];
                         $_SESSION['phanquyen'] = $row['Phanquyen'];
-                        header('Location:index.php');
-
+                        // header('Location:index.php');
+                        echo '<script>
+                        alert("Đăng nhập thành công với gmail");
+                        window.location.href="index.php";
+                        </script>';
                     }
                     else
                     {
@@ -85,7 +88,11 @@
                     session_start();
                     $_SESSION['username'] = $row['Tendangnhap'];
                     $_SESSION['phanquyen'] = $row['Phanquyen'];
-                    header('Location:index.php');
+                    // header('Location:index.php');
+                    echo '<script>
+                        alert("Đăng nhập thành công với gmail");
+                        window.location.href="index.php";
+                        </script>';
                 }               
                 // if ($result1->num_rows > 0) {
                 //     $row = mysqli_fetch_array($result1);                    

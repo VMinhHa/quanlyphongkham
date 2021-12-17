@@ -166,7 +166,7 @@
             <h2>ĐĂNG KÝ</h2>
             <div class="form-group">
               <label for="uname">Tên Đăng Nhập:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
+              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập từ 6 chữ số" name="username" >
               <div class="has-error">
                 <span> <?php echo (isset($err['username'])) ? $err['username']:'' ?> </span>
                 <span> <?php echo (isset($err['err_check'])) ? $err['err_check']:'' ?> </span>
@@ -175,7 +175,7 @@
 
             <div class="form-group">
               <label for="pwd">Mật Khẩu:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" >
+              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu bắt đầu chữ in hoa từ 5 chữ số" name="password" >
               <div class="has-error">
                 <span> <?php echo (isset($err['password'])) ? $err['password']:'' ?> </span>
               </div>
