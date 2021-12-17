@@ -92,13 +92,16 @@
 
     <script>
       var chatbox = document.getElementById('fb-customer-chat');
-      chatbox.setAttribute("page_id", "107431265072805");
+      chatbox.setAttribute("page_id", "100915329127892");
       chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
 
+    <!-- Your SDK code -->
+    <script>
       window.fbAsyncInit = function() {
         FB.init({
           xfbml            : true,
-          version          : 'v12.0'
+          version          : 'v13.0'
         });
       };
 

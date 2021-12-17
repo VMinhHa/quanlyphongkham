@@ -2,5 +2,5 @@
     const HOST='localhost';
     const USERNAME='root';
     const PASSWORD='';
-    const DATABASE='quanlyphongkham1';
+    const DATABASE='quanlyphongkham';
 ?>
