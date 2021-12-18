@@ -41,7 +41,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <h1 class="text-capitalize mb-5 text-lg">Thông tin cá nhân Bác sĩ</h1>
+          <h1 class="text-capitalize mb-5 text-lg">THÔNG TIN CHUNG</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>

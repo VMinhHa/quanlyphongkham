@@ -36,7 +36,7 @@
 									aria-haspopup="true" aria-expanded="false">
 									Xin chao <?php echo $_SESSION['username']; ?><i class="icofont-thin-down"></i></a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown02">
-									<li><a class="dropdown-item" href="thongtinbenhnhan.php">Thông tin cá nhân</a></li>
+									<li><a class="dropdown-item" href="thongtinbenhnhan.php">Thông tin chung</a></li>
 									<!-- <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li> -->
 									<li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
 								</ul>
@@ -57,7 +57,7 @@
 									aria-haspopup="true" aria-expanded="false">
 									Xin chao <?php echo $_SESSION['username']; ?><i class="icofont-thin-down"></i></a>
 								<ul class="dropdown-menu" aria-labelledby="dropdown02">
-									<li><a class="dropdown-item" href="thongtinbacsi.php">Thông tin bác sĩ</a></li>
+									<li><a class="dropdown-item" href="thongtinbacsi.php">Thông tin chung</a></li>
 									<!-- <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li> -->
 									<li><a class="dropdown-item" href="logout.php">Đăng Xuất</a></li>
 								</ul>

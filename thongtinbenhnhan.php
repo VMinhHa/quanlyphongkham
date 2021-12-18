@@ -15,7 +15,7 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Thông tin Bệnh nhân</title>
+  <title>THÔNG TIN CHUNG</title>
   <link href="./css/simple-sidebar.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -41,7 +41,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <h1 class="text-capitalize mb-5 text-lg">Thông tin cá nhân</h1>
+          <h1 class="text-capitalize mb-5 text-lg">THÔNG TIN CHUNG</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>

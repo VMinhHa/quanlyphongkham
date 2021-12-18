@@ -200,7 +200,9 @@
 
             <div class="btn-form">
               <input type="submit" class="btn btn-primary btn-sign" value="Đăng Ký" name="submit">
-              <input type="button" class="btn btn-danger btn-sign" style="margin-top:10px;" value="Trở Lại" onclick="history.back(-1)" />
+              <input type="button" class="btn btn-danger btn-sign" style="margin-top:10px;" value="Trở Lại" 
+                  onClick="document.location.href='http://localhost:8080/quanlyphongkham';" />
+                  <!-- Nút cancer-->
             </div>
           </form>
         </div>

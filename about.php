@@ -68,9 +68,9 @@
 			</div>
 		</div>
 	<p>
-	Sứ mệnh của Bệnh viện K
-	Sứ mệnh: Khám và điều trị cho tất cả người bệnh ung bướu trong và ngoài nước; lấy người bệnh làm trung tâm, mang đến giải pháp chăm sóc sức khỏe tối ưu từ sự tích hợp giữa KHÁM CHỮA BỆNH - NGHIÊN CỨU KHOA HỌC, ĐÀO TẠO – HỢP TÁC QUỐC TẾ
-	Tầm nhìn của Bệnh viện K Bằng khát vọng tiên phong, với chiến lược phát triển bền vững và hội nhập mạnh mẽ, Bệnh viện K phấn đấu trở thành bệnh viện kiểu mẫu, chuyên nghiệp, dẫn đầu Việt Nam và đạt chuẩn quốc tế, có nhiều cơ sở (chuỗi bệnh viện) có cơ sở vật chất khang trang, sạch đẹp, có trang thiết bị y tế hiện đại ngang tầm với các nước tiên tiến trong khu vực và thế giới, có nguồn nhân lực chất lượng cao, đầu ngành ung bướu, với tác phong phục vụ chuyên nghiệp, đạt chuẩn quốc tế trong công tác khám, điều trị và phòng chống ung thư, là người bạn đồng hành, thân thiết của người bệnh và thầy thuốc, góp phần tích cực vào công tác phòng chống ung thư cũng như nâng tầm vị thế của Việt Nam trong cuộc chiến phòng chống bệnh ung thư trên thế giới.
+	Sứ mệnh của Phòng Khám K
+	Sứ mệnh: Khám và điều trị cho tất cả người bệnh trong và ngoài nước; lấy người bệnh làm trung tâm, mang đến giải pháp chăm sóc sức khỏe tối ưu từ sự tích hợp giữa KHÁM CHỮA BỆNH - NGHIÊN CỨU KHOA HỌC, ĐÀO TẠO – HỢP TÁC QUỐC TẾ
+	Tầm nhìn của Phòng Khám K Bằng khát vọng tiên phong, với chiến lược phát triển bền vững và hội nhập mạnh mẽ, Phòng Khám K phấn đấu trở thành phòng khám kiểu mẫu, chuyên nghiệp, dẫn đầu Việt Nam và đạt chuẩn quốc tế, có nhiều cơ sở (chuỗi phòng khám) có cơ sở vật chất khang trang, sạch đẹp, có trang thiết bị y tế hiện đại ngang tầm với các nước tiên tiến trong khu vực và thế giới, có nguồn nhân lực chất lượng cao, với tác phong phục vụ chuyên nghiệp, đạt chuẩn quốc tế trong công tác khám, điều trị, là người bạn đồng hành, thân thiết của người bệnh và thầy thuốc, góp phần tích cực vào công tác phòng chống bệnh cũng như nâng tầm vị thế của Việt Nam trong cuộc chiến phòng chống bệnh trên thế giới.
 	</p>
 	<div class="row">
 		<div class="col-4">
