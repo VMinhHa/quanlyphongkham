@@ -114,7 +114,7 @@
                       include ('./benhnhan/doimk.php');
                       break;
                   }
-                }elseif(isset($_GET['page2'])){
+                }elseif(isset($_GET['page2'])||isset($_GET['timkiembn'])){
                   include ('benhnhan/lichsu.php');}
                 elseif(isset($_GET['xemthuoc'])){
                     include ('./benhnhan/xuatthuoc.php');

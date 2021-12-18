@@ -14,8 +14,8 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
-			<form method="post" style="width:150px;margin:5px;float:right;">
-                            <input type="text" class="form-control" placeholder="Tìm kiem..." id="s" name="s"
+			<form method="get" style="width:150px;margin:5px;float:right;">
+                            <input type="text" class="form-control" placeholder="Tìm kiem..." id="s" name="timkiembn"
                             style="width:200px; float:right;">
                             </div>
                 </form>
@@ -45,13 +45,16 @@
 					</thead>
 					<?php 
                     $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
+                    if(isset($_GET['timkiembn'])){
+                        $timkiembn=$_GET['timkiembn'];
+                    }
+                    else{
+                        $timkiembn='';
                     }
                     $additional='';
-                    if(!empty($s)){
-                        $additional='and Hoten like"%'.$s.'%" 
-                        or Ngayhen like"%'.$s.'%"';
+                    if(!empty($timkiembn)){
+                        $additional='and Hoten like"%'.$timkiembn.'%" 
+                        or Ngayhen like"%'.$timkiembn.'%"';
                     }
                     $dem=0; 
                     $page1=1;
@@ -122,13 +125,20 @@
                             <div class="giua">
                             <ul class=" pagination-lg chinhphantrang">
                                 <?php 
+                            if(isset($_GET['timkiembn'])){
+                                    $timkiembn=$_GET['timkiembn'];
+                                }
+                                else{
+                                    $timkiembn='';
+                                }
                             if($dem1>0){
                                 # code...
                                 for ($i=0 ;$i<$dem1/3.0;$i++) {
                                 ?>
                                 <li class="pagination-item">
                                     <a class="pagination-item__link" 
-                                    href="thongtinbenhnhan.php?page2=<?php echo  $i+1 ?>">
+                                    href="thongtinbenhnhan.php?page2=<?php echo  $i+1 ?><?php
+						echo "&timkiembn=$timkiembn"?>">
                                     <?php echo  $i+1 ?></a></li>
                                 <?php
                                  }}

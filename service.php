@@ -75,21 +75,25 @@
 <section class="section service-2">
 	<div class="container">
 	<div style="text-align:center;">
-<form method="post" style="width:150px;margin:5px">		
+<form method="get" style="width:150px;margin:5px">		
                         <div class="form-group">
                         <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
                         style="width:200px; float:right;">
                         </div>
+						
             </form>
-</div>
+		</div>
 		<div class="row">
 			<?php 
 				include './db/connect.php';
+				//$s='';
+			if(isset($_GET['s'])){
+				$s=$_GET['s'];
+			}
+			else{
 				$s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
-                    }
-                    $additional='';
+			}
+			$additional='';
                     if(!empty($s)){
                         $additional=' and Tenthuoc like"%'.$s.'%" or Loaithuoc like"%'.$s.'%"
                         or Thongtinthuoc like"%'.$s.'%" or Handung like"%'.$s.'%"';
@@ -97,15 +101,16 @@
 
 				$s=new data();
 				$dem1=$s->dem();
+				$page=1;
 				$prodperpage=9;
 				if(isset($_REQUEST["page"])){
 					$page=$_REQUEST["page"];
-					$page1=($page-1)*$prodperpage;
-
-					$sql="select * from thuoc where 1 $additional order by ID_Thuoc 
-                    desc limit $page1,$prodperpage";
-					$dsthuoc=$s-> phantrang($sql);
+					
 				}
+				$page1=($page-1)*$prodperpage;
+
+					$sql="select * from thuoc where 1 $additional  limit $page1,$prodperpage";
+					$dsthuoc=$s-> phantrang($sql);
 				$dem=0;
 				foreach($dsthuoc as $value){
 					$dem++;
@@ -129,11 +134,17 @@
 		<div class="giua">
 			<ul class="pagination pagination-lg">
 				<?php 
-					
+					if(isset($_GET['s'])){
+						$timkiem=$_GET['s'];
+					}else{
+						$timkiem='';
+					}
 						# code...
 					 for ($i=0 ;$i<$dem1/9.0;$i++) {
 					?>
-						 <li class="pagination-item"><a class="pagination-item__link" href="service.php?page=<?php echo  $i+1 ?>"><?php echo  $i+1 ?></a></li>
+					
+						 <li class="pagination-item"><a class="pagination-item__link" href="service.php?page=<?php echo  $i+1 ?><?php
+						echo "&s=$timkiem"?>"><?php echo  $i+1 ?></a></li>
 					<?php
 					 }
 				

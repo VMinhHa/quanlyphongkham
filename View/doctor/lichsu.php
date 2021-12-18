@@ -14,6 +14,11 @@
 	<div class="col-md-12">
 		<div class="card">
 			<div class="card-body">
+                <form method="get" style="width:150px;margin:5px;float:right;">
+                            <input type="text" class="form-control" placeholder="Tìm kiem..." id="s" name="timlichsu"
+                            style="width:200px; float:right;">
+                            </div>
+                </form>
 				<table class="table table-bordered">
                      <!-- Phan trang -->
                      <!-- Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Bacsi=104 -->
@@ -39,7 +44,18 @@
 					</tr>
 					</thead>
 					<?php 
-                    
+                    $s='';
+                    if(isset($_GET['timlichsu'])){
+                        $timlichsu=$_GET['timlichsu'];
+                    }
+                    else{
+                        $timlichsu='';
+                    }
+                    $additional='';
+                    if(!empty($timlichsu)){
+                        $additional='and b.Hotenbn like"%'.$timlichsu.'%" 
+                        or l.Ngayhen like"%'.$timlichsu.'%"';
+                    }
                     $page1=1;
                     if(isset($_REQUEST["page1"])){
                         $page1=$_REQUEST["page1"];
@@ -48,8 +64,9 @@
                     $page2=(($page1-1)*$prodperpage);
 
                     $s = new data();
+                   
                     $sql='select * from lichhen l join benhnhan b on l.ID_Benhnhan=b.ID_Benhnhan
-                        where  l.ID_Bacsi='.$layid['ID_Bacsi'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
+                        where (1 '.$additional.') and (Trangthai="Hoàn thành" or Trangthai="Hủy") and l.ID_Bacsi='.$layid['ID_Bacsi'].'
                         Order by l.id_Lichhen DESC limit '.$page2.','.$prodperpage.' ';
                         $Lich = $s->executeLesult($sql);
                         
@@ -136,13 +153,20 @@ echo trim($chuandoan['Chuandoan']);
                             <div class="giua">
                             <ul class="chinhphantrang">
                                 <?php 
+                                if(isset($_GET['timlichsu'])){
+                                    $timlichsu=$_GET['timlichsu'];
+                                }
+                                else{
+                                    $timlichsu='';
+                                }
                                 if($dem1>0){
                                 # code...
                                 for ($i=0 ;$i<$dem1/3.0;$i++) {
                                 ?>
                                 <li class="pagination-item">
                                     <a class="pagination-item__link" 
-                                    href="thongtinbacsi.php?page1=<?php echo  $i+1 ?>">
+                                    href="thongtinbacsi.php?page1=<?php echo  $i+1 ?><?php
+						echo "&timlichsu=$timlichsu"?>">
                                     <?php echo  $i+1 ?></a></li>
                                 <?php
                                  }}

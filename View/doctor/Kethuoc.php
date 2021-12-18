@@ -17,8 +17,8 @@
 		<div class="card">
 			<div class="card-body">
                 <a href="thongtinbacsi.php?pagetrang=xemlich" class="style" style="margin:5px;float:left;">Thoát</a>
-                <form method="post" style="width:150px;margin:5px;float:right;">
-                            <input type="text" class="form-control" placeholder="Searching..." id="s" name="s"
+                <form method="get" style="width:150px;margin:5px;float:right;">
+                            <input type="text" class="form-control" placeholder="Searching..." id="s" name="timkethuoc"
                             style="width:200px; float:right;">
                             </div>
                 </form>
@@ -46,14 +46,18 @@
 					<tbody>
                 <?php 
                     $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
+                    if(isset($_GET['timkethuoc'])){
+                        $timkethuoc=$_GET['timkethuoc'];
                     }
+                    else{
+                        $timkethuoc='';
+                    }
+                    
                     $additional='';
-                    if(!empty($s)){
-                        $additional=' and Tenthuoc like"%'.$s.'%"
-                        or Loaithuoc like"%'.$s.'%"  
-                        or Handung like"%'.$s.'%"';
+                    if(!empty($timkethuoc)){
+                        $additional=' and Tenthuoc like"%'.$timkethuoc.'%"
+                        or Loaithuoc like"%'.$timkethuoc.'%"  
+                        or Handung like"%'.$timkethuoc.'%"';
                     }
                     $dem=0; 
                     $page=1;
@@ -63,9 +67,9 @@
                     // ID lịch -----------------------------------------
 
                     $page1=($page-1)*$prodperpage;
-                    $sql="select * from thuoc  where ID_Thuoc not in(Select ID_Thuoc from xemthuoc where 
-                    id_Lichhen=".$_SESSION['idlich'].") and
-                    1 $additional order by ID_Thuoc 
+                    $sql="select * from thuoc  where 1 $additional and ID_Thuoc not in(Select ID_Thuoc from xemthuoc where 
+                    id_Lichhen=".$_SESSION['idlich'].")
+                    order by ID_Thuoc 
                     desc limit $page1,$prodperpage";
                     $dsthuoc=$p-> phantrang($sql);
                     foreach ($dsthuoc as $item) {
@@ -107,13 +111,20 @@
                             <div class="giua">
                             <ul class="pagination pagination-lg">
                                 <?php 
-                            
+                                 if(isset($_GET['timkethuoc'])){
+                                    $timkethuoc=$_GET['timkethuoc'];
+                                }
+                                else{
+                                    $timkethuoc='';
+                                }
+                                
                                 # code...
                                 for ($i=0 ;$i<$dem1/9.0;$i++) {
                                 ?>
                                 <li class="pagination-item">
                                     <a class="pagination-item__link" 
-                                    href="thongtinbacsi.php?page=<?php echo  $i+1 ?>">
+                                    href="thongtinbacsi.php?page=<?php echo  $i+1 ?><?php
+						echo "&timkethuoc=$timkethuoc"?>">
                                     <?php echo  $i+1 ?></a></li>
                                 <?php
                                  }
