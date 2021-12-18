@@ -8,7 +8,7 @@ $s=new data();
         $sql = 'select * from phongkham
          where ID_PhongKham=' . $id;
         $category = $s->executeSingLesult($sql);
-            $hoten = $category['Tenphongkham'];
+            $hoten1 = $category['Tenphongkham'];
             $diachi=$category['ID_Khoa'];
             $messxuly1=$messxuly2='';
             $ngaythanhlap = $category['NgayThanhLap'];
@@ -31,23 +31,30 @@ $s=new data();
                $resu=0;
                if($hoten!=''){
                    
-                   if(!is_doctor($hoten)){
+                     if(!is_doctor($hoten)){
                     $messxuly1='Vui lòng Nhập chữ cái và số';
                     }else{
-                        $sql2 = 'SELECT * from phongkham';
-                     $phongkham = $s->executeLesult($sql2);
-                    foreach ($phongkham as $item) {
-                        if($hoten==$item['Tenphongkham']){
-                            $resu=1;
-                            echo '<script>
-                                alert("Phòng đã tồn tại");
+                           if($hoten!=$hoten1){
+                                $sql2 = 'SELECT * from phongkham';
+                                $phongkham = $s->executeLesult($sql2);
+                                foreach ($phongkham as $item) {
+                                    if($hoten==$item['Tenphongkham']){
+                                        $resu=1;
+                                        echo '<script>
+                                            alert("Phòng đã tồn tại");
+                                            window.location.href="index.php?page=phongkham";
+                                            </script>';
+                                            exit();
+                                    }else{
+                                        $resu=2;
+                                    }
+                                }
+                           }else{
+                                echo '<script>
+                                alert("Sửa thành công");
                                 window.location.href="index.php?page=phongkham";
                                 </script>';
-                                exit();
-                        }else{
-                            $resu=2;
-                        }
-                    }
+                           }
                     }
                 }else{
                     $messxuly1="Vui lòng không để trống";
@@ -80,7 +87,7 @@ $s=new data();
             <form action="#" method="post">
                 <div class="form-group">
                     <label>Tên phòng khám:</label>
-                    <input type="text" class="form-control" name="hoten" value="<?php echo $hoten?>" placeholder="Enter Họ tên">
+                    <input type="text" class="form-control" name="hoten" value="<?php echo $hoten1?>" placeholder="Enter Họ tên">
                     <span style="color:red"><?php echo $messxuly1 ?></span>
                 </div>
                 <div class="form-group">

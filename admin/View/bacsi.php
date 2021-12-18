@@ -10,7 +10,7 @@
             </button>
             <form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="ss"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -34,20 +34,20 @@
                 <?php
                 //timkiem
                 $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
+                    if(isset($_POST['ss'])){
+                        $s=$_POST['ss'];
                     }
                     $additional='';
                     if(!empty($s)){
-                        $additional=' and b.Hoten like"%'.$s.'%" or k.Tenkhoa like"%'.$s.'%"
-                        or t.Tendangnhap like"%'.$s.'%" or b.Ngaysinh like"%'.$s.'%"
+                        $additional=' and b.Hoten like"%'.$s.'%" or
+                       b.Ngaysinh like"%'.$s.'%"
                         or b.Gioitinh like"%'.$s.'%"';
                     }
                 ////lay danh sach
                 $s = new data();
                 $dem=1;
                 $sql = 'SELECT b.Hoten,b.ID_Khoa,ID_Bacsi,b.Gioitinh,t.Tendangnhap,b.image
-                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi!="Nghỉ việc"
+                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi="Đang làm"
                             Order by ID_Bacsi DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {

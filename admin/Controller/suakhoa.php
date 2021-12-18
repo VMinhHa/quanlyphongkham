@@ -6,7 +6,7 @@ $s=new data();
         $id = $_GET['idsua'];
         $sql = "select Tenkhoa,Ngaythanhlap_khoa,Hinhanh from khoa where ID_Khoa=".$id;
         $khoa = $s->executeSingLesult($sql);
-            $tenkhoa = $khoa['Tenkhoa'];
+            $tenkhoa1 = $khoa['Tenkhoa'];
             $Ngaythanhlap=$khoa['Ngaythanhlap_khoa'];
             $Hinhanh=$khoa['Hinhanh'];
             $mess='';
@@ -26,44 +26,56 @@ $s=new data();
                     if(!is_doctor($tenkhoa)){
                         $messxuly1='Vui lòng Nhập chữ cái và số';
                     }else{
-                        if($_FILES['image']['name']==''){
-                            $sql3 = 'SELECT * from khoa';
-                            $phongkham1 = $s->executeLesult($sql3);
-                            foreach ($phongkham1 as $item) {
-                                if($tenkhoa==$item['Tenkhoa']){
-                                    $resu=1;
-                                }else{
-                                    $resu=2;
-                                }
-                            }
-                        }else {
-                            $target_dir = "../images/khoa/";
-                            $target_file = $target_dir . basename($_FILES["image"]["name"]);
-                            $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
-                            if($type=="jpg"||$type=="png"){
-                                $sql2 = 'SELECT * from khoa';
-                                $phongkham = $s->executeLesult($sql2);
-                                foreach ($phongkham as $item) {
+                        if($tenkhoa!=$tenkhoa1){
+                            if($_FILES['image']['name']==''){
+                                $sql3 = 'SELECT * from khoa';
+                                $phongkham1 = $s->executeLesult($sql3);
+                                foreach ($phongkham1 as $item) {
                                     if($tenkhoa==$item['Tenkhoa']){
-                                        $resu=1;
                                         echo '<script>
                                         alert("Khoa đã tồn tại");
                                         window.location.href="index.php?page=categories";
                                         </script>';
                                         exit();
                                     }else{
-                                        $resu=3;
+                                        $resu=2;
                                     }
                                 }
+                            }else {
+                                $target_dir = "../images/khoa/";
+                                $target_file = $target_dir . basename($_FILES["image"]["name"]);
+                                $type = strtolower(pathinfo( $target_file,PATHINFO_EXTENSION));
+                                if($type=="jpg"||$type=="png"){
+                                    $sql2 = 'SELECT * from khoa';
+                                    $phongkham = $s->executeLesult($sql2);
+                                    foreach ($phongkham as $item) {
+                                        if($tenkhoa==$item['Tenkhoa']){
+                                            $resu=1;
+                                            echo '<script>
+                                            alert("Khoa đã tồn tại");
+                                            window.location.href="index.php?page=categories";
+                                            </script>';
+                                            exit();
+                                        }else{
+                                            $resu=3;
+                                        }
+                                    }
+                                }
+                                else{
+                                    echo '<script>
+                                    alert("Không đúng định dạng");
+                                    window.location.href="index.php?page=categories";
+                                    </script>';
+                                }
+                            
                             }
-                            else{
-                                echo '<script>
-                                alert("Không đúng định dạng");
-                                window.location.href="index.php?page=categories";
-                                </script>';
-                            }
-                        
+                        }else{
+                            echo '<script>
+                            alert("Sửa thành công");
+                            window.location.href="index.php?page=categories";
+                            </script>';
                         }
+                        
                     }
 
                 }else{
@@ -106,7 +118,7 @@ $s=new data();
             <form action="#" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Tên khoa:</label>
-                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $tenkhoa?> " >
+                    <input type="text" class="form-control" name="tenkhoa" value="<?php echo $tenkhoa1?> " >
                     <span style="color:red"><?php echo $messxuly1 ?></span>
                 </div>
                 <div class="form-group">
