@@ -15,7 +15,7 @@
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Thông tin bệnh nhân</title>
+  <title>Thông tin chung</title>
   <link href="./css/simple-sidebar.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -41,7 +41,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <h1 class="text-capitalize mb-5 text-lg">Thông tin cá nhân</h1>
+          <h1 class="text-capitalize mb-5 text-lg">THÔNG TIN CHUNG</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
@@ -87,7 +87,7 @@
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbenhnhan.php?pagetrang=lichsu"
           >LỊCH SỬ KHÁM BỆNH</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbenhnhan.php?pagetrang=capnhattk"
-          >CẬP NHẬT TÀI KHOẢN</a></h5>
+          >ĐỔI MẬT KHẨU</a></h5>
         </div>
       </div>
       <div id="page-content-wrapper">
@@ -160,6 +160,8 @@
                             <input type="password" class="form-control" name="confirm_new_password" required="required">
                         </div>
                         <button type="submit" name="changePass" class="btn btn-primary">Xác nhận</button>
+                        <button type="reset" name="" class="btn btn-danger">Hủy</button>
+
                     </form>
                     <p class="font-weight-bolder text-success"><?php echo isset($success)?$success:''; ?></p>
                 </div>	

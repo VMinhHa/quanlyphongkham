@@ -160,6 +160,8 @@
                             <input type="password" class="form-control" name="confirm_new_password" required="required">
                         </div>
                         <button type="submit" name="changePass" class="btn btn-primary">Xác nhận</button>
+                        <button type="reset" name="" class="btn btn-danger">Hủy</button>
+
                     </form>
                     <p class="font-weight-bolder text-success"><?php echo isset($success)?$success:''; ?></p>
                 </div>	
