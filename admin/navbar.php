@@ -23,6 +23,7 @@
 		<div class="sidebar-list">
 				<a href="index.php?page=home" class="nav-item nav-home"><span class='icon-field'><i class="fa fa-home"></i></span> Trang chủ</a>
 				<a href="index.php?page=appointments" class="nav-item nav-appointments"><span class='icon-field'><i class="fa fa-calendar"></i></span> Lịch</a>
+				<a href="index.php?page=lichhen" class="nav-item nav-appointments"><span class='icon-field'><i class="fa fa-calendar"></i></span> Lịch hẹn</a>
 				<a href="index.php?page=doctors" class="nav-item nav-doctors"><span class='icon-field'><i class="fa fa-user-md"></i></span> Bác sĩ</a>
 				<a href="index.php?page=phongkham" class="nav-item nav-doctors"><span class='icon-field'><i class="fa fa-user-md"></i></span> Phòng khám</a>
 				<a href="index.php?page=categories" class="nav-item nav-categories"><span class='icon-field'><i class="fa fa-book-medical"></i></span> Chuyên khoa</a>			

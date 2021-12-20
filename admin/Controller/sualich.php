@@ -33,7 +33,7 @@ if (isset($_GET['idsua'])) {
 	$TenPhong = $category['Tenphongkham'];
 	$Tenbasi=$category['Hoten'];
 	$Ngay=$category['Ngay'];
-	$Time = $category['Gioketthuc'];
+	$Time123 = $category['Gioketthuc'];
 	$Time12=$category['Giobatdau'];
 	$status = $category['tinhtrang'];
     if(isset($_POST['sua'])){
@@ -61,49 +61,107 @@ if (isset($_GET['idsua'])) {
 			$time1 = $_POST['time1'];
 			$time1 = str_replace('"', '\\"', $time1);
 		}
-		if( date("Y m d",strtotime($Ngay))<date('Y m d')){
+		if(date("A",strtotime($time1))=="PM" ){
+			$giobatdau=date("hi",strtotime($time1))+1200;
+		}else{
+			$giobatdau=date("hi",strtotime($time1));
+		}
+	
+		if(date("A",strtotime($time))=="PM"){
+			$gioketthuc=date("hi",strtotime($time))+1200;
+		}else{
+			$gioketthuc=date("hi",strtotime($time));
+			
+		}
+		if(date("Y m d",strtotime($Ngay))<date('Y m d')){
 			$messxuly1='Ngày nhập phải lớn hơn ngày hiện tại';
 		}else{
-			if($time1>=$time){
-				$messxuly="Số giờ kết thúc phải lớn hơn giờ bắt đầu";
-			}else{
+			if(date("h:i A",strtotime($Time12))!=date("h:i A",strtotime($time1))
+			||date("h:i A",strtotime($time))!=date("h:i A",strtotime($Time123))){
 				$sql2 = 'SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham';
 				$phongkham = $s->executeLesult($sql2);
 				foreach ($phongkham as $item) {
 					if($Ngay==$item['Ngay']){
-						if($Time12!=$time1){
-							if($tenphong==$item['ID_Phongkham'] && date("h:i A",strtotime($Time12))<date("h:i A",strtotime($item['Gioketthuc']))){
-								$resu=0;
-								echo '<script>
-								alert("Hiện tại lịch này đã tồn tại");
-								window.location.href="index.php?page=appointments";
-							</script>';
-							exit();
-							}else{
-								$resu=1;	
+						if($giobatdau<$gioketthuc){
+							$sql2='SELECT * from bacsi b JOIN lichlamviec l on b.ID_Bacsi=l.ID_Bacsi join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham ';
+							$phongkham = $s->executeLesult($sql2);
+							$kiemtratenbacsi=$s->demtenbacsi($tenbacsi);
+							foreach ($phongkham as $item) {
+								if($Ngay==$item['Ngay']){
+									if(date("A",strtotime($item['Giobatdau']))=="PM" ){
+										$giobatdau1=date("hi",strtotime($item['Giobatdau']))+1200;
+									}else{
+										$giobatdau1=date("hi",strtotime($item['Giobatdau']));
+									}
+									if(date("A",strtotime($item['Gioketthuc']))=="PM"){
+										$gioketthuc1=date("hi",strtotime($item['Gioketthuc']))+1200;
+									}else{
+										$gioketthuc1=date("hi",strtotime($item['Gioketthuc']));
+										
+									}
+
+										if($kiemtratenbacsi==0){
+											if($tenphong==$item['ID_Phongkham']){
+												if(($tenphong==$item['ID_Phongkham']&& $giobatdau<$gioketthuc1)&&($tenphong==$item['ID_Phongkham']&& $gioketthuc>$giobatdau1)){
+														echo '<script>
+														alert("Hiện tại giờ này không còn trống ");
+														window.location.href="index.php?page=appointments";
+														</script>';	
+														exit();
+													
+												}else{
+													$resu=1;
+												}
+											}else{
+												 $resu=1;
+											}
+										
+										}else{
+											if(($tenphong==$item['ID_Phongkham']&& $giobatdau<$gioketthuc1)&&($tenphong==$item['ID_Phongkham']&& $gioketthuc>$giobatdau1)){
+												echo '<script>
+												alert("Hiện tại giờ này không còn trống ");
+												window.location.href="index.php?page=appointments";
+												</script>';	
+												
+												exit();
+											
+											}else{
+													$resu=1;
+												}
+										}
+								}else{
+									$resu=1;
+								}
 							}
-						}else{
-							$resu=1;	
+						}
+						else{
+							$messxuly="Số giờ kết thúc phải lớn hơn giờ bắt đầu";
 						}
 							
 					}else{
-						$resu=2;
+						$resu=1;
 					}
+				
 				}
-			}
-			if($resu==1 || $resu==2){
-				$sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
-				Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
-				WHERE lichlamviec.ID_Lich =".$id1;
-				$s->execute($sql);
+			}else{
 				echo '<script>
-                alert("Sửa thành công");
-                window.location.href="index.php?page=appointments";
-                </script>';
+				alert("Sửa thành công");
+				window.location.href="index.php?page=appointments";
+				</script>';
 			}
+				
 		} 
 
-		
+		if($resu==1){
+			$sql="UPDATE lichlamviec SET ID_Phongkham='$tenphong',ID_Bacsi='$tenbacsi',
+			Ngay='$Ngay',Giobatdau='$time1',Gioketthuc='$time',Tinhtrang='$status'
+			WHERE lichlamviec.ID_Lich =".$id1;
+			$s->execute($sql);
+			echo '<script>
+			alert("Sửa thành công");
+			window.location.href="index.php?page=appointments";
+			</script>';
+		}
     }
 
 
@@ -165,14 +223,13 @@ if (isset($_GET['idsua'])) {
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Giờ kết thúc</label>
-				<input type="time"  name="time2" class="form-control" value="<?php echo $Time ?>" required>
+				<input type="time"  name="time2" class="form-control" value="<?php echo $Time123 ?>" required>
 				<span style="color:red"><?php echo $messxuly ?></span>
 			</div> 
 			<div class="form-group">
 				<label for="" class="control-label">Status</label>
 				<select class="browser-default custom-select form-control" name="status1">
-					<option value="Xác nhận">Xác nhận</option>
-					<option value="Giời lịch">Giời lịch</option>		
+					<option value="Xác nhận">Xác nhận</option>		
 					<option value="Bận">Bận</option>							
 				</select>
 			</div>

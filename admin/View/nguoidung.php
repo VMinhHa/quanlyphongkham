@@ -10,7 +10,7 @@
             </button>
             <form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="s"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="sss"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -31,8 +31,8 @@
                 <?php
                 //timkiem
                 $s='';
-                    if(isset($_POST['s'])){
-                        $s=$_POST['s'];
+                    if(isset($_POST['sss'])){
+                        $s=$_POST['sss'];
                     }
                     $additional='';
                     if(!empty($s)){

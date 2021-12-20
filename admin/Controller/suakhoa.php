@@ -70,10 +70,7 @@ $s=new data();
                             
                             }
                         }else{
-                            echo '<script>
-                            alert("Sửa thành công");
-                            window.location.href="index.php?page=categories";
-                            </script>';
+                            $resu=3;
                         }
                         
                     }
@@ -81,15 +78,16 @@ $s=new data();
                 }else{
                         $messxuly1="Vui lòng không để trống";
                 }
-                if($resu==2){
-                $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
-                where ID_Khoa=" . $id;
-                $s->execute($sql);
-                echo '<script>
-                alert("Sửa thành công");
-                window.location.href="index.php?page=categories";
-                </script>';
-                }elseif($resu==3){
+                if($resu==2||$resu==3){
+                    if($_FILES['image']['name']==''){
+                        $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Ngaythanhlap_khoa='$ngaythanhlap'
+                        where ID_Khoa=" . $id;
+                        $s->execute($sql);
+                        echo '<script>
+                        alert("Sửa thành công");
+                        window.location.href="index.php?page=categories";
+                        </script>';
+                    }else{
                         $fname = strtotime(date("Y-m-d H:i"))."_".$_FILES['image']['name'];
                         $move = move_uploaded_file($_FILES['image']['tmp_name'], '../images/khoa/'.$fname);
                         $sql = "UPDATE khoa set Tenkhoa='$tenkhoa',Hinhanh='$fname',Ngaythanhlap_khoa='$ngaythanhlap'
@@ -99,6 +97,8 @@ $s=new data();
                         alert("Sửa thành công");
                         window.location.href="index.php?page=categories";
                         </script>';
+                    }
+                
                 }
 
             } 

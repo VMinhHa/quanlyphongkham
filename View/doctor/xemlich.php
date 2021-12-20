@@ -127,7 +127,7 @@ echo trim($chuandoan['Chuandoan']);
                                             else{
                                                 if($item['Trangthai']=='Đang khám'){
 
-                                                 echo '<option value="Đang khám">Khám</option>
+                                                 echo '
                                                  <option value="Hoàn thành">Hoàn thành</option>';
                                                 }else{
                                                     if($item['Trangthai']=='Xác nhận')

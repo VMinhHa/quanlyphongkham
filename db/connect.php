@@ -46,6 +46,13 @@ class data
         return mysqli_num_rows($result);
         mysqli_close($conn);
     }
+    Function demtenbacsi($tenbacsi){
+        $conn = $this->connect();
+        $sql='SELECT * FROM bacsi where ID_Bacsi in (SELECT ID_Bacsi from lichlamviec WHERE ID_Bacsi='.$tenbacsi.')';
+        $result=mysqli_query($conn, $sql);
+        return mysqli_num_rows($result);
+        mysqli_close($conn);
+    }
     Function dem1($id){
         $conn = $this->connect();
         $sql='Select * from lichhen where (Trangthai="Hoàn thành" or Trangthai="Hủy") and ID_Bacsi='.$id;

@@ -77,7 +77,7 @@
                   <form action="capnhatthongtin.php" method="POST">
                     <div class="form-group">
                       <label class="font-weight-bolder">Họ và tên: </label>
-                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbacsi['Hoten']; ?>">
+                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbacsi['Hoten']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Giới tính: </label>
@@ -88,11 +88,11 @@
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Ngày sinh: </label>
-                      <input type="date" class="form-control" name="age" value="<?php echo $dsbacsi['Ngaysinh']; ?>">
+                      <input type="date" class="form-control" name="age" value="<?php echo $dsbacsi['Ngaysinh']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Email: </label>
-                      <input type="gmail" class="form-control" name="sdt" required="required" value="<?php echo $dsbacsi['Email']; ?>">
+                      <input type="gmail" class="form-control" name="sdt" value="<?php echo $dsbacsi['Email']; ?>" required>
                     </div>
                 </div>
                 <div class="modal-footer">

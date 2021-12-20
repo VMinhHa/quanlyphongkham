@@ -62,6 +62,9 @@
         case 'home':
           include 'home.php';
           break;
+        case 'lichhen':
+          include 'View/lichkham.php';
+          break;
         case 'doctors':
               if(isset($_GET['idsua'])){
                 if(isset($_POST['Cancel'])){

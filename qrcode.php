@@ -21,11 +21,11 @@ session_start();
                 where t.Tendangnhap="'.$_SESSION['username'].'" and l.id_Lichhen="'.$id.'" ';
             $Lich = $s->executeSingLesult($sql);
 
-            $sql4="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
-					where ID_Lich=".$Lich['so'];
-					$phongkham=$s->executeSingLesult($sql4);
+			
     }else{
-        echo 456;
+        echo '<script>
+        alert("Khoog có lịch");
+        </script>';
     }
 ?>
 <!DOCTYPE html>
@@ -44,6 +44,7 @@ session_start();
             transform:translate(-50%,-50%);
             border:1px solid black;
             width:400px;
+            border-radius:5px;
         }
     </style>
     <body>
@@ -51,15 +52,26 @@ session_start();
             <div style="text-align: center;">
                     <h2>Lịch khám</h2>
                     <br>
-                    <p><b>Ngày khám: </b><label for=""><?php echo date("l M d Y",strtotime($Lich['Ngayhen'])) ?></label></p>
-                    <p><b>Giờ khám: </b><label for=""><?php echo date("h:i A",strtotime($Lich['Giobatdau'])) ?></label></p>
-                    <p><b>Tên bệnh nhân: </b><label for=""><?php echo $Lich['Hotenbn']?></label></p>
-                    <p><b>Bác sĩ khám: </b><label for=""><?php echo $Lich['Hoten']?></label></p>
-                    <p><b>Phòng khám: </b><label for=""><?php echo $phongkham['Tenphongkham'];?></label></p>
-                    <p><b>Trạng thái: </b><label for=""><?php echo $Lich['Trangthai']?></label></p>
+                    <?php 
+                    if($Lich['so'] != ''){
+                        $sql4="SELECT * from lichlamviec l join phongkham pk on l.ID_Phongkham=pk.ID_Phongkham
+                        where ID_Lich=".$Lich['so'];
+                            if($phongkham=$s->executeSingLesult($sql4)){
+                                echo '<p><b>Ngày khám: </b><label for="">'.date('l M d Y',strtotime($Lich['Ngayhen'])).'</label></p>
+                                <p><b>Giờ khám: </b><label for="">'.date("h:i A",strtotime($Lich['Giobatdau'])).'</label></p>
+                                <p><b>Tên bệnh nhân: </b><label for="">'.$Lich['Hotenbn'].'</label></p>
+                                <p><b>Bác sĩ khám: </b><label for="">'.$Lich['Hoten'].'</label></p>
+                                <p><b>Phòng khám: </b><label for="">'.$phongkham['Tenphongkham'].'</label></p>
+                                <p><b>Trạng thái: </b><label for="">'.$Lich['Trangthai'].'</label></p>';
+                            }
+                        
+                    }else{
+                        echo "không có lịch";
+                    }
+                ?>
                     
- 
+                    
             </div>
         </div>
-    </body>
+    </body> 
 </html> 

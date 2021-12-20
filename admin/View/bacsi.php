@@ -46,12 +46,13 @@
                 ////lay danh sach
                 $s = new data();
                 $dem=1;
-                $sql = 'SELECT b.Hoten,b.ID_Khoa,ID_Bacsi,b.Gioitinh,t.Tendangnhap,b.image
+                $sql = 'SELECT b.Hoten,b.ID_Khoa,ID_Bacsi,b.Gioitinh,t.Tendangnhap,b.image,Tinhtrangbacsi
                             ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi="Đang làm"
                             Order by ID_Bacsi DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
-                    echo '<tr>
+                    if($item['Tinhtrangbacsi']=="Đang làm"){
+                        echo '<tr>
                                 <td>' . ($dem) . '</td>
                                 <td class="text-center">
 									<img  src="./../images/bacsi/'.$item['image'].'" width="150px"
@@ -73,6 +74,8 @@
                                 </td>
                                 ';
                     $dem++;
+                    }
+                    
                 }
             ?>
             </tbody>
@@ -125,7 +128,7 @@ $('.delete_doctor').click(function(){
                     </div>
                     <div class="form-group">
                         <label>Tên đăng nhập:</label>
-                        <select class="form-control" name="tendangnhap">
+                        <select class="form-control" name="tendangnhap" required>
                             <?php
                             $sql1 = 'select * from taikhoan where Phanquyen="Doctor" AND id not in (
                                 SELECT t.id from taikhoan t JOIN bacsi b on t.id=b.id)';

@@ -56,7 +56,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Thêm phòng khám</h4>
+          <h4 class="modal-title">Thêm Khoa</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <!-- Modal body -->

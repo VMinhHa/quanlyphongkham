@@ -19,10 +19,10 @@ $s=new data();
                     $hoten=trim($hoten);
                 }
                if (isset($_POST['tenchuyenkhoa'])) {
-                   if(trim($_POST['tenchuyenkhoa'])){
+                  
                        $diachi = $_POST['tenchuyenkhoa'];
                        $diachi = str_replace('"', '\\"', $diachi);
-                   }
+                   
                }
                if (isset($_POST['ngaysinh'])) {
                    $ngaythanhlap = $_POST['ngaysinh'];
@@ -30,9 +30,8 @@ $s=new data();
                }
                $resu=0;
                if($hoten!=''){
-                   
-                     if(!is_doctor($hoten)){
-                    $messxuly1='Vui lòng Nhập chữ cái và số';
+                    if(!is_doctor($hoten)){
+                         $messxuly1='Vui lòng Nhập chữ cái và số';
                     }else{
                            if($hoten!=$hoten1){
                                 $sql2 = 'SELECT * from phongkham';
@@ -50,10 +49,7 @@ $s=new data();
                                     }
                                 }
                            }else{
-                                echo '<script>
-                                alert("Sửa thành công");
-                                window.location.href="index.php?page=phongkham";
-                                </script>';
+                             $resu=2;
                            }
                     }
                 }else{
@@ -61,12 +57,12 @@ $s=new data();
                 }
                 if($resu==2){
                     $sql = "UPDATE phongkham set ID_Khoa='$diachi',Tenphongkham='$hoten',NgayThanhLap='$ngaythanhlap'
-                        where ID_Phongkham=" . $id;
+                        where ID_Phongkham=".$id;
                         $s->execute($sql);
                         //$mess= 'Cập nhật thành công';
                         echo '<script>
                         alert("Sửa thành công");
-                        window.location.href="index.php?page=phongkham";
+                        window.location.href="index.php?page=phongkham ";
                         </script>';
                 }
             }
@@ -109,7 +105,7 @@ $s=new data();
                 </div>
                
                 <button type="submit" class="btn btn-primary" name="submit1">Sửa</button>
-                <button class="btn btn-warning float-right" name="Cancel7">Thoát</button>
+                <a href="index.php?page=phongkham" class="btn btn-warning float-right">Thoát</a>
             </form>
         </div>
         <!-- Modal footer -->

@@ -74,7 +74,7 @@
                   <form action="capnhatthongtin.php" method="POST">
                     <div class="form-group">
                       <label class="font-weight-bolder">Họ và tên: </label>
-                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbenhnhan['Hotenbn']; ?>">
+                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbenhnhan['Hotenbn']; ?>" required>
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Giới tính: </label>
@@ -87,10 +87,10 @@
                       <label class="font-weight-bolder">Ngày sinh: </label>
                       <input type="date" class="form-control" name="age" value="<?php echo $dsbenhnhan['Ngaysinh']; ?>">
                     </div>
-                    <!-- <div class="form-group">
+                    <div class="form-group">
                       <label class="font-weight-bolder">Email: </label>
-                      <input type="text" class="form-control" name="sdt" required="required" value="<?php echo $dsbenhnhan['Email']; ?>">
-                    </div> -->
+                      <input type="text" class="form-control" name="sdt" required value="<?php echo $dsbenhnhan['Email']; ?>">
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="submit" class="btn btn-primary" name="updatebenhnhan">Lưu</button>
