@@ -59,26 +59,10 @@
 					<img src="images/blog/blog-1.jpg" style="height:50%;width:100%;" alt="" class="img-fluid ">
 				</div>
 
-				<div class="blog-item-content">
-					<div class="blog-item-meta mb-3 mt-4">
-						<span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>4 Bình luận</span>
-						<span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>5/10/2021</span>
-					</div> 
-
-					<h2 class="mt-3 mb-3"><a href="#">Phòng khám K thông tin mốc dịch tễ đến hết ngày 14/10/2021 và cách thức đăng ký khám</a></h2>
-
-					<p class="mb-4">BVK - Phòng khám K thông tin mốc dịch tễ đến hết ngày 13/10/2021 và cách thức đăng ký khám...</p>
-				</div>
+				
 			</div>
-			<div class="blog-thumb">
-				<img src="images/blog/blog-2.jpg" style="height:50%;width:100%;" alt="" class="img-fluid ">
-			</div>
-
 			<div class="blog-item-content">
-				<div class="blog-item-meta mb-3 mt-4">
-					<span class="text-muted text-capitalize mr-3"><i class="icofont-comment mr-2"></i>5 Bình luận</span>
-					<span class="text-black text-capitalize mr-3"><i class="icofont-calendar mr-1"></i>10/10/2021</span>
-				</div> 
+				
 
 				<h2 class="mt-3 mb-3"><a href="#">THUẬN TIỆN ĐẾN KHÁM VÀ ĐIỀU TRỊ TẠI PHÒNG KHÁM K</a></h2>
 
