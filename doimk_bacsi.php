@@ -41,7 +41,7 @@
     <div class="row">
       <div class="col-md-12">
         <div class="block text-center">
-          <h1 class="text-capitalize mb-5 text-lg">Thông tin cá nhân Bác sĩ</h1>
+          <h1 class="text-capitalize mb-5 text-lg">Thông tin chung</h1>
 
           <!-- <ul class="list-inline breadcumb-nav">
             <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
@@ -86,8 +86,10 @@
           >LỊCH KHÁM</a></h5>
           <!-- <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbacsi.php?pagetrang=lichsu"
           >LỊCH SỬ KHÁM BỆNH</a></h5> -->
+          <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="thongtinbacsi.php?pagetrang=lichsu"
+          >LỊCH SỬ ĐÃ KHÁM</a></h5>
           <h5 class="font-weight-bolder" style="padding-top:15px;"><a href="./thongtinbacsi.php?pagetrang=capnhattk"
-          >CẬP NHẬT TÀI KHOẢN</a></h5>
+          >ĐỔI MẬT KHẨU</a></h5>
           <!-- <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Events</a>
           <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Profile</a>
           <a href="#" class="list-group-item list-group-item-action " data-toggle="list">Status</a> -->
