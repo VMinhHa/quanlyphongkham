@@ -4,7 +4,7 @@
     mysqli_set_charset($conn,'utf8');
     
     include ('./../plugins/Classes/PHPExcel.php');
-    require_once ('./../plugins/Classes/PHPExcel/IOFactory.php');
+    require_once ('./../plugins/Classes/PHPExcel/IOFactory.php');  //Thư viện
 
     if(isset($_POST['submit']))
     {
