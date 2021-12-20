@@ -30,6 +30,7 @@
                     mysqli_query($conn,$ql);
                 
             }
+            echo'<script>alert("Thêm thuốc thành công");</script>';
         }
     }
 
