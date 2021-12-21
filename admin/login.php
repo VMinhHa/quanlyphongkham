@@ -71,17 +71,21 @@
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
+<<<<<<< HEAD
 					  <h1>Đăng nhập tài Khoản:</h1>
+=======
+					  <center><h1>ĐĂNG NHẬP</h1></center>
+>>>>>>> 8c1a4f48d20a046db8f44e9c52f661698e062c0f
   					<form id="login-form" >
   						<div class="form-group">
-  							<label for="username" class="control-label">Username</label>
+  							<label for="username" class="control-label">Tên đăng nhập</label>
   							<input type="text" id="username" name="username" class="form-control">
   						</div>
   						<div class="form-group">
-  							<label for="password" class="control-label">Password</label>
+  							<label for="password" class="control-label">Mật khẩu</label>
   							<input type="password" id="password" name="password" class="form-control">
   						</div>
-  						<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Login</button></center>
+  						<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Đăng nhập</button></center>
   					</form>
   				</div>
   			</div>
