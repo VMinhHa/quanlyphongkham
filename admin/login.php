@@ -71,17 +71,17 @@
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-					  <h1>Xác Thực Tài Khoản:</h1>
+					  <center><h1>ĐĂNG NHẬP</h1></center>
   					<form id="login-form" >
   						<div class="form-group">
-  							<label for="username" class="control-label">Username</label>
+  							<label for="username" class="control-label">Tên đăng nhập</label>
   							<input type="text" id="username" name="username" class="form-control">
   						</div>
   						<div class="form-group">
-  							<label for="password" class="control-label">Password</label>
+  							<label for="password" class="control-label">Mật khẩu</label>
   							<input type="password" id="password" name="password" class="form-control">
   						</div>
-  						<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Login</button></center>
+  						<center><button class="btn-sm btn-block btn-wave col-md-4 btn-primary">Đăng nhập</button></center>
   					</form>
   				</div>
   			</div>
