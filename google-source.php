@@ -72,7 +72,7 @@
                         $_SESSION['phanquyen'] = $row['Phanquyen'];
                         // header('Location:index.php');
                         echo '<script>
-                        alert("Đăng nhập thành công với gmail");
+                        alert("Đăng nhập thành công với tài khoản google");
                         window.location.href="index.php";
                         </script>';
                     }

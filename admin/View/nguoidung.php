@@ -108,16 +108,19 @@ $('.Khoiphuc').click(function(){
         <form action="././Controller/themtaikhoan.php" id="manage-appointment" method="POST">
                     <div class="form-group">
                         <label>Tên đăng nhập:</label>
-                        <input type="text" class="form-control" name="tendangnhap" placeholder="Nhập tên tài khoản" required>
+                        <input type="text" class="form-control" name="tendangnhap" placeholder="Nhập tên tài khoản" required
+                        oninvalid="this.setCustomValidity('Tên đăng nhập không được để trống')"
+                         oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label for="" class="control-label">Email</label>
-                        <input type="email" class="form-control" name="email" required>
+                        <input type="email" class="form-control" name="email" required
+                        oninvalid="this.setCustomValidity('Email không hợp lệ')"
+                         oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                         <label>Phân quyền:</label>
                         <select class="form-control" name="phanquyen">
-                           <option value=""></option>
                            <option value="Doctor">Doctor</option>        
                            <option value="Admin">Admin</option>           
                         </select>

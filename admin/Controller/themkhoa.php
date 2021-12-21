@@ -53,13 +53,13 @@ $s=new data();
                       }
                   }else{
                       echo '<script>
-                          alert("Phải nhỏ hơn ngày hiện hành");
+                          alert("Ngày thành lập phải nhỏ hơn ngày hiện hành");
                           window.location.href="../index.php?page=categories";
                           </script>';
                   }
               }else{
                   echo '<script>
-                  alert("Không đúng định dạng");
+                  alert("Hình ảnh không đúng định dạng");
                   window.location.href="../index.php?page=categories";
                   </script>';
               }

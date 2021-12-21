@@ -71,11 +71,7 @@
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-<<<<<<< HEAD
-					  <h1>Đăng nhập tài Khoản:</h1>
-=======
-					  <center><h1>ĐĂNG NHẬP</h1></center>
->>>>>>> 8c1a4f48d20a046db8f44e9c52f661698e062c0f
+					<center><h1>Đăng nhập</h1></center>
   					<form id="login-form" >
   						<div class="form-group">
   							<label for="username" class="control-label">Tên đăng nhập</label>
