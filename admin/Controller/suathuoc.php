@@ -92,6 +92,7 @@ if (isset($_GET['idsua'])) {
 <textarea rows="10" name="thongtinthuoc"cols="48">
 <?php echo trim($Thongtinthuoc) ?>
                         </textarea>
+                        <br>
                         <span style="color:red"><?php echo $messxuly3 ?></span>
                     </div>
                     <div class="form-group">

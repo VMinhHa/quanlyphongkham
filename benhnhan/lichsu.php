@@ -66,14 +66,48 @@
 
 
                     $sql='select * from bacsi b join lichhen l on b.ID_Bacsi=l.ID_Bacsi
-                        where  (1 '.$additional.') and Tinhtrangbacsi!="Nghỉ việc" and l.ID_Benhnhan='.$layid['ID_Benhnhan'].' and Trangthai="Hoàn thành"
+                        where  (1 '.$additional.') and Tinhtrangbacsi!="Nghỉ việc" and l.ID_Benhnhan='.$layid['ID_Benhnhan'].' and Trangthai="Hoàn thành" or Trangthai="Hủy"
                         Order by l.id_Lichhen 
                         desc limit '.$page2.','.$prodperpage.' ';
 
                     $Lich = $s->executeLesult($sql);
                     $dem=1;
                     foreach ($Lich as $item) {
+                        if($item['Trangthai']=="Hủy"){
 					?>
+					<tr>
+                        <td ><?php echo $dem++ ?></td>
+						<td>
+							<?php echo $item['Hoten'] ?>
+						</td>
+						<td><?php echo date("l M d Y",strtotime($item['Ngayhen'])) ?></td>
+                        <td><?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?></td>
+						<!-- Chuẩn đoán -->
+						<td>
+							<?php 
+								$sql1='Select * from benhan b join lichhen l
+								on b.id_Lichhen=l.id_Lichhen where b.ID_Lichhen=
+								'.$item['id_Lichhen'];
+								$chuandoan=$s->executeSingLesult($sql1);
+								if($chuandoan!=null){
+									echo '<p>'.$chuandoan['Chuandoan'].'</p>';
+								}
+								
+							?>
+							
+						</td>
+								
+						<!-- THuoc -->
+						<td>
+						
+						</td>
+	
+						<!-- 0----- -->
+                        <td><?php echo $item['Trangthai'] ?></td>
+					</tr>
+                <?php } 
+                else{
+                    ?>
 					<tr>
                         <td ><?php echo $dem++ ?></td>
 						<td>
@@ -108,7 +142,9 @@
 						<!-- 0----- -->
                         <td><?php echo $item['Trangthai'] ?></td>
 					</tr>
-                <?php } ?>
+                <?php
+
+                }}?>
 				<tr>
                 <style>
                         .chinhphantrang {

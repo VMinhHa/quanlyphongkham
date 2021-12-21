@@ -71,7 +71,7 @@
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-					  <h1>Xác Thực Tài Khoản:</h1>
+					  <h1>Đăng nhập tài Khoản:</h1>
   					<form id="login-form" >
   						<div class="form-group">
   							<label for="username" class="control-label">Username</label>

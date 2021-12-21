@@ -213,7 +213,7 @@ if (isset($_GET['idsua'])) {
 				</select>
 			</div>
 			<div class="form-group">
-				<label for="" class="control-label">Ngay</label>
+				<label for="" class="control-label">Ngày</label>
 				<input type="date"  name="Ngay1" class="form-control" value="<?php echo $Ngay ?>" required>
 				<span style="color:red"><?php echo $messxuly1 ?></span>
 			</div>
@@ -227,7 +227,7 @@ if (isset($_GET['idsua'])) {
 				<span style="color:red"><?php echo $messxuly ?></span>
 			</div> 
 			<div class="form-group">
-				<label for="" class="control-label">Status</label>
+				<label for="" class="control-label">Tình trạng</label>
 				<select class="browser-default custom-select form-control" name="status1">
 					<option value="Xác nhận">Xác nhận</option>		
 					<option value="Bận">Bận</option>							

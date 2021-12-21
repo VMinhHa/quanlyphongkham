@@ -9,7 +9,7 @@
 				<button class="btn-primary btn btn-sm" type="button" data-toggle="modal" data-target="#myModal" id="new_appointment"><i class="fa fa-plus"></i> Thêm lịch</button>
 				<form method="post" style="width:150px;margin:5px;float:right;">
                         <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm..." id="s" name="ssss"
+                        <input type="text" class="form-control" placeholder="Tìm kiếm tên và ngày.." id="s" name="ssss"
                         style="width:200px; float:right;">
                         </div>
             </form>
@@ -34,7 +34,7 @@
                     $additional='';
                     if(!empty($s)){
                         $additional=' and b.Hoten like"%'.$s.'%" or
-                       Ngay like"%'.$s.'%"';
+                       Ngay like"%'.$s.'%" ';
                     }
 					$s = new data();
                     $sql = 'SELECT l.ID_Lich,b.Hoten,tinhtrang,Ngay,l.Giobatdau,l.Gioketthuc FROM bacsi b join lichlamviec l on b.ID_Bacsi=l.ID_Bacsi

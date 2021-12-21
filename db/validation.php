@@ -25,7 +25,7 @@
      }
      function is_ghichu($hoten1)//Địa chỉ
     {
-        $parttern = "/^[^$&+:;=?@#|'<>.^*()%!]{1,1000}$/";
+        $parttern = "/^[^$&+:;=?@#|'<>^*()%!]{1,1000}$/";
         if(Preg_match($parttern, $hoten1))
             return true;
      }
