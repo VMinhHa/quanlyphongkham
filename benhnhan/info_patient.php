@@ -74,7 +74,9 @@
                   <form action="capnhatthongtin.php" method="POST">
                     <div class="form-group">
                       <label class="font-weight-bolder">Họ và tên: </label>
-                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbenhnhan['Hotenbn']; ?>" required>
+                      <input type="text" class="form-control" name="fullname" value="<?php echo $dsbenhnhan['Hotenbn']; ?>" required
+                      oninvalid="this.setCustomValidity('Họ và tên không được để trống')"
+                      oninput="setCustomValidity('')">
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Giới tính: </label>
@@ -89,7 +91,9 @@
                     </div>
                     <div class="form-group">
                       <label class="font-weight-bolder">Email: </label>
-                      <input type="text" class="form-control" name="sdt" required value="<?php echo $dsbenhnhan['Email']; ?>">
+                      <input type="text" class="form-control" name="sdt" required value="<?php echo $dsbenhnhan['Email']; ?>" required
+                      oninvalid="this.setCustomValidity('Email không được để trống')"
+                      oninput="setCustomValidity('')">
                     </div>
                 </div>
                 <div class="modal-footer">

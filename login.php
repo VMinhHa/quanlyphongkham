@@ -59,12 +59,12 @@
 
             <div class="form-group ">
               <label for="uname">Tên Đăng Nhập:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" required>
+              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
             </div>
             
             <div class="form-group">
               <label for="pwd">Mật Khẩu:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" required>
+              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" >
             </div>
             
             <div class="btn-form btn-login">

@@ -100,7 +100,9 @@
                                 $chuandoan=$s->executeSingLesult($sql2);?>
                                 <div class="form-group">
                                     <!-- ko di hchuyen -->
-<textarea rows="5" cols="58" name="noidung" class="form-control"  required>
+<textarea rows="5" cols="58" name="noidung" class="form-control"  required 
+oninvalid="this.setCustomValidity('Bạn chưa chuẩn đoán')"
+                      oninput="setCustomValidity('')">
 <?php 
     if($chuandoan!=null){
 echo trim($chuandoan['Chuandoan']);
