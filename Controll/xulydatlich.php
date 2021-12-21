@@ -53,13 +53,13 @@
         $mail->isSMTP();                                            //Send using SMTP
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'maianhduong9a6@gmail.com';                     //SMTP username
-        $mail->Password   = '01268450219maianhduong        ';                               //SMTP password
+        $mail->Username   = 'cancaiten2012@gmail.com';                     //SMTP username
+        $mail->Password   = 'Ha01639915979';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         //Recipients
-        $mail->setFrom('cancaiten2017@gmail.com', 'Administrator');
+        $mail->setFrom('cancaiten2012@gmail.com', 'Administrator');
         $mail->addAddress($mail_doctor);     //Add a recipient
         
 
@@ -80,7 +80,7 @@
             <br>
             Minh Hà
             <br>
-            Administrator - Bệnh Viện K </h4>
+            Administrator - Phòng Khám K </h4>
         
         ";
 

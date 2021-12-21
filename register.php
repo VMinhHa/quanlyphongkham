@@ -23,7 +23,7 @@
         else{
             // Kiểm tra định dạng username
             if (!is_username($username)) {
-                $err['username'] = "*Tên đăng nhập phải từ 6 chữ số";
+                $err['username'] = "*Tên đăng nhập phải từ 6 chữ số và không quá 32 chữ số";
             }
             else
             {

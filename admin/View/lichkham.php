@@ -18,8 +18,8 @@
                     <th style="width:5%">STT</th>
                     <th style="width:20%">Tên bác sĩ</th>
                     <th style="width:20%">Tên bệnh nhân</th>
-                    <th style="width:15%">Ngày hẹn</th>
-                    <th style="width:20%">Giờ hẹn</th>
+                    <th style="width:15%">Giờ hẹn</th>
+                    <th style="width:20%">Ngày hẹn</th>
                     <th style="width:10%">Ngày tạo</th>
                     <th style="width:10%">Trạng thái</th>
                 </tr>

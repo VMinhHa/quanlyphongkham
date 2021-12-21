@@ -82,8 +82,8 @@
         <div class="modal-body">
         <form action="././Controller/themphongkham.php" id="manage-appointment" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label>Tên khoa:</label>
-                        <input type="text" class="form-control" name="hoten" placeholder="Enter tên khoa" required>
+                        <label>Tên phòng:</label>
+                        <input type="text" class="form-control" name="hoten" placeholder="Enter tên phòng" required>
                     </div>
                     <div class="form-group">
                         <label>Tên chuyên khoa:</label>

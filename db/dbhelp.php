@@ -35,7 +35,7 @@ class Action{
 		foreach ($_SESSION as $key => $value) {
 			unset($_SESSION[$key]);
 		}
-		header("location:.././login.php");
+		header("location:.././index.php");
 	}
 	function delete_doctor(){
 		 extract($_POST);

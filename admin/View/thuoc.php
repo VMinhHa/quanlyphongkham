@@ -4,32 +4,58 @@
     mysqli_set_charset($conn,'utf8');
     
     include ('./../plugins/Classes/PHPExcel.php');
-    require_once ('./../plugins/Classes/PHPExcel/IOFactory.php');
+    require_once ('./../plugins/Classes/PHPExcel/IOFactory.php');  //Thư viện
 
     if(isset($_POST['submit']))
     {
-        $file = $_FILES['file']['tmp_name'];
-
-        $objExcel = PHPExcel_IOFactory::load($file);
-
-        foreach($objExcel->getWorksheetIterator() as $worksheet)
+        if(isset($_FILES['file']['name']))
         {
-            $highestrow = $worksheet->getHighestRow();
-            // echo '<pre>';
-            // print_r($highestrow);
-
-            for($row=10;$row<=$highestrow;$row++)
+            if($_FILES['file']['name'] !== '')
             {
-                $tenthuoc = $worksheet->getCellByColumnAndRow(3,$row)->getValue();
-                $loaithuoc = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
-                $thongtinthuoc = $worksheet->getCellByColumnAndRow(7,$row)->getValue();
-                $handung = $worksheet->getCellByColumnAndRow(9,$row)->getValue();
-                // echo '<br>';
+                $file_name = $_FILES['file']['name'];
+                // echo $file_name;
+                $ext = pathinfo($file_name, PATHINFO_EXTENSION);
+                if($ext == 'xlsx'){
+                    
+                    $file = $_FILES['file']['tmp_name'];
 
-                    $ql = "insert into thuoc(Tenthuoc,Loaithuoc,Thongtinthuoc,Handung) values ('$tenthuoc','$loaithuoc','$thongtinthuoc','$handung')";
-                    mysqli_query($conn,$ql);
-                
+                    // echo $file;
+                    $objExcel = PHPExcel_IOFactory::load($file);
+
+                    foreach($objExcel->getWorksheetIterator() as $worksheet)
+                    {
+                        $highestrow = $worksheet->getHighestRow();
+                        // echo '<pre>';
+                        // print_r($highestrow);
+
+                        for($row=10;$row<=$highestrow;$row++)               // Chạy từ hàng 10
+                        {
+                            $tenthuoc = $worksheet->getCellByColumnAndRow(3,$row)->getValue();      //Cột chạy từ 0
+                            $loaithuoc = $worksheet->getCellByColumnAndRow(2,$row)->getValue();
+                            $thongtinthuoc = $worksheet->getCellByColumnAndRow(7,$row)->getValue();
+                            $handung = $worksheet->getCellByColumnAndRow(9,$row)->getValue();
+                            // echo '<br>';
+
+                                $ql = "insert into thuoc(Tenthuoc,Loaithuoc,Thongtinthuoc,Handung) values ('$tenthuoc','$loaithuoc','$thongtinthuoc','$handung')";
+                                mysqli_query($conn,$ql);
+                            
+                        }
+                        echo'<script>alert("Thêm thuốc thành công");</script>';
+                    }
+                }
+                else
+                {
+                    echo '<script>
+                      alert("Chỉ được phép tải lên file excel");
+                    </script>';
+                }
             }
+            else
+            {
+                echo '<script>
+                      alert("Bạn chưa chọn file");
+                    </script>';
+            }     
         }
     }
 
