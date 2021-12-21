@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="panel-heading mt-3 ml-3 mr-3">
-        <h1 class="text-center">Xem danh sách lịch</h1>
+        <h1 class="text-center">Xem danh sách lịch hẹn khách hàng</h1>
     </div>
     <div class="panel-body card">
         <div>
