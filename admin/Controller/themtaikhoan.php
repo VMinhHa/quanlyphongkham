@@ -61,8 +61,8 @@ $s=new data();
         // $s->execute($sql1);
         $s->execute($sql);
         echo '<script>
-        alert("Thêm tài khoản bác sĩ sử dụng thành công");
-        window.location.href="../index.php?page=doctors";
+        alert("Thêm tài khoản thành công");
+        window.location.href="../index.php?page=users";
         </script>';
         }
         

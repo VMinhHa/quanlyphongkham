@@ -98,7 +98,6 @@
                         $additional=' and Tenthuoc like"%'.$s.'%" or Loaithuoc like"%'.$s.'%"
                         or Thongtinthuoc like"%'.$s.'%" or Handung like"%'.$s.'%"';
                     }
-
 				$s=new data();
 				$dem1=$s->dem();
 				$page=1;

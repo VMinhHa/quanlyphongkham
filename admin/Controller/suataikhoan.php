@@ -50,9 +50,7 @@ $s=new data();
                                     $messxuly2="Vui lòng nhập trường này";
                                 }
                         }else{
-                            echo '<script>
-                                                window.location.href="index.php?page=users";
-                                                </script>';
+                            $resu=2;
                         }
                         
                     }
