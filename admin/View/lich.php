@@ -152,7 +152,7 @@
 				<input type="time"  name="time1" class="form-control" required>
 			</div> 
 			<div class="form-group">
-				<label for="" class="control-label">Giờ kết thức</label>
+				<label for="" class="control-label">Giờ kết thúc</label>
 				<input type="time"  name="time" class="form-control" required>
 			</div> 
 			<hr>
