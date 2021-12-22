@@ -89,9 +89,7 @@
                                 <td>' . date("d-m-Y",strtotime($item['Ngaysinh'])) . '</td>
                                 <td>' . $item['Gioitinh'] . '</td>
                                 <td>
-                                <a href="index.php?page=doctors&khoiphuc='.$item['ID_Bacsi'].'" >
-                                <button class="btn btn-primary btn btn-sm" type="submit" name="Khôi phục" 
-                              >Khôi phục</button></a>
+                                <a class="btn btn-primary btn btn-sm" href="index.php?page=doctors&khoiphuc='.$item['ID_Bacsi'].'" >Khôi phục</a>
                                     </br> </br>
                                 </button>
                                 </td>
@@ -106,12 +104,12 @@
                 if(isset($_GET['khoiphuc'])){
                     $idkhoiphuc=$_GET['khoiphuc'];
                     $sqlkhoiphuc='update bacsi set Tinhtrangbacsi="Đang làm" where ID_Bacsi='.$idkhoiphuc.'';
-                    if($s->execute($sqlkhoiphuc)){
+                    $s->execute($sqlkhoiphuc);
                         echo '<script>
                         alert("Khôi phục hoạt động thành công");
                         window.location.href="index.php?page=doctors";
                         </script>';
-                    }
+                    
                 }
             ?>
             </tbody>

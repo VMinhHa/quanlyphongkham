@@ -71,12 +71,7 @@
   		<div id="login-right">
   			<div class="card col-md-8">
   				<div class="card-body">
-<<<<<<< HEAD
-					  <center><h1>Đăng nhập admin</h1></center>
-
-=======
 					<center><h1>Đăng nhập</h1></center>
->>>>>>> 49cdda7193f3171693b93fdad8f5e9ad8b50caed
   					<form id="login-form" >
   						<div class="form-group">
   							<label for="username" class="control-label">Tên đăng nhập</label>
