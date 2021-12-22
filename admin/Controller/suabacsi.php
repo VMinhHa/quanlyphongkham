@@ -139,7 +139,7 @@ $s=new data();
                         ?>
                 </div>
                 <button type="submit" class="btn btn-primary" name="submit1">Update</button>
-                <button class="btn btn-warning float-right" name="Cancel">Cancel</button>
+                <a href="index.php?page=doctors" class="btn btn-warning float-right" name="Cancel">Cancel</a>
             </form>
         </div>
         <!-- Modal footer -->

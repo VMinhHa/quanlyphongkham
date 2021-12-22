@@ -24,10 +24,10 @@
                     <th style="width:15%">Họ và tên</th>
                     <th style="width:15%">Chuyên khoa</th>
                     <th style="width:15%">Tên tài khoản</th>
-                    <th style="width:15%">Ngày sinh</th>
+                    <th style="width:10%">Ngày sinh</th>
                     <th style="width:10%">Giới tính</th>
                     <th style="width:5%">Hoạt động</th>
-                    <th style="width:5%">Trạng thái</th>
+                    <th style="width:10%">Trạng thái</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
                 $s = new data();
                 $dem=1;
                 $sql = 'SELECT b.Hoten,b.ID_Khoa,ID_Bacsi,b.Gioitinh,t.Tendangnhap,b.image,Tinhtrangbacsi
-                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' and Tinhtrangbacsi="Đang làm"
+                            ,Tenkhoa,b.Ngaysinh FROM bacsi b join khoa k on b.ID_Khoa=k.ID_Khoa join taikhoan t on t.id=b.id where 1 '.$additional.' 
                             Order by ID_Bacsi DESC';
                 $caterogyList = $s->executeLesult($sql);
                 foreach ($caterogyList as $item) {
@@ -76,8 +76,42 @@
                                 </td>
                                 ';
                     $dem++;
+                    }else{
+                        echo '<tr>
+                                <td>' . ($dem) . '</td>
+                                <td class="text-center">
+									<img  src="./../images/bacsi/'.$item['image'].'" width="150px"
+                                    height="150px" alt="">
+								</td>
+                                <td>' . $item['Hoten'] . '</td>
+                                <td>' . $item['Tenkhoa'] . '</td>
+                                <td>' . $item['Tendangnhap'] . '</td>
+                                <td>' . date("d-m-Y",strtotime($item['Ngaysinh'])) . '</td>
+                                <td>' . $item['Gioitinh'] . '</td>
+                                <td>
+                                <a href="index.php?page=doctors&khoiphuc='.$item['ID_Bacsi'].'" >
+                                <button class="btn btn-primary btn btn-sm" type="submit" name="Khôi phục" 
+                              >Khôi phục</button></a>
+                                    </br> </br>
+                                </button>
+                                </td>
+                                <td>
+                                        '. $item['Tinhtrangbacsi'] .'
+                                </td>
+                                ';
+                    $dem++;
                     }
                     
+                }
+                if(isset($_GET['khoiphuc'])){
+                    $idkhoiphuc=$_GET['khoiphuc'];
+                    $sqlkhoiphuc='update bacsi set Tinhtrangbacsi="Đang làm" where ID_Bacsi='.$idkhoiphuc.'';
+                    if($s->execute($sqlkhoiphuc)){
+                        echo '<script>
+                        alert("Khôi phục hoạt động thành công");
+                        window.location.href="index.php?page=doctors";
+                        </script>';
+                    }
                 }
             ?>
             </tbody>

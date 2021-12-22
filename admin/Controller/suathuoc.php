@@ -103,7 +103,7 @@ if (isset($_GET['idsua'])) {
 			<hr>
 			<div class="col-md-12 text-center">
 				<button class="btn-primary btn btn-sm col-md-4" name="submit5">Sửa</button>
-				<button class="btn btn-warning float-right" name="Cancel5">Thoát</button>
+				<a href="index.php?page=thuoc" class="btn btn-warning float-right" name="Cancel5">Thoát</a>
 			</div>
 		</form>
         </div>

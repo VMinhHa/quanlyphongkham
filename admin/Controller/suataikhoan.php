@@ -97,7 +97,7 @@ $s=new data();
                         <span style="color:red"><?php echo $messxuly2 ?></span>
                     </div>
                 <button type="submit" class="btn btn-primary" name="submit3">Update</button>
-                <button class="btn btn-warning float-right" name="Cancel4">Cancel</button>
+                <a href="index.php?page=users" class="btn btn-warning float-right" name="Cancel4">Cancel</a>
             </form>
         </div>
         <!-- Modal footer -->
