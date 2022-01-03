@@ -71,7 +71,7 @@
             <h4>Xin chào <span style='color:#e74c3c'>$name_doctor</span>
             <br>
             Bạn có 1 lịch hẹn khám bệnh mới với <span style='color:#e74c3c'>$name_bn</span>.Vui lòng kiểm tra và xác nhận
-            <a href='http://localhost:8080/quanlyphongkham/thongtinbenhnhan.php?pagetrang=xemlich' 
+            <a href='http://localhost:8080/quanlyphongkham/thongtinbacsi.php?pagetrang=xemlich' 
             style='font-weight:bold; color:#2980b9'>Tại Đây</a>
             <br>
             Xin cảm ơn và chúc bạn có một ngày tốt lành!

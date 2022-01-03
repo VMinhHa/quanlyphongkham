@@ -102,7 +102,10 @@
 				<div class=" shuffle-item" data-groups="[&quot;cat2&quot;]">
 					<div class="position-relative doctor-inner-box">
 						<div class="content mt-3" >
-							<h4 class="mb-0">Đặt lịch Bác sĩ: <?php echo $listbacsi['Hoten'] ?></h4><br>
+							<div style="display: flex; justify-content: space-between;">
+								<h4 class="mb-0">Đặt lịch Bác sĩ: <?php echo $listbacsi['Hoten'] ?></h4><br>
+								<h4 class="mb-0">Giá khám: 200.000 VNĐ </h4><br>
+							</div>
 							<table class="table table-bordered">
 							<form action="Controll/xulydatlich.php" method="POST">
 									<thead>

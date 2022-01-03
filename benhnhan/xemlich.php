@@ -78,7 +78,8 @@
 									if($item['Trangthai']=='Đang chờ'){
 								?>
 								<form action="Controll/xulydatlich.php" method="POST">
-									<button  class="btn btn-danger btn-sm delete_lichhen" 
+									<a href="vnpay_php/index.php" name="payment" ><i class="icofont-pay"></i></a>
+									<button  style="margin-top:10px;"class="btn btn-danger btn-sm delete_lichhen" 
 									type="submit" onclick="return confirm('Bạn có thực sự muốn hủy');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
 								</form>
 								<?php
@@ -121,3 +122,19 @@ $('.delete_lichhen').click(function(){
 		})
 	}
 </script> -->
+<link rel="stylesheet" href="plugins/icofont/icofont.min.css">
+<style>
+	/* .btn-payment {
+		border-radius: 8px;
+		margin-bottom: 10px;
+		height: 48px;
+		width: 96px;
+	}*/
+	.icofont-pay:before {
+    	font-size: 3rem;
+		padding-left: 20px;
+    	padding-right: 20px;
+		border: 1px solid black;
+		border-radius: 5px;
+	}
+</style>
