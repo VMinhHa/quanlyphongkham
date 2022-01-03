@@ -39,7 +39,7 @@
                     on b.id_Lichhen=l.id_Lichhen';
                     
                     foreach ($Lich as $item) {
-                        if($item['Trangthai']!='Hoàn thành'&&$item['Trangthai']!='Hủy'){                  
+                        if($item['Trangthai']!='Hoàn thành'&&$item['Trangthai']!='Hủy'&&$item['Trangthai']!='Đang chờ'){                  
 					?>
                         <tr>
                         <td ><?php echo $dem++ ?></td>
@@ -110,7 +110,7 @@ echo trim($chuandoan['Chuandoan']);
 
 ?>
 </textarea> 
-    <!-- 2222222222222 -->
+    <!-- 2222222222222 Đang khám -->
                                 </div>
                                 
                             <?php 
@@ -132,16 +132,17 @@ echo trim($chuandoan['Chuandoan']);
                                                  echo '
                                                  <option value="Hoàn thành">Hoàn thành</option>';
                                                 }else{
+                                                    ///xác nh
                                                     if($item['Trangthai']=='Xác nhận')
                                                     {
                                                        echo '
                                                         <option value="Đang khám">Khám</option>';
                                                     }
-                                                    else{
-                                                        echo '<option value="Xác nhận">Xác nhận</option>
-                                                        <option value="Hủy">Hủy</option>';
+                                                    // else{
+                                                    //     echo '<option value="Xác nhận">Xác nhận</option>
+                                                    //     <option value="Hủy">Hủy</option>';
                                                         
-                                                    }
+                                                    // }
                                                 }
                                  
                                                 

@@ -31,7 +31,8 @@
     </head>
 
     <body>
-        <?php require_once("./config.php"); ?>             
+        <?php require_once("./config.php"); 
+        include('../db/connect.php')?>             
         <div class="container">
             <div class="header clearfix">
                 <a class="navbar-brand" href="../index.php">
@@ -86,25 +87,45 @@
                     <div class="form-group">
                         <h3>Thông tin hóa đơn (Billing)</h3>
                     </div>
+                    <?php 
+
+
+                        if(isset($_GET['id'])){
+                            $id=$_GET['id'];
+                            //$_SESSION['id_pay']=$_GET['id'];
+                        }else{
+                            //$_SESSION['id_pay']='';
+                            $id='';
+                        }
+                        $sql="SELECT * from lichhen l join benhnhan bn on l.ID_Benhnhan=bn.ID_Benhnhan join
+                         taikhoan t on bn.id = t.id where id_Lichhen=".$id;
+                         $p=new data();
+                        $item=$p->executeSingLesult($sql);
+   
+                    ?>
                     <div class="form-group">
                         <label >Họ tên (*)</label>
                         <input class="form-control" id="txt_billing_fullname"
-                               name="txt_billing_fullname" type="text" value="NGUYEN VAN XO"/>             
+                               name="txt_billing_fullname" type="text" value="<?php echo $item['Hotenbn'] ?>"/>             
                     </div>
                     <div class="form-group">
                         <label >Email (*)</label>
                         <input class="form-control" id="txt_billing_email"
-                               name="txt_billing_email" type="text" value="xonv@vnpay.vn"/>   
+                               name="txt_billing_email" type="text" value="<?php echo $item['Email'] ?>"/>   
                     </div>
                     <div class="form-group">
-                        <label >Số điện thoại (*)</label>
+                        <label >Ngày hẹn (*)</label>
                         <input class="form-control" id="txt_billing_mobile"
-                               name="txt_billing_mobile" type="text" value="0934998386"/>   
+                               name="txt_billing_day" type="text" value="<?php echo date("d-m-Y",strtotime($item['Ngayhen'])) ?>"/>   
+                    </div>
+                    <div class="form-group">
+                        <label >Giờ hẹn (*)</label>
+                        <input class="form-control" id="txt_billing_mobile"
+                               name="txt_billing_time" type="text" value="<?php echo date("h:i A",strtotime($item['Giobatdau'])).' - '.date("h:i A",strtotime($item['Gioketthuc'])) ?>"/>   
                     </div>
                     
 
-                    <button type="submit" class="btn btn-primary" id="btnPopup">Thanh toán Post</button>
-                    <button type="submit" name="redirect" id="redirect" class="btn btn-default">Thanh toán Redirect</button>
+                    <button type="submit" name="redirect" id="redirect" class="btn btn-primary">Thanh toán Redirect</button>
 
                 </form>
             </div>

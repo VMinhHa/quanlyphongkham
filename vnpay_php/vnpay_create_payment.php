@@ -20,9 +20,13 @@ $vnp_IpAddr = $_SERVER['REMOTE_ADDR'];
 //Add Params of 2.0.1 Version
 $vnp_ExpireDate = $_POST['txtexpire'];
 //Billing
-$vnp_Bill_Mobile = $_POST['txt_billing_mobile'];
+$vnp_Bill_Mobile = $_POST['txt_billing_day'];
 $vnp_Bill_Email = $_POST['txt_billing_email'];
 $fullName = trim($_POST['txt_billing_fullname']);
+
+$day=$_POST['txt_billing_day'];
+$time=$_POST['txt_billing_time'];
+$id_pay=$_SESSION['id_pay'];
 if (isset($fullName) && trim($fullName) != '') {
     $name = explode(' ', $fullName);
     $vnp_Bill_FirstName = array_shift($name);
@@ -47,7 +51,8 @@ $inputData = array(
     "vnp_Bill_Email"=>$vnp_Bill_Email,
     "vnp_Bill_FirstName"=>$vnp_Bill_FirstName,
     "vnp_Bill_LastName"=>$vnp_Bill_LastName,
-    
+    "vnp_Bill_day"=>$day,
+    "vnp_Bill_time"=>$time    
 );
 
 if (isset($vnp_BankCode) && $vnp_BankCode != "") {

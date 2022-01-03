@@ -16,6 +16,7 @@
     </head>
     <body>
         <?php
+        include('../db/connect.php');
         require_once("./config.php");
         $vnp_SecureHash = $_GET['vnp_SecureHash'];
         $inputData = array();
@@ -82,11 +83,27 @@
                     <label >Kết quả:</label>
                     <label>
                         <?php
+                       
                         if ($secureHash == $vnp_SecureHash) {
                             if ($_GET['vnp_ResponseCode'] == '00') {
+                                //session_start();
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
+                                if(isset($_GET['id'])){
+                                    echo $_GET['id'];
+                                }
+                                //Thành công chuyển sang đang khám
+                               // echo $_SESSION['id_pay'];
+
+                               //Phần update chuyển trạng thái
+                                // $s=new data();
+                                // $sql = "Update lichen set Trangthai='Xác nhận' where id_Lichhen=".$_SESSION['id_pay'];
+                                // if($s->execute($sql)){
+                                //     session_destroy('id_pay');
+                                // }
+
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
+
                             }
                         } else {
                             echo "<span style='color:red'>Chu ky khong hop le</span>";
@@ -102,8 +119,6 @@
             </p>
             <footer class="footer">
                 <a class="btn btn-primary" href="../thongtinbenhnhan.php?pagetrang=xemlich">Quay về</a>
-                
-
                    <p>&copy; VNPAY <?php echo date('Y')?></p>
                    
             </footer>

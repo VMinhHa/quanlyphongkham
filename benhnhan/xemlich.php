@@ -78,7 +78,7 @@
 									if($item['Trangthai']=='Đang chờ'){
 								?>
 								<form action="Controll/xulydatlich.php" method="POST">
-									<a href="vnpay_php/index.php" name="payment" ><i class="icofont-pay"></i></a>
+									<a href="vnpay_php/index.php?id=<?php echo $item['id_Lichhen'] ?>" name="payment" ><i class="icofont-pay"></i></a>
 									<button  style="margin-top:10px;"class="btn btn-danger btn-sm delete_lichhen" 
 									type="submit" onclick="return confirm('Bạn có thực sự muốn hủy');" value="<?php echo $item['id_Lichhen'] ?>" name="Xoa_lich">Hủy</button>
 								</form>
