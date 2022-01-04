@@ -38,7 +38,6 @@
                 $i = 1;
             }
         }
-
         $secureHash = hash_hmac('sha512', $hashData, $vnp_HashSecret);
         ?>
         <!--Begin display -->
@@ -89,17 +88,18 @@
                                 //session_start();
                                 echo "<span style='color:blue'>GD Thanh cong</span>";
                                 if(isset($_GET['id'])){
-                                    echo $_GET['id'];
+                                    $id_page=$_GET['id'];
                                 }
+                                
                                 //Thành công chuyển sang đang khám
                                // echo $_SESSION['id_pay'];
 
                                //Phần update chuyển trạng thái
-                                // $s=new data();
-                                // $sql = "Update lichen set Trangthai='Xác nhận' where id_Lichhen=".$_SESSION['id_pay'];
-                                // if($s->execute($sql)){
-                                //     session_destroy('id_pay');
-                                // }
+                                $s=new data();
+                                $sql = "UPDATE lichhen set Trangthai='Xác nhận' where id_Lichhen=".$id_page;
+                                $s->execute($sql);
+                                unset($_SESSION['id_pay']);
+                                
 
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
@@ -122,6 +122,17 @@
                    <p>&copy; VNPAY <?php echo date('Y')?></p>
                    
             </footer>
+            <?php 
+            // session_start();
+            // foreach ($_SESSION['id_pay'] as $value) {
+            //     print_r($value);
+            // }
+            // echo $_GET['id'];
+            // var_dump($_SESSION['id_pay']);
+            // print_r($_SESSION['id_pay']);
+                //$_SESSION['id_pay']=4;
+                //print_r($_SESSION['id_pay']);
+            ?>
         </div>  
     </body>
 </html>

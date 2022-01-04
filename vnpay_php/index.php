@@ -91,14 +91,15 @@
 
 
                         if(isset($_GET['id'])){
-                            $id=$_GET['id'];
-                            //$_SESSION['id_pay']=$_GET['id'];
+                            //$id=$_GET['id'];
+                            $_SESSION['id_pay']=$_GET['id'];
                         }else{
-                            //$_SESSION['id_pay']='';
-                            $id='';
+                            $_SESSION['id_pay']='';
+                            //$id='';
                         }
+                        //echo $_SESSION['id_pay'];
                         $sql="SELECT * from lichhen l join benhnhan bn on l.ID_Benhnhan=bn.ID_Benhnhan join
-                         taikhoan t on bn.id = t.id where id_Lichhen=".$id;
+                         taikhoan t on bn.id = t.id where id_Lichhen=".$_SESSION['id_pay'];
                          $p=new data();
                         $item=$p->executeSingLesult($sql);
    
