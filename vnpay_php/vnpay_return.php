@@ -103,10 +103,12 @@
 
                             } else {
                                 echo "<span style='color:red'>GD Khong thanh cong</span>";
+                                unset($_SESSION['id_pay']);
 
                             }
                         } else {
                             echo "<span style='color:red'>Chu ky khong hop le</span>";
+                            unset($_SESSION['id_pay']);
                         }
                         ?>
 

@@ -6,6 +6,11 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
  * and open the template in the editor.
  */
   session_start();
+  if(isset($_SESSION['id_pay'])){
+      $s=$_SESSION['id_pay'];
+  }else{
+    $_SESSION['id_pay']='';
+  }
 $vnp_TmnCode = "3OPG5QFM"; //Website ID in VNPAY System
 $vnp_HashSecret = "KGVVFFHPKTCACDUUTBUMOCQSOCLOEBCM"; //Secret key
 $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
