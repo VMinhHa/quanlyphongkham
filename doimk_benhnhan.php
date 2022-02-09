@@ -135,7 +135,7 @@
 			$s->execute($sql);
 			echo '<script>
             alert("Sửa mật khẩu thành công");
-            window.location.href="thongtinbacsi.php?pagetrang=capnhattk";
+            window.location.href="thongtinbenhnhan.php?pagetrang=capnhattk";
             </script>';
             }
         }
