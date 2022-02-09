@@ -1,27 +1,5 @@
 <?php include('db/constrants.php'); 
       include('./google-source.php');
-      // require('vendor/autoload.php');
-      
-      // if(isset($_SESSION['userData'])){
-      //   header('location: view.php');
-      // }
-      // $loginURL="";
-      // $authUrl = $googleClient->createAuthUrl();
-      // $loginURL = filter_var($authUrl, FILTER_SANITIZE_URL);
-      
-
-      // $clientID='565136117957-2eli3vrv3q691kcglvgp34i734srupo1.apps.googleusercontent.com';
-      // $ClientSecret='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';
-      // $redirectUrl= 'http://localhost:8080/quanlyphongkham/login.php';
-
-      //Create client request to google
-      // $client = new Google_Client();
-      // $client->setClientID($clientID);
-      // $client->setClientSecret($ClientSecret);
-      // $client->setRedirectUri($redirectUrl);
-      // $client->addScope('profile');
-      // $client->addScope('email');
-      
 ?>
 
 <!DOCTYPE html>
@@ -42,9 +20,14 @@
         color:white;
         text-decoration:none;
       }
+      .p-t-20 {
+        border: 1px solid #34495e;
+        border-radius: 5px;
+      }
     </style>
 </head>
 <body>
+  
   <div class="container">
     <div class="logo">
       <a href="./index.php">
@@ -52,64 +35,40 @@
       </a>
     </div>
     <div class="row justify-content-md-center">
-      <div class="col-8">
-        <div class="main-form">
-          <form action=""  method="POST" enctype="multipart/form-data" >
-            <h2>ĐĂNG NHẬP</h2>
+      <div class="col-6 p-t-20">
+          <div class="main-form">
+            <form action=""  method="POST" enctype="multipart/form-data" >
+                <h2>ĐĂNG NHẬP</h2>
 
-            <div class="form-group ">
-              <label for="uname">Tên Đăng Nhập:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
-            </div>
-            
-            <div class="form-group">
-              <label for="pwd">Mật Khẩu:</label>
-              <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" >
-            </div>
-            
-            <div class="btn-form btn-login">
-              <input type="submit" class="btn btn-primary btn-sign" name="submit" value="Đăng Nhập" />
-              <span>Hoặc</span>
-              <button type="submit" class="btn btn-danger btn-sign btn-regis"><i class="icon-gg fab fa-google-plus-g"></i>
-                <?php if(isset($authUrl)){ ?>
-                    <a href="<?= $authUrl ?>" class='btn-google'>Đăng Nhập bằng Google</a>
-                <?php } ?>
-
-                 <!-- //if(isset($_GET['code'])) -->
-                <!-- //{ -->
-                  <!-- // $token=$client->fetchAccessTokenwithAuthCode($_GET['code']);
-                  // $client->setAccessToken($token);
-
-                  //Getting User Profile
-                  // $gauth = new Google_Service_Oauth2($client);
-                  // $google_info = $gauth->userinfo->get();
-                  // $email = $google_info->email;
-                  // $name = $google_info->name;
-                  
-                  // echo '<script>
-                  // alert("Đăng Nhập Thành Công");
-                  // window.location.href="index.php"
-                  // </script>'; -->
-                  
-                  <!-- //echo "Welcome ".$name." You mail use:".$email;
-                //}
-                //else{
-                  //echo "<a href='".$client->createAuthUrl()."' class='btn-google'>Đăng Nhập bằng Google</a> ";
-                //} -->
+                <div class="form-group ">
+                  <label for="uname">Tên Đăng Nhập:</label>
+                  <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập" name="username" >
+                </div>
                 
-              </button>
-            </div>
-
+                <div class="form-group">
+                  <label for="pwd">Mật Khẩu:</label>
+                  <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu" name="password" >
+                </div>
+                
+                <div class="btn-form btn-login">
+                  <input type="submit" class="btn btn-primary btn-sign" name="submit" value="Đăng Nhập" />
+                  <span>Hoặc</span>
+                  <button type="submit" class="btn btn-danger btn-sign btn-regis"><i class="icon-gg fab fa-google-plus-g"></i>
+                    <?php if(isset($authUrl)){ ?>
+                        <a href="<?= $authUrl ?>" class='btn-google'>Đăng Nhập bằng Google</a>
+                    <?php } ?>
+                    
+                  </button>
+                </div>
+              </form>
             
-          </form>
-        </div>
+          </div>
 
-        <div class="register">
-          <span>Bạn chưa có tài khoản! <a href="./register.php">Đăng Ký</a></span>
-        </div>
+          <div class="register">
+            <span>Bạn chưa có tài khoản! <a href="./register.php">Đăng Ký</a></span>
+          </div>
         
       </div>
-    </div>
     </div>
   </div>
 

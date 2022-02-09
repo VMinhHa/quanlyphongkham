@@ -149,6 +149,11 @@
       .has-error{
         color:red;
       }
+      .p-t-20 {
+        border: 1px solid #34495e;
+        border-radius: 5px;
+        padding-bottom: 10px;
+      }
     </style>
 </head>
 <body>
@@ -160,7 +165,7 @@
     </div>
 
     <div class="row justify-content-md-center">
-      <div class="col-8">
+      <div class="col-6 p-t-20">
         <div class="main-form">
           <form action="" method="POST" enctype="multipart/form-data">
             <h2>ĐĂNG KÝ</h2>
