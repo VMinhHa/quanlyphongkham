@@ -57,11 +57,17 @@
                 $password = $_POST['password'];
             }
         }
-        
-        if($password != $repass)
-        {
-          $err['repass'] = '*Mật khẩu nhập lại không đúng';
+        if(empty($repass)){
+          $err['repass'] = '*Bạn chưa nhập lại mật khẩu';
         }
+        else
+        {
+          if($password != $repass)
+          {
+            $err['repass'] = '*Mật khẩu nhập lại không đúng';
+          }
+        }
+        
 
         if(empty($email))
         {
@@ -143,11 +149,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/form.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/form_login.css">
     <style>
       .has-error{
         color:red;
+        font-weight: 600;
       }
       .p-t-20 {
         border: 1px solid #34495e;
@@ -158,63 +168,50 @@
 </head>
 <body>
   <div class="container">
-    <div class="logo">
-      <a href="./index.php">
-        <img src="./images/logo.png" alt="">
-      </a>
-    </div>
-
-    <div class="row justify-content-md-center">
-      <div class="col-6 p-t-20">
-        <div class="main-form">
           <form action="" method="POST" enctype="multipart/form-data">
             <h2>ĐĂNG KÝ</h2>
-            <div class="form-group">
-              <label for="uname">Tên Đăng Nhập:</label>
+            
+              <!-- <label for="uname">Tên Đăng Nhập:</label> -->
               <input type="text" class="form-control" id="uname" placeholder="Nhập tên đăng nhập từ 6 chữ số" name="username" >
               <div class="has-error">
                 <span> <?php echo (isset($err['username'])) ? $err['username']:'' ?> </span>
                 <span> <?php echo (isset($err['err_check'])) ? $err['err_check']:'' ?> </span>
               </div>
-            </div>
+            
 
-            <div class="form-group">
-              <label for="pwd">Mật Khẩu:</label>
+            
+              <!-- <label for="pwd">Mật Khẩu:</label> -->
               <input type="password" class="form-control" id="pwd" placeholder="Nhập mật khẩu bắt đầu chữ in hoa từ 5 chữ số" name="password" >
               <div class="has-error">
                 <span> <?php echo (isset($err['password'])) ? $err['password']:'' ?> </span>
               </div>
-            </div>
+            
 
-            <div class="form-group">
-              <label for="rpwd">Xác nhận mật khẩu:</label>
+           
+              <!-- <label for="rpwd">Xác nhận mật khẩu:</label> -->
               <input type="password" class="form-control" id="rpwd" placeholder="Nhập lại mật khẩu" name="repass" >
               <div class="has-error">
                 <span> <?php echo (isset($err['repass'])) ? $err['repass']:'' ?> </span>
               </div>
-            </div>
+            
 
-            <div class="form-group">
-              <label for="txtemail">Email:</label>
+            
+              <!-- <label for="txtemail">Email:</label> -->
               <input type="email" class="form-control" id="txtemail" placeholder="Nhập email của bạn" name="email">
               <div class="has-error">
                 <span> <?php echo (isset($err['email'])) ? $err['email']:'' ?> </span>
                 <span> <?php echo (isset($err['err_mail'])) ? $err['err_mail']:'' ?> </span>
               </div>
-            </div>
+            
 
             <div class="btn-form">
-              <input type="submit" class="btn btn-primary btn-sign" value="Đăng Ký" name="submit">
-              <input type="button" class="btn btn-danger btn-sign" style="margin-top:10px;" value="Trở Lại" 
-                  onClick="document.location.href='http://localhost:8080/quanlyphongkham';" />
+              <input type="submit" class="btn-login" value="Đăng Ký" name="submit">
+              <input type="button" class="btn-login" style="margin-top:10px;" value="Trở Lại" 
+                  onClick="history.back()" />
                   <!-- Nút cancer-->
             </div>
           </form>
-        </div>
 
-      </div>
-    </div>
-    </div>
   </div>
 
 </body>
